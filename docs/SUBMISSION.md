@@ -87,16 +87,16 @@ Placed in the `assets/` folder of the SVN repository (not inside the plugin):
 
 ## 8. Screenshots to prepare
 
-Take them in a WordPress admin with the default color scheme, at 1280 px width, on a site the Sitelemetry account is authorized to audit. The key is shown masked by the plugin, so no screenshot exposes it.
+Taken on 2026-09-21/22 with headless Chrome from WordPress Playground (WordPress 7.1.1, plugin 0.1.2) at 1280 px width, default color scheme, with real audit results of sitelemetry.com stored through the plugin's own classes and a placeholder key (the plugin shows keys masked, so no screenshot exposes a key). Tooling and the reproducible commands live outside the repository.
 
 | File | Caption in readme.txt | State to capture |
 | --- | --- | --- |
-| `screenshot-1.png` | Settings > Sitelemetry: API key, target, audit kind and the weekly schedule | Key stored (masked), target filled, the audit kind list open so the plan labels are visible, weekly audit checked with the next run shown |
-| `screenshot-2.png` | Results: status banner, score and grade, findings by severity | A completed security audit: banner "Completed", the score card, the severity chips |
-| `screenshot-3.png` | Findings table with the severity filter, locations and fixes | The findings table filtered to High, one row with "Evidence and impact" expanded |
-| `screenshot-4.png` | A partial result with "What was not measured" and the verification step | A Free account auditing an unverified target: banner "Completed with partial coverage", the not-measured list, the verification sentence with the app link |
-| `screenshot-5.png` | The plan and usage box with the remaining allowance and the plan comparison | The box on a result that carries the remaining scans, the paid plans table and both links |
-| `screenshot-6.png` | Dashboard widget with the last score and the findings by severity | The WordPress dashboard with the widget after a completed audit |
+| `screenshot-1.png` | Settings: the stored API key shown masked, the target, the audit kind and the weekly audit with its next scheduled run | Key stored (masked), target https://sitelemetry.com, audit kind select (closed; a native select cannot be captured open), weekly audit checked with the next run shown |
+| `screenshot-2.png` | Results of a completed security audit: status banner, score and grade, findings by severity and the passing checks | A completed security audit (limited module selection so every module is measured): banner "Completed", the score card, the severity chips, passing checks |
+| `screenshot-3.png` | The findings table with the severity filter and a row expanded to show evidence, impact and the fix | The findings table filtered to the highest severity present (Medium in the real data), one row with "Evidence and impact" expanded |
+| `screenshot-4.png` | A partially covered audit: the banner, the score and the list of what was not measured (unmeasured checks are not passes) | A full-scope audit with partial engine coverage: banner "Completed with partial coverage", the score card, the "What was not measured" list (no verification sentence: the target is verified) |
+| `screenshot-5.png` | The plan and usage box: the connected plan and what each paid plan includes, with links to pricing and the app | The box with the connected-plan line, the paid plans table and both links (the remaining-scans line appears only when the service reports it) |
+| `screenshot-6.png` | The dashboard widget with the last score, grade, status and findings by severity, one click from the full results | The WordPress dashboard (Welcome panel dismissed) with the widget after a completed audit |
 
 ## 9. Releasing an update
 

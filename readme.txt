@@ -85,12 +85,12 @@ WP-Cron runs when the site receives visits. If your host runs a system cron for 
 
 == Screenshots ==
 
-1. Settings > Sitelemetry: API key, target, audit kind and the weekly schedule.
-2. Results: status banner, score and grade, findings by severity.
-3. Findings table with the severity filter, locations and fixes.
-4. A partial result with "What was not measured" and the verification step.
-5. The plan and usage box with the remaining allowance and the plan comparison.
-6. Dashboard widget with the last score and the findings by severity.
+1. Settings: the stored API key shown masked, the target, the audit kind and the weekly audit with its next scheduled run.
+2. Results of a completed security audit: status banner, score and grade, findings by severity and the passing checks.
+3. The findings table with the severity filter and a row expanded to show evidence, impact and the fix.
+4. A partially covered audit: the banner, the score and the list of what was not measured (unmeasured checks are not passes).
+5. The plan and usage box: the connected plan and what each paid plan includes, with links to pricing and the app.
+6. The dashboard widget with the last score, grade, status and findings by severity, one click from the full results.
 
 == Privacy ==
 
