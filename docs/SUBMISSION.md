@@ -24,7 +24,7 @@ The zip must not contain `tests/`, `docs/`, `tools/`, `CHANGELOG.md` or another 
 
 ## 2. Test in a real WordPress once
 
-Use `wp-env` (`npx @wordpress/env start` with the plugin folder mapped) or Local. Then:
+Done on 2026-09-21 in WordPress Playground (WordPress 7.1.1, plugin installed from the GitHub release zip with a blueprint in the URL fragment): steps 1-4 and 6 below passed with the owner's real key (settings saved, key shown masked, a real security audit of sitelemetry.com rendered "Completed with partial coverage", score 81/100 C, 14 findings, the not-measured list, the findings table with the severity filter, the plan and usage table, and the dashboard widget with the last score; the weekly schedule shows the next run). Step 5 (deactivate/delete cleanup) is covered by the php-wasm tests only. For a repeat, use Playground, `wp-env` (`npx @wordpress/env start` with the plugin folder mapped) or Local. Then:
 
 1. Activate the plugin; **Settings > Sitelemetry** appears and the dashboard widget shows "Add API key".
 2. Save a Sitelemetry MCP API key of an account you control; the settings page shows it masked.
