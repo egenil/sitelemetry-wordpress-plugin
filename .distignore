@@ -3,6 +3,7 @@
 .git
 .gitignore
 .github
+.wordpress-org
 .editorconfig
 tests
 docs

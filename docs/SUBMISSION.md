@@ -77,7 +77,7 @@ The plugin page appears after the first commit; the directory builds the downloa
 
 ## 7. Directory assets
 
-Placed in the `assets/` folder of the SVN repository (not inside the plugin):
+Kept in `.wordpress-org/` of this repository (excluded from the zip by `.distignore`) and copied to the `assets/` folder of the SVN repository (not inside the plugin):
 
 | File | Size | Notes |
 | --- | --- | --- |
