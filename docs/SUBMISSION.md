@@ -1,0 +1,104 @@
+# Submitting Sitelemetry Audit to WordPress.org
+
+This is the step list for the first submission of the plugin (slug `sitelemetry-audit`) and for later releases. Everything here is done by a person with the Sitelemetry WordPress.org account; nothing is automated.
+
+## 1. Before the upload
+
+Work through this list on the built tree, not on the development checkout.
+
+| Check | Where | Status in this tree |
+| --- | --- | --- |
+| `Contributors:` lists WordPress.org usernames (profiles.wordpress.org/NAME) | `readme.txt` | Placeholder `sitelemetry`; replace with the real account name(s) |
+| `Stable tag:` equals the `Version:` header | `readme.txt`, `sitelemetry-audit.php` | Both `0.1.0` |
+| `Tested up to:` is the current WordPress major after a real test in it | `readme.txt` | `6.8` written without a live test; set it after the test in step 2 |
+| `Requires at least: 6.0`, `Requires PHP: 7.4` | `readme.txt`, `sitelemetry-audit.php` | Set |
+| External service disclosure with links to the terms and the privacy policy | `readme.txt`, Description and Privacy | Written; the links point at the homepage, replace them with the exact terms and privacy URLs |
+| The Privacy section names everything the requests actually carry, including the User-Agent | `readme.txt` Privacy, `Sitelemetry_Audit_Client::user_agent()` | In sync: the header is `sitelemetry-audit-wordpress/VERSION` and discloses nothing about the site (no WordPress version). Re-check both whenever either changes |
+| The API key claims are the same everywhere (stored verbatim in the options table, displayed masked) | `readme.txt` (Description, FAQ), `CHANGELOG.md`, `Sitelemetry_Audit_Settings` | In sync; never describe the stored key as masked or encrypted |
+| The plugin name and slug use the Sitelemetry trademark | submission form | The submitting account must represent Sitelemetry (guideline 17); the review team asks for proof when it cannot link the account to the brand. The slug cannot be changed after approval |
+| Plugin Check passes | test site with the Plugin Check plugin (`wordpress/plugin-check`) | Not run yet (no local WordPress); WordPress.org runs it during the upload and blocks on errors |
+| Zip built from `.distignore` | `tools/build-zip.mjs` or `wp dist-archive .` | `dist/sitelemetry-audit-0.1.0.zip`; it contains one top-level folder `sitelemetry-audit/` |
+
+The zip must not contain `tests/`, `docs/`, `tools/`, `CHANGELOG.md` or another zip; `.distignore` excludes them.
+
+## 2. Test in a real WordPress once
+
+Use `wp-env` (`npx @wordpress/env start` with the plugin folder mapped) or Local. Then:
+
+1. Activate the plugin; **Settings > Sitelemetry** appears and the dashboard widget shows "Add API key".
+2. Save a Sitelemetry MCP API key of an account you control; the settings page shows it masked.
+3. Run the security audit against the site itself (or another site the account is authorized to test); the results tab shows the progress box, then the result. Check the severity filter, the "What was not measured" list on a Free account, the plan and usage box and the dashboard widget.
+4. Enable the weekly audit and save; the settings page shows the next run. `wp cron event list` (or the WP Crontrol plugin) lists `sitelemetry_audit_weekly`.
+5. Deactivate: the cron events disappear. Delete the plugin: `wp option list --search=sitelemetry_audit_*` returns nothing.
+6. Install the Plugin Check plugin and run it on Sitelemetry Audit; fix every error it reports.
+
+Set `Tested up to:` to the WordPress version used.
+
+## 3. Account
+
+1. Register at <https://login.wordpress.org/register> with a Sitelemetry team mailbox, not a personal one. The plugin belongs to this account; further committers can be added later from the plugin's Advanced view.
+2. Confirm the e-mail address. The same login is used for the SVN repository after approval.
+
+## 4. Upload
+
+1. Open <https://wordpress.org/plugins/developers/add/> while signed in.
+2. Upload `dist/sitelemetry-audit-0.1.0.zip`. The form shows the slug that will be assigned (`sitelemetry-audit`, derived from the Plugin Name). If it differs, change the `Plugin Name` header and rebuild before submitting.
+3. Confirm the guideline and trademark statements on the form and submit.
+4. The automated Plugin Check runs at once. If it reports errors, fix them, rebuild and upload again.
+
+## 5. Review
+
+- The plugin review team (plugins@wordpress.org) reviews by hand. The add page shows the current queue length; the first reply usually arrives within days to a few weeks.
+- Every reply is an e-mail. Answer each point, upload the corrected zip through the link in that e-mail (not as a new submission) and say what changed. Submissions without an answer are closed after a period of inactivity.
+- Likely questions for this plugin and the factual answers:
+  - *Calls to an external service.* The plugin is a thin client for the hosted Sitelemetry service; the Description and Privacy sections say exactly what is sent (target URL and audit kind, authenticated with the key). No request leaves the site before the admin stores a key.
+  - *Sanitization, escaping, nonces.* Every admin-post and AJAX handler checks `manage_options` and a nonce; settings pass through `Sitelemetry_Audit_Settings::sanitize()`; every value printed by the views is escaped.
+  - *Prefixes.* Functions, classes, options, transients, hooks and script handles use `sitelemetry_audit` / `Sitelemetry_Audit_`.
+  - *Trademark.* Provide the proof that the submitting account represents Sitelemetry.
+  - *Files that do not belong in the zip.* Tests, docs and tools are excluded by `.distignore`; confirm by listing the zip.
+- Approval comes by e-mail with the SVN URL `https://plugins.svn.wordpress.org/sitelemetry-audit/`.
+
+## 6. First SVN commit
+
+```sh
+svn co https://plugins.svn.wordpress.org/sitelemetry-audit sitelemetry-audit-svn
+cd sitelemetry-audit-svn
+# unzip the built archive and copy its contents (the files, not the folder) into trunk/
+svn add trunk/*
+svn cp trunk tags/0.1.0
+# directory assets, see section 7
+svn add assets/*
+svn ci -m "Release 0.1.0" --username WORDPRESS_ORG_USER
+```
+
+The plugin page appears after the first commit; the directory builds the download from the `Stable tag` (`tags/0.1.0`).
+
+## 7. Directory assets
+
+Placed in the `assets/` folder of the SVN repository (not inside the plugin):
+
+| File | Size | Notes |
+| --- | --- | --- |
+| `icon-128x128.png`, `icon-256x256.png` (or `icon.svg`) | 128x128, 256x256 | Sitelemetry mark on a plain background |
+| `banner-772x250.png`, `banner-1544x500.png` | 772x250, 1544x500 | Optional; product name and one line |
+| `screenshot-1.png` to `screenshot-6.png` | 1280 px wide recommended | Order and captions follow the `== Screenshots ==` section of `readme.txt` |
+
+## 8. Screenshots to prepare
+
+Take them in a WordPress admin with the default color scheme, at 1280 px width, on a site the Sitelemetry account is authorized to audit. The key is shown masked by the plugin, so no screenshot exposes it.
+
+| File | Caption in readme.txt | State to capture |
+| --- | --- | --- |
+| `screenshot-1.png` | Settings > Sitelemetry: API key, target, audit kind and the weekly schedule | Key stored (masked), target filled, the audit kind list open so the plan labels are visible, weekly audit checked with the next run shown |
+| `screenshot-2.png` | Results: status banner, score and grade, findings by severity | A completed security audit: banner "Completed", the score card, the severity chips |
+| `screenshot-3.png` | Findings table with the severity filter, locations and fixes | The findings table filtered to High, one row with "Evidence and impact" expanded |
+| `screenshot-4.png` | A partial result with "What was not measured" and the verification step | A Free account auditing an unverified target: banner "Completed with partial coverage", the not-measured list, the verification sentence with the app link |
+| `screenshot-5.png` | The plan and usage box with the remaining allowance and the plan comparison | The box on a result that carries the remaining scans, the paid plans table and both links |
+| `screenshot-6.png` | Dashboard widget with the last score and the findings by severity | The WordPress dashboard with the widget after a completed audit |
+
+## 9. Releasing an update
+
+1. Bump `Version:` in `sitelemetry-audit.php`, `SITELEMETRY_AUDIT_VERSION`, `Stable tag:` in `readme.txt`; add the changelog entry to `readme.txt` and `CHANGELOG.md`.
+2. Regenerate `languages/sitelemetry-audit.pot`, run the tests, build the zip.
+3. Copy the built files over `trunk/`, `svn cp trunk tags/VERSION`, commit. The directory picks up the new stable tag within minutes.
+4. After each WordPress release, test and raise `Tested up to:` in `trunk/readme.txt` (a commit to trunk is enough).

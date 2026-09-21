@@ -1,0 +1,288 @@
+/* Sitelemetry Audit: admin pages and dashboard widget. */
+
+.sitelemetry-audit-wrap .nav-tab-wrapper {
+	margin-bottom: 16px;
+}
+
+.sitelemetry-audit-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	margin: 16px 0;
+	padding: 16px 20px;
+}
+
+.sitelemetry-audit-card h2,
+.sitelemetry-audit-card h3 {
+	margin-top: 0;
+}
+
+/* Status banner */
+
+.sitelemetry-audit-banner {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-left-width: 4px;
+	border-radius: 4px;
+	margin: 16px 0;
+	padding: 12px 20px;
+}
+
+.sitelemetry-audit-banner h2 {
+	margin: 0.4em 0;
+}
+
+.sitelemetry-audit-banner--completed {
+	border-left-color: #00a32a;
+}
+
+.sitelemetry-audit-banner--partial {
+	border-left-color: #dba617;
+}
+
+.sitelemetry-audit-banner--blocked {
+	border-left-color: #d63638;
+}
+
+.sitelemetry-audit-banner--quota_exhausted,
+.sitelemetry-audit-banner--plan_required,
+.sitelemetry-audit-banner--verification_required {
+	border-left-color: #2271b1;
+}
+
+.sitelemetry-audit-meta span + span::before {
+	color: #787c82;
+	content: "\00b7";
+	margin: 0 6px;
+}
+
+.sitelemetry-audit-message {
+	border-left: 3px solid #dcdcde;
+	color: #50575e;
+	margin: 8px 0;
+	padding: 4px 12px;
+}
+
+/* Score and counts */
+
+.sitelemetry-audit-summary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.sitelemetry-audit-summary .sitelemetry-audit-card {
+	margin: 0;
+}
+
+.sitelemetry-audit-score {
+	min-width: 160px;
+	text-align: center;
+}
+
+.sitelemetry-audit-score-value {
+	font-size: 44px;
+	font-weight: 600;
+	line-height: 1.1;
+}
+
+.sitelemetry-audit-score-value--none {
+	font-size: 20px;
+}
+
+.sitelemetry-audit-score-max {
+	color: #787c82;
+	font-size: 16px;
+}
+
+.sitelemetry-audit-grade {
+	background: #f0f0f1;
+	border-radius: 3px;
+	display: inline-block;
+	font-weight: 600;
+	margin-left: 8px;
+	padding: 2px 8px;
+}
+
+.sitelemetry-audit-score-label {
+	color: #787c82;
+	display: block;
+	margin-top: 6px;
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: 0.04em;
+}
+
+.sitelemetry-audit-counts {
+	flex: 1 1 260px;
+}
+
+/* Severity chips */
+
+.sitelemetry-audit-chip {
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.6;
+	margin: 0 6px 6px 0;
+	padding: 1px 8px;
+	white-space: nowrap;
+}
+
+.sitelemetry-audit-chip--critical {
+	background: #8a1f1f;
+	color: #fff;
+}
+
+.sitelemetry-audit-chip--high {
+	background: #d63638;
+	color: #fff;
+}
+
+.sitelemetry-audit-chip--medium {
+	background: #dba617;
+	color: #1d2327;
+}
+
+.sitelemetry-audit-chip--low {
+	background: #72aee6;
+	color: #1d2327;
+}
+
+.sitelemetry-audit-chip--info {
+	background: #dcdcde;
+	color: #1d2327;
+}
+
+.sitelemetry-audit-chip--none {
+	background: #edfaef;
+	color: #007017;
+}
+
+/* Findings table */
+
+.sitelemetry-audit-findings-header {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	justify-content: space-between;
+	margin-top: 24px;
+}
+
+.sitelemetry-audit-findings-header h3 {
+	margin: 0;
+}
+
+.sitelemetry-audit-findings td {
+	vertical-align: top;
+}
+
+.sitelemetry-audit-col-severity {
+	width: 90px;
+}
+
+.sitelemetry-audit-col-location {
+	width: 22%;
+}
+
+.sitelemetry-audit-col-fix {
+	width: 30%;
+}
+
+.sitelemetry-audit-findings code {
+	word-break: break-all;
+}
+
+.sitelemetry-audit-tag {
+	color: #787c82;
+	font-size: 12px;
+	margin-left: 6px;
+}
+
+.sitelemetry-audit-findings details {
+	margin-top: 6px;
+}
+
+.sitelemetry-audit-findings summary {
+	color: #2271b1;
+	cursor: pointer;
+}
+
+.sitelemetry-audit-findings details p {
+	margin: 6px 0 0;
+	white-space: pre-line;
+}
+
+.sitelemetry-audit-pillars,
+.sitelemetry-audit-plans {
+	margin: 16px 0;
+}
+
+.sitelemetry-audit-not-measured ul {
+	list-style: disc;
+	margin-left: 20px;
+}
+
+/* Progress */
+
+.sitelemetry-audit-progress h2 {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+}
+
+.sitelemetry-audit-spinner {
+	animation: sitelemetry-audit-spin 1s linear infinite;
+	border: 3px solid #dcdcde;
+	border-radius: 50%;
+	border-top-color: #2271b1;
+	display: inline-block;
+	height: 16px;
+	vertical-align: middle;
+	width: 16px;
+}
+
+@keyframes sitelemetry-audit-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.sitelemetry-audit-progress-error[hidden] {
+	display: none;
+}
+
+.sitelemetry-audit-run--again {
+	margin-top: 16px;
+}
+
+.sitelemetry-audit-masked {
+	letter-spacing: 0.08em;
+}
+
+.sitelemetry-audit-footnote {
+	margin-top: 24px;
+}
+
+/* Dashboard widget */
+
+.sitelemetry-audit-widget-score {
+	margin: 8px 0;
+}
+
+.sitelemetry-audit-widget-score .sitelemetry-audit-score-value {
+	font-size: 32px;
+}
+
+.sitelemetry-audit-widget-counts {
+	margin: 8px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sitelemetry-audit-spinner {
+		animation: none;
+	}
+}

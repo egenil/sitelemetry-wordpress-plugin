@@ -1,0 +1,16 @@
+{
+  "name": "sitelemetry-audit-tools",
+  "private": true,
+  "description": "Development scripts for the Sitelemetry Audit WordPress plugin: php-wasm lint and tests, .pot generation, zip build. Not shipped.",
+  "type": "module",
+  "scripts": {
+    "lint": "node lint.mjs",
+    "test": "node run-tests.mjs",
+    "pot": "node make-pot.mjs",
+    "zip": "node build-zip.mjs"
+  },
+  "devDependencies": {
+    "@php-wasm/node": "^3.1.55",
+    "@php-wasm/universal": "^3.1.55"
+  }
+}

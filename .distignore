@@ -1,0 +1,19 @@
+# Excluded from the WordPress.org zip / SVN trunk (honoured by tools/build-zip.mjs and wp dist-archive)
+.distignore
+.git
+.gitignore
+.github
+.editorconfig
+tests
+docs
+tools
+dist
+CHANGELOG.md
+node_modules
+package.json
+package-lock.json
+composer.json
+composer.lock
+phpcs.xml
+phpcs.xml.dist
+*.zip
