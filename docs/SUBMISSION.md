@@ -8,7 +8,7 @@ Work through this list on the built tree, not on the development checkout.
 
 | Check | Where | Status in this tree |
 | --- | --- | --- |
-| `Contributors:` lists WordPress.org usernames (profiles.wordpress.org/NAME) | `readme.txt` | Placeholder `sitelemetry`; replace with the real account name(s) |
+| `Contributors:` lists WordPress.org usernames (profiles.wordpress.org/NAME) | `readme.txt` | `ozandikici` (the WordPress.org account signed in on 2026-09-21; its e-mail is a personal address, see step 3) |
 | `Stable tag:` equals the `Version:` header | `readme.txt`, `sitelemetry-audit.php` | Both `0.1.1` |
 | `Tested up to:` is the current WordPress major after a real test in it | `readme.txt` | `7.1`, set after the Playground test in WordPress 7.1.1 (2026-09-21) |
 | `Requires at least: 6.0`, `Requires PHP: 7.4` | `readme.txt`, `sitelemetry-audit.php` | Set |
@@ -36,8 +36,9 @@ Set `Tested up to:` to the WordPress version used.
 
 ## 3. Account
 
-1. Register at <https://login.wordpress.org/register> with a Sitelemetry team mailbox, not a personal one. The plugin belongs to this account; further committers can be added later from the plugin's Advanced view.
-2. Confirm the e-mail address. The same login is used for the SVN repository after approval.
+1. The submitting account is `ozandikici` (profiles.wordpress.org/ozandikici). The plugin belongs to this account; further committers can be added later from the plugin's Advanced view.
+2. Guideline 17: the plugin name starts with the Sitelemetry brand, and the review team verifies brand ownership through the e-mail address of the WordPress.org account. Before submitting, set that address to a sitelemetry.com mailbox at <https://profiles.wordpress.org/ozandikici/profile/edit/> and confirm it; otherwise expect a trademark question in the first review e-mail and answer it with proof (a reply from support@sitelemetry.com or a link to the plugin from sitelemetry.com).
+3. The same login is used for the SVN repository after approval.
 
 ## 4. Upload
 
