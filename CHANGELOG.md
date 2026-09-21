@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2 - 2026-09-21
+
+- `Plugin URI` header points at https://github.com/egenil/sitelemetry-wordpress-plugin; `Author URI` stays https://sitelemetry.com. The WordPress.org upload check rejects a zip whose plugin and author URIs are identical.
+
 ## 0.1.1 - 2026-09-21
 
 - Tested in WordPress 7.1.1 (WordPress Playground): activation, settings page, results tab, plugin list entry and dashboard widget render without notices. `Tested up to` raised to 7.1.

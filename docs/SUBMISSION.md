@@ -9,15 +9,16 @@ Work through this list on the built tree, not on the development checkout.
 | Check | Where | Status in this tree |
 | --- | --- | --- |
 | `Contributors:` lists WordPress.org usernames (profiles.wordpress.org/NAME) | `readme.txt` | `ozandikici` (the WordPress.org account signed in on 2026-09-21; its e-mail is a personal address, see step 3) |
-| `Stable tag:` equals the `Version:` header | `readme.txt`, `sitelemetry-audit.php` | Both `0.1.1` |
+| `Stable tag:` equals the `Version:` header | `readme.txt`, `sitelemetry-audit.php` | Both `0.1.2` |
 | `Tested up to:` is the current WordPress major after a real test in it | `readme.txt` | `7.1`, set after the Playground test in WordPress 7.1.1 (2026-09-21) |
 | `Requires at least: 6.0`, `Requires PHP: 7.4` | `readme.txt`, `sitelemetry-audit.php` | Set |
+| `Plugin URI` and `Author URI` differ | `sitelemetry-audit.php` | Plugin URI = the GitHub repository, Author URI = sitelemetry.com. The upload form rejects identical values ("Your plugin and author URIs are the same") |
 | External service disclosure with links to the terms and the privacy policy | `readme.txt`, Description and Privacy | Written; links to https://sitelemetry.com/terms and https://sitelemetry.com/privacy |
 | The Privacy section names everything the requests actually carry, including the User-Agent | `readme.txt` Privacy, `Sitelemetry_Audit_Client::user_agent()` | In sync: the header is `sitelemetry-audit-wordpress/VERSION` and discloses nothing about the site (no WordPress version). Re-check both whenever either changes |
 | The API key claims are the same everywhere (stored verbatim in the options table, displayed masked) | `readme.txt` (Description, FAQ), `CHANGELOG.md`, `Sitelemetry_Audit_Settings` | In sync; never describe the stored key as masked or encrypted |
 | The plugin name and slug use the Sitelemetry trademark | submission form | The submitting account must represent Sitelemetry (guideline 17); the review team asks for proof when it cannot link the account to the brand. The slug cannot be changed after approval |
 | Plugin Check passes | test site with the Plugin Check plugin (`wordpress/plugin-check`) | Run in WordPress Playground (Plugin Check, all categories) on 2026-09-21: clean after the 0.1.1 fixes; WordPress.org runs it again during the upload |
-| Zip built from `.distignore` | `tools/build-zip.mjs` or `wp dist-archive .` | `dist/sitelemetry-audit-0.1.1.zip`; it contains one top-level folder `sitelemetry-audit/` |
+| Zip built from `.distignore` | `tools/build-zip.mjs` or `wp dist-archive .` | `dist/sitelemetry-audit-0.1.2.zip`; it contains one top-level folder `sitelemetry-audit/` |
 
 The zip must not contain `tests/`, `docs/`, `tools/`, `CHANGELOG.md` or another zip; `.distignore` excludes them.
 
@@ -43,7 +44,7 @@ Set `Tested up to:` to the WordPress version used.
 ## 4. Upload
 
 1. Open <https://wordpress.org/plugins/developers/add/> while signed in.
-2. Upload `dist/sitelemetry-audit-0.1.1.zip`. The form shows the slug that will be assigned (`sitelemetry-audit`, derived from the Plugin Name). If it differs, change the `Plugin Name` header and rebuild before submitting.
+2. Upload `dist/sitelemetry-audit-0.1.2.zip`. The form shows the slug that will be assigned (`sitelemetry-audit`, derived from the Plugin Name). If it differs, change the `Plugin Name` header and rebuild before submitting.
 3. Confirm the guideline and trademark statements on the form and submit.
 4. The automated Plugin Check runs at once. If it reports errors, fix them, rebuild and upload again.
 
@@ -66,13 +67,13 @@ svn co https://plugins.svn.wordpress.org/sitelemetry-audit sitelemetry-audit-svn
 cd sitelemetry-audit-svn
 # unzip the built archive and copy its contents (the files, not the folder) into trunk/
 svn add trunk/*
-svn cp trunk tags/0.1.1
+svn cp trunk tags/0.1.2
 # directory assets, see section 7
 svn add assets/*
-svn ci -m "Release 0.1.1" --username WORDPRESS_ORG_USER
+svn ci -m "Release 0.1.2" --username WORDPRESS_ORG_USER
 ```
 
-The plugin page appears after the first commit; the directory builds the download from the `Stable tag` (`tags/0.1.1`).
+The plugin page appears after the first commit; the directory builds the download from the `Stable tag` (`tags/0.1.2`).
 
 ## 7. Directory assets
 

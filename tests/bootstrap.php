@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __DIR__ ) . '/' );
 }
 if ( ! defined( 'SITELEMETRY_AUDIT_VERSION' ) ) {
-	define( 'SITELEMETRY_AUDIT_VERSION', '0.1.1' );
+	define( 'SITELEMETRY_AUDIT_VERSION', '0.1.2' );
 }
 if ( ! defined( 'SITELEMETRY_AUDIT_DIR' ) ) {
 	define( 'SITELEMETRY_AUDIT_DIR', dirname( __DIR__ ) . '/' );

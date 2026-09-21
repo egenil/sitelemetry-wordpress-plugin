@@ -4,7 +4,7 @@ Tags: security, audit, seo, performance, accessibility
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,9 @@ The plugin stores in your WordPress database: the settings (API key, target, aud
 
 == Changelog ==
 
+= 0.1.2 =
+* Plugin URI now points at the plugin repository; the author URI stays sitelemetry.com (WordPress.org requires the two to differ).
+
 = 0.1.1 =
 * Tested with WordPress 7.1. Plugin Check (all categories) passes without errors or warnings.
 * Description and Privacy sections link to the exact terms and privacy policy pages.
@@ -110,6 +113,9 @@ The plugin stores in your WordPress database: the settings (API key, target, aud
 * First release: settings page, manual audits with progress polling, results page with severity filter and coverage notes, dashboard widget, optional weekly audit, plan and usage box.
 
 == Upgrade Notice ==
+
+= 0.1.2 =
+Header metadata only. No functional change.
 
 = 0.1.1 =
 Tested with WordPress 7.1; exact terms and privacy links. No functional change.
