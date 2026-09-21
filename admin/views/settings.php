@@ -60,8 +60,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<th scope="row"><label for="sitelemetry-audit-kind"><?php esc_html_e( 'Audit kind', 'sitelemetry-audit' ); ?></label></th>
 			<td>
 				<select id="sitelemetry-audit-kind" name="<?php echo esc_attr( $view['option_name'] ); ?>[kind]">
-					<?php foreach ( $view['kinds'] as $kind => $label ) : ?>
-						<option value="<?php echo esc_attr( $kind ); ?>" <?php selected( $view['settings']['kind'], $kind ); ?>><?php echo esc_html( $label ); ?></option>
+					<?php foreach ( $view['kinds'] as $sitelemetry_audit_kind => $sitelemetry_audit_label ) : ?>
+						<option value="<?php echo esc_attr( $sitelemetry_audit_kind ); ?>" <?php selected( $view['settings']['kind'], $sitelemetry_audit_kind ); ?>><?php echo esc_html( $sitelemetry_audit_label ); ?></option>
 					<?php endforeach; ?>
 				</select>
 				<p class="description">

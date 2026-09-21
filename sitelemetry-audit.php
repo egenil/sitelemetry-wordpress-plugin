@@ -3,7 +3,7 @@
  * Plugin Name:       Sitelemetry Audit
  * Plugin URI:        https://sitelemetry.com
  * Description:       Run Sitelemetry website audits (security first; SEO, performance, accessibility, AI visibility and integrations on paid plans) from the WordPress dashboard and review the findings with fixes.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Sitelemetry
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SITELEMETRY_AUDIT_VERSION', '0.1.0' );
+define( 'SITELEMETRY_AUDIT_VERSION', '0.1.1' );
 define( 'SITELEMETRY_AUDIT_FILE', __FILE__ );
 define( 'SITELEMETRY_AUDIT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SITELEMETRY_AUDIT_URL', plugin_dir_url( __FILE__ ) );

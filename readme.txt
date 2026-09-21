@@ -2,9 +2,9 @@
 Contributors: sitelemetry
 Tags: security, audit, seo, performance, accessibility
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,7 +41,7 @@ The plugin bundles no libraries and runs no scanner on your server. It sends req
 
 **External service**
 
-This plugin relies on the hosted Sitelemetry service (https://sitelemetry.com) operated by Sitelemetry. It sends requests to the service only when you run an audit or after you have stored an API key, as described in the Privacy section below. The terms of service and the privacy policy of the service are published at https://sitelemetry.com.
+This plugin relies on the hosted Sitelemetry service (https://sitelemetry.com) operated by Sitelemetry. It sends requests to the service only when you run an audit or after you have stored an API key, as described in the Privacy section below. The terms of service are published at https://sitelemetry.com/terms and the privacy policy at https://sitelemetry.com/privacy.
 
 == Installation ==
 
@@ -94,7 +94,7 @@ WP-Cron runs when the site receives visits. If your host runs a system cron for 
 
 == Privacy ==
 
-When you run an audit, the plugin sends to sitelemetry.com the target URL and the audit options you configured (the audit kind), authenticated with your API key. Every request also identifies the client in its User-Agent header (`sitelemetry-audit-wordpress/` and the plugin version); no WordPress version, site name, user, plugin list or other data from your site or your server is sent. Sitelemetry then audits the live target from its own infrastructure and records the audit on the connected account, as described in the Sitelemetry terms and privacy policy at https://sitelemetry.com.
+When you run an audit, the plugin sends to sitelemetry.com the target URL and the audit options you configured (the audit kind), authenticated with your API key. Every request also identifies the client in its User-Agent header (`sitelemetry-audit-wordpress/` and the plugin version); no WordPress version, site name, user, plugin list or other data from your site or your server is sent. Sitelemetry then audits the live target from its own infrastructure and records the audit on the connected account, as described in the Sitelemetry terms (https://sitelemetry.com/terms) and privacy policy (https://sitelemetry.com/privacy).
 
 Once an API key is stored, the plugin also reads the public plan catalogue at sitelemetry.com/api/plans (no authentication, no data about your site beyond the same plugin User-Agent) to show the plan and usage box. Before a key is stored, the plugin makes no request to any external server.
 
@@ -102,10 +102,17 @@ The plugin stores in your WordPress database: the settings (API key, target, aud
 
 == Changelog ==
 
+= 0.1.1 =
+* Tested with WordPress 7.1. Plugin Check (all categories) passes without errors or warnings.
+* Description and Privacy sections link to the exact terms and privacy policy pages.
+
 = 0.1.0 =
 * First release: settings page, manual audits with progress polling, results page with severity filter and coverage notes, dashboard widget, optional weekly audit, plan and usage box.
 
 == Upgrade Notice ==
+
+= 0.1.1 =
+Tested with WordPress 7.1; exact terms and privacy links. No functional change.
 
 = 0.1.0 =
 First release.

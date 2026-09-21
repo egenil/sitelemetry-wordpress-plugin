@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 - 2026-09-21
+
+- Tested in WordPress 7.1.1 (WordPress Playground): activation, settings page, results tab, plugin list entry and dashboard widget render without notices. `Tested up to` raised to 7.1.
+- Plugin Check 1.x (General, Plugin Repo, Security, Performance, Accessibility) reported one error (outdated `Tested up to`) and two warnings (unprefixed loop variables in `admin/views/settings.php`); all fixed, the run is clean.
+- `readme.txt` links the exact terms (https://sitelemetry.com/terms) and privacy policy (https://sitelemetry.com/privacy) pages instead of the homepage.
+
 ## 0.1.0 - 2026-09-21
 
 First release.
