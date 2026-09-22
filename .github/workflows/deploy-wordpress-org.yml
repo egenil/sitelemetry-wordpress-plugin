@@ -1,0 +1,129 @@
+name: Deploy to WordPress.org
+
+# Publishes the plugin to https://plugins.svn.wordpress.org/sitelemetry-audit.
+#
+# WordPress.org accepts releases over SVN only, and the SVN password is separate
+# from the WordPress.org account password (profiles.wordpress.org > Account &
+# Security > SVN password). That password is stored once as the repository
+# secret WPORG_SVN_PASSWORD and is never held anywhere else; the username is not
+# secret and is set below.
+#
+# Trigger it by hand from the Actions tab. `dry_run: true` does everything except
+# the commit and prints the exact file list that would be published, which is the
+# safe way to check a release before it goes live.
+#
+# What it publishes:
+#   trunk/          the plugin files, i.e. the repository minus every path in .distignore
+#   tags/<version>  a copy of that trunk, taken from the Stable tag in readme.txt
+#   assets/         the directory images from .wordpress-org (icons, banners, screenshots)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Only show what would be committed'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wporg-deploy
+  cancel-in-progress: false
+
+env:
+  SLUG: sitelemetry-audit
+  SVN_URL: https://plugins.svn.wordpress.org/sitelemetry-audit
+  SVN_USERNAME: ozandikici
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Read the version from readme.txt and the plugin header
+        id: version
+        run: |
+          set -euo pipefail
+          readme_version="$(sed -n 's/^Stable tag: *//p' readme.txt | head -1 | tr -d '\r')"
+          header_version="$(sed -n 's/^ \* Version: *//p' sitelemetry-audit.php | head -1 | tr -d '\r')"
+          if [ -z "$readme_version" ]; then echo "Stable tag missing from readme.txt" >&2; exit 1; fi
+          if [ "$readme_version" != "$header_version" ]; then
+            echo "Stable tag ($readme_version) and the plugin header ($header_version) disagree" >&2
+            exit 1
+          fi
+          echo "version=$readme_version" >> "$GITHUB_OUTPUT"
+          echo "Releasing $readme_version"
+
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
+      - name: Check out the WordPress.org repository
+        run: |
+          set -euo pipefail
+          svn checkout --depth immediates "$SVN_URL" svn
+          svn update --set-depth infinity svn/trunk
+          svn update --set-depth infinity svn/tags
+          if [ -d svn/assets ]; then svn update --set-depth infinity svn/assets; else mkdir -p svn/assets; fi
+
+      - name: Fail if the tag already exists
+        run: |
+          set -euo pipefail
+          if [ -d "svn/tags/${{ steps.version.outputs.version }}" ]; then
+            echo "tags/${{ steps.version.outputs.version }} already exists on WordPress.org. Bump the version." >&2
+            exit 1
+          fi
+
+      - name: Build trunk from the working tree, honouring .distignore
+        run: |
+          set -euo pipefail
+          # Every line of .distignore that is not a comment becomes an rsync exclude.
+          # .svn is protected so the working copy metadata survives --delete.
+          : > /tmp/excludes
+          echo '.svn' >> /tmp/excludes
+          grep -v '^[[:space:]]*#' .distignore | grep -v '^[[:space:]]*$' >> /tmp/excludes
+          rsync -a --delete --exclude-from=/tmp/excludes ./ svn/trunk/
+          echo '--- trunk ---'
+          find svn/trunk -type f -not -path '*/.svn/*' | sed 's|^svn/trunk/||' | sort
+
+      - name: Copy the directory assets
+        run: |
+          set -euo pipefail
+          rsync -a --delete --exclude '.svn' .wordpress-org/ svn/assets/
+          echo '--- assets ---'
+          find svn/assets -type f -not -path '*/.svn/*' | sed 's|^svn/assets/||' | sort
+
+      - name: Stage additions and deletions
+        run: |
+          set -euo pipefail
+          cd svn
+          # Anything untracked gets added; anything missing gets removed.
+          svn add --force --parents trunk assets > /dev/null
+          svn status | awk '/^!/ {print $2}' | xargs -r svn delete --force
+          svn copy trunk "tags/${{ steps.version.outputs.version }}"
+          svn add --force "tags/${{ steps.version.outputs.version }}" > /dev/null 2>&1 || true
+          echo '--- svn status ---'
+          svn status | head -100
+
+      - name: Commit
+        if: ${{ inputs.dry_run == false }}
+        env:
+          SVN_PASSWORD: ${{ secrets.WPORG_SVN_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SVN_PASSWORD}" ]; then
+            echo "The repository secret WPORG_SVN_PASSWORD is not set." >&2
+            exit 1
+          fi
+          cd svn
+          svn commit \
+            --username "$SVN_USERNAME" --password "$SVN_PASSWORD" \
+            --non-interactive --no-auth-cache \
+            -m "Release ${{ steps.version.outputs.version }}"
+          echo "Published. Public page: https://wordpress.org/plugins/$SLUG" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Dry run notice
+        if: ${{ inputs.dry_run == true }}
+        run: echo "Dry run: nothing was committed. Re-run with dry_run unchecked to publish." >> "$GITHUB_STEP_SUMMARY"
