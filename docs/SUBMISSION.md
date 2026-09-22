@@ -60,20 +60,25 @@ Set `Tested up to:` to the WordPress version used.
   - *Files that do not belong in the zip.* Tests, docs and tools are excluded by `.distignore`; confirm by listing the zip.
 - Approval comes by e-mail with the SVN URL `https://plugins.svn.wordpress.org/sitelemetry-audit/`.
 
-## 6. First SVN commit
+## 6. Releasing (SVN) — automated
 
-```sh
-svn co https://plugins.svn.wordpress.org/sitelemetry-audit sitelemetry-audit-svn
-cd sitelemetry-audit-svn
-# unzip the built archive and copy its contents (the files, not the folder) into trunk/
-svn add trunk/*
-svn cp trunk tags/0.1.2
-# directory assets, see section 7
-svn add assets/*
-svn ci -m "Release 0.1.2" --username WORDPRESS_ORG_USER
-```
+APPROVED and LIVE since 2026-09-22: <https://wordpress.org/plugins/sitelemetry-audit/> (0.1.2).
+SVN repository <https://plugins.svn.wordpress.org/sitelemetry-audit>, SVN user `ozandikici`.
 
-The plugin page appears after the first commit; the directory builds the download from the `Stable tag` (`tags/0.1.2`).
+Releases go through the GitHub workflow **Deploy to WordPress.org**
+(`.github/workflows/deploy-wordpress-org.yml`), not a local SVN client:
+
+1. Bump `Version:` in `sitelemetry-audit.php`, `SITELEMETRY_AUDIT_VERSION`, `Stable tag:` in
+   `readme.txt` (the workflow refuses to run when the header and the stable tag disagree), add the
+   changelog entries, regenerate the `.pot`, run the tests.
+2. Actions tab -> Deploy to WordPress.org -> Run workflow with `dry_run` ticked. It prints the exact
+   trunk and assets file lists and creates nothing.
+3. Re-run with `dry_run` unticked. It syncs `trunk/` from the working tree honouring `.distignore`,
+   syncs `assets/` from `.wordpress-org/`, copies trunk to `tags/<version>` and commits.
+
+The SVN password lives only in the repository secret `WPORG_SVN_PASSWORD` (generated in the
+WordPress.org profile under Account & Security; it is not the account password). The directory picks
+up the new stable tag within minutes.
 
 ## 7. Directory assets
 
