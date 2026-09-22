@@ -126,4 +126,5 @@ jobs:
 
       - name: Dry run notice
         if: ${{ inputs.dry_run == true }}
-        run: echo "Dry run: nothing was committed. Re-run with dry_run unchecked to publish." >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo "Dry run finished, nothing was committed. Re-run with dry_run unchecked to publish." >> "$GITHUB_STEP_SUMMARY"
