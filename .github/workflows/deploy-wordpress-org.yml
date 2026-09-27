@@ -60,18 +60,22 @@ jobs:
       - name: Install Subversion
         run: sudo apt-get update && sudo apt-get install -y subversion
 
+      # The SVN working copy lives outside the Git workspace, so copying the
+      # workspace into trunk can never copy the working copy into itself.
       - name: Check out the WordPress.org repository
         run: |
           set -euo pipefail
-          svn checkout --depth immediates "$SVN_URL" svn
-          svn update --set-depth infinity svn/trunk
-          svn update --set-depth infinity svn/tags
-          if [ -d svn/assets ]; then svn update --set-depth infinity svn/assets; else mkdir -p svn/assets; fi
+          SVN_DIR="$RUNNER_TEMP/wporg-svn"
+          echo "SVN_DIR=$SVN_DIR" >> "$GITHUB_ENV"
+          svn checkout --depth immediates "$SVN_URL" "$SVN_DIR"
+          svn update --set-depth infinity "$SVN_DIR/trunk"
+          svn update --set-depth infinity "$SVN_DIR/tags"
+          if [ -d "$SVN_DIR/assets" ]; then svn update --set-depth infinity "$SVN_DIR/assets"; else mkdir -p "$SVN_DIR/assets"; fi
 
       - name: Fail if the tag already exists
         run: |
           set -euo pipefail
-          if [ -d "svn/tags/${{ steps.version.outputs.version }}" ]; then
+          if [ -d "$SVN_DIR/tags/${{ steps.version.outputs.version }}" ]; then
             echo "tags/${{ steps.version.outputs.version }} already exists on WordPress.org. Bump the version." >&2
             exit 1
           fi
@@ -84,28 +88,31 @@ jobs:
           : > /tmp/excludes
           echo '.svn' >> /tmp/excludes
           grep -v '^[[:space:]]*#' .distignore | grep -v '^[[:space:]]*$' >> /tmp/excludes
-          rsync -a --delete --exclude-from=/tmp/excludes ./ svn/trunk/
+          rsync -a --delete --exclude-from=/tmp/excludes ./ "$SVN_DIR/trunk/"
           echo '--- trunk ---'
-          find svn/trunk -type f -not -path '*/.svn/*' | sed 's|^svn/trunk/||' | sort
+          (cd "$SVN_DIR/trunk" && find . -type f -not -path '*/.svn/*' | sed 's|^\./||' | sort)
 
       - name: Copy the directory assets
         run: |
           set -euo pipefail
-          rsync -a --delete --exclude '.svn' .wordpress-org/ svn/assets/
+          rsync -a --delete --exclude '.svn' .wordpress-org/ "$SVN_DIR/assets/"
           echo '--- assets ---'
-          find svn/assets -type f -not -path '*/.svn/*' | sed 's|^svn/assets/||' | sort
+          (cd "$SVN_DIR/assets" && find . -type f -not -path '*/.svn/*' | sed 's|^\./||' | sort)
 
       - name: Stage additions and deletions
         run: |
           set -euo pipefail
-          cd svn
+          cd "$SVN_DIR"
           # Anything untracked gets added; anything missing gets removed.
           svn add --force --parents trunk assets > /dev/null
           svn status | awk '/^!/ {print $2}' | xargs -r svn delete --force
           svn copy trunk "tags/${{ steps.version.outputs.version }}"
           svn add --force "tags/${{ steps.version.outputs.version }}" > /dev/null 2>&1 || true
-          echo '--- svn status ---'
-          svn status | head -100
+          # Write the status to a file first: piping it straight into head ends svn
+          # with SIGPIPE, which pipefail turns into a failed step on long lists.
+          svn status > "$RUNNER_TEMP/svn-status.txt"
+          echo "--- svn status ($(wc -l < "$RUNNER_TEMP/svn-status.txt") entries) ---"
+          cat "$RUNNER_TEMP/svn-status.txt"
 
       - name: Commit
         if: ${{ inputs.dry_run == false }}
@@ -117,7 +124,7 @@ jobs:
             echo "The repository secret WPORG_SVN_PASSWORD is not set." >&2
             exit 1
           fi
-          cd svn
+          cd "$SVN_DIR"
           svn commit \
             --username "$SVN_USERNAME" --password "$SVN_PASSWORD" \
             --non-interactive --no-auth-cache \
