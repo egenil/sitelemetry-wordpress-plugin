@@ -42,6 +42,17 @@ if ( ! function_exists( 'esc_attr__' ) ) {
 		return esc_attr( $text );
 	}
 }
+if ( ! function_exists( 'esc_textarea' ) ) {
+	/**
+	 * Escape for textarea content.
+	 *
+	 * @param string $text Text.
+	 * @return string
+	 */
+	function esc_textarea( $text ) {
+		return htmlspecialchars( (string) $text, ENT_QUOTES, 'UTF-8' );
+	}
+}
 if ( ! function_exists( 'wp_nonce_field' ) ) {
 	/**
 	 * Nonce field.
@@ -169,5 +180,18 @@ if ( ! function_exists( 'add_query_arg' ) ) {
 			$url    = isset( $args[2] ) ? $args[2] : '';
 		}
 		return $url . ( false === strpos( $url, '?' ) ? '?' : '&' ) . http_build_query( $params );
+	}
+}
+if ( ! function_exists( 'wp_kses' ) ) {
+	/**
+	 * Allowed-HTML stand-in: keeps only the allowed tags (attributes are not
+	 * filtered; the views build them from escaped values).
+	 *
+	 * @param string $text    HTML.
+	 * @param array  $allowed Allowed tags.
+	 * @return string
+	 */
+	function wp_kses( $text, $allowed ) {
+		return strip_tags( $text, '<' . implode( '><', array_keys( $allowed ) ) . '>' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 	}
 }

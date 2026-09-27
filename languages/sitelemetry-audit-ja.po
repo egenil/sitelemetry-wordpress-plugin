@@ -1,0 +1,1459 @@
+# Copyright (C) 2026 Sitelemetry
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sitelemetry Audit 0.1.3\n"
+"Report-Msgid-Bugs-To: https://sitelemetry.com\n"
+"POT-Creation-Date: 2026-09-26T18:32:13+00:00\n"
+"PO-Revision-Date: 2026-09-26T00:00:00+00:00\n"
+"Last-Translator: Sitelemetry\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: sitelemetry-audit\n"
+
+#. Plugin Name of the plugin
+#: sitelemetry-audit.php
+msgid "Sitelemetry Audit – Security, SEO & AI Readiness Scanner"
+msgstr "Sitelemetry Audit – セキュリティ・SEO・AI対応スキャナー"
+
+#. Plugin URI of the plugin
+#: sitelemetry-audit.php
+msgid "https://github.com/egenil/sitelemetry-wordpress-plugin"
+msgstr "https://github.com/egenil/sitelemetry-wordpress-plugin"
+
+#. Description of the plugin
+#: sitelemetry-audit.php
+msgid "Run Sitelemetry website audits (security first; SEO, performance, accessibility, AI visibility and integrations on paid plans) from the WordPress dashboard and review the findings with fixes."
+msgstr "WordPress のダッシュボードから Sitelemetry のウェブサイト監査を実行し（まずセキュリティ。SEO、パフォーマンス、アクセシビリティ、AI可視性、連携は有料プラン）、検出事項を修正方法とともに確認できます。"
+
+#. Author URI of the plugin
+#: sitelemetry-audit.php
+msgid "https://sitelemetry.com"
+msgstr "https://sitelemetry.com"
+
+#: admin/views/dashboard-widget.php:18
+msgid "Connect your Sitelemetry account to audit this site for security, SEO and performance issues."
+msgstr "Sitelemetry アカウントを接続すると、このサイトのセキュリティ、SEO、パフォーマンスの問題を監査できます。"
+
+#: admin/views/dashboard-widget.php:19
+msgid "Add API key"
+msgstr "API キーを追加"
+
+#: admin/views/dashboard-widget.php:22 admin/views/dashboard-widget.php:29 admin/views/settings.php:17
+msgid "An audit is running."
+msgstr "監査を実行中です。"
+
+#: admin/views/dashboard-widget.php:24
+msgid "No audit has run yet."
+msgstr "まだ監査を実行していません。"
+
+#: admin/views/dashboard-widget.php:26
+msgid "Open Sitelemetry"
+msgstr "Sitelemetry を開く"
+
+#: admin/views/dashboard-widget.php:38 admin/views/results.php:203
+msgid "Not measured"
+msgstr "未測定"
+
+#. translators: 1: audit kind label, 2: status of the audit.
+#. translators: 1: pillar name, 2: error message.
+#. translators: 1: module name, 2: module status such as "not measured".
+#. translators: 1: pillar name, 2: what was not measured in that pillar.
+#: admin/views/dashboard-widget.php:45 includes/class-sitelemetry-audit-labels.php:239 includes/class-sitelemetry-audit-labels.php:293 includes/class-sitelemetry-audit-labels.php:302 includes/class-sitelemetry-audit-labels.php:319
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#. translators: 1: audit kind and status, 2: date and time the audit finished. Translate the parentheses as your language writes them.
+#: admin/views/dashboard-widget.php:52
+msgid "%1$s (%2$s)"
+msgstr "%1$s（%2$s）"
+
+#: admin/views/dashboard-widget.php:76
+msgid "No findings"
+msgstr "検出事項なし"
+
+#: admin/views/dashboard-widget.php:86 admin/views/weekly-notice.php:31
+msgid "Renew the verification"
+msgstr "検証を更新"
+
+#: admin/views/dashboard-widget.php:86 admin/views/renewal-notice.php:28 admin/views/results.php:175 admin/views/results.php:403 admin/views/settings.php:133 admin/views/settings.php:222 admin/views/weekly-notice.php:31
+msgid "Verify this site"
+msgstr "このサイトを検証"
+
+#: admin/views/dashboard-widget.php:88 admin/views/results.php:176 admin/views/results.php:180 admin/views/results.php:183 admin/views/results.php:405
+msgid "Verified Domains in the app"
+msgstr "アプリの検証済みドメイン"
+
+#: admin/views/dashboard-widget.php:93 admin/views/results.php:186
+msgid "A verification lasts 30 days; the plugin renews it automatically."
+msgstr "検証の有効期間は 30 日で、プラグインが自動で更新します。"
+
+#: admin/views/dashboard-widget.php:95
+msgid "A verification lasts 30 days and is not renewed automatically."
+msgstr "検証の有効期間は 30 日で、自動では更新されません。"
+
+#: admin/views/dashboard-widget.php:99 admin/views/weekly-notice.php:33
+msgid "View results"
+msgstr "結果を表示"
+
+#: admin/views/plan-box.php:17
+msgid "Plan and usage"
+msgstr "プランと利用状況"
+
+#: admin/views/plan-box.php:24
+msgid "Plan"
+msgstr "プラン"
+
+#: admin/views/plan-box.php:25
+msgid "Price"
+msgstr "料金"
+
+#: admin/views/plan-box.php:26
+msgid "Audit kinds"
+msgstr "監査の種類"
+
+#: admin/views/plan-box.php:27
+msgid "Security modules"
+msgstr "セキュリティモジュール"
+
+#: admin/views/plan-box.php:28
+msgid "Security scans / month"
+msgstr "セキュリティスキャン / 月"
+
+#: admin/views/plan-box.php:45
+msgid "Plan details and pricing"
+msgstr "プランの詳細と料金"
+
+#: admin/views/plan-box.php:47
+msgid "Verify ownership of your site and manage API keys in the app"
+msgstr "アプリでサイトの所有権を確認し、API キーを管理"
+
+#. translators: %s: host name of this site.
+#: admin/views/renewal-notice.php:20
+msgid "Sitelemetry could not renew the ownership verification of %s automatically."
+msgstr "Sitelemetry は %s の所有権確認を自動で更新できませんでした。"
+
+#: admin/views/renewal-notice.php:29 admin/views/weekly-notice.php:34
+msgid "Dismiss"
+msgstr "非表示にする"
+
+#. translators: %s: date and time.
+#: admin/views/results.php:104
+msgid "Started %s"
+msgstr "開始: %s"
+
+#. translators: %s: date and time.
+#: admin/views/results.php:115
+msgid "Finished %s"
+msgstr "終了: %s"
+
+#: admin/views/results.php:122
+msgid "Weekly schedule"
+msgstr "毎週のスケジュール"
+
+#. translators: %s: audit job id.
+#: admin/views/results.php:129
+msgid "Job %s"
+msgstr "ジョブ %s"
+
+#: admin/views/results.php:148
+msgid "Open the app"
+msgstr "アプリを開く"
+
+#: admin/views/results.php:156
+msgid "Ownership verified"
+msgstr "所有権を確認済み"
+
+#: admin/views/results.php:158
+msgid "Renew the ownership verification"
+msgstr "所有権確認を更新"
+
+#: admin/views/results.php:158
+msgid "Verify ownership of the site"
+msgstr "サイトの所有権を確認"
+
+#: admin/views/results.php:165
+msgid "You can verify from WordPress with one click: Verify this site asks Sitelemetry for a verification code, publishes it for this site and completes the verification."
+msgstr "WordPress からワンクリックで検証できます。「このサイトを検証」は Sitelemetry に検証コードを要求し、このサイトで公開して、検証を完了します。"
+
+#: admin/views/results.php:168
+msgid "The stored token was used up by the last verification. In the app, click Reverify for this domain and copy the new token, save it under Verify this site (it replaces the old one), then click Verify HTTP in the app and run the audit again."
+msgstr "保存されているトークンは前回の検証で使用済みです。アプリでこのドメインの「再検証」をクリックして新しいトークンをコピーし、「このサイトを検証」に保存してください（古いトークンは置き換えられます）。その後、アプリで「HTTPを検証」をクリックし、監査をもう一度実行してください。"
+
+#: admin/views/results.php:170
+msgid "This plugin already publishes a verification file for this site. Finish in the app: click Verify HTTP for this domain, then run the audit again."
+msgstr "このプラグインは、このサイトの検証ファイルをすでに公開しています。アプリで手続きを完了してください。このドメインの「HTTPを検証」をクリックしてから、監査をもう一度実行します。"
+
+#: admin/views/results.php:172
+msgid "You can verify from WordPress: paste the token from the app into the plugin settings and the plugin publishes the verification file for this site."
+msgstr "WordPress から検証できます: アプリのトークンをプラグインの設定に貼り付けると、プラグインがこのサイトの検証ファイルを公開します。"
+
+#: admin/views/results.php:179
+msgid "On a multisite network only a network administrator can publish the verification file for this site. Ask a network administrator, or verify the host in the app with a DNS record."
+msgstr "マルチサイトネットワークでは、このサイトの検証ファイルを公開できるのはネットワーク管理者だけです。ネットワーク管理者に依頼するか、アプリで DNS レコードを使ってホストを検証してください。"
+
+#: admin/views/results.php:182
+msgid "The audited target is not this WordPress site, so the plugin cannot publish its verification file. Verify it in the app with a DNS record or an HTTP file on that site."
+msgstr "監査対象はこの WordPress サイトではないため、プラグインはその検証ファイルを公開できません。アプリで、そのサイトの DNS レコードまたは HTTP ファイルを使って検証してください。"
+
+#: admin/views/results.php:188
+msgid "A verification lasts 30 days and is not renewed automatically. Before it expires, click Reverify in the app, publish the new token and verify again."
+msgstr "検証の有効期間は 30 日で、自動では更新されません。期限が切れる前に、アプリで「再検証」をクリックし、新しいトークンを公開して、もう一度検証してください。"
+
+#: admin/views/results.php:205 admin/views/results.php:260
+msgid "Score"
+msgstr "スコア"
+
+#. translators: %d: number of findings.
+#: admin/views/results.php:212
+msgid "%d finding"
+msgid_plural "%d findings"
+msgstr[0] "検出事項 %d 件"
+
+#: admin/views/results.php:224
+msgid "No findings were reported for the measured checks"
+msgstr "測定したチェックでは検出事項は報告されませんでした"
+
+#. translators: %d: number of passing checks.
+#: admin/views/results.php:232
+msgid "%d passing check"
+msgid_plural "%d passing checks"
+msgstr[0] "合格したチェック %d 件"
+
+#: admin/views/results.php:242
+msgid "Fix with an AI assistant"
+msgstr "AI アシスタントで修正"
+
+#: admin/views/results.php:244
+msgid "Copy AI fix prompt"
+msgstr "AI修正プロンプトをコピー"
+
+#: admin/views/results.php:247
+msgid "The prompt is built in wp-admin from this result and only copied to your clipboard. Nothing is sent."
+msgstr "プロンプトはこの結果から wp-admin 上で作成され、クリップボードにコピーされるだけです。何も送信されません。"
+
+#: admin/views/results.php:249
+msgid "Show the prompt"
+msgstr "プロンプトを表示"
+
+#: admin/views/results.php:250
+msgid "AI fix prompt"
+msgstr "AI修正プロンプト"
+
+#: admin/views/results.php:259
+msgid "Pillar"
+msgstr "領域"
+
+#: admin/views/results.php:261 admin/views/results.php:290
+msgid "Findings"
+msgstr "検出事項"
+
+#: admin/views/results.php:268
+msgid "n/a"
+msgstr "未測定"
+
+#: admin/views/results.php:292 admin/views/results.php:304
+msgid "Severity"
+msgstr "重要度"
+
+#: admin/views/results.php:294 includes/class-sitelemetry-audit-admin.php:194
+msgid "All severities"
+msgstr "すべての重要度"
+
+#: admin/views/results.php:305
+msgid "Finding"
+msgstr "検出事項"
+
+#: admin/views/results.php:306
+msgid "Location"
+msgstr "場所"
+
+#: admin/views/results.php:307
+msgid "Fix"
+msgstr "修正方法"
+
+#: admin/views/results.php:321
+msgid "Evidence and impact"
+msgstr "証拠と影響"
+
+#: admin/views/results.php:337 includes/class-sitelemetry-audit-admin.php:195
+msgid "No findings match this filter."
+msgstr "このフィルターに一致する検出事項はありません。"
+
+#. translators: %d: number of findings that are not included.
+#: admin/views/results.php:348
+msgid "Sitelemetry counted %d more finding that is not included in this result."
+msgid_plural "Sitelemetry counted %d more findings that are not included in this result."
+msgstr[0] "Sitelemetry はほかに %d 件の検出事項を集計しましたが、それらはこの結果に含まれていません。"
+
+#. translators: %d: number of findings that are not included.
+#: admin/views/results.php:351
+msgid "Sitelemetry counted %d finding that is not included in this result."
+msgid_plural "Sitelemetry counted %d findings that are not included in this result."
+msgstr[0] "Sitelemetry は %d 件の検出事項を集計しましたが、それらはこの結果に含まれていません。"
+
+#: admin/views/results.php:357
+msgid "According to Sitelemetry, this result does not include every finding of this audit."
+msgstr "Sitelemetry によると、この結果にはこの監査のすべての検出事項が含まれているわけではありません。"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/results.php:40
+msgid "Running the %1$s audit of %2$s"
+msgstr "%2$s の %1$s 監査を実行中"
+
+#: admin/views/results.php:401
+msgid "These checks run after ownership of the site is verified."
+msgstr "これらのチェックは、サイトの所有権が確認された後に実行されます。"
+
+#. translators: %s: audit kind label.
+#: admin/views/results.php:450
+msgid "Run the %s audit again"
+msgstr "%s 監査をもう一度実行"
+
+#: admin/views/results.php:456
+msgid "Change settings"
+msgstr "設定を変更"
+
+#: admin/views/results.php:458
+msgid "Uses the target saved in the settings. A completed audit uses one unit of the monthly allowance."
+msgstr "設定に保存されたターゲットを使用します。完了した監査ごとに月間利用枠を 1 回分消費します。"
+
+#: admin/views/results.php:462
+msgid "Only the target URL, the audit options and the report language are sent to Sitelemetry, authenticated with your API key."
+msgstr "Sitelemetry に送信されるのは、ターゲット URL、監査オプション、レポートの言語だけで、API キーで認証されます。"
+
+#. translators: 1: elapsed time (m:ss), 2: time budget in minutes.
+#: admin/views/results.php:51
+msgid "Elapsed: %1$s (time budget: %2$d minutes)"
+msgstr "経過時間: %1$s（制限時間: %2$d 分）"
+
+#: admin/views/results.php:59
+msgid "Check now"
+msgstr "今すぐ確認"
+
+#: admin/views/results.php:60
+msgid "Stop waiting"
+msgstr "待機をやめる"
+
+#: admin/views/results.php:62
+msgid "Polling a running audit does not use more allowance. If you leave this page, WordPress keeps checking in the background and the result appears here when it is ready."
+msgstr "実行中の監査の状況を確認しても、利用枠は追加で消費されません。このページを離れても WordPress がバックグラウンドで確認を続け、結果の準備ができるとここに表示されます。"
+
+#: admin/views/results.php:68
+msgid "No audit has run yet"
+msgstr "まだ監査を実行していません"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/results.php:78
+msgid "Run the %1$s audit of %2$s. A completed audit uses one unit of the monthly allowance."
+msgstr "%2$s の %1$s 監査を実行します。完了した監査ごとに月間利用枠を 1 回分消費します。"
+
+#: admin/views/results.php:84 admin/views/settings.php:124
+msgid "Run audit"
+msgstr "監査を実行"
+
+#: admin/views/results.php:87
+msgid "Add your Sitelemetry API key to run the first audit."
+msgstr "最初の監査を実行するには、Sitelemetry API キーを追加してください。"
+
+#: admin/views/results.php:88 admin/views/results.php:143
+msgid "Open settings"
+msgstr "設定を開く"
+
+#: admin/views/settings.php:100
+msgid "Save settings"
+msgstr "設定を保存"
+
+#: admin/views/settings.php:103
+msgid "Run an audit now"
+msgstr "今すぐ監査を実行"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/settings.php:112
+msgid "Runs the %1$s audit of %2$s with the saved settings. A completed audit uses one unit of the monthly allowance."
+msgstr "保存された設定で %2$s の %1$s 監査を実行します。完了した監査ごとに月間利用枠を 1 回分消費します。"
+
+#: admin/views/settings.php:119 includes/class-sitelemetry-audit-admin.php:255 includes/class-sitelemetry-audit-verification.php:1228
+msgid "Save an API key first."
+msgstr "先に API キーを保存してください。"
+
+#: admin/views/settings.php:135
+msgid "Some security checks (for example exposed files, HTTP methods and, on paid plans, the WordPress checks) run only on sites whose ownership is verified in Sitelemetry. The plugin can publish the verification file for this site, so you need no FTP access or hosting panel."
+msgstr "一部のセキュリティチェック（例: 公開されているファイル、HTTP メソッド、有料プランでは WordPress のチェック）は、Sitelemetry で所有権が確認されたサイトでのみ実行されます。このプラグインはこのサイトの検証ファイルを公開できるため、FTP アクセスやホスティングの管理パネルは不要です。"
+
+#. translators: %s: host name of this site.
+#: admin/views/settings.php:140
+msgid "Host of this site: %s"
+msgstr "このサイトのホスト: %s"
+
+#. translators: 1: host name of this site, 2: the same host with or without www.
+#: admin/views/settings.php:150
+msgid "Sitelemetry verifies one exact host name: %1$s and %2$s are different hosts. Add the host of the address the audit uses; a redirect from one to the other makes the file check fail."
+msgstr "Sitelemetry は完全一致する 1 つのホスト名を検証します。%1$s と %2$s は別のホストです。監査で使用するアドレスのホストを追加してください。一方から他方へのリダイレクトがあると、ファイルの確認は失敗します。"
+
+#. translators: %s: host name of the audit target.
+#: admin/views/settings.php:163
+msgid "The audit target in the settings is a different host (%s). The plugin publishes the file only for this site's own host; verify the target in the app."
+msgstr "設定の監査ターゲットは別のホスト（%s）です。プラグインは、このサイト自身のホストに対してのみファイルを公開します。ターゲットはアプリで検証してください。"
+
+#: admin/views/settings.php:176
+msgid "On a multisite network only a network administrator can publish the verification file: the web server that answers for this host serves every site of the network. Ask a network administrator to verify this site, or use one of the other ways below."
+msgstr "マルチサイトネットワークでは、検証ファイルを公開できるのはネットワーク管理者だけです。このホストに応答するウェブサーバーは、ネットワーク内のすべてのサイトを配信しているためです。ネットワーク管理者にこのサイトの検証を依頼するか、下記のほかの方法を使ってください。"
+
+#: admin/views/settings.php:18 admin/views/settings.php:127
+msgid "View progress"
+msgstr "進行状況を表示"
+
+#. translators: %s: host name.
+#: admin/views/settings.php:189 includes/class-sitelemetry-audit-verification.php:1631
+msgid "The ownership verification of %s has expired. Verification lasts 30 days and is not renewed automatically: click Reverify in the app, then publish the new token and verify again."
+msgstr "%s の所有権の検証の有効期限が切れました。検証の有効期間は 30 日で、自動では更新されません。アプリで「再検証」をクリックし、新しいトークンを公開して、もう一度検証してください。"
+
+#: admin/views/settings.php:196
+msgid "The verification of this site has expired. The plugin renews it automatically; click Verify this site to renew it now."
+msgstr "このサイトの検証の有効期限が切れました。プラグインが自動で更新します。今すぐ更新するには「このサイトを検証」をクリックしてください。"
+
+#: admin/views/settings.php:201
+msgid "The automatic renewal did not complete."
+msgstr "自動更新は完了しませんでした。"
+
+#: admin/views/settings.php:201
+msgid "The verification did not complete."
+msgstr "検証は完了しませんでした。"
+
+#: admin/views/settings.php:207
+msgid "You can also verify with a DNS record or Google Search Console, as described under Other ways to verify."
+msgstr "「その他の検証方法」に記載のとおり、DNS レコードまたは Google Search Console で検証することもできます。"
+
+#: admin/views/settings.php:211
+msgid "One-click verification is not available yet. Verify with a token from the app as described below."
+msgstr "ワンクリック検証はまだ利用できません。以下の説明に従って、アプリのトークンで検証してください。"
+
+#: admin/views/settings.php:227
+msgid "Save your API key above to verify this site with one click."
+msgstr "ワンクリックでこのサイトを検証するには、上で API キーを保存してください。"
+
+#. translators: 1: URL of the verification file, 2: number of days a verification lasts.
+#: admin/views/settings.php:232
+msgid "The plugin asks Sitelemetry for a verification code, publishes it at %1$s, tests the file and asks Sitelemetry to verify it. A verification lasts %2$d days; the plugin renews it automatically."
+msgstr "プラグインは Sitelemetry に検証コードを要求して %1$s で公開し、ファイルをテストしてから Sitelemetry に検証を依頼します。検証の有効期間は %2$d 日で、プラグインが自動で更新します。"
+
+#: admin/views/settings.php:245
+msgid "Verify manually with a token from the app"
+msgstr "アプリのトークンで手動で検証"
+
+#. translators: %s: host name of this site.
+#: admin/views/settings.php:252
+msgid "In the app, open Verified Domains, enter exactly %s and click Start verification."
+msgstr "アプリで「検証済みドメイン」を開き、%s を正確に入力して「検証を開始」をクリックします。"
+
+#: admin/views/settings.php:256
+msgid "Open Verified Domains in the app"
+msgstr "アプリで「検証済みドメイン」を開く"
+
+#. translators: %s: URL of the verification file.
+#: admin/views/settings.php:262
+msgid "Copy the verification code shown under HTTP verification file (it starts with sitelemetry-) and save it below as the token. The plugin then answers %s with the token."
+msgstr "「HTTP検証ファイル」の下に表示される検証コード（sitelemetry- で始まります）をコピーし、下にトークンとして保存します。その後、プラグインは %s にこのトークンで応答します。"
+
+#: admin/views/settings.php:267
+msgid "Click Test the file to check that the file is reachable."
+msgstr "「ファイルをテスト」をクリックして、ファイルにアクセスできることを確認します。"
+
+#: admin/views/settings.php:268
+msgid "In the app, click Verify HTTP for this domain, then run the audit again."
+msgstr "アプリで、このドメインの「HTTPを検証」をクリックしてから、監査をもう一度実行します。"
+
+#: admin/views/settings.php:27
+msgid "API key"
+msgstr "API キー"
+
+#: admin/views/settings.php:275
+msgid "Verification token"
+msgstr "検証トークン"
+
+#: admin/views/settings.php:281
+msgid "Save token"
+msgstr "トークンを保存"
+
+#: admin/views/settings.php:283
+msgid "Remove token"
+msgstr "トークンを削除"
+
+#: admin/views/settings.php:288 includes/class-sitelemetry-audit-verification.php:295
+msgid "That is not a Sitelemetry verification token. Copy the whole token shown under HTTP verification file in the Verified Domains section of the app; it starts with sitelemetry- and has 32 more characters."
+msgstr "Sitelemetry の検証トークンではありません。アプリの「検証済みドメイン」セクションで「HTTP検証ファイル」の下に表示されるトークン全体をコピーしてください。トークンは sitelemetry- で始まり、その後に 32 文字が続きます。"
+
+#: admin/views/settings.php:30
+msgid "A key is stored."
+msgstr "キーが保存されています。"
+
+#. translators: 1: verification token, 2: date and time.
+#: admin/views/settings.php:301
+msgid "Stored token: %1$s (saved %2$s)."
+msgstr "保存済みのトークン: %1$s（保存日時: %2$s）。"
+
+#: admin/views/settings.php:307
+msgid "Open the file"
+msgstr "ファイルを開く"
+
+#. translators: %s: host name the token was saved for.
+#: admin/views/settings.php:316
+msgid "The file is not published: the token was saved for %s, which is not this site's current host. Add the current host in the app and save its token."
+msgstr "ファイルは公開されていません: トークンは %s 用に保存されていますが、これはこのサイトの現在のホストではありません。アプリで現在のホストを追加し、そのトークンを保存してください。"
+
+#: admin/views/settings.php:326
+msgid "Test the file"
+msgstr "ファイルをテスト"
+
+#: admin/views/settings.php:33
+msgid "Sign in to Sitelemetry, or create an account on the same page: Sitelemetry has free and paid plans, and the Free plan includes the security audit. Then copy your API key and paste it below."
+msgstr "Sitelemetry にサインインするか、同じページでアカウントを作成してください。Sitelemetry には無料プランと有料プランがあり、Free プランにはセキュリティ監査が含まれます。その後、API キーをコピーして下に貼り付けてください。"
+
+#. translators: %s: date and time.
+#: admin/views/settings.php:335
+msgid "Tested %s."
+msgstr "テスト日時: %s。"
+
+#: admin/views/settings.php:344
+msgid "Renewal"
+msgstr "更新"
+
+#: admin/views/settings.php:35
+msgid "Sign in or create an account"
+msgstr "サインインまたはアカウント作成"
+
+#. translators: %d: number of days a verification lasts.
+#: admin/views/settings.php:351
+msgid "A verification lasts %d days. The plugin renews it automatically in the background (WP-Cron) when it expires, or when an audit reports that it must be renewed, and shows a notice only if the renewal fails. WP-Cron runs when the site receives visits unless a system cron triggers it."
+msgstr "検証の有効期間は %d 日です。有効期限が切れたとき、または監査で更新が必要と報告されたときに、プラグインがバックグラウンド（WP-Cron）で自動更新し、更新に失敗した場合にのみ通知を表示します。WP-Cron は、システムの cron で起動しない限り、サイトへのアクセスがあったときに実行されます。"
+
+#. translators: %d: number of days a verification lasts.
+#: admin/views/settings.php:359
+msgid "A verification lasts %d days and Sitelemetry does not re-check it by itself. Before it expires, click Reverify for this domain in the app, save the new token here and click Verify HTTP again. When an audit reports that the verification must be renewed, the results page and the dashboard widget remind you."
+msgstr "検証の有効期間は %d 日で、Sitelemetry が自動で再確認することはありません。期限が切れる前に、アプリでこのドメインの「再検証」をクリックし、新しいトークンをここに保存して、もう一度「HTTPを検証」をクリックしてください。監査で検証の更新が必要と報告された場合は、結果ページとダッシュボードウィジェットでお知らせします。"
+
+#: admin/views/settings.php:36 admin/views/settings.php:52 admin/views/settings.php:204
+msgid "Get your API key"
+msgstr "API キーを取得"
+
+#: admin/views/settings.php:367
+msgid "Other ways to verify"
+msgstr "その他の検証方法"
+
+#. translators: %s: DNS record name.
+#: admin/views/settings.php:374
+msgid "DNS record: add a TXT record named %s whose value is the token, then click Verify DNS in the app. This works when the file cannot be served, for example for a subdirectory install or a server that handles /.well-known/ itself."
+msgstr "DNS レコード: 名前が %s で値がトークンの TXT レコードを追加し、アプリで「DNSを検証」をクリックします。サブディレクトリへのインストールや、/.well-known/ を独自に処理するサーバーなど、ファイルを配信できない場合に使えます。"
+
+#: admin/views/settings.php:380
+msgid "Google Search Console: in the app, connect the Google account that owns the site's Search Console property and synchronize the properties. A Domain property covers the host and its subdomains; a URL-prefix property must be the root of the host for the host-level checks."
+msgstr "Google Search Console: アプリで、サイトの Search Console プロパティを所有する Google アカウントを接続し、プロパティを同期します。ドメイン プロパティはホストとそのサブドメインを対象とします。URL プレフィックス プロパティは、ホストレベルのチェックのためにホストのルートである必要があります。"
+
+#: admin/views/settings.php:382
+msgid "How verification and renewal work"
+msgstr "検証と更新のしくみ"
+
+#: admin/views/settings.php:40
+msgid "Enter a new key to replace the stored one"
+msgstr "新しいキーを入力して置き換え"
+
+#: admin/views/settings.php:40
+msgid "Paste your Sitelemetry MCP API key"
+msgstr "Sitelemetry MCP API キーを貼り付け"
+
+#: admin/views/settings.php:45
+msgid "Remove the stored key"
+msgstr "保存済みのキーを削除"
+
+#: admin/views/settings.php:50
+msgid "In the app, open My account and expand Manual connection and API key to copy the API key. The key is stored in the WordPress options table and is sent only to sitelemetry.com."
+msgstr "アプリで「マイアカウント」を開き、「手動接続と API キー」を展開して API キーをコピーしてください。キーは WordPress のオプションテーブルに保存され、sitelemetry.com にのみ送信されます。"
+
+#: admin/views/settings.php:58
+msgid "Target"
+msgstr "ターゲット"
+
+#: admin/views/settings.php:61
+msgid "Defaults to this site's address. Audit only websites you own or are authorized to test; every audit is performed by Sitelemetry against the live target and recorded on the connected account."
+msgstr "既定ではこのサイトのアドレスです。所有している、またはテストを許可されたウェブサイトのみを監査してください。各監査は Sitelemetry が公開中のターゲットに対して実行し、接続中のアカウントに記録されます。"
+
+#: admin/views/settings.php:65
+msgid "Audit kind"
+msgstr "監査の種類"
+
+#: admin/views/settings.php:73
+msgid "The security audit is included in every plan. Other audit kinds need a paid plan; when the connected account does not include one, the audit is not started and no allowance is used."
+msgstr "セキュリティ監査はすべてのプランに含まれます。その他の監査の種類には有料プランが必要です。接続中のアカウントに含まれていない場合、監査は開始されず、利用枠も消費されません。"
+
+#: admin/views/settings.php:74
+msgid "Compare plans"
+msgstr "プランを比較"
+
+#: admin/views/settings.php:79
+msgid "Weekly audit"
+msgstr "毎週の監査"
+
+#: admin/views/settings.php:83
+msgid "Run the selected audit once a week in the background (WP-Cron)"
+msgstr "選択した監査を週に 1 回バックグラウンドで実行（WP-Cron）"
+
+#: admin/views/settings.php:86
+msgid "Each completed audit uses one unit of the monthly allowance of the connected account. WP-Cron runs when the site receives visits unless a system cron triggers it."
+msgstr "完了した監査ごとに、接続中のアカウントの月間利用枠を 1 回分消費します。WP-Cron は、システムの cron で起動しない限り、サイトへのアクセスがあったときに実行されます。"
+
+#. translators: %s: date and time.
+#: admin/views/settings.php:91
+msgid "Next run: %s."
+msgstr "次回の実行: %s。"
+
+#. translators: %s: audit kind label.
+#: admin/views/weekly-notice.php:22
+msgid "Weekly Sitelemetry audit (%s)"
+msgstr "Sitelemetry の毎週の監査（%s）"
+
+#: includes/class-sitelemetry-audit-admin.php:111 includes/class-sitelemetry-audit-admin.php:222
+msgid "Settings"
+msgstr "設定"
+
+#: includes/class-sitelemetry-audit-admin.php:188
+msgid "Waiting for Sitelemetry…"
+msgstr "Sitelemetry を待機中…"
+
+#. translators: %s: elapsed time, for example 1:05.
+#: includes/class-sitelemetry-audit-admin.php:190
+msgid "Elapsed: %s"
+msgstr "経過時間: %s"
+
+#: includes/class-sitelemetry-audit-admin.php:191
+msgid "The audit finished. Loading the results…"
+msgstr "監査が完了しました。結果を読み込んでいます…"
+
+#: includes/class-sitelemetry-audit-admin.php:192
+msgid "The progress check failed. The audit keeps running; reload this page to check again."
+msgstr "進行状況の確認でエラーが発生しました。監査は実行を続けています。このページを再読み込みして、もう一度確認してください。"
+
+#: includes/class-sitelemetry-audit-admin.php:193
+msgid "Running…"
+msgstr "実行中…"
+
+#: includes/class-sitelemetry-audit-admin.php:196
+msgid "Prompt copied. Paste it into ChatGPT, Claude or your coding assistant."
+msgstr "プロンプトをコピーしました。ChatGPT、Claude、またはコーディングアシスタントに貼り付けてください。"
+
+#: includes/class-sitelemetry-audit-admin.php:197
+msgid "The prompt could not be copied automatically. Select the text below and copy it."
+msgstr "プロンプトを自動でコピーできませんでした。下のテキストを選択してコピーしてください。"
+
+#: includes/class-sitelemetry-audit-admin.php:198
+msgid "Verifying…"
+msgstr "検証中…"
+
+#: includes/class-sitelemetry-audit-admin.php:211
+msgid "You do not have permission to access this page."
+msgstr "このページにアクセスする権限がありません。"
+
+#: includes/class-sitelemetry-audit-admin.php:223
+msgid "Results"
+msgstr "結果"
+
+#: includes/class-sitelemetry-audit-admin.php:246
+msgid "The audit was started. This page updates while Sitelemetry works."
+msgstr "監査を開始しました。Sitelemetry の処理中、このページは自動で更新されます。"
+
+#: includes/class-sitelemetry-audit-admin.php:247
+msgid "An audit is already running. Wait for it to finish or stop waiting for it below."
+msgstr "すでに監査を実行中です。完了するまで待つか、下の「待機をやめる」をクリックしてください。"
+
+#: includes/class-sitelemetry-audit-admin.php:248
+msgid "Add your Sitelemetry API key before running an audit."
+msgstr "監査を実行する前に、Sitelemetry API キーを追加してください。"
+
+#: includes/class-sitelemetry-audit-admin.php:249 includes/class-sitelemetry-audit-runner.php:228
+msgid "The target must be a valid http or https URL."
+msgstr "ターゲットは有効な http または https の URL である必要があります。"
+
+#: includes/class-sitelemetry-audit-admin.php:250 includes/class-sitelemetry-audit-runner.php:221
+msgid "Unsupported audit kind."
+msgstr "サポートされていない監査の種類です。"
+
+#: includes/class-sitelemetry-audit-admin.php:251
+msgid "Stopped waiting. The result of this audit will not appear here; run the audit again when you want a result."
+msgstr "待機をやめました。この監査の結果はここには表示されません。結果が必要なときは、監査をもう一度実行してください。"
+
+#: includes/class-sitelemetry-audit-admin.php:252
+msgid "The verification token is saved and the verification file is published. Test the file, then click Verify HTTP in the app."
+msgstr "検証トークンを保存し、検証ファイルを公開しました。ファイルをテストしてから、アプリで「HTTPを検証」をクリックしてください。"
+
+#: includes/class-sitelemetry-audit-admin.php:253
+msgid "The verification token was removed; the verification file is no longer published."
+msgstr "検証トークンを削除しました。検証ファイルは公開されなくなりました。"
+
+#: includes/class-sitelemetry-audit-admin.php:254
+msgid "The verification file was tested; the result is shown under Verify this site."
+msgstr "検証ファイルをテストしました。結果は「このサイトを検証」の下に表示されます。"
+
+#: includes/class-sitelemetry-audit-admin.php:256
+msgid "The verification did not complete. The reason and how to fix it are shown under Verify this site."
+msgstr "検証は完了しませんでした。原因と対処方法は「このサイトを検証」に表示されます。"
+
+#: includes/class-sitelemetry-audit-admin.php:257
+msgid "One-click verification is not available yet. Verify with a token from the app as described under Verify this site."
+msgstr "ワンクリック検証はまだ利用できません。「このサイトを検証」の説明に従って、アプリのトークンで検証してください。"
+
+#. translators: 1: audit kind label, 2: plan name.
+#: includes/class-sitelemetry-audit-admin.php:287
+msgid "%1$s (included in %2$s)"
+msgstr "%1$s（%2$s に含まれます）"
+
+#. translators: 1: audit kind label, 2: plan name.
+#: includes/class-sitelemetry-audit-admin.php:289
+msgid "%1$s (requires %2$s or higher)"
+msgstr "%1$s（%2$s 以上が必要）"
+
+#: includes/class-sitelemetry-audit-admin.php:413
+msgid "The file works: WordPress loaded it from its own address with the stored token."
+msgstr "ファイルは正常です: WordPress が自身のアドレスから、保存済みのトークンでファイルを読み込みました。"
+
+#: includes/class-sitelemetry-audit-admin.php:498 includes/class-sitelemetry-audit-admin.php:517 includes/class-sitelemetry-audit-admin.php:533 includes/class-sitelemetry-audit-admin.php:606 includes/class-sitelemetry-audit-admin.php:659
+msgid "You do not have permission to change these settings."
+msgstr "これらの設定を変更する権限がありません。"
+
+#: includes/class-sitelemetry-audit-admin.php:679 includes/class-sitelemetry-audit-admin.php:702 includes/class-sitelemetry-audit-admin.php:717 includes/class-sitelemetry-audit-admin.php:731
+msgid "You do not have permission to run audits."
+msgstr "監査を実行する権限がありません。"
+
+#: includes/class-sitelemetry-audit-admin.php:79 includes/class-sitelemetry-audit-admin.php:219
+msgid "Sitelemetry Audit"
+msgstr "Sitelemetry Audit"
+
+#: includes/class-sitelemetry-audit-admin.php:80
+msgid "Sitelemetry"
+msgstr "Sitelemetry"
+
+#: includes/class-sitelemetry-audit-dashboard.php:54
+msgid "Sitelemetry audit"
+msgstr "Sitelemetry 監査"
+
+#: includes/class-sitelemetry-audit-labels.php:116
+msgid "Critical"
+msgstr "緊急"
+
+#: includes/class-sitelemetry-audit-labels.php:117
+msgid "High"
+msgstr "高"
+
+#: includes/class-sitelemetry-audit-labels.php:118
+msgid "Medium"
+msgstr "中"
+
+#: includes/class-sitelemetry-audit-labels.php:119
+msgid "Low"
+msgstr "低"
+
+#: includes/class-sitelemetry-audit-labels.php:120
+msgid "Info"
+msgstr "情報"
+
+#: includes/class-sitelemetry-audit-labels.php:155
+msgid "Not run: the connected account must accept the current audit authorization terms"
+msgstr "未実行: 接続中のアカウントで最新の監査認可条件に同意する必要があります"
+
+#: includes/class-sitelemetry-audit-labels.php:158
+msgid "Not run: ownership verification of the target must be renewed"
+msgstr "未実行: ターゲットの所有権確認を更新する必要があります"
+
+#: includes/class-sitelemetry-audit-labels.php:161
+msgid "Not run: the current verification of the target does not cover the requested host-level checks"
+msgstr "未実行: ターゲットの現在の検証は、要求されたホストレベルのチェックを対象としていません"
+
+#: includes/class-sitelemetry-audit-labels.php:163
+msgid "Not run: ownership verification of the target is required"
+msgstr "未実行: ターゲットの所有権確認が必要です"
+
+#: includes/class-sitelemetry-audit-labels.php:167
+msgid "Completed"
+msgstr "完了"
+
+#: includes/class-sitelemetry-audit-labels.php:169
+msgid "Completed with partial coverage"
+msgstr "一部の範囲で完了"
+
+#: includes/class-sitelemetry-audit-labels.php:171
+msgid "Not run: the monthly audit allowance of the connected account is exhausted"
+msgstr "未実行: 接続中のアカウントの月間監査利用枠を使い切りました"
+
+#: includes/class-sitelemetry-audit-labels.php:173
+msgid "Not run: this audit kind is not included in the connected plan"
+msgstr "未実行: この監査の種類は接続中のプランに含まれていません"
+
+#: includes/class-sitelemetry-audit-labels.php:175
+msgid "Not completed"
+msgstr "未完了"
+
+#. translators: %s: audit job id.
+#: includes/class-sitelemetry-audit-labels.php:192
+msgid "The audit did not finish within the time budget. Sitelemetry may still be working on job %s; run the audit again later to get a result."
+msgstr "監査が制限時間内に完了しませんでした。Sitelemetry はまだジョブ %s を処理している可能性があります。結果を得るには、後で監査をもう一度実行してください。"
+
+#: includes/class-sitelemetry-audit-labels.php:194
+msgid "The audit did not finish within the time budget. Run it again later."
+msgstr "監査が制限時間内に完了しませんでした。後でもう一度実行してください。"
+
+#: includes/class-sitelemetry-audit-labels.php:196
+msgid "Sitelemetry rejected the API key. Check the key in the plugin settings; you can create a new one in the app."
+msgstr "Sitelemetry が API キーを拒否しました。プラグインの設定でキーを確認してください。アプリで新しいキーを作成できます。"
+
+#: includes/class-sitelemetry-audit-labels.php:198
+msgid "The site could not reach Sitelemetry. Check outgoing HTTP connections from the server and try again."
+msgstr "サイトから Sitelemetry に接続できませんでした。サーバーからの送信 HTTP 接続を確認して、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-labels.php:200
+msgid "No API key is configured."
+msgstr "API キーが設定されていません。"
+
+#: includes/class-sitelemetry-audit-labels.php:202
+msgid "The target is not a valid http or https URL."
+msgstr "ターゲットが有効な http または https の URL ではありません。"
+
+#: includes/class-sitelemetry-audit-labels.php:204
+msgid "The audit is still running."
+msgstr "監査はまだ実行中です。"
+
+#: includes/class-sitelemetry-audit-labels.php:237
+msgid "failed"
+msgstr "エラー"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:244
+msgid "%s: not included in the connected plan"
+msgstr "%s: 接続中のプランに含まれていません"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:247
+msgid "%s: outside the connected account scope"
+msgstr "%s: 接続中のアカウントの範囲外です"
+
+#. translators: %s: comma-separated module names.
+#: includes/class-sitelemetry-audit-labels.php:252
+msgid "Security modules outside the connected plan: %s"
+msgstr "接続中のプランに含まれないセキュリティモジュール: %s"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:256 includes/class-sitelemetry-audit-labels.php:260
+msgid "%s: unavailable (no measurement for this target)"
+msgstr "%s: 利用不可（このターゲットの測定値なし）"
+
+#. translators: 1: number of pages, 2: comma-separated page addresses.
+#: includes/class-sitelemetry-audit-labels.php:268
+msgid "Pages not assessed because robots.txt disallows them (%1$d): %2$s"
+msgstr "robots.txt で禁止されているため評価されなかったページ（%1$d）: %2$s"
+
+#. translators: 1: number of pages, 2: comma-separated page addresses.
+#: includes/class-sitelemetry-audit-labels.php:271
+msgid "Pages found but not assessed (%1$d): %2$s"
+msgstr "検出されたが評価されなかったページ（%1$d）: %2$s"
+
+#. translators: %s: comma-separated metric names such as LCP, INP, CLS.
+#: includes/class-sitelemetry-audit-labels.php:278
+msgid "Metrics not measured: %s"
+msgstr "測定されなかった指標: %s"
+
+#. translators: %s: comma-separated module names.
+#: includes/class-sitelemetry-audit-labels.php:282
+msgid "Security modules that require ownership verification of the target: %s"
+msgstr "ターゲットの所有権確認が必要なセキュリティモジュール: %s"
+
+#. translators: %s: the reason as the audit reported it.
+#: includes/class-sitelemetry-audit-labels.php:296
+msgid "Reported by the audit: %s"
+msgstr "監査からの報告: %s"
+
+#. translators: 1: module name, 2: module status such as "not measured", 3: the reasons reported by the audit.
+#: includes/class-sitelemetry-audit-labels.php:299
+msgid "%1$s: %2$s (%3$s)"
+msgstr "%1$s: %2$s（%3$s）"
+
+#. translators: 1: what was not measured, 2: explanation, 3: the reason as the audit reported it.
+#: includes/class-sitelemetry-audit-labels.php:336
+msgid "%1$s. %2$s %3$s"
+msgstr "%1$s。%2$s %3$s"
+
+#: includes/class-sitelemetry-audit-labels.php:348
+msgid "Checks that ended with an error"
+msgstr "エラーで終了したチェック"
+
+#: includes/class-sitelemetry-audit-labels.php:349
+msgid "These checks started but ended with an error (for example a timeout), so they have no result."
+msgstr "これらのチェックは開始されましたが、エラー（タイムアウトなど）で終了したため、結果がありません。"
+
+#: includes/class-sitelemetry-audit-labels.php:352
+msgid "Checks without a result"
+msgstr "結果が得られなかったチェック"
+
+#: includes/class-sitelemetry-audit-labels.php:353
+msgid "Sitelemetry could not determine a result for these checks, for example because the site did not answer the request or the data the check needs was not available."
+msgstr "サイトがリクエストに応答しなかった、またはチェックに必要なデータが得られなかったなどの理由で、Sitelemetry はこれらのチェックの結果を判定できませんでした。"
+
+#: includes/class-sitelemetry-audit-labels.php:356
+msgid "Checks to review yourself"
+msgstr "ご自身での確認が必要なチェック"
+
+#: includes/class-sitelemetry-audit-labels.php:357
+msgid "An automated audit cannot decide these checks; review them yourself."
+msgstr "これらのチェックは自動の監査では判定できません。ご自身で内容を確認してください。"
+
+#: includes/class-sitelemetry-audit-labels.php:360
+msgid "Checks that do not apply"
+msgstr "該当しないチェック"
+
+#: includes/class-sitelemetry-audit-labels.php:361
+msgid "These checks do not apply to this site, for example because it does not use the feature they test."
+msgstr "これらのチェックはこのサイトには該当しません。たとえば、チェック対象の機能をサイトが使用していない場合です。"
+
+#: includes/class-sitelemetry-audit-labels.php:413
+msgid "Some requested measurements were unavailable; this result does not say which."
+msgstr "要求した測定の一部はこの結果に含まれていません。どの測定かはこの結果に示されていません。"
+
+#: includes/class-sitelemetry-audit-labels.php:424
+msgid "What was not measured"
+msgstr "測定されなかった項目"
+
+#: includes/class-sitelemetry-audit-labels.php:426
+msgid "Explained items come from how the site responded (such as a redirect or a firewall) or from a deliberate scan limit, not from an error in the audit. Unmeasured checks are not counted as passes."
+msgstr "説明のある項目は、サイトの応答のしかた（リダイレクトやファイアウォールなど）または意図的なスキャン上限によるもので、監査のエラーではありません。測定されなかったチェックは合格として扱われません。"
+
+#: includes/class-sitelemetry-audit-labels.php:427
+msgid "Unmeasured checks are not counted as passes."
+msgstr "測定されなかったチェックは合格として扱われません。"
+
+#. translators: %d: number of checks without a result that are not listed.
+#: includes/class-sitelemetry-audit-labels.php:431
+msgid "%d more check without a result was counted but not kept with this result, so it is not listed here."
+msgid_plural "%d more checks without a result were counted but not kept with this result, so they are not listed here."
+msgstr[0] "ほかに %d 件の結果が得られなかったチェックが集計されましたが、この結果には保存されていないため、ここには表示されません。"
+
+#: includes/class-sitelemetry-audit-labels.php:58 includes/class-sitelemetry-audit-plans.php:28
+msgid "Security"
+msgstr "セキュリティ"
+
+#: includes/class-sitelemetry-audit-labels.php:59
+msgid "Technical SEO"
+msgstr "テクニカルSEO"
+
+#: includes/class-sitelemetry-audit-labels.php:60 includes/class-sitelemetry-audit-plans.php:30
+msgid "AI visibility"
+msgstr "AI可視性"
+
+#: includes/class-sitelemetry-audit-labels.php:61 includes/class-sitelemetry-audit-plans.php:33
+msgid "Integrations"
+msgstr "連携"
+
+#: includes/class-sitelemetry-audit-labels.php:62 includes/class-sitelemetry-audit-plans.php:31
+msgid "Accessibility"
+msgstr "アクセシビリティ"
+
+#: includes/class-sitelemetry-audit-labels.php:63 includes/class-sitelemetry-audit-plans.php:32
+msgid "Performance"
+msgstr "パフォーマンス"
+
+#: includes/class-sitelemetry-audit-labels.php:64
+msgid "Full (all pillars)"
+msgstr "フル（全領域）"
+
+#: includes/class-sitelemetry-audit-links.php:107
+msgid "Review and accept the current audit authorization terms for the connected account in the app, then run the audit again."
+msgstr "アプリで接続中のアカウントの最新の監査認可条件を確認して同意してから、監査をもう一度実行してください。"
+
+#: includes/class-sitelemetry-audit-links.php:132
+msgid "The connected account has used its monthly audit allowance. It resets at the start of the next billing period. This run did not start an audit and did not consume allowance."
+msgstr "接続中のアカウントは月間監査利用枠を使い切りました。次の請求期間の開始時にリセットされます。今回の実行では監査は開始されておらず、利用枠も消費されていません。"
+
+#. translators: %s: audit kind label.
+#: includes/class-sitelemetry-audit-links.php:135
+msgid "The %s audit is not included in the connected account's plan. This run did not start an audit and did not consume allowance."
+msgstr "%s 監査は接続中のアカウントのプランに含まれていません。今回の実行では監査は開始されておらず、利用枠も消費されていません。"
+
+#. translators: 1: number of security modules, 2: number of security scans per month.
+#: includes/class-sitelemetry-audit-links.php:139
+msgid "The connected account is on the Free plan: %1$d public security modules and %2$d security scans per month."
+msgstr "接続中のアカウントは Free プランです: 公開セキュリティモジュール %1$d 個、毎月 %2$d 回のセキュリティスキャン。"
+
+#: includes/class-sitelemetry-audit-links.php:141
+msgid "The connected account is on the Free plan."
+msgstr "接続中のアカウントは Free プランです。"
+
+#. translators: %s: plan name.
+#: includes/class-sitelemetry-audit-links.php:146
+msgid "The connected account is on the %s plan."
+msgstr "接続中のアカウントは %s プランです。"
+
+#: includes/class-sitelemetry-audit-links.php:148
+msgid "Each completed audit uses one unit of the monthly allowance of the connected account; polling a running audit does not use more. The current plan and the remaining allowance are shown in the app."
+msgstr "完了した監査ごとに、接続中のアカウントの月間利用枠を 1 回分消費します。実行中の監査の状況確認では追加で消費されません。現在のプランと残りの利用枠はアプリに表示されます。"
+
+#: includes/class-sitelemetry-audit-links.php:157 includes/class-sitelemetry-audit-links.php:158 includes/class-sitelemetry-audit-links.php:159 includes/class-sitelemetry-audit-plans.php:196
+msgid "see pricing"
+msgstr "料金を参照"
+
+#: includes/class-sitelemetry-audit-links.php:166
+msgid "Paid plans include these audit kinds and security module counts:"
+msgstr "有料プランに含まれる監査の種類とセキュリティモジュール数:"
+
+#: includes/class-sitelemetry-audit-modules.php:128
+msgid "not measured"
+msgstr "未測定"
+
+#: includes/class-sitelemetry-audit-modules.php:131
+msgid "partly measured"
+msgstr "一部のみ測定"
+
+#: includes/class-sitelemetry-audit-modules.php:243
+msgid "Only a limited number of scripts is scanned per audit; the remaining scripts were not checked and are not counted as clean."
+msgstr "1 回の監査でスキャンするスクリプトの数には上限があります。残りのスクリプトはチェックされておらず、問題なしとしては扱われません。"
+
+#. translators: %s: HTTP status codes separated by slashes, for example 301/302.
+#: includes/class-sitelemetry-audit-modules.php:287
+msgid "The site answers these paths with a redirect (HTTP %s), for example to its sign-in page. Sitelemetry does not follow redirects for these checks, so they were not measured."
+msgstr "サイトはこれらのパスにリダイレクト（HTTP %s）で応答しています（例: 自身のサインインページへ）。Sitelemetry はこれらのチェックではリダイレクトを追跡しないため、測定されませんでした。"
+
+#: includes/class-sitelemetry-audit-modules.php:290
+msgid "The site rate-limited these requests (its own protection)."
+msgstr "サイトがこれらのリクエストをレート制限しました（サイト自身の保護機能です）。"
+
+#: includes/class-sitelemetry-audit-modules.php:293
+msgid "The site returned a server error for these requests."
+msgstr "サイトがこれらのリクエストにサーバーエラーを返しました。"
+
+#: includes/class-sitelemetry-audit-modules.php:296
+msgid "The site did not answer within the time limit."
+msgstr "サイトが制限時間内に応答しませんでした。"
+
+#. translators: %d: number of ports that gave no reply.
+#: includes/class-sitelemetry-audit-modules.php:315
+msgid "%d port gave no reply: a firewall, usually the site's own, silently drops these connection attempts. This is normal hardening; silent ports are counted neither as open nor as closed."
+msgid_plural "%d ports gave no reply: a firewall, usually the site's own, silently drops these connection attempts. This is normal hardening; silent ports are counted neither as open nor as closed."
+msgstr[0] "%d 個のポートが応答しませんでした。ファイアウォール（通常はサイト自身のもの）がこれらの接続試行を黙って破棄しています。これは一般的なハードニングです。応答のないポートは、開いているとも閉じているとも数えられません。"
+
+#: includes/class-sitelemetry-audit-modules.php:386
+msgid "Other checks"
+msgstr "その他のチェック"
+
+#: includes/class-sitelemetry-audit-modules.php:406
+msgid "Passing checks"
+msgstr "合格したチェック"
+
+#: includes/class-sitelemetry-audit-modules.php:415
+msgid "Sitelemetry counted these passing checks but did not send the list of them with this result."
+msgstr "Sitelemetry はこれらの合格したチェックを集計しましたが、その一覧をこの結果と一緒に送信していません。"
+
+#: includes/class-sitelemetry-audit-modules.php:416
+msgid "This result was stored by an earlier version of the plugin, without the list of passing checks. The list appears here after the next audit."
+msgstr "この結果は以前のバージョンのプラグインで保存されたため、合格したチェックの一覧は含まれていません。一覧は次回の監査後にここに表示されます。"
+
+#. translators: 1: section title, 2: number of items listed, 3: number of items counted.
+#: includes/class-sitelemetry-audit-modules.php:449
+msgid "%1$s (%2$d of %3$d)"
+msgstr "%1$s（%3$d 件中 %2$d 件）"
+
+#. translators: %d: number of passing checks that are not listed.
+#: includes/class-sitelemetry-audit-modules.php:452
+msgid "%d more passing check was counted but not kept with this result, so it is not listed here."
+msgid_plural "%d more passing checks were counted but not kept with this result, so they are not listed here."
+msgstr[0] "ほかに %d 件の合格したチェックが集計されましたが、この結果には保存されていないため、ここには表示されません。"
+
+#. translators: 1: section or group title, 2: number of items.
+#: includes/class-sitelemetry-audit-modules.php:465
+msgid "%1$s (%2$d)"
+msgstr "%1$s（%2$d）"
+
+#: includes/class-sitelemetry-audit-modules.php:52
+msgid "DNS posture"
+msgstr "DNS状態"
+
+#: includes/class-sitelemetry-audit-modules.php:53
+msgid "Email DNS"
+msgstr "メールDNS"
+
+#: includes/class-sitelemetry-audit-modules.php:54
+msgid "WHOIS / RDAP"
+msgstr "WHOIS / RDAP"
+
+#: includes/class-sitelemetry-audit-modules.php:55
+msgid "TLS / certificate"
+msgstr "TLS / 証明書"
+
+#: includes/class-sitelemetry-audit-modules.php:56
+msgid "HTTP security headers"
+msgstr "HTTPセキュリティヘッダー"
+
+#: includes/class-sitelemetry-audit-modules.php:57
+msgid "MITM / HTTPS posture"
+msgstr "MITM / HTTPS状態"
+
+#: includes/class-sitelemetry-audit-modules.php:58
+msgid "Technology fingerprint"
+msgstr "技術フィンガープリント"
+
+#: includes/class-sitelemetry-audit-modules.php:59
+msgid "HTTP methods / CORS"
+msgstr "HTTPメソッド / CORS"
+
+#: includes/class-sitelemetry-audit-modules.php:60
+msgid "Sensitive file exposure"
+msgstr "機密ファイル露出"
+
+#: includes/class-sitelemetry-audit-modules.php:61
+msgid "API / GraphQL exposure"
+msgstr "API / GraphQL露出"
+
+#: includes/class-sitelemetry-audit-modules.php:62
+msgid "Admin / login surface"
+msgstr "管理 / ログイン面"
+
+#: includes/class-sitelemetry-audit-modules.php:63
+msgid "Supply-chain files"
+msgstr "サプライチェーンファイル"
+
+#: includes/class-sitelemetry-audit-modules.php:64
+msgid "WordPress posture"
+msgstr "WordPress状態"
+
+#: includes/class-sitelemetry-audit-modules.php:65
+msgid "Port scan"
+msgstr "ポートスキャン"
+
+#: includes/class-sitelemetry-audit-modules.php:66
+msgid "Port risk intelligence"
+msgstr "ポートリスク"
+
+#: includes/class-sitelemetry-audit-modules.php:67
+msgid "SQL injection canary"
+msgstr "SQLインジェクションカナリア"
+
+#: includes/class-sitelemetry-audit-modules.php:68
+msgid "DDoS resilience signals"
+msgstr "DDoS耐性シグナル"
+
+#: includes/class-sitelemetry-audit-modules.php:69
+msgid "Leaked secrets"
+msgstr "漏えいシークレット"
+
+#: includes/class-sitelemetry-audit-modules.php:70
+msgid "Subdomain takeover"
+msgstr "サブドメイン乗っ取り"
+
+#: includes/class-sitelemetry-audit-modules.php:71
+msgid "Advanced CORS"
+msgstr "高度なCORS"
+
+#: includes/class-sitelemetry-audit-modules.php:72
+msgid "Injection canaries"
+msgstr "インジェクションカナリア"
+
+#: includes/class-sitelemetry-audit-modules.php:73
+msgid "Compression / CDN"
+msgstr "圧縮 / CDN"
+
+#: includes/class-sitelemetry-audit-modules.php:74
+msgid "Pentest scope matrix"
+msgstr "ペンテスト範囲マトリクス"
+
+#: includes/class-sitelemetry-audit-modules.php:75
+msgid "Nmap"
+msgstr "Nmap"
+
+#: includes/class-sitelemetry-audit-modules.php:76
+msgid "Nuclei"
+msgstr "Nuclei"
+
+#: includes/class-sitelemetry-audit-modules.php:77
+msgid "OWASP ZAP"
+msgstr "OWASP ZAP"
+
+#: includes/class-sitelemetry-audit-modules.php:78
+msgid "WPScan"
+msgstr "WPScan"
+
+#: includes/class-sitelemetry-audit-outcome.php:176
+msgid "Untitled finding"
+msgstr "無題の検出事項"
+
+#: includes/class-sitelemetry-audit-plans.php:199
+msgid "Free"
+msgstr "無料"
+
+#. translators: %s: price with currency, for example $49.
+#: includes/class-sitelemetry-audit-plans.php:203
+msgid "%s/month"
+msgstr "%s/月"
+
+#: includes/class-sitelemetry-audit-plans.php:240
+msgctxt "plan name"
+msgid "Free"
+msgstr "Free"
+
+#: includes/class-sitelemetry-audit-plans.php:240
+msgctxt "plan name"
+msgid "Starter"
+msgstr "Starter"
+
+#: includes/class-sitelemetry-audit-plans.php:27
+msgid "Full"
+msgstr "フル"
+
+#: includes/class-sitelemetry-audit-plans.php:29
+msgid "SEO"
+msgstr "SEO"
+
+#: includes/class-sitelemetry-audit-plans.php:34
+msgid "Search Console"
+msgstr "Search Console"
+
+#: includes/class-sitelemetry-audit-runner.php:198
+msgid "Another audit is already running for this account; retrying shortly."
+msgstr "このアカウントでは別の監査がすでに実行中です。まもなく再試行します。"
+
+#: includes/class-sitelemetry-audit-runner.php:224
+msgid "Add your Sitelemetry API key in the settings before running an audit."
+msgstr "監査を実行する前に、設定で Sitelemetry API キーを追加してください。"
+
+#: includes/class-sitelemetry-audit-runner.php:233
+msgid "An audit is already running. Wait for it to finish or stop waiting for it on the results page."
+msgstr "すでに監査を実行中です。完了するまで待つか、結果ページで「待機をやめる」をクリックしてください。"
+
+#: includes/class-sitelemetry-audit-runner.php:355
+msgid "Sitelemetry is running the audit. The result appears here when it is ready."
+msgstr "Sitelemetry が監査を実行しています。結果の準備ができると、ここに表示されます。"
+
+#: includes/class-sitelemetry-audit-runner.php:356
+msgid "Starting the audit…"
+msgstr "監査を開始しています…"
+
+#: includes/class-sitelemetry-audit-settings.php:202
+msgid "The target must be a valid http or https URL. The previous value was kept."
+msgstr "ターゲットは有効な http または https の URL である必要があります。以前の値を保持しました。"
+
+#: includes/class-sitelemetry-audit-verification.php:1200
+msgid "Verification complete ✓"
+msgstr "検証が完了しました ✓"
+
+#. translators: %s: date and time the verification expires.
+#: includes/class-sitelemetry-audit-verification.php:1203
+msgid "Verification complete ✓ valid until %s"
+msgstr "検証が完了しました ✓ %s まで有効"
+
+#: includes/class-sitelemetry-audit-verification.php:1230
+msgid "Sitelemetry did not accept the API key. It may be mistyped or revoked (for example after a password change), or the account cannot use API access. Get your API key again from the app, save it in the plugin settings and try again."
+msgstr "Sitelemetry は API キーを受け付けませんでした。キーの入力ミスや失効（パスワード変更後など）が考えられるほか、アカウントで API アクセスを利用できない可能性があります。アプリで API キーを取得し直し、プラグインの設定に保存してから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1232
+msgid "Sitelemetry verifies only public host names, and the address of this site is not one (for example an IP address, localhost or a name without a dot). Verify the public address of the site instead."
+msgstr "Sitelemetry が検証するのは公開ホスト名のみですが、このサイトのアドレスはそれに該当しません（IP アドレス、localhost、ドットを含まない名前など）。代わりにサイトの公開アドレスを検証してください。"
+
+#. translators: %d: maximum number of unfinished verifications.
+#: includes/class-sitelemetry-audit-verification.php:1235
+msgid "Your Sitelemetry workspace already has the maximum number of unfinished verifications (%d). Finish or remove some under Verified Domains in the app, then try again."
+msgstr "Sitelemetry のワークスペースで、未完了の検証がすでに上限（%d 件）に達しています。アプリの「検証済みドメイン」で一部を完了するか削除してから、もう一度お試しください。"
+
+#. translators: %s: time to wait, for example "5 mins".
+#: includes/class-sitelemetry-audit-verification.php:1239
+msgid "Too many verification attempts. Try again in %s."
+msgstr "検証の試行回数が多すぎます。%s 後にもう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1241
+msgid "A verification for this account is already running. Wait a few seconds, then try again."
+msgstr "このアカウントではすでに検証が実行中です。数秒待ってから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1244
+msgid "One-click verification is not available on Sitelemetry right now. Verify with a token from the app as described under Verify this site in the plugin settings, or use a DNS record or Google Search Console."
+msgstr "ワンクリック検証は現在 Sitelemetry で利用できません。プラグインの設定にある「このサイトを検証」の説明に従ってアプリのトークンで検証するか、DNS レコードまたは Google Search Console を使用してください。"
+
+#. translators: %s: host name in the answer of Sitelemetry.
+#: includes/class-sitelemetry-audit-verification.php:1247
+msgid "Sitelemetry answered with a verification file for another host (%s), so the plugin did not publish it. Check the site address in Settings > General, then try again."
+msgstr "Sitelemetry が別のホスト（%s）用の検証ファイルを返したため、プラグインは公開しませんでした。「設定 > 一般」でサイトのアドレスを確認してから、もう一度お試しください。"
+
+#. translators: %s: error message.
+#: includes/class-sitelemetry-audit-verification.php:1250
+msgid "WordPress could not reach Sitelemetry (%s). Check that this server can make outgoing HTTPS requests to sitelemetry.com, then try again."
+msgstr "WordPress から Sitelemetry に接続できませんでした（%s）。このサーバーから sitelemetry.com への外向きの HTTPS リクエストが可能か確認してから、もう一度お試しください。"
+
+#. translators: %s: error code.
+#: includes/class-sitelemetry-audit-verification.php:1256
+msgid "Sitelemetry could not complete the verification (%s). Try again in a few minutes."
+msgstr "Sitelemetry は検証を完了できませんでした（%s）。数分後にもう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1271
+msgid "Sitelemetry could not load the verification file: the site answered HTTP 404. The web server most likely handles /.well-known/ itself (for example an nginx rule for hidden paths) and does not pass the request to WordPress. Ask your host to pass /.well-known/sitelemetry-verification.txt to WordPress, or use a DNS record."
+msgstr "Sitelemetry は検証ファイルを読み込めませんでした。サイトが HTTP 404 を返しました。Web サーバーが /.well-known/ を独自に処理しており（例: 隠しパス用の nginx ルール）、リクエストを WordPress に渡していない可能性が高いです。/.well-known/sitelemetry-verification.txt を WordPress に渡すようホスティング事業者に依頼するか、DNS レコードを使用してください。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1275
+msgid "Sitelemetry could not load the verification file: the site answered HTTP %d. A firewall, a security plugin or password protection blocks the request (Sitelemetry uses the user agent Sitelemetry-Ownership-Verifier/1.0). Allow /.well-known/sitelemetry-verification.txt, then try again."
+msgstr "Sitelemetry は検証ファイルを読み込めませんでした。サイトが HTTP %d を返しました。ファイアウォール、セキュリティプラグイン、またはパスワード保護がリクエストをブロックしています（Sitelemetry はユーザーエージェント Sitelemetry-Ownership-Verifier/1.0 を使用します）。/.well-known/sitelemetry-verification.txt を許可してから、もう一度お試しください。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1278
+msgid "Sitelemetry could not load the verification file: the site answered HTTP %d instead of the file. Check that the site is up and not in maintenance mode, then try again."
+msgstr "Sitelemetry は検証ファイルを読み込めませんでした。サイトがファイルの代わりに HTTP %d を返しました。サイトが稼働中で、メンテナンスモードでないことを確認してから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1280
+msgid "The verification file address redirects to another host, protocol or port, or redirects more than twice, and Sitelemetry does not follow such redirects. The usual cause is a redirect between www and non-www: Sitelemetry verifies one exact host name, so set the site address in Settings > General to the host your server redirects to, or stop the redirect for /.well-known/sitelemetry-verification.txt."
+msgstr "検証ファイルのアドレスが別のホスト、プロトコル、ポートにリダイレクトしているか、3 回以上リダイレクトしており、Sitelemetry はこのようなリダイレクトを追跡しません。よくある原因は www ありと www なしの間のリダイレクトです。Sitelemetry は完全一致する 1 つのホスト名を検証するため、「設定 > 一般」のサイトアドレスをサーバーのリダイレクト先のホストに設定するか、/.well-known/sitelemetry-verification.txt のリダイレクトを解除してください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1282
+msgid "Sitelemetry loaded the verification file, but it did not contain exactly the token. A cached copy, another file at that path or a page from a cache, maintenance or security plugin answered instead. Purge the cache, remove the other file or exclude /.well-known/sitelemetry-verification.txt, then try again."
+msgstr "Sitelemetry は検証ファイルを読み込みましたが、内容がトークンと完全には一致しませんでした。キャッシュされたコピー、そのパスにある別のファイル、またはキャッシュ・メンテナンス・セキュリティプラグインのページが代わりに応答しています。キャッシュを消去するか、別のファイルを削除するか、/.well-known/sitelemetry-verification.txt を除外してから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1284
+msgid "The site did not answer Sitelemetry in time (10 seconds). Check that the site is up and reachable from the internet, then try again."
+msgstr "サイトが時間内（10 秒）に Sitelemetry へ応答しませんでした。サイトが稼働中で、インターネットからアクセスできることを確認してから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1286
+msgid "The host name of this site does not resolve to a public address, so Sitelemetry cannot load the file from the internet. Check the DNS records of the domain, or verify the public address of the site instead."
+msgstr "このサイトのホスト名は公開アドレスに解決されないため、Sitelemetry はインターネットからファイルを読み込めません。ドメインの DNS レコードを確認するか、代わりにサイトの公開アドレスを検証してください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1288
+msgid "Sitelemetry could not resolve the host name of this site. Check the DNS records of the domain, then try again."
+msgstr "Sitelemetry はこのサイトのホスト名を解決できませんでした。ドメインの DNS レコードを確認してから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1290
+msgid "Sitelemetry could not validate the TLS certificate of this site. Install a valid certificate for this exact host name, then try again."
+msgstr "Sitelemetry はこのサイトの TLS 証明書を確認できませんでした。このホスト名に完全一致する有効な証明書をインストールしてから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1292
+msgid "The verification file address answered with more than 2 KB, so something other than the plugin answers there. Remove that file or exclude /.well-known/sitelemetry-verification.txt from it, then try again."
+msgstr "検証ファイルのアドレスが 2 KB を超える応答を返したため、プラグイン以外の何かが応答しています。そのファイルを削除するか、/.well-known/sitelemetry-verification.txt を対象外にしてから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1294
+msgid "The verification code changed while Sitelemetry was checking it (for example because it was renewed in the app at the same time). Click Verify this site again."
+msgstr "Sitelemetry が確認している間に検証コードが変わりました（アプリで同時に更新された場合など）。もう一度「このサイトを検証」をクリックしてください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1296
+msgid "Sitelemetry could not connect to this site. Check that it is reachable from the internet and that no firewall blocks the user agent Sitelemetry-Ownership-Verifier/1.0, then try again."
+msgstr "Sitelemetry はこのサイトに接続できませんでした。サイトがインターネットからアクセスでき、ユーザーエージェント Sitelemetry-Ownership-Verifier/1.0 をブロックするファイアウォールがないことを確認してから、もう一度お試しください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1314
+msgid "This site address is not reachable from the internet (a local, private or test host). Sitelemetry verifies only public hosts, so the file cannot verify it."
+msgstr "このサイトのアドレスにはインターネットからアクセスできません（ローカル、プライベート、またはテスト用のホスト）。Sitelemetry は公開ホストのみを検証するため、ファイルによる方法はこのサイトには使えません。"
+
+#: includes/class-sitelemetry-audit-verification.php:1317
+msgid "WordPress runs in a subdirectory of this host. Sitelemetry fetches the file from the root of the host, which usually does not reach WordPress here; use the DNS method instead, or place the file at the root of the host."
+msgstr "WordPress はこのホストのサブディレクトリで動作しています。Sitelemetry はホストのルートからファイルを取得しますが、ここでは通常 WordPress に届きません。代わりに DNS による方法を使うか、ファイルをホストのルートに配置してください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1320
+msgid "This site address uses http://. Sitelemetry fetches the file over https:// unless the domain was added in the app with an http:// address."
+msgstr "このサイトのアドレスは http:// を使用しています。ドメインがアプリで http:// のアドレスとして追加されていない限り、Sitelemetry は https:// でファイルを取得します。"
+
+#. translators: %d: port number of the site address.
+#: includes/class-sitelemetry-audit-verification.php:1325
+msgid "This site address uses port %d. Sitelemetry fetches the file from the default port of the host (443 for https://, 80 for http://), so the file must also be reachable there; Test the file checks that address."
+msgstr "このサイトのアドレスはポート %d を使用しています。Sitelemetry はホストの既定のポート（https:// は 443、http:// は 80）からファイルを取得するため、そのポートでもファイルにアクセスできる必要があります。「ファイルをテスト」はそのアドレスを確認します。"
+
+#: includes/class-sitelemetry-audit-verification.php:1456
+msgid "The file works: WordPress loaded it from its own address with the stored token. Now click Verify HTTP for this domain in the app. Sitelemetry loads the file from the internet with its own user agent (Sitelemetry-Ownership-Verifier/1.0), so a firewall rule that blocks unknown bots can still make verification fail."
+msgstr "ファイルは正常です: WordPress が自身のアドレスからファイルを読み込み、保存済みのトークンを確認しました。次に、アプリでこのドメインの「HTTPを検証」をクリックしてください。Sitelemetry は独自のユーザーエージェント（Sitelemetry-Ownership-Verifier/1.0）でインターネットからファイルを読み込むため、不明なボットをブロックするファイアウォールのルールがあると、検証が失敗することがあります。"
+
+#: includes/class-sitelemetry-audit-verification.php:1458
+msgid "No token is stored for this site yet. Paste the token from the app first."
+msgstr "このサイトにはまだトークンが保存されていません。まずアプリのトークンを貼り付けてください。"
+
+#. translators: %s: error message.
+#: includes/class-sitelemetry-audit-verification.php:1461
+msgid "WordPress could not load the file from its own address (%s). Some hosts block requests from a site to itself, so this does not prove that Sitelemetry cannot load it; open the file address in a browser to check."
+msgstr "WordPress が自身のアドレスからファイルを読み込めませんでした（%s）。サイトから自身へのリクエストをブロックするホスティングもあるため、Sitelemetry が読み込めないとは限りません。ブラウザーでファイルのアドレスを開いて確認してください。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1464
+msgid "The file address answers with a redirect (HTTP %d) without a usable destination."
+msgstr "ファイルのアドレスは、使用できる転送先のないリダイレクト（HTTP %d）で応答しています。"
+
+#. translators: 1: HTTP status code, 2: host the redirect points to.
+#: includes/class-sitelemetry-audit-verification.php:1467
+msgid "The file address redirects (HTTP %1$d) to another host, %2$s. Sitelemetry does not follow redirects to another host, so verification fails. Add and verify that host in the app instead, or stop the redirect for this path."
+msgstr "ファイルのアドレスは別のホスト %2$s にリダイレクト（HTTP %1$d）しています。Sitelemetry は別のホストへのリダイレクトを追跡しないため、検証は失敗します。代わりにそのホストをアプリで追加して検証するか、このパスのリダイレクトを解除してください。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1470
+msgid "The file address redirects (HTTP %d) from https:// to http://. Sitelemetry does not follow that redirect, so verification fails."
+msgstr "ファイルのアドレスは https:// から http:// にリダイレクト（HTTP %d）しています。Sitelemetry はこのリダイレクトを追跡しないため、検証は失敗します。"
+
+#: includes/class-sitelemetry-audit-verification.php:1472
+msgid "The file address redirects more than twice. Sitelemetry follows at most two redirects, so verification fails."
+msgstr "ファイルのアドレスは 3 回以上リダイレクトしています。Sitelemetry が追跡するリダイレクトは最大 2 回のため、検証は失敗します。"
+
+#: includes/class-sitelemetry-audit-verification.php:1474
+msgid "A web page answered instead of the file (for example a maintenance, login, cache or firewall page), so the request did not reach this plugin. Exclude /.well-known/sitelemetry-verification.txt from that page or plugin, or use the DNS method."
+msgstr "ファイルの代わりにウェブページ（メンテナンス、ログイン、キャッシュ、ファイアウォールのページなど）が応答したため、リクエストはこのプラグインに届いていません。そのページまたはプラグインの対象から /.well-known/sitelemetry-verification.txt を除外するか、DNS による方法を使ってください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1476
+msgid "The file address answers, but not with the stored token. Another file at that path (for example one uploaded earlier) or a cached copy takes precedence: remove it, purge the cache, or put the current token in it."
+msgstr "ファイルのアドレスは応答していますが、内容が保存済みのトークンではありません。そのパスにある別のファイル（以前にアップロードしたものなど）またはキャッシュされたコピーが優先されています。それを削除するか、キャッシュを消去するか、現在のトークンをそのファイルに書き込んでください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1478
+msgid "The plugin answered, but no token is stored for this site address. Save the token again."
+msgstr "プラグインは応答しましたが、このサイトのアドレスに対するトークンが保存されていません。トークンをもう一度保存してください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1480
+msgid "The web server answered 404 without passing the request to WordPress. Many server setups handle /.well-known/ themselves (for example an nginx rule for hidden paths), and with plain permalinks the web server does not pass unknown paths to WordPress. Ask your host to pass /.well-known/sitelemetry-verification.txt to WordPress, upload a plain text file with the token at that path, or use the DNS method."
+msgstr "Web サーバーがリクエストを WordPress に渡さずに 404 を返しました。多くのサーバー設定では /.well-known/ を独自に処理します（例: 隠しパス用の nginx ルール）。また、パーマリンク設定が「基本」の場合、Web サーバーは不明なパスを WordPress に渡しません。/.well-known/sitelemetry-verification.txt を WordPress に渡すようホスティング会社に依頼するか、そのパスにトークンを書いたテキストファイルをアップロードするか、DNS による方法を使ってください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1482
+msgid "The site asks for a password (HTTP 401), so Sitelemetry cannot read the file. Remove the password protection for this path while you verify, or use the DNS method."
+msgstr "サイトがパスワードを要求しています（HTTP 401）。そのため Sitelemetry はファイルを読み取れません。検証中はこのパスのパスワード保護を解除するか、DNS による方法を使ってください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1484
+msgid "The request was refused (HTTP 403), usually by the web server configuration or a firewall or security plugin (for example Cloudflare, Wordfence or ModSecurity rules). Allow this path, or use the DNS method."
+msgstr "リクエストが拒否されました（HTTP 403）。通常は Web サーバーの設定、またはファイアウォールやセキュリティプラグイン（例: Cloudflare、Wordfence、ModSecurity のルール）によるものです。このパスを許可するか、DNS による方法を使ってください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1486
+msgid "The site rate-limited the request (HTTP 429). Try again in a minute; if it persists, allow this path in the firewall or security plugin."
+msgstr "サイトがリクエストをレート制限しました（HTTP 429）。1 分後にもう一度お試しください。続く場合は、ファイアウォールまたはセキュリティプラグインでこのパスを許可してください。"
+
+#: includes/class-sitelemetry-audit-verification.php:1488
+msgid "The site answered 503 (temporarily unavailable), often a maintenance mode. Verify when the site is back, or exclude this path from maintenance mode."
+msgstr "サイトが 503（一時的に利用不可）を返しました。多くの場合はメンテナンスモードです。サイトが復旧してから検証するか、このパスをメンテナンスモードの対象から除外してください。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1492
+msgid "The file address answered with HTTP %d instead of the file."
+msgstr "ファイルのアドレスは、ファイルではなく HTTP %d で応答しました。"
+
+#. translators: 1: host name, 2: date and time the verification expires.
+#: includes/class-sitelemetry-audit-verification.php:1609
+msgid "Ownership of %1$s is verified (valid until %2$s). Run the audit again to include the checks that need verification."
+msgstr "%1$s の所有権を確認しました（%2$s まで有効）。検証が必要なチェックも含めるには、監査をもう一度実行してください。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1611
+msgid "Ownership of %s is verified. Run the audit again to include the checks that need verification."
+msgstr "%s の所有権を確認しました。検証が必要なチェックも含めるには、監査をもう一度実行してください。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1628
+msgid "The ownership verification of %s has expired. The plugin renews it automatically in the background; to renew it now, open Verify this site."
+msgstr "%s の所有権確認の有効期限が切れました。プラグインがバックグラウンドで自動更新します。今すぐ更新するには「このサイトを検証」を開いてください。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1634
+msgid "The current verification of %s covers only part of the host. Verify the whole host (HTTP file or DNS record) to run the host-level checks."
+msgstr "%s の現在の検証はホストの一部しか対象としていません。ホストレベルのチェックを実行するには、ホスト全体を検証してください（HTTP ファイルまたは DNS レコード）。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1637
+msgid "This audit runs only after ownership of %s is verified."
+msgstr "この監査は、%s の所有権が確認された後にのみ実行されます。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1640
+msgid "Some checks run only after ownership of %s is verified."
+msgstr "一部のチェックは、%s の所有権が確認された後にのみ実行されます。"
+
+#: includes/class-sitelemetry-audit-verification.php:298
+msgid "The site address has no host name."
+msgstr "サイトのアドレスにホスト名がありません。"

@@ -104,6 +104,8 @@ class Sitelemetry_Audit_Plans_Links_Test extends TestCase {
 	public function test_urls() {
 		$this->assertSame( 'https://sitelemetry.com/pricing?utm_source=wordpress-plugin&utm_medium=plugin', Sitelemetry_Audit_Links::pricing_url() );
 		$this->assertSame( 'https://sitelemetry.com/app', Sitelemetry_Audit_Links::app_url() );
+		$this->assertSame( 'https://sitelemetry.com/app#verifiedDomains', Sitelemetry_Audit_Links::verified_domains_url() );
+		$this->assertSame( 'https://sitelemetry.com/access-information', Sitelemetry_Audit_Links::verification_help_url() );
 	}
 
 	/**
@@ -115,26 +117,24 @@ class Sitelemetry_Audit_Plans_Links_Test extends TestCase {
 		$plans = $this->plans();
 		$base  = Sitelemetry_Audit_Outcome::empty_model( 'security', 'https://ok.example' );
 
-		$quota                    = $base;
-		$quota['status']          = 'quota_exhausted';
-		$quota['remaining_scans'] = 0;
-		$box                      = Sitelemetry_Audit_Links::plan_box( $quota, $plans );
+		$quota           = $base;
+		$quota['status'] = 'quota_exhausted';
+		$box             = Sitelemetry_Audit_Links::plan_box( $quota, $plans );
 		$this->assertStringContainsString( 'used its monthly audit allowance', $box['lead'] );
 		$this->assertStringContainsString( 'did not consume allowance', $box['lead'] );
-		$this->assertSame( 'Remaining security scans in the current period: 0.', $box['remaining'] );
+		$this->assertArrayNotHasKey( 'remaining', $box );
 		$this->assertCount( 3, $box['paid'] );
 		$this->assertSame( array( 'Starter', '$49/month', '100', '13' ), array( $box['paid'][0]['label'], $box['paid'][0]['price'], $box['paid'][0]['scans'], $box['paid'][0]['modules'] ) );
 		$this->assertStringContainsString( 'AI visibility', $box['paid'][0]['kinds'] );
 		$this->assertSame( Sitelemetry_Audit_Links::pricing_url(), $box['pricing_url'] );
 		$this->assertSame( Sitelemetry_Audit_Links::app_url(), $box['app_url'] );
-		$this->assertNull( $box['verification'] );
+		$this->assertNull( $box['app_step'] );
 
 		$plan           = $base;
 		$plan['kind']   = 'seo';
 		$plan['status'] = 'plan_required';
 		$box            = Sitelemetry_Audit_Links::plan_box( $plan, $plans );
 		$this->assertStringContainsString( 'The Technical SEO audit is not included', $box['lead'] );
-		$this->assertSame( '', $box['remaining'] );
 
 		$free           = $base;
 		$free['status'] = 'partial';
@@ -162,31 +162,29 @@ class Sitelemetry_Audit_Plans_Links_Test extends TestCase {
 	}
 
 	/**
-	 * The next step in the app follows the reason the server reported.
+	 * The step only the app can take is accepting the authorization terms;
+	 * ownership verification has its own call to action.
 	 *
 	 * @return void
 	 */
-	public function test_verification_step() {
+	public function test_app_step() {
 		$base = Sitelemetry_Audit_Outcome::empty_model( 'security', 'https://ok.example' );
-
-		$verify           = $base;
-		$verify['status'] = 'verification_required';
-		$verify['reason'] = 'target_verification_required';
-		$this->assertStringContainsString( 'Verify ownership of the target', Sitelemetry_Audit_Links::verification_step( $verify ) );
 
 		$consent           = $base;
 		$consent['status'] = 'verification_required';
 		$consent['reason'] = 'authorization_consent_required';
-		$this->assertStringContainsString( 'authorization terms', Sitelemetry_Audit_Links::verification_step( $consent ) );
+		$this->assertStringContainsString( 'authorization terms', Sitelemetry_Audit_Links::app_step( $consent ) );
+		$this->assertNull( Sitelemetry_Audit_Verification::call_to_action( $consent ) );
 
-		$partial                 = $base;
-		$partial['status']       = 'partial';
-		$partial['not_measured'] = array( array( 'type' => 'verification_modules', 'modules' => array( 'exposure' ) ) );
-		$this->assertStringContainsString( 'Verify ownership', Sitelemetry_Audit_Links::verification_step( $partial ) );
+		$verify           = $base;
+		$verify['status'] = 'verification_required';
+		$verify['reason'] = 'target_verification_required';
+		$this->assertNull( Sitelemetry_Audit_Links::app_step( $verify ) );
 
 		$completed           = $base;
 		$completed['status'] = 'completed';
-		$this->assertNull( Sitelemetry_Audit_Links::verification_step( $completed ) );
+		$this->assertNull( Sitelemetry_Audit_Links::app_step( $completed ) );
+		$this->assertNull( Sitelemetry_Audit_Verification::call_to_action( $completed ) );
 	}
 
 	/**

@@ -16,9 +16,6 @@ $sitelemetry_audit_box = $view['plan_box'];
 <div class="sitelemetry-audit-card sitelemetry-audit-plan">
 	<h3><?php esc_html_e( 'Plan and usage', 'sitelemetry-audit' ); ?></h3>
 	<p><?php echo esc_html( $sitelemetry_audit_box['lead'] ); ?></p>
-	<?php if ( '' !== $sitelemetry_audit_box['remaining'] ) : ?>
-		<p><strong><?php echo esc_html( $sitelemetry_audit_box['remaining'] ); ?></strong></p>
-	<?php endif; ?>
 	<?php if ( count( $sitelemetry_audit_box['paid'] ) > 0 ) : ?>
 		<p><?php echo esc_html( $sitelemetry_audit_box['paid_intro'] ); ?></p>
 		<table class="widefat striped sitelemetry-audit-plans">
@@ -47,6 +44,6 @@ $sitelemetry_audit_box = $view['plan_box'];
 	<p>
 		<a href="<?php echo esc_url( $sitelemetry_audit_box['pricing_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Plan details and pricing', 'sitelemetry-audit' ); ?></a>
 		&middot;
-		<a href="<?php echo esc_url( $sitelemetry_audit_box['app_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Verify ownership of your site, manage API keys and see full reports in the app', 'sitelemetry-audit' ); ?></a>
+		<a href="<?php echo esc_url( $sitelemetry_audit_box['app_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Verify ownership of your site and manage API keys in the app', 'sitelemetry-audit' ); ?></a>
 	</p>
 </div>

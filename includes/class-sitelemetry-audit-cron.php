@@ -95,11 +95,14 @@ class Sitelemetry_Audit_Cron {
 	public static function clear_all() {
 		wp_clear_scheduled_hook( self::WEEKLY_HOOK );
 		wp_clear_scheduled_hook( self::POLL_HOOK );
+		wp_clear_scheduled_hook( Sitelemetry_Audit_Verification::RENEW_HOOK );
 	}
 
 	/**
 	 * Weekly event: start the configured audit and poll it in the background.
 	 * A completed audit consumes one unit of the account's monthly allowance.
+	 * An expired verification of this site is renewed first, so the audit is
+	 * not refused for it.
 	 *
 	 * @return void
 	 */
@@ -108,6 +111,7 @@ class Sitelemetry_Audit_Cron {
 		if ( ! $settings['weekly_enabled'] || '' === $settings['api_key'] ) {
 			return;
 		}
+		Sitelemetry_Audit_Verification::renew_before_audit( $settings['target'] );
 		$job = $this->runner->start( $settings['kind'], $settings['target'], 'scheduled' );
 		if ( is_wp_error( $job ) ) {
 			return;

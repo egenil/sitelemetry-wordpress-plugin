@@ -1,0 +1,1459 @@
+# Copyright (C) 2026 Sitelemetry
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sitelemetry Audit 0.1.3\n"
+"Report-Msgid-Bugs-To: https://sitelemetry.com\n"
+"POT-Creation-Date: 2026-09-26T18:32:13+00:00\n"
+"PO-Revision-Date: 2026-09-26T00:00:00+00:00\n"
+"Last-Translator: Sitelemetry\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: sitelemetry-audit\n"
+
+#. Plugin Name of the plugin
+#: sitelemetry-audit.php
+msgid "Sitelemetry Audit – Security, SEO & AI Readiness Scanner"
+msgstr "Sitelemetry Audit – 安全、SEO 与 AI 就绪度扫描器"
+
+#. Plugin URI of the plugin
+#: sitelemetry-audit.php
+msgid "https://github.com/egenil/sitelemetry-wordpress-plugin"
+msgstr "https://github.com/egenil/sitelemetry-wordpress-plugin"
+
+#. Description of the plugin
+#: sitelemetry-audit.php
+msgid "Run Sitelemetry website audits (security first; SEO, performance, accessibility, AI visibility and integrations on paid plans) from the WordPress dashboard and review the findings with fixes."
+msgstr "在 WordPress 仪表盘中运行 Sitelemetry 网站审计（以安全为先；SEO、性能、无障碍、AI 可见性和集成适用于付费套餐），并查看发现及其修复方法。"
+
+#. Author URI of the plugin
+#: sitelemetry-audit.php
+msgid "https://sitelemetry.com"
+msgstr "https://sitelemetry.com"
+
+#: admin/views/dashboard-widget.php:18
+msgid "Connect your Sitelemetry account to audit this site for security, SEO and performance issues."
+msgstr "连接您的 Sitelemetry 账户，即可审计此网站的安全、SEO 和性能问题。"
+
+#: admin/views/dashboard-widget.php:19
+msgid "Add API key"
+msgstr "添加 API 密钥"
+
+#: admin/views/dashboard-widget.php:22 admin/views/dashboard-widget.php:29 admin/views/settings.php:17
+msgid "An audit is running."
+msgstr "审计正在进行。"
+
+#: admin/views/dashboard-widget.php:24
+msgid "No audit has run yet."
+msgstr "尚未运行任何审计。"
+
+#: admin/views/dashboard-widget.php:26
+msgid "Open Sitelemetry"
+msgstr "打开 Sitelemetry"
+
+#: admin/views/dashboard-widget.php:38 admin/views/results.php:203
+msgid "Not measured"
+msgstr "未测量"
+
+#. translators: 1: audit kind label, 2: status of the audit.
+#. translators: 1: pillar name, 2: error message.
+#. translators: 1: module name, 2: module status such as "not measured".
+#. translators: 1: pillar name, 2: what was not measured in that pillar.
+#: admin/views/dashboard-widget.php:45 includes/class-sitelemetry-audit-labels.php:239 includes/class-sitelemetry-audit-labels.php:293 includes/class-sitelemetry-audit-labels.php:302 includes/class-sitelemetry-audit-labels.php:319
+msgid "%1$s: %2$s"
+msgstr "%1$s：%2$s"
+
+#. translators: 1: audit kind and status, 2: date and time the audit finished. Translate the parentheses as your language writes them.
+#: admin/views/dashboard-widget.php:52
+msgid "%1$s (%2$s)"
+msgstr "%1$s（%2$s）"
+
+#: admin/views/dashboard-widget.php:76
+msgid "No findings"
+msgstr "无发现"
+
+#: admin/views/dashboard-widget.php:86 admin/views/weekly-notice.php:31
+msgid "Renew the verification"
+msgstr "续期验证"
+
+#: admin/views/dashboard-widget.php:86 admin/views/renewal-notice.php:28 admin/views/results.php:175 admin/views/results.php:403 admin/views/settings.php:133 admin/views/settings.php:222 admin/views/weekly-notice.php:31
+msgid "Verify this site"
+msgstr "验证此网站"
+
+#: admin/views/dashboard-widget.php:88 admin/views/results.php:176 admin/views/results.php:180 admin/views/results.php:183 admin/views/results.php:405
+msgid "Verified Domains in the app"
+msgstr "应用中的已验证域名"
+
+#: admin/views/dashboard-widget.php:93 admin/views/results.php:186
+msgid "A verification lasts 30 days; the plugin renews it automatically."
+msgstr "验证有效期为 30 天；插件会自动续期。"
+
+#: admin/views/dashboard-widget.php:95
+msgid "A verification lasts 30 days and is not renewed automatically."
+msgstr "验证有效期为 30 天，不会自动续期。"
+
+#: admin/views/dashboard-widget.php:99 admin/views/weekly-notice.php:33
+msgid "View results"
+msgstr "查看结果"
+
+#: admin/views/plan-box.php:17
+msgid "Plan and usage"
+msgstr "套餐与用量"
+
+#: admin/views/plan-box.php:24
+msgid "Plan"
+msgstr "套餐"
+
+#: admin/views/plan-box.php:25
+msgid "Price"
+msgstr "价格"
+
+#: admin/views/plan-box.php:26
+msgid "Audit kinds"
+msgstr "审计类型"
+
+#: admin/views/plan-box.php:27
+msgid "Security modules"
+msgstr "安全模块"
+
+#: admin/views/plan-box.php:28
+msgid "Security scans / month"
+msgstr "安全扫描次数 / 月"
+
+#: admin/views/plan-box.php:45
+msgid "Plan details and pricing"
+msgstr "套餐详情与价格"
+
+#: admin/views/plan-box.php:47
+msgid "Verify ownership of your site and manage API keys in the app"
+msgstr "在应用中验证网站所有权并管理 API 密钥"
+
+#. translators: %s: host name of this site.
+#: admin/views/renewal-notice.php:20
+msgid "Sitelemetry could not renew the ownership verification of %s automatically."
+msgstr "Sitelemetry 无法自动续期 %s 的所有权验证。"
+
+#: admin/views/renewal-notice.php:29 admin/views/weekly-notice.php:34
+msgid "Dismiss"
+msgstr "忽略"
+
+#. translators: %s: date and time.
+#: admin/views/results.php:104
+msgid "Started %s"
+msgstr "开始于 %s"
+
+#. translators: %s: date and time.
+#: admin/views/results.php:115
+msgid "Finished %s"
+msgstr "完成于 %s"
+
+#: admin/views/results.php:122
+msgid "Weekly schedule"
+msgstr "每周计划"
+
+#. translators: %s: audit job id.
+#: admin/views/results.php:129
+msgid "Job %s"
+msgstr "任务 %s"
+
+#: admin/views/results.php:148
+msgid "Open the app"
+msgstr "打开应用"
+
+#: admin/views/results.php:156
+msgid "Ownership verified"
+msgstr "所有权已验证"
+
+#: admin/views/results.php:158
+msgid "Renew the ownership verification"
+msgstr "续期所有权验证"
+
+#: admin/views/results.php:158
+msgid "Verify ownership of the site"
+msgstr "验证网站所有权"
+
+#: admin/views/results.php:165
+msgid "You can verify from WordPress with one click: Verify this site asks Sitelemetry for a verification code, publishes it for this site and completes the verification."
+msgstr "您可以在 WordPress 中一键验证：“验证此网站”会向 Sitelemetry 请求验证代码，为此网站发布该代码并完成验证。"
+
+#: admin/views/results.php:168
+msgid "The stored token was used up by the last verification. In the app, click Reverify for this domain and copy the new token, save it under Verify this site (it replaces the old one), then click Verify HTTP in the app and run the audit again."
+msgstr "已保存的令牌在上次验证时已被使用。请在应用中为此域名点击“重新验证”并复制新令牌，将其保存在“验证此网站”中（会替换旧令牌），然后在应用中点击“验证HTTP”，并重新运行审计。"
+
+#: admin/views/results.php:170
+msgid "This plugin already publishes a verification file for this site. Finish in the app: click Verify HTTP for this domain, then run the audit again."
+msgstr "此插件已为此网站发布验证文件。请在应用中完成：为此域名点击“验证HTTP”，然后重新运行审计。"
+
+#: admin/views/results.php:172
+msgid "You can verify from WordPress: paste the token from the app into the plugin settings and the plugin publishes the verification file for this site."
+msgstr "您可以在 WordPress 中完成验证：将应用中的令牌粘贴到插件设置中，插件就会为此网站发布验证文件。"
+
+#: admin/views/results.php:179
+msgid "On a multisite network only a network administrator can publish the verification file for this site. Ask a network administrator, or verify the host in the app with a DNS record."
+msgstr "在多站点网络中，只有网络管理员才能发布此网站的验证文件。请联系网络管理员，或在应用中通过 DNS 记录验证该主机。"
+
+#: admin/views/results.php:182
+msgid "The audited target is not this WordPress site, so the plugin cannot publish its verification file. Verify it in the app with a DNS record or an HTTP file on that site."
+msgstr "所审计的目标不是此 WordPress 网站，因此插件无法发布它的验证文件。请在应用中通过该网站上的 DNS 记录或 HTTP 文件进行验证。"
+
+#: admin/views/results.php:188
+msgid "A verification lasts 30 days and is not renewed automatically. Before it expires, click Reverify in the app, publish the new token and verify again."
+msgstr "验证有效期为 30 天，不会自动续期。请在到期前在应用中点击“重新验证”，发布新令牌并再次验证。"
+
+#: admin/views/results.php:205 admin/views/results.php:260
+msgid "Score"
+msgstr "评分"
+
+#. translators: %d: number of findings.
+#: admin/views/results.php:212
+msgid "%d finding"
+msgid_plural "%d findings"
+msgstr[0] "%d 项发现"
+
+#: admin/views/results.php:224
+msgid "No findings were reported for the measured checks"
+msgstr "已测量的检查未报告任何发现"
+
+#. translators: %d: number of passing checks.
+#: admin/views/results.php:232
+msgid "%d passing check"
+msgid_plural "%d passing checks"
+msgstr[0] "%d 项检查通过"
+
+#: admin/views/results.php:242
+msgid "Fix with an AI assistant"
+msgstr "使用 AI 助手修复"
+
+#: admin/views/results.php:244
+msgid "Copy AI fix prompt"
+msgstr "复制 AI 修复提示词"
+
+#: admin/views/results.php:247
+msgid "The prompt is built in wp-admin from this result and only copied to your clipboard. Nothing is sent."
+msgstr "提示词在 wp-admin 中根据此结果生成，只会复制到您的剪贴板。不会发送任何内容。"
+
+#: admin/views/results.php:249
+msgid "Show the prompt"
+msgstr "显示提示词"
+
+#: admin/views/results.php:250
+msgid "AI fix prompt"
+msgstr "AI 修复提示词"
+
+#: admin/views/results.php:259
+msgid "Pillar"
+msgstr "领域"
+
+#: admin/views/results.php:261 admin/views/results.php:290
+msgid "Findings"
+msgstr "发现"
+
+#: admin/views/results.php:268
+msgid "n/a"
+msgstr "未测量"
+
+#: admin/views/results.php:292 admin/views/results.php:304
+msgid "Severity"
+msgstr "严重程度"
+
+#: admin/views/results.php:294 includes/class-sitelemetry-audit-admin.php:194
+msgid "All severities"
+msgstr "所有严重程度"
+
+#: admin/views/results.php:305
+msgid "Finding"
+msgstr "发现"
+
+#: admin/views/results.php:306
+msgid "Location"
+msgstr "位置"
+
+#: admin/views/results.php:307
+msgid "Fix"
+msgstr "修复"
+
+#: admin/views/results.php:321
+msgid "Evidence and impact"
+msgstr "证据与影响"
+
+#: admin/views/results.php:337 includes/class-sitelemetry-audit-admin.php:195
+msgid "No findings match this filter."
+msgstr "没有符合此筛选条件的发现。"
+
+#. translators: %d: number of findings that are not included.
+#: admin/views/results.php:348
+msgid "Sitelemetry counted %d more finding that is not included in this result."
+msgid_plural "Sitelemetry counted %d more findings that are not included in this result."
+msgstr[0] "Sitelemetry 另外统计了 %d 项发现，这些发现未包含在此结果中。"
+
+#. translators: %d: number of findings that are not included.
+#: admin/views/results.php:351
+msgid "Sitelemetry counted %d finding that is not included in this result."
+msgid_plural "Sitelemetry counted %d findings that are not included in this result."
+msgstr[0] "Sitelemetry 统计了 %d 项发现，这些发现未包含在此结果中。"
+
+#: admin/views/results.php:357
+msgid "According to Sitelemetry, this result does not include every finding of this audit."
+msgstr "据 Sitelemetry 称，此结果未包含本次审计的全部发现。"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/results.php:40
+msgid "Running the %1$s audit of %2$s"
+msgstr "正在对 %2$s 运行%1$s审计"
+
+#: admin/views/results.php:401
+msgid "These checks run after ownership of the site is verified."
+msgstr "这些检查会在网站所有权验证后运行。"
+
+#. translators: %s: audit kind label.
+#: admin/views/results.php:450
+msgid "Run the %s audit again"
+msgstr "重新运行%s审计"
+
+#: admin/views/results.php:456
+msgid "Change settings"
+msgstr "更改设置"
+
+#: admin/views/results.php:458
+msgid "Uses the target saved in the settings. A completed audit uses one unit of the monthly allowance."
+msgstr "使用设置中保存的目标。每次完成的审计会消耗每月额度中的一次。"
+
+#: admin/views/results.php:462
+msgid "Only the target URL, the audit options and the report language are sent to Sitelemetry, authenticated with your API key."
+msgstr "只有目标 URL、审计选项和报告语言会发送给 Sitelemetry，并通过您的 API 密钥进行身份验证。"
+
+#. translators: 1: elapsed time (m:ss), 2: time budget in minutes.
+#: admin/views/results.php:51
+msgid "Elapsed: %1$s (time budget: %2$d minutes)"
+msgstr "已用时间：%1$s（时间上限：%2$d 分钟）"
+
+#: admin/views/results.php:59
+msgid "Check now"
+msgstr "立即检查"
+
+#: admin/views/results.php:60
+msgid "Stop waiting"
+msgstr "停止等待"
+
+#: admin/views/results.php:62
+msgid "Polling a running audit does not use more allowance. If you leave this page, WordPress keeps checking in the background and the result appears here when it is ready."
+msgstr "轮询正在运行的审计不会消耗更多额度。如果您离开此页面，WordPress 会在后台继续检查，结果就绪后会显示在这里。"
+
+#: admin/views/results.php:68
+msgid "No audit has run yet"
+msgstr "尚未运行任何审计"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/results.php:78
+msgid "Run the %1$s audit of %2$s. A completed audit uses one unit of the monthly allowance."
+msgstr "对 %2$s 运行%1$s审计。每次完成的审计会消耗每月额度中的一次。"
+
+#: admin/views/results.php:84 admin/views/settings.php:124
+msgid "Run audit"
+msgstr "运行审计"
+
+#: admin/views/results.php:87
+msgid "Add your Sitelemetry API key to run the first audit."
+msgstr "添加您的 Sitelemetry API 密钥以运行第一次审计。"
+
+#: admin/views/results.php:88 admin/views/results.php:143
+msgid "Open settings"
+msgstr "打开设置"
+
+#: admin/views/settings.php:100
+msgid "Save settings"
+msgstr "保存设置"
+
+#: admin/views/settings.php:103
+msgid "Run an audit now"
+msgstr "立即运行审计"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/settings.php:112
+msgid "Runs the %1$s audit of %2$s with the saved settings. A completed audit uses one unit of the monthly allowance."
+msgstr "使用已保存的设置对 %2$s 运行%1$s审计。每次完成的审计会消耗每月额度中的一次。"
+
+#: admin/views/settings.php:119 includes/class-sitelemetry-audit-admin.php:255 includes/class-sitelemetry-audit-verification.php:1228
+msgid "Save an API key first."
+msgstr "请先保存 API 密钥。"
+
+#: admin/views/settings.php:135
+msgid "Some security checks (for example exposed files, HTTP methods and, on paid plans, the WordPress checks) run only on sites whose ownership is verified in Sitelemetry. The plugin can publish the verification file for this site, so you need no FTP access or hosting panel."
+msgstr "部分安全检查（例如暴露的文件、HTTP 方法，以及付费套餐中的 WordPress 检查）只会在已于 Sitelemetry 中验证所有权的网站上运行。插件可以为此网站发布验证文件，因此您无需 FTP 访问权限或主机控制面板。"
+
+#. translators: %s: host name of this site.
+#: admin/views/settings.php:140
+msgid "Host of this site: %s"
+msgstr "此网站的主机：%s"
+
+#. translators: 1: host name of this site, 2: the same host with or without www.
+#: admin/views/settings.php:150
+msgid "Sitelemetry verifies one exact host name: %1$s and %2$s are different hosts. Add the host of the address the audit uses; a redirect from one to the other makes the file check fail."
+msgstr "Sitelemetry 只验证一个精确主机名：%1$s 和 %2$s 是不同的主机。请添加审计所用地址的主机；两者之间的重定向会导致文件检查失败。"
+
+#. translators: %s: host name of the audit target.
+#: admin/views/settings.php:163
+msgid "The audit target in the settings is a different host (%s). The plugin publishes the file only for this site's own host; verify the target in the app."
+msgstr "设置中的审计目标是另一个主机（%s）。插件只为此网站自己的主机发布文件；请在应用中验证该目标。"
+
+#: admin/views/settings.php:176
+msgid "On a multisite network only a network administrator can publish the verification file: the web server that answers for this host serves every site of the network. Ask a network administrator to verify this site, or use one of the other ways below."
+msgstr "在多站点网络中，只有网络管理员才能发布验证文件：响应此主机的 Web 服务器为网络中的所有网站提供服务。请让网络管理员验证此网站，或使用下面的其他方式。"
+
+#: admin/views/settings.php:18 admin/views/settings.php:127
+msgid "View progress"
+msgstr "查看进度"
+
+#. translators: %s: host name.
+#: admin/views/settings.php:189 includes/class-sitelemetry-audit-verification.php:1631
+msgid "The ownership verification of %s has expired. Verification lasts 30 days and is not renewed automatically: click Reverify in the app, then publish the new token and verify again."
+msgstr "%s 的所有权验证已过期。验证有效期为 30 天，不会自动续期：请在应用中点击“重新验证”，然后发布新令牌并再次验证。"
+
+#: admin/views/settings.php:196
+msgid "The verification of this site has expired. The plugin renews it automatically; click Verify this site to renew it now."
+msgstr "此网站的验证已过期。插件会自动续期；如需立即续期，请点击“验证此网站”。"
+
+#: admin/views/settings.php:201
+msgid "The automatic renewal did not complete."
+msgstr "自动续期未完成。"
+
+#: admin/views/settings.php:201
+msgid "The verification did not complete."
+msgstr "验证未完成。"
+
+#: admin/views/settings.php:207
+msgid "You can also verify with a DNS record or Google Search Console, as described under Other ways to verify."
+msgstr "您也可以按照“其他验证方式”中的说明，使用 DNS 记录或 Google Search Console 进行验证。"
+
+#: admin/views/settings.php:211
+msgid "One-click verification is not available yet. Verify with a token from the app as described below."
+msgstr "一键验证尚不可用。请按照下方说明，使用应用中的令牌进行验证。"
+
+#: admin/views/settings.php:227
+msgid "Save your API key above to verify this site with one click."
+msgstr "请在上方保存您的 API 密钥，即可一键验证此网站。"
+
+#. translators: 1: URL of the verification file, 2: number of days a verification lasts.
+#: admin/views/settings.php:232
+msgid "The plugin asks Sitelemetry for a verification code, publishes it at %1$s, tests the file and asks Sitelemetry to verify it. A verification lasts %2$d days; the plugin renews it automatically."
+msgstr "插件会向 Sitelemetry 请求验证代码，将其发布在 %1$s，测试该文件，然后请 Sitelemetry 进行验证。验证有效期为 %2$d 天；插件会自动续期。"
+
+#: admin/views/settings.php:245
+msgid "Verify manually with a token from the app"
+msgstr "使用应用中的令牌手动验证"
+
+#. translators: %s: host name of this site.
+#: admin/views/settings.php:252
+msgid "In the app, open Verified Domains, enter exactly %s and click Start verification."
+msgstr "在应用中打开“已验证域名”，准确输入 %s，然后点击“开始验证”。"
+
+#: admin/views/settings.php:256
+msgid "Open Verified Domains in the app"
+msgstr "在应用中打开“已验证域名”"
+
+#. translators: %s: URL of the verification file.
+#: admin/views/settings.php:262
+msgid "Copy the verification code shown under HTTP verification file (it starts with sitelemetry-) and save it below as the token. The plugin then answers %s with the token."
+msgstr "复制“HTTP验证文件”下显示的验证代码（以 sitelemetry- 开头），并作为令牌保存在下方。之后，插件会用该令牌响应 %s。"
+
+#: admin/views/settings.php:267
+msgid "Click Test the file to check that the file is reachable."
+msgstr "点击“测试文件”以检查文件是否可访问。"
+
+#: admin/views/settings.php:268
+msgid "In the app, click Verify HTTP for this domain, then run the audit again."
+msgstr "在应用中为此域名点击“验证HTTP”，然后重新运行审计。"
+
+#: admin/views/settings.php:27
+msgid "API key"
+msgstr "API 密钥"
+
+#: admin/views/settings.php:275
+msgid "Verification token"
+msgstr "验证令牌"
+
+#: admin/views/settings.php:281
+msgid "Save token"
+msgstr "保存令牌"
+
+#: admin/views/settings.php:283
+msgid "Remove token"
+msgstr "移除令牌"
+
+#: admin/views/settings.php:288 includes/class-sitelemetry-audit-verification.php:295
+msgid "That is not a Sitelemetry verification token. Copy the whole token shown under HTTP verification file in the Verified Domains section of the app; it starts with sitelemetry- and has 32 more characters."
+msgstr "这不是 Sitelemetry 验证令牌。请复制应用“已验证域名”部分中“HTTP验证文件”下显示的完整令牌；它以 sitelemetry- 开头，后面还有 32 个字符。"
+
+#: admin/views/settings.php:30
+msgid "A key is stored."
+msgstr "已保存一个密钥。"
+
+#. translators: 1: verification token, 2: date and time.
+#: admin/views/settings.php:301
+msgid "Stored token: %1$s (saved %2$s)."
+msgstr "已保存的令牌：%1$s（保存于 %2$s）。"
+
+#: admin/views/settings.php:307
+msgid "Open the file"
+msgstr "打开文件"
+
+#. translators: %s: host name the token was saved for.
+#: admin/views/settings.php:316
+msgid "The file is not published: the token was saved for %s, which is not this site's current host. Add the current host in the app and save its token."
+msgstr "文件未发布：令牌是为 %s 保存的，而它不是此网站当前的主机。请在应用中添加当前主机并保存其令牌。"
+
+#: admin/views/settings.php:326
+msgid "Test the file"
+msgstr "测试文件"
+
+#: admin/views/settings.php:33
+msgid "Sign in to Sitelemetry, or create an account on the same page: Sitelemetry has free and paid plans, and the Free plan includes the security audit. Then copy your API key and paste it below."
+msgstr "登录 Sitelemetry，或在同一页面创建账户：Sitelemetry 提供免费和付费套餐，Free 套餐包含安全审计。然后复制您的 API 密钥并粘贴到下方。"
+
+#. translators: %s: date and time.
+#: admin/views/settings.php:335
+msgid "Tested %s."
+msgstr "测试于 %s。"
+
+#: admin/views/settings.php:344
+msgid "Renewal"
+msgstr "续期"
+
+#: admin/views/settings.php:35
+msgid "Sign in or create an account"
+msgstr "登录或创建账户"
+
+#. translators: %d: number of days a verification lasts.
+#: admin/views/settings.php:351
+msgid "A verification lasts %d days. The plugin renews it automatically in the background (WP-Cron) when it expires, or when an audit reports that it must be renewed, and shows a notice only if the renewal fails. WP-Cron runs when the site receives visits unless a system cron triggers it."
+msgstr "验证有效期为 %d 天。在验证到期时，或审计报告需要续期时，插件会在后台（WP-Cron）自动续期，并且只在续期失败时显示通知。除非由系统 cron 触发，否则 WP-Cron 会在网站有访问时运行。"
+
+#. translators: %d: number of days a verification lasts.
+#: admin/views/settings.php:359
+msgid "A verification lasts %d days and Sitelemetry does not re-check it by itself. Before it expires, click Reverify for this domain in the app, save the new token here and click Verify HTTP again. When an audit reports that the verification must be renewed, the results page and the dashboard widget remind you."
+msgstr "验证有效期为 %d 天，Sitelemetry 不会自行重新检查。请在到期前在应用中为此域名点击“重新验证”，将新令牌保存在这里，然后再次点击“验证HTTP”。当审计报告需要续期验证时，结果页面和仪表盘小工具会提醒您。"
+
+#: admin/views/settings.php:36 admin/views/settings.php:52 admin/views/settings.php:204
+msgid "Get your API key"
+msgstr "获取您的 API 密钥"
+
+#: admin/views/settings.php:367
+msgid "Other ways to verify"
+msgstr "其他验证方式"
+
+#. translators: %s: DNS record name.
+#: admin/views/settings.php:374
+msgid "DNS record: add a TXT record named %s whose value is the token, then click Verify DNS in the app. This works when the file cannot be served, for example for a subdirectory install or a server that handles /.well-known/ itself."
+msgstr "DNS 记录：添加一条名为 %s、值为令牌的 TXT 记录，然后在应用中点击“验证DNS”。当文件无法提供时可以使用此方式，例如安装在子目录中，或服务器自行处理 /.well-known/ 的情况。"
+
+#: admin/views/settings.php:380
+msgid "Google Search Console: in the app, connect the Google account that owns the site's Search Console property and synchronize the properties. A Domain property covers the host and its subdomains; a URL-prefix property must be the root of the host for the host-level checks."
+msgstr "Google Search Console：在应用中连接拥有该网站 Search Console 资源的 Google 账户，并同步资源。网域资源涵盖主机及其子域名；对于主机级检查，网址前缀资源必须是主机的根目录。"
+
+#: admin/views/settings.php:382
+msgid "How verification and renewal work"
+msgstr "验证与续期的工作方式"
+
+#: admin/views/settings.php:40
+msgid "Enter a new key to replace the stored one"
+msgstr "输入新密钥以替换已保存的密钥"
+
+#: admin/views/settings.php:40
+msgid "Paste your Sitelemetry MCP API key"
+msgstr "粘贴您的 Sitelemetry MCP API 密钥"
+
+#: admin/views/settings.php:45
+msgid "Remove the stored key"
+msgstr "移除已保存的密钥"
+
+#: admin/views/settings.php:50
+msgid "In the app, open My account and expand Manual connection and API key to copy the API key. The key is stored in the WordPress options table and is sent only to sitelemetry.com."
+msgstr "在应用中打开“我的账户”，展开“手动连接和 API 密钥”以复制 API 密钥。密钥保存在 WordPress 选项表中，并且只会发送到 sitelemetry.com。"
+
+#: admin/views/settings.php:58
+msgid "Target"
+msgstr "目标"
+
+#: admin/views/settings.php:61
+msgid "Defaults to this site's address. Audit only websites you own or are authorized to test; every audit is performed by Sitelemetry against the live target and recorded on the connected account."
+msgstr "默认为此网站的地址。请只审计您拥有或已获授权测试的网站；每次审计都由 Sitelemetry 针对线上目标执行，并记录在所连接的账户中。"
+
+#: admin/views/settings.php:65
+msgid "Audit kind"
+msgstr "审计类型"
+
+#: admin/views/settings.php:73
+msgid "The security audit is included in every plan. Other audit kinds need a paid plan; when the connected account does not include one, the audit is not started and no allowance is used."
+msgstr "所有套餐都包含安全审计。其他审计类型需要付费套餐；如果所连接的账户不包含，审计不会启动，也不会消耗额度。"
+
+#: admin/views/settings.php:74
+msgid "Compare plans"
+msgstr "比较套餐"
+
+#: admin/views/settings.php:79
+msgid "Weekly audit"
+msgstr "每周审计"
+
+#: admin/views/settings.php:83
+msgid "Run the selected audit once a week in the background (WP-Cron)"
+msgstr "每周在后台运行一次所选审计（WP-Cron）"
+
+#: admin/views/settings.php:86
+msgid "Each completed audit uses one unit of the monthly allowance of the connected account. WP-Cron runs when the site receives visits unless a system cron triggers it."
+msgstr "每次完成的审计会消耗所连接账户每月额度中的一次。除非由系统 cron 触发，否则 WP-Cron 会在网站有访问时运行。"
+
+#. translators: %s: date and time.
+#: admin/views/settings.php:91
+msgid "Next run: %s."
+msgstr "下次运行：%s。"
+
+#. translators: %s: audit kind label.
+#: admin/views/weekly-notice.php:22
+msgid "Weekly Sitelemetry audit (%s)"
+msgstr "Sitelemetry 每周审计（%s）"
+
+#: includes/class-sitelemetry-audit-admin.php:111 includes/class-sitelemetry-audit-admin.php:222
+msgid "Settings"
+msgstr "设置"
+
+#: includes/class-sitelemetry-audit-admin.php:188
+msgid "Waiting for Sitelemetry…"
+msgstr "正在等待 Sitelemetry…"
+
+#. translators: %s: elapsed time, for example 1:05.
+#: includes/class-sitelemetry-audit-admin.php:190
+msgid "Elapsed: %s"
+msgstr "已用时间：%s"
+
+#: includes/class-sitelemetry-audit-admin.php:191
+msgid "The audit finished. Loading the results…"
+msgstr "审计已完成。正在加载结果…"
+
+#: includes/class-sitelemetry-audit-admin.php:192
+msgid "The progress check failed. The audit keeps running; reload this page to check again."
+msgstr "进度检查出错。审计仍在运行；请重新加载此页面再次检查。"
+
+#: includes/class-sitelemetry-audit-admin.php:193
+msgid "Running…"
+msgstr "运行中…"
+
+#: includes/class-sitelemetry-audit-admin.php:196
+msgid "Prompt copied. Paste it into ChatGPT, Claude or your coding assistant."
+msgstr "提示词已复制。请粘贴到 ChatGPT、Claude 或您的编程助手中。"
+
+#: includes/class-sitelemetry-audit-admin.php:197
+msgid "The prompt could not be copied automatically. Select the text below and copy it."
+msgstr "无法自动复制提示词。请选中下方文本并复制。"
+
+#: includes/class-sitelemetry-audit-admin.php:198
+msgid "Verifying…"
+msgstr "正在验证…"
+
+#: includes/class-sitelemetry-audit-admin.php:211
+msgid "You do not have permission to access this page."
+msgstr "您没有访问此页面的权限。"
+
+#: includes/class-sitelemetry-audit-admin.php:223
+msgid "Results"
+msgstr "结果"
+
+#: includes/class-sitelemetry-audit-admin.php:246
+msgid "The audit was started. This page updates while Sitelemetry works."
+msgstr "审计已启动。Sitelemetry 运行期间此页面会自动更新。"
+
+#: includes/class-sitelemetry-audit-admin.php:247
+msgid "An audit is already running. Wait for it to finish or stop waiting for it below."
+msgstr "已有审计正在运行。请等待其完成，或点击下方的“停止等待”。"
+
+#: includes/class-sitelemetry-audit-admin.php:248
+msgid "Add your Sitelemetry API key before running an audit."
+msgstr "运行审计前，请先添加您的 Sitelemetry API 密钥。"
+
+#: includes/class-sitelemetry-audit-admin.php:249 includes/class-sitelemetry-audit-runner.php:228
+msgid "The target must be a valid http or https URL."
+msgstr "目标必须是有效的 http 或 https URL。"
+
+#: includes/class-sitelemetry-audit-admin.php:250 includes/class-sitelemetry-audit-runner.php:221
+msgid "Unsupported audit kind."
+msgstr "不支持的审计类型。"
+
+#: includes/class-sitelemetry-audit-admin.php:251
+msgid "Stopped waiting. The result of this audit will not appear here; run the audit again when you want a result."
+msgstr "已停止等待。此审计的结果不会显示在这里；需要结果时请重新运行审计。"
+
+#: includes/class-sitelemetry-audit-admin.php:252
+msgid "The verification token is saved and the verification file is published. Test the file, then click Verify HTTP in the app."
+msgstr "验证令牌已保存，验证文件已发布。请测试文件，然后在应用中点击“验证HTTP”。"
+
+#: includes/class-sitelemetry-audit-admin.php:253
+msgid "The verification token was removed; the verification file is no longer published."
+msgstr "验证令牌已移除；验证文件不再发布。"
+
+#: includes/class-sitelemetry-audit-admin.php:254
+msgid "The verification file was tested; the result is shown under Verify this site."
+msgstr "已测试验证文件；结果显示在“验证此网站”下。"
+
+#: includes/class-sitelemetry-audit-admin.php:256
+msgid "The verification did not complete. The reason and how to fix it are shown under Verify this site."
+msgstr "验证未完成。原因和解决方法显示在“验证此网站”下。"
+
+#: includes/class-sitelemetry-audit-admin.php:257
+msgid "One-click verification is not available yet. Verify with a token from the app as described under Verify this site."
+msgstr "一键验证尚不可用。请按照“验证此网站”下的说明，使用应用中的令牌进行验证。"
+
+#. translators: 1: audit kind label, 2: plan name.
+#: includes/class-sitelemetry-audit-admin.php:287
+msgid "%1$s (included in %2$s)"
+msgstr "%1$s（包含在 %2$s 中）"
+
+#. translators: 1: audit kind label, 2: plan name.
+#: includes/class-sitelemetry-audit-admin.php:289
+msgid "%1$s (requires %2$s or higher)"
+msgstr "%1$s（需要 %2$s 或更高套餐）"
+
+#: includes/class-sitelemetry-audit-admin.php:413
+msgid "The file works: WordPress loaded it from its own address with the stored token."
+msgstr "文件可用：WordPress 已使用保存的令牌从自身地址加载该文件。"
+
+#: includes/class-sitelemetry-audit-admin.php:498 includes/class-sitelemetry-audit-admin.php:517 includes/class-sitelemetry-audit-admin.php:533 includes/class-sitelemetry-audit-admin.php:606 includes/class-sitelemetry-audit-admin.php:659
+msgid "You do not have permission to change these settings."
+msgstr "您没有更改这些设置的权限。"
+
+#: includes/class-sitelemetry-audit-admin.php:679 includes/class-sitelemetry-audit-admin.php:702 includes/class-sitelemetry-audit-admin.php:717 includes/class-sitelemetry-audit-admin.php:731
+msgid "You do not have permission to run audits."
+msgstr "您没有运行审计的权限。"
+
+#: includes/class-sitelemetry-audit-admin.php:79 includes/class-sitelemetry-audit-admin.php:219
+msgid "Sitelemetry Audit"
+msgstr "Sitelemetry Audit"
+
+#: includes/class-sitelemetry-audit-admin.php:80
+msgid "Sitelemetry"
+msgstr "Sitelemetry"
+
+#: includes/class-sitelemetry-audit-dashboard.php:54
+msgid "Sitelemetry audit"
+msgstr "Sitelemetry 审计"
+
+#: includes/class-sitelemetry-audit-labels.php:116
+msgid "Critical"
+msgstr "严重"
+
+#: includes/class-sitelemetry-audit-labels.php:117
+msgid "High"
+msgstr "高危"
+
+#: includes/class-sitelemetry-audit-labels.php:118
+msgid "Medium"
+msgstr "中危"
+
+#: includes/class-sitelemetry-audit-labels.php:119
+msgid "Low"
+msgstr "低危"
+
+#: includes/class-sitelemetry-audit-labels.php:120
+msgid "Info"
+msgstr "信息"
+
+#: includes/class-sitelemetry-audit-labels.php:155
+msgid "Not run: the connected account must accept the current audit authorization terms"
+msgstr "未运行：所连接的账户必须接受当前的审计授权条款"
+
+#: includes/class-sitelemetry-audit-labels.php:158
+msgid "Not run: ownership verification of the target must be renewed"
+msgstr "未运行：需要续期目标的所有权验证"
+
+#: includes/class-sitelemetry-audit-labels.php:161
+msgid "Not run: the current verification of the target does not cover the requested host-level checks"
+msgstr "未运行：目标当前的验证不涵盖所请求的主机级检查"
+
+#: includes/class-sitelemetry-audit-labels.php:163
+msgid "Not run: ownership verification of the target is required"
+msgstr "未运行：需要验证目标的所有权"
+
+#: includes/class-sitelemetry-audit-labels.php:167
+msgid "Completed"
+msgstr "已完成"
+
+#: includes/class-sitelemetry-audit-labels.php:169
+msgid "Completed with partial coverage"
+msgstr "已完成（部分覆盖）"
+
+#: includes/class-sitelemetry-audit-labels.php:171
+msgid "Not run: the monthly audit allowance of the connected account is exhausted"
+msgstr "未运行：所连接账户的每月审计额度已用完"
+
+#: includes/class-sitelemetry-audit-labels.php:173
+msgid "Not run: this audit kind is not included in the connected plan"
+msgstr "未运行：所连接的套餐不包含此审计类型"
+
+#: includes/class-sitelemetry-audit-labels.php:175
+msgid "Not completed"
+msgstr "未完成"
+
+#. translators: %s: audit job id.
+#: includes/class-sitelemetry-audit-labels.php:192
+msgid "The audit did not finish within the time budget. Sitelemetry may still be working on job %s; run the audit again later to get a result."
+msgstr "审计未在时间上限内完成。Sitelemetry 可能仍在处理任务 %s；请稍后重新运行审计以获取结果。"
+
+#: includes/class-sitelemetry-audit-labels.php:194
+msgid "The audit did not finish within the time budget. Run it again later."
+msgstr "审计未在时间上限内完成。请稍后重新运行。"
+
+#: includes/class-sitelemetry-audit-labels.php:196
+msgid "Sitelemetry rejected the API key. Check the key in the plugin settings; you can create a new one in the app."
+msgstr "Sitelemetry 拒绝了该 API 密钥。请在插件设置中检查密钥；您可以在应用中创建新密钥。"
+
+#: includes/class-sitelemetry-audit-labels.php:198
+msgid "The site could not reach Sitelemetry. Check outgoing HTTP connections from the server and try again."
+msgstr "网站无法连接到 Sitelemetry。请检查服务器的出站 HTTP 连接，然后重试。"
+
+#: includes/class-sitelemetry-audit-labels.php:200
+msgid "No API key is configured."
+msgstr "未配置 API 密钥。"
+
+#: includes/class-sitelemetry-audit-labels.php:202
+msgid "The target is not a valid http or https URL."
+msgstr "目标不是有效的 http 或 https URL。"
+
+#: includes/class-sitelemetry-audit-labels.php:204
+msgid "The audit is still running."
+msgstr "审计仍在运行。"
+
+#: includes/class-sitelemetry-audit-labels.php:237
+msgid "failed"
+msgstr "出错"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:244
+msgid "%s: not included in the connected plan"
+msgstr "%s：所连接的套餐不包含"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:247
+msgid "%s: outside the connected account scope"
+msgstr "%s：超出所连接账户的范围"
+
+#. translators: %s: comma-separated module names.
+#: includes/class-sitelemetry-audit-labels.php:252
+msgid "Security modules outside the connected plan: %s"
+msgstr "所连接套餐之外的安全模块：%s"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:256 includes/class-sitelemetry-audit-labels.php:260
+msgid "%s: unavailable (no measurement for this target)"
+msgstr "%s：不可用（此目标没有测量数据）"
+
+#. translators: 1: number of pages, 2: comma-separated page addresses.
+#: includes/class-sitelemetry-audit-labels.php:268
+msgid "Pages not assessed because robots.txt disallows them (%1$d): %2$s"
+msgstr "因 robots.txt 禁止抓取而未评估的页面（%1$d）：%2$s"
+
+#. translators: 1: number of pages, 2: comma-separated page addresses.
+#: includes/class-sitelemetry-audit-labels.php:271
+msgid "Pages found but not assessed (%1$d): %2$s"
+msgstr "已发现但未评估的页面（%1$d）：%2$s"
+
+#. translators: %s: comma-separated metric names such as LCP, INP, CLS.
+#: includes/class-sitelemetry-audit-labels.php:278
+msgid "Metrics not measured: %s"
+msgstr "未测量的指标：%s"
+
+#. translators: %s: comma-separated module names.
+#: includes/class-sitelemetry-audit-labels.php:282
+msgid "Security modules that require ownership verification of the target: %s"
+msgstr "需要验证目标所有权的安全模块：%s"
+
+#. translators: %s: the reason as the audit reported it.
+#: includes/class-sitelemetry-audit-labels.php:296
+msgid "Reported by the audit: %s"
+msgstr "审计报告的原因：%s"
+
+#. translators: 1: module name, 2: module status such as "not measured", 3: the reasons reported by the audit.
+#: includes/class-sitelemetry-audit-labels.php:299
+msgid "%1$s: %2$s (%3$s)"
+msgstr "%1$s：%2$s（%3$s）"
+
+#. translators: 1: what was not measured, 2: explanation, 3: the reason as the audit reported it.
+#: includes/class-sitelemetry-audit-labels.php:336
+msgid "%1$s. %2$s %3$s"
+msgstr "%1$s。%2$s %3$s"
+
+#: includes/class-sitelemetry-audit-labels.php:348
+msgid "Checks that ended with an error"
+msgstr "以错误结束的检查"
+
+#: includes/class-sitelemetry-audit-labels.php:349
+msgid "These checks started but ended with an error (for example a timeout), so they have no result."
+msgstr "这些检查已开始，但以错误结束（例如超时），因此没有结果。"
+
+#: includes/class-sitelemetry-audit-labels.php:352
+msgid "Checks without a result"
+msgstr "没有结果的检查"
+
+#: includes/class-sitelemetry-audit-labels.php:353
+msgid "Sitelemetry could not determine a result for these checks, for example because the site did not answer the request or the data the check needs was not available."
+msgstr "Sitelemetry 无法确定这些检查的结果，例如网站未响应请求，或检查所需的数据不可用。"
+
+#: includes/class-sitelemetry-audit-labels.php:356
+msgid "Checks to review yourself"
+msgstr "需要您自行审查的检查"
+
+#: includes/class-sitelemetry-audit-labels.php:357
+msgid "An automated audit cannot decide these checks; review them yourself."
+msgstr "自动审计无法判定这些检查；请您自行审查。"
+
+#: includes/class-sitelemetry-audit-labels.php:360
+msgid "Checks that do not apply"
+msgstr "不适用的检查"
+
+#: includes/class-sitelemetry-audit-labels.php:361
+msgid "These checks do not apply to this site, for example because it does not use the feature they test."
+msgstr "这些检查不适用于此网站，例如网站未使用它们所检测的功能。"
+
+#: includes/class-sitelemetry-audit-labels.php:413
+msgid "Some requested measurements were unavailable; this result does not say which."
+msgstr "部分请求的测量不可用；此结果未说明是哪些。"
+
+#: includes/class-sitelemetry-audit-labels.php:424
+msgid "What was not measured"
+msgstr "未测量的内容"
+
+#: includes/class-sitelemetry-audit-labels.php:426
+msgid "Explained items come from how the site responded (such as a redirect or a firewall) or from a deliberate scan limit, not from an error in the audit. Unmeasured checks are not counted as passes."
+msgstr "带有说明的项目源于网站的响应方式（例如重定向或防火墙）或有意设置的扫描上限，而不是审计出错。未测量的检查不计为通过。"
+
+#: includes/class-sitelemetry-audit-labels.php:427
+msgid "Unmeasured checks are not counted as passes."
+msgstr "未测量的检查不计为通过。"
+
+#. translators: %d: number of checks without a result that are not listed.
+#: includes/class-sitelemetry-audit-labels.php:431
+msgid "%d more check without a result was counted but not kept with this result, so it is not listed here."
+msgid_plural "%d more checks without a result were counted but not kept with this result, so they are not listed here."
+msgstr[0] "另有 %d 项没有结果的检查已计入，但未随此结果保存，因此未在此列出。"
+
+#: includes/class-sitelemetry-audit-labels.php:58 includes/class-sitelemetry-audit-plans.php:28
+msgid "Security"
+msgstr "安全"
+
+#: includes/class-sitelemetry-audit-labels.php:59
+msgid "Technical SEO"
+msgstr "技术 SEO"
+
+#: includes/class-sitelemetry-audit-labels.php:60 includes/class-sitelemetry-audit-plans.php:30
+msgid "AI visibility"
+msgstr "AI 可见性"
+
+#: includes/class-sitelemetry-audit-labels.php:61 includes/class-sitelemetry-audit-plans.php:33
+msgid "Integrations"
+msgstr "集成"
+
+#: includes/class-sitelemetry-audit-labels.php:62 includes/class-sitelemetry-audit-plans.php:31
+msgid "Accessibility"
+msgstr "无障碍"
+
+#: includes/class-sitelemetry-audit-labels.php:63 includes/class-sitelemetry-audit-plans.php:32
+msgid "Performance"
+msgstr "性能"
+
+#: includes/class-sitelemetry-audit-labels.php:64
+msgid "Full (all pillars)"
+msgstr "完整（所有领域）"
+
+#: includes/class-sitelemetry-audit-links.php:107
+msgid "Review and accept the current audit authorization terms for the connected account in the app, then run the audit again."
+msgstr "请在应用中查看并接受所连接账户当前的审计授权条款，然后重新运行审计。"
+
+#: includes/class-sitelemetry-audit-links.php:132
+msgid "The connected account has used its monthly audit allowance. It resets at the start of the next billing period. This run did not start an audit and did not consume allowance."
+msgstr "所连接的账户已用完每月审计额度。额度将在下一个计费周期开始时重置。本次运行未启动任何审计，也未消耗额度。"
+
+#. translators: %s: audit kind label.
+#: includes/class-sitelemetry-audit-links.php:135
+msgid "The %s audit is not included in the connected account's plan. This run did not start an audit and did not consume allowance."
+msgstr "所连接账户的套餐不包含%s审计。本次运行未启动任何审计，也未消耗额度。"
+
+#. translators: 1: number of security modules, 2: number of security scans per month.
+#: includes/class-sitelemetry-audit-links.php:139
+msgid "The connected account is on the Free plan: %1$d public security modules and %2$d security scans per month."
+msgstr "所连接的账户使用 Free 套餐：%1$d 个公开安全模块，每月 %2$d 次安全扫描。"
+
+#: includes/class-sitelemetry-audit-links.php:141
+msgid "The connected account is on the Free plan."
+msgstr "所连接的账户使用 Free 套餐。"
+
+#. translators: %s: plan name.
+#: includes/class-sitelemetry-audit-links.php:146
+msgid "The connected account is on the %s plan."
+msgstr "所连接的账户使用 %s 套餐。"
+
+#: includes/class-sitelemetry-audit-links.php:148
+msgid "Each completed audit uses one unit of the monthly allowance of the connected account; polling a running audit does not use more. The current plan and the remaining allowance are shown in the app."
+msgstr "每次完成的审计会消耗所连接账户每月额度中的一次；轮询正在运行的审计不会额外消耗。当前套餐和剩余额度显示在应用中。"
+
+#: includes/class-sitelemetry-audit-links.php:157 includes/class-sitelemetry-audit-links.php:158 includes/class-sitelemetry-audit-links.php:159 includes/class-sitelemetry-audit-plans.php:196
+msgid "see pricing"
+msgstr "查看价格"
+
+#: includes/class-sitelemetry-audit-links.php:166
+msgid "Paid plans include these audit kinds and security module counts:"
+msgstr "付费套餐包含以下审计类型和安全模块数量："
+
+#: includes/class-sitelemetry-audit-modules.php:128
+msgid "not measured"
+msgstr "未测量"
+
+#: includes/class-sitelemetry-audit-modules.php:131
+msgid "partly measured"
+msgstr "部分测量"
+
+#: includes/class-sitelemetry-audit-modules.php:243
+msgid "Only a limited number of scripts is scanned per audit; the remaining scripts were not checked and are not counted as clean."
+msgstr "每次审计只扫描有限数量的脚本；其余脚本未经检查，不计为安全。"
+
+#. translators: %s: HTTP status codes separated by slashes, for example 301/302.
+#: includes/class-sitelemetry-audit-modules.php:287
+msgid "The site answers these paths with a redirect (HTTP %s), for example to its sign-in page. Sitelemetry does not follow redirects for these checks, so they were not measured."
+msgstr "网站对这些路径返回重定向（HTTP %s），例如跳转到其登录页。Sitelemetry 在这些检查中不跟随重定向，因此这些路径未被测量。"
+
+#: includes/class-sitelemetry-audit-modules.php:290
+msgid "The site rate-limited these requests (its own protection)."
+msgstr "网站对这些请求进行了限速（网站自身的保护）。"
+
+#: includes/class-sitelemetry-audit-modules.php:293
+msgid "The site returned a server error for these requests."
+msgstr "网站对这些请求返回了服务器错误。"
+
+#: includes/class-sitelemetry-audit-modules.php:296
+msgid "The site did not answer within the time limit."
+msgstr "网站未在时限内响应。"
+
+#. translators: %d: number of ports that gave no reply.
+#: includes/class-sitelemetry-audit-modules.php:315
+msgid "%d port gave no reply: a firewall, usually the site's own, silently drops these connection attempts. This is normal hardening; silent ports are counted neither as open nor as closed."
+msgid_plural "%d ports gave no reply: a firewall, usually the site's own, silently drops these connection attempts. This is normal hardening; silent ports are counted neither as open nor as closed."
+msgstr[0] "%d 个端口没有回应：防火墙（通常是网站自己的）静默丢弃了这些连接尝试。这是常见的加固措施；无回应的端口既不计为开放，也不计为关闭。"
+
+#: includes/class-sitelemetry-audit-modules.php:386
+msgid "Other checks"
+msgstr "其他检查"
+
+#: includes/class-sitelemetry-audit-modules.php:406
+msgid "Passing checks"
+msgstr "通过的检查"
+
+#: includes/class-sitelemetry-audit-modules.php:415
+msgid "Sitelemetry counted these passing checks but did not send the list of them with this result."
+msgstr "Sitelemetry 统计了这些通过的检查，但没有随此结果发送其列表。"
+
+#: includes/class-sitelemetry-audit-modules.php:416
+msgid "This result was stored by an earlier version of the plugin, without the list of passing checks. The list appears here after the next audit."
+msgstr "此结果由早期版本的插件保存，不含通过的检查列表。下次审计后，列表会显示在这里。"
+
+#. translators: 1: section title, 2: number of items listed, 3: number of items counted.
+#: includes/class-sitelemetry-audit-modules.php:449
+msgid "%1$s (%2$d of %3$d)"
+msgstr "%1$s（列出 %2$d 项，共 %3$d 项）"
+
+#. translators: %d: number of passing checks that are not listed.
+#: includes/class-sitelemetry-audit-modules.php:452
+msgid "%d more passing check was counted but not kept with this result, so it is not listed here."
+msgid_plural "%d more passing checks were counted but not kept with this result, so they are not listed here."
+msgstr[0] "另有 %d 项通过的检查已计入，但未随此结果保存，因此未在此列出。"
+
+#. translators: 1: section or group title, 2: number of items.
+#: includes/class-sitelemetry-audit-modules.php:465
+msgid "%1$s (%2$d)"
+msgstr "%1$s（%2$d）"
+
+#: includes/class-sitelemetry-audit-modules.php:52
+msgid "DNS posture"
+msgstr "DNS 状态"
+
+#: includes/class-sitelemetry-audit-modules.php:53
+msgid "Email DNS"
+msgstr "邮件 DNS"
+
+#: includes/class-sitelemetry-audit-modules.php:54
+msgid "WHOIS / RDAP"
+msgstr "WHOIS / RDAP"
+
+#: includes/class-sitelemetry-audit-modules.php:55
+msgid "TLS / certificate"
+msgstr "TLS / 证书"
+
+#: includes/class-sitelemetry-audit-modules.php:56
+msgid "HTTP security headers"
+msgstr "HTTP 安全标头"
+
+#: includes/class-sitelemetry-audit-modules.php:57
+msgid "MITM / HTTPS posture"
+msgstr "MITM / HTTPS 状态"
+
+#: includes/class-sitelemetry-audit-modules.php:58
+msgid "Technology fingerprint"
+msgstr "技术指纹"
+
+#: includes/class-sitelemetry-audit-modules.php:59
+msgid "HTTP methods / CORS"
+msgstr "HTTP 方法 / CORS"
+
+#: includes/class-sitelemetry-audit-modules.php:60
+msgid "Sensitive file exposure"
+msgstr "敏感文件暴露"
+
+#: includes/class-sitelemetry-audit-modules.php:61
+msgid "API / GraphQL exposure"
+msgstr "API / GraphQL 暴露"
+
+#: includes/class-sitelemetry-audit-modules.php:62
+msgid "Admin / login surface"
+msgstr "管理 / 登录面"
+
+#: includes/class-sitelemetry-audit-modules.php:63
+msgid "Supply-chain files"
+msgstr "供应链文件"
+
+#: includes/class-sitelemetry-audit-modules.php:64
+msgid "WordPress posture"
+msgstr "WordPress 状态"
+
+#: includes/class-sitelemetry-audit-modules.php:65
+msgid "Port scan"
+msgstr "端口扫描"
+
+#: includes/class-sitelemetry-audit-modules.php:66
+msgid "Port risk intelligence"
+msgstr "端口风险情报"
+
+#: includes/class-sitelemetry-audit-modules.php:67
+msgid "SQL injection canary"
+msgstr "SQL 注入金丝雀"
+
+#: includes/class-sitelemetry-audit-modules.php:68
+msgid "DDoS resilience signals"
+msgstr "DDoS 韧性信号"
+
+#: includes/class-sitelemetry-audit-modules.php:69
+msgid "Leaked secrets"
+msgstr "泄露密钥"
+
+#: includes/class-sitelemetry-audit-modules.php:70
+msgid "Subdomain takeover"
+msgstr "子域接管"
+
+#: includes/class-sitelemetry-audit-modules.php:71
+msgid "Advanced CORS"
+msgstr "高级 CORS"
+
+#: includes/class-sitelemetry-audit-modules.php:72
+msgid "Injection canaries"
+msgstr "注入金丝雀"
+
+#: includes/class-sitelemetry-audit-modules.php:73
+msgid "Compression / CDN"
+msgstr "压缩 / CDN"
+
+#: includes/class-sitelemetry-audit-modules.php:74
+msgid "Pentest scope matrix"
+msgstr "渗透测试范围矩阵"
+
+#: includes/class-sitelemetry-audit-modules.php:75
+msgid "Nmap"
+msgstr "Nmap"
+
+#: includes/class-sitelemetry-audit-modules.php:76
+msgid "Nuclei"
+msgstr "Nuclei"
+
+#: includes/class-sitelemetry-audit-modules.php:77
+msgid "OWASP ZAP"
+msgstr "OWASP ZAP"
+
+#: includes/class-sitelemetry-audit-modules.php:78
+msgid "WPScan"
+msgstr "WPScan"
+
+#: includes/class-sitelemetry-audit-outcome.php:176
+msgid "Untitled finding"
+msgstr "无标题的发现"
+
+#: includes/class-sitelemetry-audit-plans.php:199
+msgid "Free"
+msgstr "免费"
+
+#. translators: %s: price with currency, for example $49.
+#: includes/class-sitelemetry-audit-plans.php:203
+msgid "%s/month"
+msgstr "%s/月"
+
+#: includes/class-sitelemetry-audit-plans.php:240
+msgctxt "plan name"
+msgid "Free"
+msgstr "Free"
+
+#: includes/class-sitelemetry-audit-plans.php:240
+msgctxt "plan name"
+msgid "Starter"
+msgstr "Starter"
+
+#: includes/class-sitelemetry-audit-plans.php:27
+msgid "Full"
+msgstr "完整"
+
+#: includes/class-sitelemetry-audit-plans.php:29
+msgid "SEO"
+msgstr "SEO"
+
+#: includes/class-sitelemetry-audit-plans.php:34
+msgid "Search Console"
+msgstr "Search Console"
+
+#: includes/class-sitelemetry-audit-runner.php:198
+msgid "Another audit is already running for this account; retrying shortly."
+msgstr "此账户已有另一个审计正在运行；稍后将自动重试。"
+
+#: includes/class-sitelemetry-audit-runner.php:224
+msgid "Add your Sitelemetry API key in the settings before running an audit."
+msgstr "运行审计前，请先在设置中添加您的 Sitelemetry API 密钥。"
+
+#: includes/class-sitelemetry-audit-runner.php:233
+msgid "An audit is already running. Wait for it to finish or stop waiting for it on the results page."
+msgstr "已有审计正在运行。请等待其完成，或在结果页面点击“停止等待”。"
+
+#: includes/class-sitelemetry-audit-runner.php:355
+msgid "Sitelemetry is running the audit. The result appears here when it is ready."
+msgstr "Sitelemetry 正在执行审计。结果就绪后会显示在这里。"
+
+#: includes/class-sitelemetry-audit-runner.php:356
+msgid "Starting the audit…"
+msgstr "正在启动审计…"
+
+#: includes/class-sitelemetry-audit-settings.php:202
+msgid "The target must be a valid http or https URL. The previous value was kept."
+msgstr "目标必须是有效的 http 或 https URL。已保留之前的值。"
+
+#: includes/class-sitelemetry-audit-verification.php:1200
+msgid "Verification complete ✓"
+msgstr "验证完成 ✓"
+
+#. translators: %s: date and time the verification expires.
+#: includes/class-sitelemetry-audit-verification.php:1203
+msgid "Verification complete ✓ valid until %s"
+msgstr "验证完成 ✓ 有效期至 %s"
+
+#: includes/class-sitelemetry-audit-verification.php:1230
+msgid "Sitelemetry did not accept the API key. It may be mistyped or revoked (for example after a password change), or the account cannot use API access. Get your API key again from the app, save it in the plugin settings and try again."
+msgstr "Sitelemetry 未接受该 API 密钥。密钥可能输入有误或已被撤销（例如更改密码后），或者该账户无法使用 API 访问。请从应用中重新获取 API 密钥，保存到插件设置中，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1232
+msgid "Sitelemetry verifies only public host names, and the address of this site is not one (for example an IP address, localhost or a name without a dot). Verify the public address of the site instead."
+msgstr "Sitelemetry 只验证公共主机名，而此网站的地址不是公共主机名（例如 IP 地址、localhost 或不含点的名称）。请改为验证网站的公共地址。"
+
+#. translators: %d: maximum number of unfinished verifications.
+#: includes/class-sitelemetry-audit-verification.php:1235
+msgid "Your Sitelemetry workspace already has the maximum number of unfinished verifications (%d). Finish or remove some under Verified Domains in the app, then try again."
+msgstr "您的 Sitelemetry 工作区中未完成的验证已达到上限（%d 个）。请在应用的“已验证域名”中完成或删除其中一些，然后重试。"
+
+#. translators: %s: time to wait, for example "5 mins".
+#: includes/class-sitelemetry-audit-verification.php:1239
+msgid "Too many verification attempts. Try again in %s."
+msgstr "验证尝试次数过多。请在 %s 后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1241
+msgid "A verification for this account is already running. Wait a few seconds, then try again."
+msgstr "此账户已有一个验证正在进行。请等待几秒钟，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1244
+msgid "One-click verification is not available on Sitelemetry right now. Verify with a token from the app as described under Verify this site in the plugin settings, or use a DNS record or Google Search Console."
+msgstr "Sitelemetry 目前无法使用一键验证。请按照插件设置中“验证此网站”下的说明，使用应用中的令牌进行验证，或使用 DNS 记录或 Google Search Console。"
+
+#. translators: %s: host name in the answer of Sitelemetry.
+#: includes/class-sitelemetry-audit-verification.php:1247
+msgid "Sitelemetry answered with a verification file for another host (%s), so the plugin did not publish it. Check the site address in Settings > General, then try again."
+msgstr "Sitelemetry 返回了另一个主机（%s）的验证文件，因此插件没有发布它。请检查“设置 > 常规”中的网站地址，然后重试。"
+
+#. translators: %s: error message.
+#: includes/class-sitelemetry-audit-verification.php:1250
+msgid "WordPress could not reach Sitelemetry (%s). Check that this server can make outgoing HTTPS requests to sitelemetry.com, then try again."
+msgstr "WordPress 无法连接到 Sitelemetry（%s）。请检查此服务器能否向 sitelemetry.com 发出 HTTPS 出站请求，然后重试。"
+
+#. translators: %s: error code.
+#: includes/class-sitelemetry-audit-verification.php:1256
+msgid "Sitelemetry could not complete the verification (%s). Try again in a few minutes."
+msgstr "Sitelemetry 无法完成验证（%s）。请几分钟后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1271
+msgid "Sitelemetry could not load the verification file: the site answered HTTP 404. The web server most likely handles /.well-known/ itself (for example an nginx rule for hidden paths) and does not pass the request to WordPress. Ask your host to pass /.well-known/sitelemetry-verification.txt to WordPress, or use a DNS record."
+msgstr "Sitelemetry 无法加载验证文件：网站返回了 HTTP 404。Web 服务器很可能自行处理 /.well-known/（例如针对隐藏路径的 nginx 规则），没有将请求传递给 WordPress。请让您的主机服务商将 /.well-known/sitelemetry-verification.txt 传递给 WordPress，或使用 DNS 记录。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1275
+msgid "Sitelemetry could not load the verification file: the site answered HTTP %d. A firewall, a security plugin or password protection blocks the request (Sitelemetry uses the user agent Sitelemetry-Ownership-Verifier/1.0). Allow /.well-known/sitelemetry-verification.txt, then try again."
+msgstr "Sitelemetry 无法加载验证文件：网站返回了 HTTP %d。防火墙、安全插件或密码保护阻止了该请求（Sitelemetry 使用用户代理 Sitelemetry-Ownership-Verifier/1.0）。请允许 /.well-known/sitelemetry-verification.txt，然后重试。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1278
+msgid "Sitelemetry could not load the verification file: the site answered HTTP %d instead of the file. Check that the site is up and not in maintenance mode, then try again."
+msgstr "Sitelemetry 无法加载验证文件：网站返回了 HTTP %d，而不是该文件。请检查网站是否正常运行且未处于维护模式，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1280
+msgid "The verification file address redirects to another host, protocol or port, or redirects more than twice, and Sitelemetry does not follow such redirects. The usual cause is a redirect between www and non-www: Sitelemetry verifies one exact host name, so set the site address in Settings > General to the host your server redirects to, or stop the redirect for /.well-known/sitelemetry-verification.txt."
+msgstr "验证文件地址重定向到了另一个主机、协议或端口，或者重定向超过两次，而 Sitelemetry 不跟随此类重定向。常见原因是带 www 和不带 www 的地址之间的重定向：Sitelemetry 只验证一个精确主机名，因此请在“设置 > 常规”中将网站地址设为服务器重定向到的主机，或取消 /.well-known/sitelemetry-verification.txt 的重定向。"
+
+#: includes/class-sitelemetry-audit-verification.php:1282
+msgid "Sitelemetry loaded the verification file, but it did not contain exactly the token. A cached copy, another file at that path or a page from a cache, maintenance or security plugin answered instead. Purge the cache, remove the other file or exclude /.well-known/sitelemetry-verification.txt, then try again."
+msgstr "Sitelemetry 已加载验证文件，但其内容与令牌不完全一致。实际响应的是缓存副本、该路径上的另一个文件，或缓存、维护或安全插件的页面。请清除缓存、删除另一个文件或排除 /.well-known/sitelemetry-verification.txt，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1284
+msgid "The site did not answer Sitelemetry in time (10 seconds). Check that the site is up and reachable from the internet, then try again."
+msgstr "网站未能及时（10 秒内）响应 Sitelemetry。请检查网站是否正常运行并可从互联网访问，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1286
+msgid "The host name of this site does not resolve to a public address, so Sitelemetry cannot load the file from the internet. Check the DNS records of the domain, or verify the public address of the site instead."
+msgstr "此网站的主机名没有解析到公共地址，因此 Sitelemetry 无法从互联网加载该文件。请检查该域名的 DNS 记录，或改为验证网站的公共地址。"
+
+#: includes/class-sitelemetry-audit-verification.php:1288
+msgid "Sitelemetry could not resolve the host name of this site. Check the DNS records of the domain, then try again."
+msgstr "Sitelemetry 无法解析此网站的主机名。请检查该域名的 DNS 记录，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1290
+msgid "Sitelemetry could not validate the TLS certificate of this site. Install a valid certificate for this exact host name, then try again."
+msgstr "Sitelemetry 无法校验此网站的 TLS 证书。请为这个精确主机名安装有效证书，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1292
+msgid "The verification file address answered with more than 2 KB, so something other than the plugin answers there. Remove that file or exclude /.well-known/sitelemetry-verification.txt from it, then try again."
+msgstr "验证文件地址返回的内容超过 2 KB，说明在那里响应的不是插件。请删除该文件，或将 /.well-known/sitelemetry-verification.txt 从中排除，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1294
+msgid "The verification code changed while Sitelemetry was checking it (for example because it was renewed in the app at the same time). Click Verify this site again."
+msgstr "Sitelemetry 检查期间验证代码发生了变化（例如同时在应用中进行了续期）。请再次点击“验证此网站”。"
+
+#: includes/class-sitelemetry-audit-verification.php:1296
+msgid "Sitelemetry could not connect to this site. Check that it is reachable from the internet and that no firewall blocks the user agent Sitelemetry-Ownership-Verifier/1.0, then try again."
+msgstr "Sitelemetry 无法连接到此网站。请检查网站是否可从互联网访问，以及是否有防火墙阻止用户代理 Sitelemetry-Ownership-Verifier/1.0，然后重试。"
+
+#: includes/class-sitelemetry-audit-verification.php:1314
+msgid "This site address is not reachable from the internet (a local, private or test host). Sitelemetry verifies only public hosts, so the file cannot verify it."
+msgstr "无法从互联网访问此网站地址（本地、私有或测试主机）。Sitelemetry 只验证公共主机，因此文件方式不适用于此网站。"
+
+#: includes/class-sitelemetry-audit-verification.php:1317
+msgid "WordPress runs in a subdirectory of this host. Sitelemetry fetches the file from the root of the host, which usually does not reach WordPress here; use the DNS method instead, or place the file at the root of the host."
+msgstr "WordPress 运行在此主机的子目录中。Sitelemetry 从主机根目录获取文件，而这里的根目录通常不会到达 WordPress；请改用 DNS 方式，或将文件放在主机根目录。"
+
+#: includes/class-sitelemetry-audit-verification.php:1320
+msgid "This site address uses http://. Sitelemetry fetches the file over https:// unless the domain was added in the app with an http:// address."
+msgstr "此网站地址使用 http://。除非该域名在应用中以 http:// 地址添加，否则 Sitelemetry 会通过 https:// 获取文件。"
+
+#. translators: %d: port number of the site address.
+#: includes/class-sitelemetry-audit-verification.php:1325
+msgid "This site address uses port %d. Sitelemetry fetches the file from the default port of the host (443 for https://, 80 for http://), so the file must also be reachable there; Test the file checks that address."
+msgstr "此网站地址使用端口 %d。Sitelemetry 从主机的默认端口（https:// 为 443，http:// 为 80）获取文件，因此该文件也必须能在默认端口访问；“测试文件”会检查该地址。"
+
+#: includes/class-sitelemetry-audit-verification.php:1456
+msgid "The file works: WordPress loaded it from its own address with the stored token. Now click Verify HTTP for this domain in the app. Sitelemetry loads the file from the internet with its own user agent (Sitelemetry-Ownership-Verifier/1.0), so a firewall rule that blocks unknown bots can still make verification fail."
+msgstr "文件可用：WordPress 已使用保存的令牌从自身地址加载该文件。现在请在应用中为此域名点击“验证HTTP”。Sitelemetry 会以自己的用户代理（Sitelemetry-Ownership-Verifier/1.0）从互联网加载该文件，因此阻止未知机器人的防火墙规则仍可能导致验证失败。"
+
+#: includes/class-sitelemetry-audit-verification.php:1458
+msgid "No token is stored for this site yet. Paste the token from the app first."
+msgstr "此网站尚未保存令牌。请先粘贴应用中的令牌。"
+
+#. translators: %s: error message.
+#: includes/class-sitelemetry-audit-verification.php:1461
+msgid "WordPress could not load the file from its own address (%s). Some hosts block requests from a site to itself, so this does not prove that Sitelemetry cannot load it; open the file address in a browser to check."
+msgstr "WordPress 无法从自身地址加载该文件（%s）。有些主机会阻止网站向自身发出的请求，因此这并不能证明 Sitelemetry 无法加载该文件；请在浏览器中打开文件地址进行检查。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1464
+msgid "The file address answers with a redirect (HTTP %d) without a usable destination."
+msgstr "文件地址返回了重定向（HTTP %d），但没有可用的目标地址。"
+
+#. translators: 1: HTTP status code, 2: host the redirect points to.
+#: includes/class-sitelemetry-audit-verification.php:1467
+msgid "The file address redirects (HTTP %1$d) to another host, %2$s. Sitelemetry does not follow redirects to another host, so verification fails. Add and verify that host in the app instead, or stop the redirect for this path."
+msgstr "文件地址重定向（HTTP %1$d）到另一个主机 %2$s。Sitelemetry 不跟随到其他主机的重定向，因此验证会失败。请改为在应用中添加并验证该主机，或取消此路径的重定向。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1470
+msgid "The file address redirects (HTTP %d) from https:// to http://. Sitelemetry does not follow that redirect, so verification fails."
+msgstr "文件地址从 https:// 重定向（HTTP %d）到 http://。Sitelemetry 不跟随这种重定向，因此验证会失败。"
+
+#: includes/class-sitelemetry-audit-verification.php:1472
+msgid "The file address redirects more than twice. Sitelemetry follows at most two redirects, so verification fails."
+msgstr "文件地址重定向超过两次。Sitelemetry 最多跟随两次重定向，因此验证会失败。"
+
+#: includes/class-sitelemetry-audit-verification.php:1474
+msgid "A web page answered instead of the file (for example a maintenance, login, cache or firewall page), so the request did not reach this plugin. Exclude /.well-known/sitelemetry-verification.txt from that page or plugin, or use the DNS method."
+msgstr "响应的是网页而不是文件（例如维护、登录、缓存或防火墙页面），因此请求没有到达此插件。请将 /.well-known/sitelemetry-verification.txt 从该页面或插件的作用范围中排除，或使用 DNS 方式。"
+
+#: includes/class-sitelemetry-audit-verification.php:1476
+msgid "The file address answers, but not with the stored token. Another file at that path (for example one uploaded earlier) or a cached copy takes precedence: remove it, purge the cache, or put the current token in it."
+msgstr "文件地址有响应，但内容不是保存的令牌。该路径上的另一个文件（例如之前上传的文件）或缓存副本优先生效：请将其删除、清除缓存，或将当前令牌写入该文件。"
+
+#: includes/class-sitelemetry-audit-verification.php:1478
+msgid "The plugin answered, but no token is stored for this site address. Save the token again."
+msgstr "插件已响应，但没有为此网站地址保存令牌。请重新保存令牌。"
+
+#: includes/class-sitelemetry-audit-verification.php:1480
+msgid "The web server answered 404 without passing the request to WordPress. Many server setups handle /.well-known/ themselves (for example an nginx rule for hidden paths), and with plain permalinks the web server does not pass unknown paths to WordPress. Ask your host to pass /.well-known/sitelemetry-verification.txt to WordPress, upload a plain text file with the token at that path, or use the DNS method."
+msgstr "Web 服务器返回了 404，没有将请求传递给 WordPress。许多服务器配置会自行处理 /.well-known/（例如针对隐藏路径的 nginx 规则），并且在使用朴素固定链接时，Web 服务器不会将未知路径传递给 WordPress。请让您的主机服务商将 /.well-known/sitelemetry-verification.txt 传递给 WordPress，在该路径上传一个包含令牌的纯文本文件，或使用 DNS 方式。"
+
+#: includes/class-sitelemetry-audit-verification.php:1482
+msgid "The site asks for a password (HTTP 401), so Sitelemetry cannot read the file. Remove the password protection for this path while you verify, or use the DNS method."
+msgstr "网站要求输入密码（HTTP 401），因此 Sitelemetry 无法读取该文件。请在验证期间取消此路径的密码保护，或使用 DNS 方式。"
+
+#: includes/class-sitelemetry-audit-verification.php:1484
+msgid "The request was refused (HTTP 403), usually by the web server configuration or a firewall or security plugin (for example Cloudflare, Wordfence or ModSecurity rules). Allow this path, or use the DNS method."
+msgstr "请求被拒绝（HTTP 403），通常是由 Web 服务器配置、防火墙或安全插件（例如 Cloudflare、Wordfence 或 ModSecurity 规则）造成的。请允许此路径，或使用 DNS 方式。"
+
+#: includes/class-sitelemetry-audit-verification.php:1486
+msgid "The site rate-limited the request (HTTP 429). Try again in a minute; if it persists, allow this path in the firewall or security plugin."
+msgstr "网站对该请求进行了限速（HTTP 429）。请在一分钟后重试；如果问题持续，请在防火墙或安全插件中允许此路径。"
+
+#: includes/class-sitelemetry-audit-verification.php:1488
+msgid "The site answered 503 (temporarily unavailable), often a maintenance mode. Verify when the site is back, or exclude this path from maintenance mode."
+msgstr "网站返回了 503（暂时不可用），通常是维护模式所致。请在网站恢复后再验证，或将此路径从维护模式中排除。"
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1492
+msgid "The file address answered with HTTP %d instead of the file."
+msgstr "文件地址返回了 HTTP %d，而不是该文件。"
+
+#. translators: 1: host name, 2: date and time the verification expires.
+#: includes/class-sitelemetry-audit-verification.php:1609
+msgid "Ownership of %1$s is verified (valid until %2$s). Run the audit again to include the checks that need verification."
+msgstr "%1$s 的所有权已验证（有效期至 %2$s）。请重新运行审计，以包含需要验证的检查。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1611
+msgid "Ownership of %s is verified. Run the audit again to include the checks that need verification."
+msgstr "%s 的所有权已验证。请重新运行审计，以包含需要验证的检查。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1628
+msgid "The ownership verification of %s has expired. The plugin renews it automatically in the background; to renew it now, open Verify this site."
+msgstr "%s 的所有权验证已过期。插件会在后台自动续期；如需立即续期，请打开“验证此网站”。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1634
+msgid "The current verification of %s covers only part of the host. Verify the whole host (HTTP file or DNS record) to run the host-level checks."
+msgstr "%s 当前的验证只涵盖主机的一部分。请验证整个主机（HTTP 文件或 DNS 记录）以运行主机级检查。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1637
+msgid "This audit runs only after ownership of %s is verified."
+msgstr "此审计仅在 %s 的所有权验证后运行。"
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1640
+msgid "Some checks run only after ownership of %s is verified."
+msgstr "部分检查仅在 %s 的所有权验证后运行。"
+
+#: includes/class-sitelemetry-audit-verification.php:298
+msgid "The site address has no host name."
+msgstr "网站地址没有主机名。"

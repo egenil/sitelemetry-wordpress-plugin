@@ -1,0 +1,154 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[Performance audit — https://sitelemetry.com]\nScore: not measured\nFindings: 1 info (1 total)\n\nContext:\n- Assessment scope: 0 pages; method=lighthouse_crux; rendered=false; status=unavailable; strategy=mobile\n- Passed: 0; Observed: 0; Manual review: 0; Not applicable: 0; Skipped: 0\n- Not assessed: single_url, field_data_may_be_unavailable\n- LCP: Not assessed\n- INP: Not assessed\n- CLS: Not assessed\n- FCP: Not assessed\n- TTFB: Not assessed\n\nIssues (most severe first):\n1. [INFO] Could not retrieve PageSpeed Insights data\n   evidence: Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.\n   impact: Performance and Core Web Vitals could not be measured; the API quota or access may be blocked.\n   fix: Add a free Google PageSpeed API key (PAGESPEED_API_KEY) and confirm the target is publicly reachable."
+    }
+  ],
+  "structuredContent": {
+    "target": "https://sitelemetry.com",
+    "kind": "Performance audit",
+    "score": null,
+    "grade": null,
+    "counts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1
+    },
+    "total": 1,
+    "returnedFindings": 1,
+    "findingsTruncated": false,
+    "passingChecks": 0,
+    "auditDetails": {
+      "scope": {
+        "method": "lighthouse_crux",
+        "summary": "",
+        "status": "unavailable",
+        "requestedUrl": "https://sitelemetry.com/",
+        "assessedUrl": "",
+        "pageCount": 0,
+        "pageLimit": null,
+        "rendered": false,
+        "limitations": [
+          "single_url",
+          "field_data_may_be_unavailable"
+        ],
+        "pages": [
+          {
+            "url": "https://sitelemetry.com/",
+            "httpStatus": null,
+            "contentType": "",
+            "status": "unavailable"
+          }
+        ],
+        "pagesTruncated": false,
+        "strategy": "mobile",
+        "scoreSource": "lighthouse"
+      },
+      "checks": {
+        "counts": {
+          "ok": 0,
+          "observed": 0,
+          "not_applicable": 0,
+          "manual_review": 0,
+          "skipped": 0,
+          "error": 0,
+          "fail": 0
+        },
+        "total": 0,
+        "returned": 0,
+        "truncated": false,
+        "items": []
+      },
+      "findingEvidence": [],
+      "metrics": [
+        {
+          "id": "lcp",
+          "label": "LCP",
+          "value": null,
+          "unit": "ms",
+          "source": null,
+          "fieldScope": null,
+          "status": "unavailable",
+          "thresholds": {
+            "good": 2500,
+            "poor": 4000
+          }
+        },
+        {
+          "id": "inp",
+          "label": "INP",
+          "value": null,
+          "unit": "ms",
+          "source": null,
+          "fieldScope": null,
+          "status": "unavailable",
+          "thresholds": {
+            "good": 200,
+            "poor": 500
+          }
+        },
+        {
+          "id": "cls",
+          "label": "CLS",
+          "value": null,
+          "unit": "unitless",
+          "source": null,
+          "fieldScope": null,
+          "status": "unavailable",
+          "thresholds": {
+            "good": 0.1,
+            "poor": 0.25
+          }
+        },
+        {
+          "id": "fcp",
+          "label": "FCP",
+          "value": null,
+          "unit": "ms",
+          "source": null,
+          "fieldScope": null,
+          "status": "unavailable",
+          "thresholds": {
+            "good": 1800,
+            "poor": 3000
+          }
+        },
+        {
+          "id": "ttfb",
+          "label": "TTFB",
+          "value": null,
+          "unit": "ms",
+          "source": null,
+          "fieldScope": null,
+          "status": "unavailable",
+          "thresholds": {
+            "good": 800,
+            "poor": 1800
+          }
+        }
+      ],
+      "measurement": {},
+      "opportunities": [],
+      "diagnostics": []
+    },
+    "findings": [
+      {
+        "findingKey": "sf2:performance:id:perf.psi.unavailable:loc:ce10ec59566142dc24f9e386:occ:1",
+        "severity": "info",
+        "title": "Could not retrieve PageSpeed Insights data",
+        "evidence": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.",
+        "impact": "Performance and Core Web Vitals could not be measured; the API quota or access may be blocked.",
+        "remediation": "Add a free Google PageSpeed API key (PAGESPEED_API_KEY) and confirm the target is publicly reachable.",
+        "category": "performance",
+        "location": ""
+      }
+    ],
+    "executionComplete": true,
+    "coverageStatus": "unavailable",
+    "status": "partial",
+    "passingFindings": []
+  }
+}

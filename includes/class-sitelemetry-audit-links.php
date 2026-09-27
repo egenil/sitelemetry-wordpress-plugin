@@ -10,8 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Upgrade hooks are factual and calm: the remaining allowance when known, what paid
- * plans add (from the public catalogue) and links to pricing and to the app.
+ * Upgrade hooks are factual and calm: the connected plan, what paid plans add (from
+ * the public catalogue) and links to pricing and to the app. The general MCP
+ * endpoint the plugin uses returns neither the remaining allowance nor a report
+ * link, and Sitelemetry keeps no report of these audits, so no text promises one.
  */
 class Sitelemetry_Audit_Links {
 
@@ -20,16 +22,25 @@ class Sitelemetry_Audit_Links {
 	const UTM_MEDIUM = 'plugin';
 
 	/**
+	 * The plugin's UTM parameters as a query string (without "?").
+	 *
+	 * @return string
+	 */
+	public static function utm_query() {
+		return 'utm_source=' . self::UTM_SOURCE . '&utm_medium=' . self::UTM_MEDIUM;
+	}
+
+	/**
 	 * Pricing page with the plugin's UTM parameters.
 	 *
 	 * @return string
 	 */
 	public static function pricing_url() {
-		return self::SITE . '/pricing?utm_source=' . self::UTM_SOURCE . '&utm_medium=' . self::UTM_MEDIUM;
+		return self::SITE . '/pricing?' . self::utm_query();
 	}
 
 	/**
-	 * The app: API keys, ownership verification, full reports.
+	 * The app: API keys, ownership verification, the plan and its allowance.
 	 *
 	 * @return string
 	 */
@@ -38,28 +49,62 @@ class Sitelemetry_Audit_Links {
 	}
 
 	/**
-	 * The next step when a result requires something in the app, or null.
+	 * "Sign in or create an account": the app with the plugin's UTM parameters
+	 * and no plan parameter. Without a plan the app opens its sign-in screen;
+	 * existing users sign in there, and new users switch to its "Create account"
+	 * tab, the ordinary sign-up with the choice of a free or paid plan (and
+	 * payment for a paid one). /app?plan=free is deliberately not used: the app
+	 * treats exactly that URL as the neutral free-only entry of the AI-directory
+	 * (MCP and OAuth) sign-ups, which this web sign-up is not.
+	 *
+	 * @return string
+	 */
+	public static function sign_in_url() {
+		return self::SITE . '/app?' . self::utm_query();
+	}
+
+	/**
+	 * The account view of the app (opened after sign-in), whose "MCP — AI
+	 * connector" section shows the MCP API key under "Manual connection and API
+	 * key". The app has no anchor for that section; ?view=account opens the view.
+	 *
+	 * @return string
+	 */
+	public static function api_key_url() {
+		return self::SITE . '/app?view=account&' . self::utm_query();
+	}
+
+	/**
+	 * The Verified Domains section of the app (opened after sign-in).
+	 *
+	 * @return string
+	 */
+	public static function verified_domains_url() {
+		return self::SITE . '/app#verifiedDomains';
+	}
+
+	/**
+	 * Public page that explains verification and its renewal.
+	 *
+	 * @return string
+	 */
+	public static function verification_help_url() {
+		return self::SITE . '/access-information';
+	}
+
+	/**
+	 * A step only the app can take (accepting the audit authorization terms), or
+	 * null. Ownership verification has its own call to action
+	 * (Sitelemetry_Audit_Verification::call_to_action()).
 	 *
 	 * @param array $model Result model.
 	 * @return string|null
 	 */
-	public static function verification_step( array $model ) {
+	public static function app_step( array $model ) {
 		$status = isset( $model['status'] ) ? $model['status'] : '';
 		$reason = isset( $model['reason'] ) ? $model['reason'] : '';
 		if ( 'verification_required' === $status && 'authorization_consent_required' === $reason ) {
 			return __( 'Review and accept the current audit authorization terms for the connected account in the app, then run the audit again.', 'sitelemetry-audit' );
-		}
-		$needs_verification = 'verification_required' === $status;
-		if ( ! $needs_verification && isset( $model['not_measured'] ) && is_array( $model['not_measured'] ) ) {
-			foreach ( $model['not_measured'] as $entry ) {
-				if ( isset( $entry['type'] ) && 'verification_modules' === $entry['type'] ) {
-					$needs_verification = true;
-					break;
-				}
-			}
-		}
-		if ( $needs_verification ) {
-			return __( 'Verify ownership of the target in the app (DNS or HTTP challenge) to include the protected checks.', 'sitelemetry-audit' );
 		}
 		return null;
 	}
@@ -71,12 +116,11 @@ class Sitelemetry_Audit_Links {
 	 * @param array|null $plans Normalized plan catalogue or null when unavailable.
 	 * @return array {
 	 *     @type string      $lead           One factual sentence about the connected plan or the gate.
-	 *     @type string      $remaining      Sentence with the remaining scans, or ''.
 	 *     @type array       $paid           Rows for the paid plans table (label, price, kinds, modules, scans).
 	 *     @type string      $paid_intro     Intro sentence of the table, or ''.
 	 *     @type string      $pricing_url    Pricing link with UTM parameters.
 	 *     @type string      $app_url        App link.
-	 *     @type string|null $verification   Next step in the app, or null.
+	 *     @type string|null $app_step       Step only the app can take, or null.
 	 * }
 	 */
 	public static function plan_box( array $model, $plans ) {
@@ -104,12 +148,6 @@ class Sitelemetry_Audit_Links {
 			$lead = __( 'Each completed audit uses one unit of the monthly allowance of the connected account; polling a running audit does not use more. The current plan and the remaining allowance are shown in the app.', 'sitelemetry-audit' );
 		}
 
-		$remaining = '';
-		if ( isset( $model['remaining_scans'] ) && null !== $model['remaining_scans'] ) {
-			/* translators: %d: number of remaining security scans. */
-			$remaining = sprintf( __( 'Remaining security scans in the current period: %d.', 'sitelemetry-audit' ), (int) $model['remaining_scans'] );
-		}
-
 		$rows = array();
 		foreach ( Sitelemetry_Audit_Plans::paid( $plans ) as $paid ) {
 			$kinds  = array_map( array( 'Sitelemetry_Audit_Plans', 'kind_label' ), $paid['audit_kinds'] );
@@ -123,13 +161,12 @@ class Sitelemetry_Audit_Links {
 		}
 
 		return array(
-			'lead'         => $lead,
-			'remaining'    => $remaining,
-			'paid'         => $rows,
-			'paid_intro'   => count( $rows ) > 0 ? __( 'Paid plans include these audit kinds and security module counts:', 'sitelemetry-audit' ) : '',
-			'pricing_url'  => self::pricing_url(),
-			'app_url'      => self::app_url(),
-			'verification' => self::verification_step( $model ),
+			'lead'        => $lead,
+			'paid'        => $rows,
+			'paid_intro'  => count( $rows ) > 0 ? __( 'Paid plans include these audit kinds and security module counts:', 'sitelemetry-audit' ) : '',
+			'pricing_url' => self::pricing_url(),
+			'app_url'     => self::app_url(),
+			'app_step'    => self::app_step( $model ),
 		);
 	}
 }

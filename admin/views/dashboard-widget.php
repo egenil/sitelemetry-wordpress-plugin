@@ -39,11 +39,29 @@ $sitelemetry_audit_model = $view['model'];
 			<?php endif; ?>
 		</div>
 		<p class="sitelemetry-audit-widget-status">
-			<strong><?php echo esc_html( Sitelemetry_Audit_Labels::kind_label( $sitelemetry_audit_model['kind'] ) ); ?></strong>:
-			<?php echo esc_html( $view['status_heading'] ); ?>
-			<?php if ( ! empty( $sitelemetry_audit_model['finished_at'] ) ) : ?>
-				<span class="description">(<?php echo esc_html( Sitelemetry_Audit_Admin::format_time( $sitelemetry_audit_model['finished_at'] ) ); ?>)</span>
-			<?php endif; ?>
+			<?php
+			$sitelemetry_audit_status = sprintf(
+				/* translators: 1: audit kind label, 2: status of the audit. */
+				esc_html__( '%1$s: %2$s', 'sitelemetry-audit' ),
+				'<strong>' . esc_html( Sitelemetry_Audit_Labels::kind_label( $sitelemetry_audit_model['kind'] ) ) . '</strong>',
+				esc_html( $view['status_heading'] )
+			);
+			if ( ! empty( $sitelemetry_audit_model['finished_at'] ) ) {
+				$sitelemetry_audit_status = sprintf(
+					/* translators: 1: audit kind and status, 2: date and time the audit finished. Translate the parentheses as your language writes them. */
+					esc_html__( '%1$s (%2$s)', 'sitelemetry-audit' ),
+					$sitelemetry_audit_status,
+					'<span class="description">' . esc_html( Sitelemetry_Audit_Admin::format_time( $sitelemetry_audit_model['finished_at'] ) ) . '</span>'
+				);
+			}
+			echo wp_kses(
+				$sitelemetry_audit_status,
+				array(
+					'strong' => array(),
+					'span'   => array( 'class' => array() ),
+				)
+			);
+			?>
 		</p>
 		<?php if ( in_array( $sitelemetry_audit_model['status'], array( 'completed', 'partial' ), true ) ) : ?>
 			<p class="sitelemetry-audit-widget-counts">
@@ -59,16 +77,24 @@ $sitelemetry_audit_model = $view['model'];
 				<?php endif; ?>
 			</p>
 		<?php endif; ?>
-		<?php if ( null !== $sitelemetry_audit_model['remaining_scans'] ) : ?>
-			<p class="description">
-				<?php
-				printf(
-					/* translators: %d: number of remaining security scans. */
-					esc_html__( 'Remaining security scans this period: %d', 'sitelemetry-audit' ),
-					(int) $sitelemetry_audit_model['remaining_scans']
-				);
-				?>
-			</p>
+		<?php if ( $view['verification'] ) : ?>
+			<div class="sitelemetry-audit-widget-verify">
+				<p><?php echo esc_html( $view['verification']['text'] ); ?></p>
+				<?php if ( ! $view['verification']['verified'] ) : ?>
+					<p>
+						<?php if ( $view['verification']['helper'] ) : ?>
+							<a href="<?php echo esc_url( $view['verification_url'] ); ?>"><?php echo esc_html( $view['verification']['renew'] ? __( 'Renew the verification', 'sitelemetry-audit' ) : __( 'Verify this site', 'sitelemetry-audit' ) ); ?></a>
+						<?php else : ?>
+							<a href="<?php echo esc_url( $view['app_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Verified Domains in the app', 'sitelemetry-audit' ); ?></a>
+						<?php endif; ?>
+					</p>
+				<?php endif; ?>
+				<?php if ( $view['verification']['renews'] ) : ?>
+					<p class="description"><?php esc_html_e( 'A verification lasts 30 days; the plugin renews it automatically.', 'sitelemetry-audit' ); ?></p>
+				<?php elseif ( ! $view['verification']['verified'] ) : ?>
+					<p class="description"><?php esc_html_e( 'A verification lasts 30 days and is not renewed automatically.', 'sitelemetry-audit' ); ?></p>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 		<p><a class="button button-primary" href="<?php echo esc_url( $view['results_url'] ); ?>"><?php esc_html_e( 'View results', 'sitelemetry-audit' ); ?></a></p>
 	<?php endif; ?>

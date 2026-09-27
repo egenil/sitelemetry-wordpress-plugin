@@ -1,6 +1,7 @@
 <?php
 /**
- * Dashboard widget with the last score and the findings by severity.
+ * Dashboard widget with the last score, the findings by severity and, when an
+ * audit needs it, the ownership verification call to action.
  *
  * @package Sitelemetry_Audit
  */
@@ -65,13 +66,16 @@ class Sitelemetry_Audit_Dashboard {
 			$model = Sitelemetry_Audit_Results::latest();
 		}
 		$view = array(
-			'model'          => $model,
-			'job'            => Sitelemetry_Audit_Runner::get_job(),
-			'has_key'        => '' !== $settings['api_key'],
-			'results_url'    => Sitelemetry_Audit_Admin::results_url( $model ? $model['kind'] : '' ),
-			'settings_url'   => Sitelemetry_Audit_Admin::page_url(),
-			'severities'     => Sitelemetry_Audit_Labels::severity_labels(),
-			'status_heading' => $model ? Sitelemetry_Audit_Labels::status_heading( $model ) : '',
+			'model'            => $model,
+			'job'              => Sitelemetry_Audit_Runner::get_job(),
+			'has_key'          => '' !== $settings['api_key'],
+			'results_url'      => Sitelemetry_Audit_Admin::results_url( $model ? $model['kind'] : '' ),
+			'settings_url'     => Sitelemetry_Audit_Admin::page_url(),
+			'severities'       => Sitelemetry_Audit_Labels::severity_labels(),
+			'status_heading'   => $model ? Sitelemetry_Audit_Labels::status_heading( $model ) : '',
+			'verification'     => $model ? Sitelemetry_Audit_Verification::call_to_action( $model ) : null,
+			'verification_url' => Sitelemetry_Audit_Admin::verification_url(),
+			'app_url'          => Sitelemetry_Audit_Links::verified_domains_url(),
 		);
 		require SITELEMETRY_AUDIT_DIR . 'admin/views/dashboard-widget.php';
 	}

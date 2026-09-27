@@ -76,7 +76,12 @@ class Sitelemetry_Audit_Runner_Test extends TestCase {
 		$this->assertSame( array( 'target' => 'https://ok.example/', 'jobId' => 'mj_1' ), $step['job']['args'] );
 		$this->assertSame( 10, $step['job']['retry_after_ms'] );
 		$this->assertSame( 1, $step['job']['polls'] );
-		$this->assertSame( 'The audit is still running. Call the same tool with the returned pollArguments unchanged.', $step['job']['phase'] );
+		// The server's text tells MCP clients how to poll; the status line is the plugin's own.
+		$this->assertSame( '', $step['job']['phase'] );
+		$this->assertSame( 'Starting the audit…', Sitelemetry_Audit_Runner::phase_text( $job ) );
+		$this->assertSame( 'Sitelemetry is running the audit. The result appears here when it is ready.', Sitelemetry_Audit_Runner::phase_text( $step['job'] ) );
+		$this->assertSame( 'Sitelemetry is running the audit. The result appears here when it is ready.', Sitelemetry_Audit_Runner::progress( $step['job'], 1001, 1200 )['phase'] );
+		$this->assertStringNotContainsString( 'pollArguments', wp_json_encode( Sitelemetry_Audit_Runner::progress( $step['job'], 1001, 1200 ) ) );
 
 		$final = Sitelemetry_Audit_Runner::advance( $step['job'], sitelemetry_test_fixture( 'security-completed.json' ), 1002 );
 		$this->assertTrue( $final['done'] );
@@ -154,11 +159,65 @@ class Sitelemetry_Audit_Runner_Test extends TestCase {
 		$this->assertFalse( is_wp_error( $job ) );
 		$this->assertSame( 'https://ok.example', $job['target'] );
 		$this->assertSame( 'audit_security', $job['tool'] );
-		$this->assertSame( array( 'target' => 'https://ok.example' ), $job['args'] );
+		$this->assertSame(
+			array(
+				'target' => 'https://ok.example',
+				'lang'   => 'en',
+			),
+			$job['args']
+		);
 		$this->assertNotNull( Sitelemetry_Audit_Runner::get_job() );
 		$this->assertSame( array( 'sitelemetry_audit_job_started' ), $this->action_names() );
 
 		$this->assertSame( 'sitelemetry_busy', $runner->start( 'security', 'https://ok.example/' )->get_error_code() );
+	}
+
+	/**
+	 * The report language is sent with the first call only: polls re-send the
+	 * server's pollArguments unchanged, and the service keeps the language of the
+	 * job for its result (the service records it on the job).
+	 *
+	 * @return void
+	 */
+	public function test_report_language_first_call_only() {
+		$service = new Sitelemetry_Test_Mock_Service();
+		$service->install();
+		$this->configure();
+		$GLOBALS['sitelemetry_test_locale'] = 'tr_TR';
+		$runner                             = new Sitelemetry_Audit_Runner();
+		$job                                = $runner->start( 'security', 'https://ok.example/', 'manual' );
+		$this->assertSame( 'tr', $job['lang'] );
+		$this->assertSame(
+			array(
+				'target' => 'https://ok.example/',
+				'lang'   => 'tr',
+			),
+			$job['args']
+		);
+		$runner->step();
+		$runner->step();
+		$done = $runner->step();
+		$this->assertSame( 'completed', $done['model']['status'] );
+
+		$calls  = $service->tool_calls();
+		$job_id = 'mj_00000000000000000000000000000000';
+		$this->assertCount( 3, $calls );
+		$this->assertSame( 'tr', $calls[0]['body']['params']['arguments']['lang'] );
+		foreach ( array( $calls[1], $calls[2] ) as $poll ) {
+			$this->assertSame(
+				array(
+					'target' => 'https://ok.example/',
+					'jobId'  => $job_id,
+				),
+				$poll['body']['params']['arguments']
+			);
+		}
+		$this->assertCount( 1, $service->starts );
+		$this->assertSame( 'tr', $service->jobs[ $job_id ]['lang'] );
+
+		// Traditional Chinese and unsupported languages ask for English.
+		$this->assertSame( 'en', Sitelemetry_Audit_Runner::new_job( 'security', 'https://ok.example/', 'manual', time(), 'zz' )['args']['lang'] );
+		$this->assertSame( 'ja', Sitelemetry_Audit_Runner::new_job( 'security', 'https://ok.example/', 'manual', time(), 'ja' )['args']['lang'] );
 	}
 
 	/**
@@ -199,7 +258,13 @@ class Sitelemetry_Audit_Runner_Test extends TestCase {
 
 		$calls = $service->tool_calls();
 		$this->assertCount( 3, $calls );
-		$this->assertSame( array( 'target' => 'https://ok.example/' ), $calls[0]['body']['params']['arguments'] );
+		$this->assertSame(
+			array(
+				'target' => 'https://ok.example/',
+				'lang'   => 'en',
+			),
+			$calls[0]['body']['params']['arguments']
+		);
 		$expected_poll = array( 'target' => 'https://ok.example/', 'jobId' => 'mj_00000000000000000000000000000000' );
 		$this->assertSame( $expected_poll, $calls[1]['body']['params']['arguments'] );
 		$this->assertSame( $expected_poll, $calls[2]['body']['params']['arguments'] );

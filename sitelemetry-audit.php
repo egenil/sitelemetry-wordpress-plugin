@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Sitelemetry Audit
+ * Plugin Name:       Sitelemetry Audit – Security, SEO & AI Readiness Scanner
  * Plugin URI:        https://github.com/egenil/sitelemetry-wordpress-plugin
  * Description:       Run Sitelemetry website audits (security first; SEO, performance, accessibility, AI visibility and integrations on paid plans) from the WordPress dashboard and review the findings with fixes.
- * Version:           0.1.2
+ * Version:           0.1.3
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Sitelemetry
@@ -20,15 +20,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SITELEMETRY_AUDIT_VERSION', '0.1.2' );
+define( 'SITELEMETRY_AUDIT_VERSION', '0.1.3' );
 define( 'SITELEMETRY_AUDIT_FILE', __FILE__ );
 define( 'SITELEMETRY_AUDIT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SITELEMETRY_AUDIT_URL', plugin_dir_url( __FILE__ ) );
 
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-i18n.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-labels.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-settings.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-client.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-outcome.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-modules.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-fix-prompt.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-verification-api.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-verification.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-plans.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-links.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-results.php';
@@ -37,6 +42,8 @@ require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-cron.php'
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-admin.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-dashboard.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-plugin.php';
+
+Sitelemetry_Audit_I18n::register();
 
 register_activation_hook( __FILE__, array( 'Sitelemetry_Audit_Plugin', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'Sitelemetry_Audit_Plugin', 'deactivate' ) );

@@ -120,7 +120,18 @@ class Sitelemetry_Audit_Outcome_Test extends TestCase {
 		$this->assertSame( 'sf2:security-audit:id:http-headers.hsts-missing:loc:1a2b3c4d5e6f7a8b9c0d1e2f3a4b:occ:1', $model['findings'][0]['id'] );
 		$this->assertSame( array(), $model['not_measured'] );
 		$this->assertFalse( $model['truncated'] );
-		$this->assertNull( $model['remaining_scans'] );
+		$this->assertArrayNotHasKey( 'remaining_scans', $model );
+		$this->assertArrayNotHasKey( 'report_url', $model );
+		$this->assertCount( 12, $model['passing_items'] );
+		$this->assertSame(
+			array(
+				'id'       => 'ok.dns.resolve',
+				'title'    => 'DNS resolution successful',
+				'evidence' => '198.51.100.7',
+				'pillar'   => '',
+			),
+			$model['passing_items'][0]
+		);
 		$this->assertSame( 'Completed', Sitelemetry_Audit_Labels::status_heading( $model ) );
 	}
 
@@ -136,10 +147,13 @@ class Sitelemetry_Audit_Outcome_Test extends TestCase {
 		$this->assertSame( 'free', $model['plan'] );
 		$this->assertSame( 74, $model['score'] );
 		$lines = array_map( array( 'Sitelemetry_Audit_Labels', 'not_measured_line' ), $model['not_measured'] );
-		$this->assertContains( 'Security modules that require ownership verification of the target: http-methods, exposure, api-exposure', $lines );
-		$this->assertContains( 'Module rdap: unavailable (registry_timeout)', $lines );
+		$this->assertContains( 'Security modules that require ownership verification of the target: HTTP methods / CORS, Sensitive file exposure, API / GraphQL exposure', $lines );
+		$this->assertContains( 'WHOIS / RDAP: not measured (registry_timeout)', $lines );
 		$this->assertSame( 'Completed with partial coverage', Sitelemetry_Audit_Labels::status_heading( $model ) );
-		$this->assertStringContainsString( 'Verify ownership', Sitelemetry_Audit_Links::verification_step( $model ) );
+		$this->assertStringContainsString( 'Some checks run only after ownership of free.example is verified.', Sitelemetry_Audit_Verification::call_to_action( $model )['text'] );
+		// Only checks with status ok are passing: fail, skipped and observed are not.
+		$this->assertSame( 6, $model['passing_checks'] );
+		$this->assertSame( array( 'ok.dns.resolve', 'ok.dns.email.spf', 'ok.tls.certificate.trusted', 'ok.tls.protocol.modern', 'ok.http.header.nosniff', 'ok.mitm.https-redirect' ), array_column( $model['passing_items'], 'id' ) );
 	}
 
 	/**
@@ -160,6 +174,9 @@ class Sitelemetry_Audit_Outcome_Test extends TestCase {
 		$this->assertSame( 'Performance: PageSpeed Insights was unavailable for this target.', Sitelemetry_Audit_Labels::not_measured_line( $model['not_measured'][0] ) );
 		$this->assertSame( 'Security', $model['findings'][0]['pillar'] );
 		$this->assertSame( 3, $model['total'] );
+		// A full audit sends no passingChecks: the count comes from the pillars' lists.
+		$this->assertSame( 4, $model['passing_checks'] );
+		$this->assertSame( array( 'Security', 'Security', 'SEO', 'SEO' ), array_column( $model['passing_items'], 'pillar' ) );
 	}
 
 	/**
@@ -206,11 +223,106 @@ class Sitelemetry_Audit_Outcome_Test extends TestCase {
 		$this->assertNull( $model['pillars']['Performance']['score'] );
 		$lines = array_map( array( 'Sitelemetry_Audit_Labels', 'not_measured_line' ), $model['not_measured'] );
 		$this->assertContains( 'Performance: unavailable (no measurement for this target)', $lines );
-		$this->assertContains( 'Module tls: unavailable (The TLS certificate check requires an https:// target.)', $lines );
+		$this->assertContains( 'TLS / certificate: not measured (The TLS certificate check requires an https:// target.)', $lines );
+		$this->assertNull( $model['passing_checks'] );
+		$this->assertSame( array(), $model['passing_items'] );
 	}
 
 	/**
-	 * Plan coverage notes and optional fields.
+	 * Real general /mcp results of the other audit kinds (sitelemetry.com,
+	 * 2026-09-27): what makes them partial is listed, never "this result does not
+	 * say which". SEO: robots.txt keeps the crawler out of /app. Performance:
+	 * PageSpeed Insights answered without data, so the scope and every metric are
+	 * unavailable. The passing checks are grouped under the audit kind and the
+	 * prompt speaks with the role of that kind.
+	 *
+	 * @return void
+	 */
+	public function test_single_kind_partial_results_say_what_was_not_measured() {
+		$run         = $this->result_run( sitelemetry_test_fixture( 'seo-partial-robots.json' ) );
+		$run['tool'] = 'audit_seo';
+		$seo         = Sitelemetry_Audit_Outcome::interpret( $run, 'seo', 'https://sitelemetry.com' );
+		$this->assertSame( array( 'partial', 100, 0, 59 ), array( $seo['status'], $seo['score'], $seo['total'], $seo['passing_checks'] ) );
+		$this->assertSame(
+			array(
+				array(
+					'type'   => 'pages',
+					'pillar' => '',
+					'count'  => 1,
+					'urls'   => array( 'https://sitelemetry.com/app' ),
+					'robots' => true,
+				),
+			),
+			$seo['not_measured']
+		);
+		$section = Sitelemetry_Audit_Labels::not_measured_section( $seo );
+		$this->assertSame( array( 'Pages not assessed because robots.txt disallows them (1): https://sitelemetry.com/app' ), array_column( $section['items'], 'text' ) );
+		$this->assertSame( 'What was not measured (1)', $section['title'] );
+		$passing = Sitelemetry_Audit_Modules::passing_section( $seo );
+		$this->assertSame( array( 'Technical SEO (59)' ), array_column( $passing['groups'], 'title' ) );
+		$prompt = Sitelemetry_Audit_Fix_Prompt::build( $seo );
+		$this->assertStringStartsWith( 'Act as a senior technical SEO specialist. I ran a Sitelemetry technical SEO audit of my website https://sitelemetry.com', $prompt );
+		$this->assertStringContainsString( "Not measured (unmeasured checks are not passes):\n- Pages not assessed because robots.txt disallows them (1): https://sitelemetry.com/app\n", $prompt );
+		$this->assertStringNotContainsString( 'does not say which', $prompt );
+
+		$run         = $this->result_run( sitelemetry_test_fixture( 'performance-unavailable.json' ) );
+		$run['tool'] = 'audit_performance';
+		$perf        = Sitelemetry_Audit_Outcome::interpret( $run, 'performance', 'https://sitelemetry.com' );
+		$this->assertSame( array( 'partial', null, 1 ), array( $perf['status'], $perf['score'], $perf['total'] ) );
+		$lines = array_map( array( 'Sitelemetry_Audit_Labels', 'not_measured_line' ), $perf['not_measured'] );
+		$this->assertSame( array( 'Performance: unavailable (no measurement for this target)', 'Metrics not measured: LCP, INP, CLS, FCP, TTFB' ), $lines );
+		$this->assertNull( Sitelemetry_Audit_Modules::passing_section( $perf ) );
+		$prompt = Sitelemetry_Audit_Fix_Prompt::build( $perf );
+		$this->assertStringStartsWith( 'Act as a senior web performance engineer (Core Web Vitals). I ran a Sitelemetry performance audit', $prompt );
+		$this->assertStringContainsString( "- Performance: unavailable (no measurement for this target)\n- Metrics not measured: LCP, INP, CLS, FCP, TTFB\n", $prompt );
+
+		// Pillars of a full audit are named; a measured scope lists no page, and
+		// an unmeasured page without a robots.txt rule is not blamed on robots.txt.
+		$result = array(
+			'content'           => array(),
+			'structuredContent' => array(
+				'status'       => 'partial',
+				'findings'     => array(),
+				'auditDetails' => array(
+					'pillars' => array(
+						'SEO'           => array(
+							'scope' => array(
+								'status' => 'partial',
+								'pages'  => array(
+									array( 'url' => 'https://x.example/', 'status' => 'applicable' ),
+									array( 'url' => 'https://x.example/a', 'status' => 'unavailable', 'robotsRule' => '/a' ),
+									array( 'url' => 'https://x.example/b', 'status' => 'unavailable' ),
+								),
+							),
+						),
+						'AI visibility' => array(
+							'scope' => array(
+								'status' => 'measured',
+								'pages'  => array( array( 'url' => 'https://x.example/c', 'status' => 'unavailable' ) ),
+							),
+						),
+						'Performance'   => array(
+							'scope'   => array( 'status' => 'measured' ),
+							'metrics' => array(
+								array( 'id' => 'lcp', 'label' => 'LCP', 'status' => 'measured' ),
+								array( 'id' => 'inp', 'label' => 'INP', 'status' => 'unavailable' ),
+							),
+						),
+					),
+				),
+			),
+		);
+		$run         = $this->result_run( $result );
+		$run['tool'] = 'audit_full';
+		$full        = Sitelemetry_Audit_Outcome::interpret( $run, 'full', 'https://x.example' );
+		$lines       = array_map( array( 'Sitelemetry_Audit_Labels', 'not_measured_line' ), $full['not_measured'] );
+		$this->assertSame( array( 'SEO: Pages found but not assessed (2): https://x.example/a, https://x.example/b', 'Performance: Metrics not measured: INP' ), $lines );
+	}
+
+	/**
+	 * Plan coverage notes. A report link or a remaining allowance is never taken
+	 * from a result: the general /mcp endpoint removes both, and nothing in the
+	 * plugin may promise a report in the app.
 	 *
 	 * @return void
 	 */
@@ -236,14 +348,14 @@ class Sitelemetry_Audit_Outcome_Test extends TestCase {
 		);
 		$model = Sitelemetry_Audit_Outcome::interpret( $this->result_run( $result ), 'full', 'https://x.example' );
 		$this->assertSame( 'partial', $model['status'] );
-		$this->assertSame( 7, $model['remaining_scans'] );
-		$this->assertSame( 'https://sitelemetry.com/app/reports/1', $model['report_url'] );
+		$this->assertArrayNotHasKey( 'remaining_scans', $model );
+		$this->assertArrayNotHasKey( 'report_url', $model );
 		$this->assertTrue( $model['truncated'] );
 		$this->assertSame( 12, $model['total'] );
 		$lines = array_map( array( 'Sitelemetry_Audit_Labels', 'not_measured_line' ), $model['not_measured'] );
 		$this->assertContains( 'Performance: not included in the connected plan', $lines );
 		$this->assertContains( 'SEO: outside the connected account scope', $lines );
-		$this->assertContains( 'Security modules outside the connected plan: ports, port-intel', $lines );
+		$this->assertContains( 'Security modules outside the connected plan: Port scan, Port risk intelligence', $lines );
 	}
 
 	/**
