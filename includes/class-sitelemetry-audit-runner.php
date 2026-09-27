@@ -11,8 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * One job at a time is stored in an option. Every call to step() sends exactly
- * one tools/call to the service: the first with { target }, the following ones
- * with the server's pollArguments unchanged, until the result is final, an error
+ * one tools/call to the service: the first with { target, lang }, the following
+ * ones with the server's pollArguments unchanged (the service keeps the language
+ * of the job for its result), until the result is final, an error
  * is not retryable, or the time budget is spent. Who calls step() and how often
  * (the admin AJAX loop or a WP-Cron single event) is decided by the caller from
  * the retry_after_ms the job carries.
@@ -65,15 +66,22 @@ class Sitelemetry_Audit_Runner {
 	 * @param string $target Target URL.
 	 * @param string $origin manual | scheduled.
 	 * @param int    $now    Unix timestamp.
+	 * @param string $lang   Report language (see Sitelemetry_Audit_Settings::report_language()).
 	 * @return array
 	 */
-	public static function new_job( $kind, $target, $origin, $now ) {
+	public static function new_job( $kind, $target, $origin, $now, $lang = 'en' ) {
+		$lang = in_array( $lang, Sitelemetry_Audit_Settings::report_languages(), true ) ? $lang : 'en';
 		return array(
 			'kind'             => $kind,
 			'target'           => $target,
 			'tool'             => Sitelemetry_Audit_Labels::tool_for( $kind ),
 			'origin'           => 'scheduled' === $origin ? 'scheduled' : 'manual',
-			'args'             => array( 'target' => $target ),
+			// Sent with the first call only; polls re-send pollArguments unchanged.
+			'args'             => array(
+				'target' => $target,
+				'lang'   => $lang,
+			),
+			'lang'             => $lang,
 			'job_id'           => null,
 			'started_at'       => (int) $now,
 			'updated_at'       => (int) $now,
@@ -177,13 +185,9 @@ class Sitelemetry_Audit_Runner {
 			}
 			$retry                 = isset( $structured['retryAfterMs'] ) ? Sitelemetry_Audit_Outcome::number_or_null( $structured['retryAfterMs'] ) : null;
 			$job['retry_after_ms'] = null === $retry ? self::DEFAULT_RETRY_MS : max( 0, (int) $retry );
-			// The first text line says whether the job is queued or executing.
-			$text  = Sitelemetry_Audit_Outcome::text_content( $result );
-			$lines = preg_split( '/\r?\n/', $text );
-			$line  = is_array( $lines ) && isset( $lines[0] ) ? trim( $lines[0] ) : '';
-			if ( '' !== $line ) {
-				$job['phase'] = Sitelemetry_Audit_Outcome::clip( $line, 200 );
-			}
+			// The text of a running answer tells MCP clients how to poll; it is not
+			// shown. phase_text() writes the plugin's own status line instead.
+			$job['phase']   = '';
 			$running['job'] = $job;
 			return $running;
 		}
@@ -230,7 +234,7 @@ class Sitelemetry_Audit_Runner {
 			}
 			$this->finish( $existing, array( 'outcome' => 'timeout' ) );
 		}
-		$job = self::new_job( $kind, $target, $origin, time() );
+		$job = self::new_job( $kind, $target, $origin, time(), Sitelemetry_Audit_Settings::report_language( Sitelemetry_Audit_Settings::admin_locale() ) );
 		self::save_job( $job );
 		do_action( 'sitelemetry_audit_job_started', $job );
 		return $job;
@@ -293,8 +297,8 @@ class Sitelemetry_Audit_Runner {
 	}
 
 	/**
-	 * Abandons the local job. The service keeps running the audit; its result
-	 * stays available in the app.
+	 * Abandons the local job. The service is not told to stop; the result of the
+	 * abandoned job is not shown in WordPress and no report of it is kept for you.
 	 *
 	 * @return void
 	 */
@@ -336,6 +340,23 @@ class Sitelemetry_Audit_Runner {
 	}
 
 	/**
+	 * The status line of a running job in the current user's language: a retry
+	 * notice the plugin stored (rate limit, transient error, another audit
+	 * running), otherwise whether Sitelemetry has answered the first request.
+	 *
+	 * @param array $job Job.
+	 * @return string
+	 */
+	public static function phase_text( array $job ) {
+		if ( isset( $job['phase'] ) && is_string( $job['phase'] ) && '' !== $job['phase'] ) {
+			return $job['phase'];
+		}
+		return ! empty( $job['polls'] )
+			? __( 'Sitelemetry is running the audit. The result appears here when it is ready.', 'sitelemetry-audit' )
+			: __( 'Starting the audit…', 'sitelemetry-audit' );
+	}
+
+	/**
 	 * Progress information safe to send to the browser (no arguments, no key).
 	 *
 	 * @param array|null $job    Job.
@@ -352,7 +373,7 @@ class Sitelemetry_Audit_Runner {
 			'kind'           => $job['kind'],
 			'origin'         => $job['origin'],
 			'job_id'         => $job['job_id'],
-			'phase'          => $job['phase'],
+			'phase'          => self::phase_text( $job ),
 			'polls'          => (int) $job['polls'],
 			'retry_after_ms' => (int) $job['retry_after_ms'],
 			'elapsed'        => max( 0, (int) $now - (int) $job['started_at'] ),

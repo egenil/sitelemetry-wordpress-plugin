@@ -1,0 +1,1466 @@
+# Copyright (C) 2026 Sitelemetry
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sitelemetry Audit 0.1.3\n"
+"Report-Msgid-Bugs-To: https://sitelemetry.com\n"
+"POT-Creation-Date: 2026-09-26T18:32:13+00:00\n"
+"PO-Revision-Date: 2026-09-26T00:00:00+00:00\n"
+"Last-Translator: Sitelemetry\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Domain: sitelemetry-audit\n"
+
+#. Plugin Name of the plugin
+#: sitelemetry-audit.php
+msgid "Sitelemetry Audit – Security, SEO & AI Readiness Scanner"
+msgstr "Sitelemetry Audit – Scanner de segurança, SEO e prontidão para IA"
+
+#. Plugin URI of the plugin
+#: sitelemetry-audit.php
+msgid "https://github.com/egenil/sitelemetry-wordpress-plugin"
+msgstr "https://github.com/egenil/sitelemetry-wordpress-plugin"
+
+#. Description of the plugin
+#: sitelemetry-audit.php
+msgid "Run Sitelemetry website audits (security first; SEO, performance, accessibility, AI visibility and integrations on paid plans) from the WordPress dashboard and review the findings with fixes."
+msgstr "Execute auditorias da Sitelemetry no seu site pelo painel do WordPress (primeiro segurança; SEO, desempenho, acessibilidade, visibilidade em IA e integrações nos planos pagos) e revise os achados com as correções."
+
+#. Author URI of the plugin
+#: sitelemetry-audit.php
+msgid "https://sitelemetry.com"
+msgstr "https://sitelemetry.com"
+
+#: admin/views/dashboard-widget.php:18
+msgid "Connect your Sitelemetry account to audit this site for security, SEO and performance issues."
+msgstr "Conecte sua conta Sitelemetry para auditar este site em busca de problemas de segurança, SEO e desempenho."
+
+#: admin/views/dashboard-widget.php:19
+msgid "Add API key"
+msgstr "Adicionar chave de API"
+
+#: admin/views/dashboard-widget.php:22 admin/views/dashboard-widget.php:29 admin/views/settings.php:17
+msgid "An audit is running."
+msgstr "Uma auditoria está em execução."
+
+#: admin/views/dashboard-widget.php:24
+msgid "No audit has run yet."
+msgstr "Nenhuma auditoria foi executada ainda."
+
+#: admin/views/dashboard-widget.php:26
+msgid "Open Sitelemetry"
+msgstr "Abrir a Sitelemetry"
+
+#: admin/views/dashboard-widget.php:38 admin/views/results.php:203
+msgid "Not measured"
+msgstr "Não medido"
+
+#. translators: 1: audit kind label, 2: status of the audit.
+#. translators: 1: pillar name, 2: error message.
+#. translators: 1: module name, 2: module status such as "not measured".
+#. translators: 1: pillar name, 2: what was not measured in that pillar.
+#: admin/views/dashboard-widget.php:45 includes/class-sitelemetry-audit-labels.php:239 includes/class-sitelemetry-audit-labels.php:293 includes/class-sitelemetry-audit-labels.php:302 includes/class-sitelemetry-audit-labels.php:319
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#. translators: 1: audit kind and status, 2: date and time the audit finished. Translate the parentheses as your language writes them.
+#: admin/views/dashboard-widget.php:52
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#: admin/views/dashboard-widget.php:76
+msgid "No findings"
+msgstr "Nenhum achado"
+
+#: admin/views/dashboard-widget.php:86 admin/views/weekly-notice.php:31
+msgid "Renew the verification"
+msgstr "Renovar a verificação"
+
+#: admin/views/dashboard-widget.php:86 admin/views/renewal-notice.php:28 admin/views/results.php:175 admin/views/results.php:403 admin/views/settings.php:133 admin/views/settings.php:222 admin/views/weekly-notice.php:31
+msgid "Verify this site"
+msgstr "Verificar este site"
+
+#: admin/views/dashboard-widget.php:88 admin/views/results.php:176 admin/views/results.php:180 admin/views/results.php:183 admin/views/results.php:405
+msgid "Verified Domains in the app"
+msgstr "Domínios verificados no app"
+
+#: admin/views/dashboard-widget.php:93 admin/views/results.php:186
+msgid "A verification lasts 30 days; the plugin renews it automatically."
+msgstr "Uma verificação dura 30 dias; o plugin a renova automaticamente."
+
+#: admin/views/dashboard-widget.php:95
+msgid "A verification lasts 30 days and is not renewed automatically."
+msgstr "Uma verificação dura 30 dias e não é renovada automaticamente."
+
+#: admin/views/dashboard-widget.php:99 admin/views/weekly-notice.php:33
+msgid "View results"
+msgstr "Ver resultados"
+
+#: admin/views/plan-box.php:17
+msgid "Plan and usage"
+msgstr "Plano e uso"
+
+#: admin/views/plan-box.php:24
+msgid "Plan"
+msgstr "Plano"
+
+#: admin/views/plan-box.php:25
+msgid "Price"
+msgstr "Preço"
+
+#: admin/views/plan-box.php:26
+msgid "Audit kinds"
+msgstr "Tipos de auditoria"
+
+#: admin/views/plan-box.php:27
+msgid "Security modules"
+msgstr "Módulos de segurança"
+
+#: admin/views/plan-box.php:28
+msgid "Security scans / month"
+msgstr "Varreduras de segurança / mês"
+
+#: admin/views/plan-box.php:45
+msgid "Plan details and pricing"
+msgstr "Detalhes dos planos e preços"
+
+#: admin/views/plan-box.php:47
+msgid "Verify ownership of your site and manage API keys in the app"
+msgstr "Verifique a propriedade do seu site e gerencie as chaves de API no app"
+
+#. translators: %s: host name of this site.
+#: admin/views/renewal-notice.php:20
+msgid "Sitelemetry could not renew the ownership verification of %s automatically."
+msgstr "A Sitelemetry não conseguiu renovar automaticamente a verificação de propriedade de %s."
+
+#: admin/views/renewal-notice.php:29 admin/views/weekly-notice.php:34
+msgid "Dismiss"
+msgstr "Dispensar"
+
+#. translators: %s: date and time.
+#: admin/views/results.php:104
+msgid "Started %s"
+msgstr "Iniciada em %s"
+
+#. translators: %s: date and time.
+#: admin/views/results.php:115
+msgid "Finished %s"
+msgstr "Concluída em %s"
+
+#: admin/views/results.php:122
+msgid "Weekly schedule"
+msgstr "Agendamento semanal"
+
+#. translators: %s: audit job id.
+#: admin/views/results.php:129
+msgid "Job %s"
+msgstr "Tarefa %s"
+
+#: admin/views/results.php:148
+msgid "Open the app"
+msgstr "Abrir o app"
+
+#: admin/views/results.php:156
+msgid "Ownership verified"
+msgstr "Propriedade verificada"
+
+#: admin/views/results.php:158
+msgid "Renew the ownership verification"
+msgstr "Renovar a verificação de propriedade"
+
+#: admin/views/results.php:158
+msgid "Verify ownership of the site"
+msgstr "Verificar a propriedade do site"
+
+#: admin/views/results.php:165
+msgid "You can verify from WordPress with one click: Verify this site asks Sitelemetry for a verification code, publishes it for this site and completes the verification."
+msgstr "Você pode verificar pelo WordPress com um clique: “Verificar este site” pede à Sitelemetry um código de verificação, publica-o para este site e conclui a verificação."
+
+#: admin/views/results.php:168
+msgid "The stored token was used up by the last verification. In the app, click Reverify for this domain and copy the new token, save it under Verify this site (it replaces the old one), then click Verify HTTP in the app and run the audit again."
+msgstr "O token salvo foi usado na última verificação. No app, clique em “Verificar novamente” para este domínio e copie o novo token, salve-o em “Verificar este site” (ele substitui o antigo), depois clique em “Verificar HTTP” no app e execute a auditoria novamente."
+
+#: admin/views/results.php:170
+msgid "This plugin already publishes a verification file for this site. Finish in the app: click Verify HTTP for this domain, then run the audit again."
+msgstr "Este plugin já publica um arquivo de verificação para este site. Conclua no app: clique em “Verificar HTTP” para este domínio e execute a auditoria novamente."
+
+#: admin/views/results.php:172
+msgid "You can verify from WordPress: paste the token from the app into the plugin settings and the plugin publishes the verification file for this site."
+msgstr "Você pode fazer a verificação pelo WordPress: cole o token do app nas configurações do plugin, e o plugin publica o arquivo de verificação deste site."
+
+#: admin/views/results.php:179
+msgid "On a multisite network only a network administrator can publish the verification file for this site. Ask a network administrator, or verify the host in the app with a DNS record."
+msgstr "Em uma rede multisite, somente um administrador da rede pode publicar o arquivo de verificação deste site. Peça a um administrador da rede ou verifique o host no app com um registro DNS."
+
+#: admin/views/results.php:182
+msgid "The audited target is not this WordPress site, so the plugin cannot publish its verification file. Verify it in the app with a DNS record or an HTTP file on that site."
+msgstr "O alvo auditado não é este site WordPress, então o plugin não pode publicar o arquivo de verificação dele. Verifique-o no app com um registro DNS ou um arquivo HTTP naquele site."
+
+#: admin/views/results.php:188
+msgid "A verification lasts 30 days and is not renewed automatically. Before it expires, click Reverify in the app, publish the new token and verify again."
+msgstr "Uma verificação dura 30 dias e não é renovada automaticamente. Antes que expire, clique em “Verificar novamente” no app, publique o novo token e verifique outra vez."
+
+#: admin/views/results.php:205 admin/views/results.php:260
+msgid "Score"
+msgstr "Pontuação"
+
+#. translators: %d: number of findings.
+#: admin/views/results.php:212
+msgid "%d finding"
+msgid_plural "%d findings"
+msgstr[0] "%d achado"
+msgstr[1] "%d achados"
+
+#: admin/views/results.php:224
+msgid "No findings were reported for the measured checks"
+msgstr "Nenhum achado foi relatado nas verificações medidas"
+
+#. translators: %d: number of passing checks.
+#: admin/views/results.php:232
+msgid "%d passing check"
+msgid_plural "%d passing checks"
+msgstr[0] "%d verificação aprovada"
+msgstr[1] "%d verificações aprovadas"
+
+#: admin/views/results.php:242
+msgid "Fix with an AI assistant"
+msgstr "Corrigir com um assistente de IA"
+
+#: admin/views/results.php:244
+msgid "Copy AI fix prompt"
+msgstr "Copiar prompt de correção com IA"
+
+#: admin/views/results.php:247
+msgid "The prompt is built in wp-admin from this result and only copied to your clipboard. Nothing is sent."
+msgstr "O prompt é gerado no wp-admin a partir deste resultado e apenas copiado para a área de transferência. Nada é enviado."
+
+#: admin/views/results.php:249
+msgid "Show the prompt"
+msgstr "Mostrar o prompt"
+
+#: admin/views/results.php:250
+msgid "AI fix prompt"
+msgstr "Prompt de correção com IA"
+
+#: admin/views/results.php:259
+msgid "Pillar"
+msgstr "Pilar"
+
+#: admin/views/results.php:261 admin/views/results.php:290
+msgid "Findings"
+msgstr "Achados"
+
+#: admin/views/results.php:268
+msgid "n/a"
+msgstr "n/d"
+
+#: admin/views/results.php:292 admin/views/results.php:304
+msgid "Severity"
+msgstr "Gravidade"
+
+#: admin/views/results.php:294 includes/class-sitelemetry-audit-admin.php:194
+msgid "All severities"
+msgstr "Todas as gravidades"
+
+#: admin/views/results.php:305
+msgid "Finding"
+msgstr "Achado"
+
+#: admin/views/results.php:306
+msgid "Location"
+msgstr "Local"
+
+#: admin/views/results.php:307
+msgid "Fix"
+msgstr "Correção"
+
+#: admin/views/results.php:321
+msgid "Evidence and impact"
+msgstr "Evidência e impacto"
+
+#: admin/views/results.php:337 includes/class-sitelemetry-audit-admin.php:195
+msgid "No findings match this filter."
+msgstr "Nenhum achado corresponde a este filtro."
+
+#. translators: %d: number of findings that are not included.
+#: admin/views/results.php:348
+msgid "Sitelemetry counted %d more finding that is not included in this result."
+msgid_plural "Sitelemetry counted %d more findings that are not included in this result."
+msgstr[0] "A Sitelemetry contou mais %d achado que não está incluído neste resultado."
+msgstr[1] "A Sitelemetry contou mais %d achados que não estão incluídos neste resultado."
+
+#. translators: %d: number of findings that are not included.
+#: admin/views/results.php:351
+msgid "Sitelemetry counted %d finding that is not included in this result."
+msgid_plural "Sitelemetry counted %d findings that are not included in this result."
+msgstr[0] "A Sitelemetry contou %d achado que não está incluído neste resultado."
+msgstr[1] "A Sitelemetry contou %d achados que não estão incluídos neste resultado."
+
+#: admin/views/results.php:357
+msgid "According to Sitelemetry, this result does not include every finding of this audit."
+msgstr "Segundo a Sitelemetry, este resultado não inclui todos os achados desta auditoria."
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/results.php:40
+msgid "Running the %1$s audit of %2$s"
+msgstr "Executando a auditoria “%1$s” em %2$s"
+
+#: admin/views/results.php:401
+msgid "These checks run after ownership of the site is verified."
+msgstr "Estas verificações são executadas depois que a propriedade do site for verificada."
+
+#. translators: %s: audit kind label.
+#: admin/views/results.php:450
+msgid "Run the %s audit again"
+msgstr "Executar novamente a auditoria “%s”"
+
+#: admin/views/results.php:456
+msgid "Change settings"
+msgstr "Alterar configurações"
+
+#: admin/views/results.php:458
+msgid "Uses the target saved in the settings. A completed audit uses one unit of the monthly allowance."
+msgstr "Usa o alvo salvo nas configurações. Cada auditoria concluída usa uma unidade da cota mensal."
+
+#: admin/views/results.php:462
+msgid "Only the target URL, the audit options and the report language are sent to Sitelemetry, authenticated with your API key."
+msgstr "Somente a URL do alvo, as opções da auditoria e o idioma do relatório são enviados à Sitelemetry, autenticados com sua chave de API."
+
+#. translators: 1: elapsed time (m:ss), 2: time budget in minutes.
+#: admin/views/results.php:51
+msgid "Elapsed: %1$s (time budget: %2$d minutes)"
+msgstr "Tempo decorrido: %1$s (tempo máximo: %2$d minutos)"
+
+#: admin/views/results.php:59
+msgid "Check now"
+msgstr "Atualizar agora"
+
+#: admin/views/results.php:60
+msgid "Stop waiting"
+msgstr "Parar de esperar"
+
+#: admin/views/results.php:62
+msgid "Polling a running audit does not use more allowance. If you leave this page, WordPress keeps checking in the background and the result appears here when it is ready."
+msgstr "Consultar uma auditoria em execução não usa mais cota. Se você sair desta página, o WordPress continua verificando em segundo plano e o resultado aparece aqui quando estiver pronto."
+
+#: admin/views/results.php:68
+msgid "No audit has run yet"
+msgstr "Nenhuma auditoria foi executada ainda"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/results.php:78
+msgid "Run the %1$s audit of %2$s. A completed audit uses one unit of the monthly allowance."
+msgstr "Execute a auditoria “%1$s” em %2$s. Cada auditoria concluída usa uma unidade da cota mensal."
+
+#: admin/views/results.php:84 admin/views/settings.php:124
+msgid "Run audit"
+msgstr "Executar auditoria"
+
+#: admin/views/results.php:87
+msgid "Add your Sitelemetry API key to run the first audit."
+msgstr "Adicione sua chave de API da Sitelemetry para executar a primeira auditoria."
+
+#: admin/views/results.php:88 admin/views/results.php:143
+msgid "Open settings"
+msgstr "Abrir configurações"
+
+#: admin/views/settings.php:100
+msgid "Save settings"
+msgstr "Salvar configurações"
+
+#: admin/views/settings.php:103
+msgid "Run an audit now"
+msgstr "Executar uma auditoria agora"
+
+#. translators: 1: audit kind label, 2: target URL.
+#: admin/views/settings.php:112
+msgid "Runs the %1$s audit of %2$s with the saved settings. A completed audit uses one unit of the monthly allowance."
+msgstr "Executa a auditoria “%1$s” em %2$s com as configurações salvas. Cada auditoria concluída usa uma unidade da cota mensal."
+
+#: admin/views/settings.php:119 includes/class-sitelemetry-audit-admin.php:255 includes/class-sitelemetry-audit-verification.php:1228
+msgid "Save an API key first."
+msgstr "Primeiro salve uma chave de API."
+
+#: admin/views/settings.php:135
+msgid "Some security checks (for example exposed files, HTTP methods and, on paid plans, the WordPress checks) run only on sites whose ownership is verified in Sitelemetry. The plugin can publish the verification file for this site, so you need no FTP access or hosting panel."
+msgstr "Algumas verificações de segurança (por exemplo, arquivos expostos, métodos HTTP e, nos planos pagos, as verificações do WordPress) só são executadas em sites cuja propriedade está verificada na Sitelemetry. O plugin pode publicar o arquivo de verificação deste site, então você não precisa de acesso FTP nem do painel da hospedagem."
+
+#. translators: %s: host name of this site.
+#: admin/views/settings.php:140
+msgid "Host of this site: %s"
+msgstr "Host deste site: %s"
+
+#. translators: 1: host name of this site, 2: the same host with or without www.
+#: admin/views/settings.php:150
+msgid "Sitelemetry verifies one exact host name: %1$s and %2$s are different hosts. Add the host of the address the audit uses; a redirect from one to the other makes the file check fail."
+msgstr "A Sitelemetry verifica um nome de host exato: %1$s e %2$s são hosts diferentes. Adicione o host do endereço que a auditoria usa; um redirecionamento de um para o outro faz a verificação do arquivo falhar."
+
+#. translators: %s: host name of the audit target.
+#: admin/views/settings.php:163
+msgid "The audit target in the settings is a different host (%s). The plugin publishes the file only for this site's own host; verify the target in the app."
+msgstr "O alvo da auditoria nas configurações é outro host (%s). O plugin publica o arquivo apenas para o host deste site; verifique o alvo no app."
+
+#: admin/views/settings.php:176
+msgid "On a multisite network only a network administrator can publish the verification file: the web server that answers for this host serves every site of the network. Ask a network administrator to verify this site, or use one of the other ways below."
+msgstr "Em uma rede multisite, somente um administrador da rede pode publicar o arquivo de verificação: o servidor web que responde por este host atende todos os sites da rede. Peça a um administrador da rede que verifique este site ou use uma das outras formas abaixo."
+
+#: admin/views/settings.php:18 admin/views/settings.php:127
+msgid "View progress"
+msgstr "Ver o progresso"
+
+#. translators: %s: host name.
+#: admin/views/settings.php:189 includes/class-sitelemetry-audit-verification.php:1631
+msgid "The ownership verification of %s has expired. Verification lasts 30 days and is not renewed automatically: click Reverify in the app, then publish the new token and verify again."
+msgstr "A verificação de propriedade de %s expirou. A verificação dura 30 dias e não é renovada automaticamente: clique em “Verificar novamente” no app, publique o novo token e verifique outra vez."
+
+#: admin/views/settings.php:196
+msgid "The verification of this site has expired. The plugin renews it automatically; click Verify this site to renew it now."
+msgstr "A verificação deste site expirou. O plugin a renova automaticamente; clique em “Verificar este site” para renová-la agora."
+
+#: admin/views/settings.php:201
+msgid "The automatic renewal did not complete."
+msgstr "A renovação automática não foi concluída."
+
+#: admin/views/settings.php:201
+msgid "The verification did not complete."
+msgstr "A verificação não foi concluída."
+
+#: admin/views/settings.php:207
+msgid "You can also verify with a DNS record or Google Search Console, as described under Other ways to verify."
+msgstr "Você também pode verificar com um registro DNS ou com o Google Search Console, como descrito em “Outras formas de verificar”."
+
+#: admin/views/settings.php:211
+msgid "One-click verification is not available yet. Verify with a token from the app as described below."
+msgstr "A verificação com um clique ainda não está disponível. Verifique com um token do app, como descrito abaixo."
+
+#: admin/views/settings.php:227
+msgid "Save your API key above to verify this site with one click."
+msgstr "Salve sua chave de API acima para verificar este site com um clique."
+
+#. translators: 1: URL of the verification file, 2: number of days a verification lasts.
+#: admin/views/settings.php:232
+msgid "The plugin asks Sitelemetry for a verification code, publishes it at %1$s, tests the file and asks Sitelemetry to verify it. A verification lasts %2$d days; the plugin renews it automatically."
+msgstr "O plugin pede à Sitelemetry um código de verificação, publica-o em %1$s, testa o arquivo e pede à Sitelemetry que o verifique. Uma verificação dura %2$d dias; o plugin a renova automaticamente."
+
+#: admin/views/settings.php:245
+msgid "Verify manually with a token from the app"
+msgstr "Verificar manualmente com um token do app"
+
+#. translators: %s: host name of this site.
+#: admin/views/settings.php:252
+msgid "In the app, open Verified Domains, enter exactly %s and click Start verification."
+msgstr "No app, abra Domínios verificados, digite exatamente %s e clique em “Iniciar verificação”."
+
+#: admin/views/settings.php:256
+msgid "Open Verified Domains in the app"
+msgstr "Abrir Domínios verificados no app"
+
+#. translators: %s: URL of the verification file.
+#: admin/views/settings.php:262
+msgid "Copy the verification code shown under HTTP verification file (it starts with sitelemetry-) and save it below as the token. The plugin then answers %s with the token."
+msgstr "Copie o código de verificação exibido em “Arquivo de verificação HTTP” (ele começa com sitelemetry-) e salve-o abaixo como token. A partir daí, o plugin responde a %s com o token."
+
+#: admin/views/settings.php:267
+msgid "Click Test the file to check that the file is reachable."
+msgstr "Clique em “Testar o arquivo” para confirmar que o arquivo está acessível."
+
+#: admin/views/settings.php:268
+msgid "In the app, click Verify HTTP for this domain, then run the audit again."
+msgstr "No app, clique em “Verificar HTTP” para este domínio e execute a auditoria novamente."
+
+#: admin/views/settings.php:27
+msgid "API key"
+msgstr "Chave de API"
+
+#: admin/views/settings.php:275
+msgid "Verification token"
+msgstr "Token de verificação"
+
+#: admin/views/settings.php:281
+msgid "Save token"
+msgstr "Salvar token"
+
+#: admin/views/settings.php:283
+msgid "Remove token"
+msgstr "Remover token"
+
+#: admin/views/settings.php:288 includes/class-sitelemetry-audit-verification.php:295
+msgid "That is not a Sitelemetry verification token. Copy the whole token shown under HTTP verification file in the Verified Domains section of the app; it starts with sitelemetry- and has 32 more characters."
+msgstr "Isso não é um token de verificação da Sitelemetry. Copie o token completo exibido em “Arquivo de verificação HTTP” na seção Domínios verificados do app; ele começa com sitelemetry- e tem mais 32 caracteres."
+
+#: admin/views/settings.php:30
+msgid "A key is stored."
+msgstr "Há uma chave salva."
+
+#. translators: 1: verification token, 2: date and time.
+#: admin/views/settings.php:301
+msgid "Stored token: %1$s (saved %2$s)."
+msgstr "Token salvo: %1$s (salvo em %2$s)."
+
+#: admin/views/settings.php:307
+msgid "Open the file"
+msgstr "Abrir o arquivo"
+
+#. translators: %s: host name the token was saved for.
+#: admin/views/settings.php:316
+msgid "The file is not published: the token was saved for %s, which is not this site's current host. Add the current host in the app and save its token."
+msgstr "O arquivo não está publicado: o token foi salvo para %s, que não é o host atual deste site. Adicione o host atual no app e salve o token dele."
+
+#: admin/views/settings.php:326
+msgid "Test the file"
+msgstr "Testar o arquivo"
+
+#: admin/views/settings.php:33
+msgid "Sign in to Sitelemetry, or create an account on the same page: Sitelemetry has free and paid plans, and the Free plan includes the security audit. Then copy your API key and paste it below."
+msgstr "Entre na Sitelemetry ou crie uma conta na mesma página: a Sitelemetry tem planos gratuitos e pagos, e o plano Free inclui a auditoria de segurança. Depois, copie sua chave de API e cole-a abaixo."
+
+#. translators: %s: date and time.
+#: admin/views/settings.php:335
+msgid "Tested %s."
+msgstr "Testado em %s."
+
+#: admin/views/settings.php:344
+msgid "Renewal"
+msgstr "Renovação"
+
+#: admin/views/settings.php:35
+msgid "Sign in or create an account"
+msgstr "Entrar ou criar conta"
+
+#. translators: %d: number of days a verification lasts.
+#: admin/views/settings.php:351
+msgid "A verification lasts %d days. The plugin renews it automatically in the background (WP-Cron) when it expires, or when an audit reports that it must be renewed, and shows a notice only if the renewal fails. WP-Cron runs when the site receives visits unless a system cron triggers it."
+msgstr "Uma verificação dura %d dias. O plugin a renova automaticamente em segundo plano (WP-Cron) quando ela expira ou quando uma auditoria informa que ela precisa ser renovada, e só mostra um aviso se a renovação falhar. O WP-Cron é executado quando o site recebe visitas, a menos que um cron do sistema o acione."
+
+#. translators: %d: number of days a verification lasts.
+#: admin/views/settings.php:359
+msgid "A verification lasts %d days and Sitelemetry does not re-check it by itself. Before it expires, click Reverify for this domain in the app, save the new token here and click Verify HTTP again. When an audit reports that the verification must be renewed, the results page and the dashboard widget remind you."
+msgstr "Uma verificação dura %d dias e a Sitelemetry não a confere de novo por conta própria. Antes que expire, clique em “Verificar novamente” para este domínio no app, salve aqui o novo token e clique outra vez em “Verificar HTTP”. Quando uma auditoria informar que a verificação precisa ser renovada, a página de resultados e o widget do painel lembram você."
+
+#: admin/views/settings.php:36 admin/views/settings.php:52 admin/views/settings.php:204
+msgid "Get your API key"
+msgstr "Obter sua chave de API"
+
+#: admin/views/settings.php:367
+msgid "Other ways to verify"
+msgstr "Outras formas de verificar"
+
+#. translators: %s: DNS record name.
+#: admin/views/settings.php:374
+msgid "DNS record: add a TXT record named %s whose value is the token, then click Verify DNS in the app. This works when the file cannot be served, for example for a subdirectory install or a server that handles /.well-known/ itself."
+msgstr "Registro DNS: adicione um registro TXT chamado %s cujo valor seja o token e clique em “Verificar DNS” no app. Isso funciona quando o arquivo não pode ser servido, por exemplo, em uma instalação em subdiretório ou em um servidor que trata /.well-known/ por conta própria."
+
+#: admin/views/settings.php:380
+msgid "Google Search Console: in the app, connect the Google account that owns the site's Search Console property and synchronize the properties. A Domain property covers the host and its subdomains; a URL-prefix property must be the root of the host for the host-level checks."
+msgstr "Google Search Console: no app, conecte a conta do Google proprietária da propriedade do Search Console do site e sincronize as propriedades. Uma propriedade de domínio cobre o host e seus subdomínios; uma propriedade de prefixo de URL precisa ser a raiz do host para as verificações em nível de host."
+
+#: admin/views/settings.php:382
+msgid "How verification and renewal work"
+msgstr "Como funcionam a verificação e a renovação"
+
+#: admin/views/settings.php:40
+msgid "Enter a new key to replace the stored one"
+msgstr "Digite uma nova chave para substituir a salva"
+
+#: admin/views/settings.php:40
+msgid "Paste your Sitelemetry MCP API key"
+msgstr "Cole sua chave de API MCP da Sitelemetry"
+
+#: admin/views/settings.php:45
+msgid "Remove the stored key"
+msgstr "Remover a chave salva"
+
+#: admin/views/settings.php:50
+msgid "In the app, open My account and expand Manual connection and API key to copy the API key. The key is stored in the WordPress options table and is sent only to sitelemetry.com."
+msgstr "No app, abra “Minha conta” e expanda “Conexão manual e chave de API” para copiar a chave de API. A chave fica salva na tabela de opções do WordPress e é enviada apenas para sitelemetry.com."
+
+#: admin/views/settings.php:58
+msgid "Target"
+msgstr "Alvo"
+
+#: admin/views/settings.php:61
+msgid "Defaults to this site's address. Audit only websites you own or are authorized to test; every audit is performed by Sitelemetry against the live target and recorded on the connected account."
+msgstr "Por padrão, o endereço deste site. Audite apenas sites que sejam seus ou que você tenha autorização para testar; cada auditoria é realizada pela Sitelemetry no alvo em produção e registrada na conta conectada."
+
+#: admin/views/settings.php:65
+msgid "Audit kind"
+msgstr "Tipo de auditoria"
+
+#: admin/views/settings.php:73
+msgid "The security audit is included in every plan. Other audit kinds need a paid plan; when the connected account does not include one, the audit is not started and no allowance is used."
+msgstr "A auditoria de segurança está incluída em todos os planos. Os outros tipos de auditoria exigem um plano pago; quando a conta conectada não o inclui, a auditoria não é iniciada e nenhuma cota é usada."
+
+#: admin/views/settings.php:74
+msgid "Compare plans"
+msgstr "Comparar planos"
+
+#: admin/views/settings.php:79
+msgid "Weekly audit"
+msgstr "Auditoria semanal"
+
+#: admin/views/settings.php:83
+msgid "Run the selected audit once a week in the background (WP-Cron)"
+msgstr "Executar a auditoria selecionada uma vez por semana em segundo plano (WP-Cron)"
+
+#: admin/views/settings.php:86
+msgid "Each completed audit uses one unit of the monthly allowance of the connected account. WP-Cron runs when the site receives visits unless a system cron triggers it."
+msgstr "Cada auditoria concluída usa uma unidade da cota mensal da conta conectada. O WP-Cron é executado quando o site recebe visitas, a menos que um cron do sistema o acione."
+
+#. translators: %s: date and time.
+#: admin/views/settings.php:91
+msgid "Next run: %s."
+msgstr "Próxima execução: %s."
+
+#. translators: %s: audit kind label.
+#: admin/views/weekly-notice.php:22
+msgid "Weekly Sitelemetry audit (%s)"
+msgstr "Auditoria semanal da Sitelemetry (%s)"
+
+#: includes/class-sitelemetry-audit-admin.php:111 includes/class-sitelemetry-audit-admin.php:222
+msgid "Settings"
+msgstr "Configurações"
+
+#: includes/class-sitelemetry-audit-admin.php:188
+msgid "Waiting for Sitelemetry…"
+msgstr "Aguardando a Sitelemetry…"
+
+#. translators: %s: elapsed time, for example 1:05.
+#: includes/class-sitelemetry-audit-admin.php:190
+msgid "Elapsed: %s"
+msgstr "Tempo decorrido: %s"
+
+#: includes/class-sitelemetry-audit-admin.php:191
+msgid "The audit finished. Loading the results…"
+msgstr "A auditoria terminou. Carregando os resultados…"
+
+#: includes/class-sitelemetry-audit-admin.php:192
+msgid "The progress check failed. The audit keeps running; reload this page to check again."
+msgstr "A consulta de progresso falhou. A auditoria continua em execução; recarregue esta página para consultar de novo."
+
+#: includes/class-sitelemetry-audit-admin.php:193
+msgid "Running…"
+msgstr "Em execução…"
+
+#: includes/class-sitelemetry-audit-admin.php:196
+msgid "Prompt copied. Paste it into ChatGPT, Claude or your coding assistant."
+msgstr "Prompt copiado. Cole-o no ChatGPT, no Claude ou no seu assistente de código."
+
+#: includes/class-sitelemetry-audit-admin.php:197
+msgid "The prompt could not be copied automatically. Select the text below and copy it."
+msgstr "Não foi possível copiar o prompt automaticamente. Selecione o texto abaixo e copie-o."
+
+#: includes/class-sitelemetry-audit-admin.php:198
+msgid "Verifying…"
+msgstr "Verificando…"
+
+#: includes/class-sitelemetry-audit-admin.php:211
+msgid "You do not have permission to access this page."
+msgstr "Você não tem permissão para acessar esta página."
+
+#: includes/class-sitelemetry-audit-admin.php:223
+msgid "Results"
+msgstr "Resultados"
+
+#: includes/class-sitelemetry-audit-admin.php:246
+msgid "The audit was started. This page updates while Sitelemetry works."
+msgstr "A auditoria foi iniciada. Esta página é atualizada enquanto a Sitelemetry trabalha."
+
+#: includes/class-sitelemetry-audit-admin.php:247
+msgid "An audit is already running. Wait for it to finish or stop waiting for it below."
+msgstr "Já há uma auditoria em execução. Aguarde até que termine ou clique abaixo em “Parar de esperar”."
+
+#: includes/class-sitelemetry-audit-admin.php:248
+msgid "Add your Sitelemetry API key before running an audit."
+msgstr "Adicione sua chave de API da Sitelemetry antes de executar uma auditoria."
+
+#: includes/class-sitelemetry-audit-admin.php:249 includes/class-sitelemetry-audit-runner.php:228
+msgid "The target must be a valid http or https URL."
+msgstr "O alvo precisa ser uma URL http ou https válida."
+
+#: includes/class-sitelemetry-audit-admin.php:250 includes/class-sitelemetry-audit-runner.php:221
+msgid "Unsupported audit kind."
+msgstr "Tipo de auditoria não compatível."
+
+#: includes/class-sitelemetry-audit-admin.php:251
+msgid "Stopped waiting. The result of this audit will not appear here; run the audit again when you want a result."
+msgstr "A espera foi interrompida. O resultado desta auditoria não aparecerá aqui; execute a auditoria novamente quando quiser um resultado."
+
+#: includes/class-sitelemetry-audit-admin.php:252
+msgid "The verification token is saved and the verification file is published. Test the file, then click Verify HTTP in the app."
+msgstr "O token de verificação foi salvo e o arquivo de verificação está publicado. Teste o arquivo e clique em “Verificar HTTP” no app."
+
+#: includes/class-sitelemetry-audit-admin.php:253
+msgid "The verification token was removed; the verification file is no longer published."
+msgstr "O token de verificação foi removido; o arquivo de verificação não é mais publicado."
+
+#: includes/class-sitelemetry-audit-admin.php:254
+msgid "The verification file was tested; the result is shown under Verify this site."
+msgstr "O arquivo de verificação foi testado; o resultado aparece em “Verificar este site”."
+
+#: includes/class-sitelemetry-audit-admin.php:256
+msgid "The verification did not complete. The reason and how to fix it are shown under Verify this site."
+msgstr "A verificação não foi concluída. O motivo e como corrigi-lo aparecem em “Verificar este site”."
+
+#: includes/class-sitelemetry-audit-admin.php:257
+msgid "One-click verification is not available yet. Verify with a token from the app as described under Verify this site."
+msgstr "A verificação com um clique ainda não está disponível. Verifique com um token do app, como descrito em “Verificar este site”."
+
+#. translators: 1: audit kind label, 2: plan name.
+#: includes/class-sitelemetry-audit-admin.php:287
+msgid "%1$s (included in %2$s)"
+msgstr "%1$s (incluída no %2$s)"
+
+#. translators: 1: audit kind label, 2: plan name.
+#: includes/class-sitelemetry-audit-admin.php:289
+msgid "%1$s (requires %2$s or higher)"
+msgstr "%1$s (requer %2$s ou superior)"
+
+#: includes/class-sitelemetry-audit-admin.php:413
+msgid "The file works: WordPress loaded it from its own address with the stored token."
+msgstr "O arquivo funciona: o WordPress o carregou pelo próprio endereço com o token salvo."
+
+#: includes/class-sitelemetry-audit-admin.php:498 includes/class-sitelemetry-audit-admin.php:517 includes/class-sitelemetry-audit-admin.php:533 includes/class-sitelemetry-audit-admin.php:606 includes/class-sitelemetry-audit-admin.php:659
+msgid "You do not have permission to change these settings."
+msgstr "Você não tem permissão para alterar estas configurações."
+
+#: includes/class-sitelemetry-audit-admin.php:679 includes/class-sitelemetry-audit-admin.php:702 includes/class-sitelemetry-audit-admin.php:717 includes/class-sitelemetry-audit-admin.php:731
+msgid "You do not have permission to run audits."
+msgstr "Você não tem permissão para executar auditorias."
+
+#: includes/class-sitelemetry-audit-admin.php:79 includes/class-sitelemetry-audit-admin.php:219
+msgid "Sitelemetry Audit"
+msgstr "Sitelemetry Audit"
+
+#: includes/class-sitelemetry-audit-admin.php:80
+msgid "Sitelemetry"
+msgstr "Sitelemetry"
+
+#: includes/class-sitelemetry-audit-dashboard.php:54
+msgid "Sitelemetry audit"
+msgstr "Auditoria da Sitelemetry"
+
+#: includes/class-sitelemetry-audit-labels.php:116
+msgid "Critical"
+msgstr "Crítico"
+
+#: includes/class-sitelemetry-audit-labels.php:117
+msgid "High"
+msgstr "Alto"
+
+#: includes/class-sitelemetry-audit-labels.php:118
+msgid "Medium"
+msgstr "Médio"
+
+#: includes/class-sitelemetry-audit-labels.php:119
+msgid "Low"
+msgstr "Baixo"
+
+#: includes/class-sitelemetry-audit-labels.php:120
+msgid "Info"
+msgstr "Info"
+
+#: includes/class-sitelemetry-audit-labels.php:155
+msgid "Not run: the connected account must accept the current audit authorization terms"
+msgstr "Não executada: a conta conectada precisa aceitar os termos de autorização de auditoria vigentes"
+
+#: includes/class-sitelemetry-audit-labels.php:158
+msgid "Not run: ownership verification of the target must be renewed"
+msgstr "Não executada: a verificação de propriedade do alvo precisa ser renovada"
+
+#: includes/class-sitelemetry-audit-labels.php:161
+msgid "Not run: the current verification of the target does not cover the requested host-level checks"
+msgstr "Não executada: a verificação atual do alvo não cobre as verificações em nível de host solicitadas"
+
+#: includes/class-sitelemetry-audit-labels.php:163
+msgid "Not run: ownership verification of the target is required"
+msgstr "Não executada: é necessário verificar a propriedade do alvo"
+
+#: includes/class-sitelemetry-audit-labels.php:167
+msgid "Completed"
+msgstr "Concluída"
+
+#: includes/class-sitelemetry-audit-labels.php:169
+msgid "Completed with partial coverage"
+msgstr "Concluída com cobertura parcial"
+
+#: includes/class-sitelemetry-audit-labels.php:171
+msgid "Not run: the monthly audit allowance of the connected account is exhausted"
+msgstr "Não executada: a cota mensal de auditorias da conta conectada se esgotou"
+
+#: includes/class-sitelemetry-audit-labels.php:173
+msgid "Not run: this audit kind is not included in the connected plan"
+msgstr "Não executada: este tipo de auditoria não está incluído no plano conectado"
+
+#: includes/class-sitelemetry-audit-labels.php:175
+msgid "Not completed"
+msgstr "Não concluída"
+
+#. translators: %s: audit job id.
+#: includes/class-sitelemetry-audit-labels.php:192
+msgid "The audit did not finish within the time budget. Sitelemetry may still be working on job %s; run the audit again later to get a result."
+msgstr "A auditoria não terminou dentro do tempo previsto. A Sitelemetry talvez ainda esteja trabalhando na tarefa %s; execute a auditoria novamente mais tarde para obter um resultado."
+
+#: includes/class-sitelemetry-audit-labels.php:194
+msgid "The audit did not finish within the time budget. Run it again later."
+msgstr "A auditoria não terminou dentro do tempo previsto. Execute-a novamente mais tarde."
+
+#: includes/class-sitelemetry-audit-labels.php:196
+msgid "Sitelemetry rejected the API key. Check the key in the plugin settings; you can create a new one in the app."
+msgstr "A Sitelemetry rejeitou a chave de API. Confira a chave nas configurações do plugin; você pode criar uma nova no app."
+
+#: includes/class-sitelemetry-audit-labels.php:198
+msgid "The site could not reach Sitelemetry. Check outgoing HTTP connections from the server and try again."
+msgstr "O site não conseguiu acessar a Sitelemetry. Verifique as conexões HTTP de saída do servidor e tente novamente."
+
+#: includes/class-sitelemetry-audit-labels.php:200
+msgid "No API key is configured."
+msgstr "Nenhuma chave de API está configurada."
+
+#: includes/class-sitelemetry-audit-labels.php:202
+msgid "The target is not a valid http or https URL."
+msgstr "O alvo não é uma URL http ou https válida."
+
+#: includes/class-sitelemetry-audit-labels.php:204
+msgid "The audit is still running."
+msgstr "A auditoria ainda está em execução."
+
+#: includes/class-sitelemetry-audit-labels.php:237
+msgid "failed"
+msgstr "erro"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:244
+msgid "%s: not included in the connected plan"
+msgstr "%s: não incluído no plano conectado"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:247
+msgid "%s: outside the connected account scope"
+msgstr "%s: fora do escopo da conta conectada"
+
+#. translators: %s: comma-separated module names.
+#: includes/class-sitelemetry-audit-labels.php:252
+msgid "Security modules outside the connected plan: %s"
+msgstr "Módulos de segurança fora do plano conectado: %s"
+
+#. translators: %s: pillar name.
+#: includes/class-sitelemetry-audit-labels.php:256 includes/class-sitelemetry-audit-labels.php:260
+msgid "%s: unavailable (no measurement for this target)"
+msgstr "%s: indisponível (sem medição para este alvo)"
+
+#. translators: 1: number of pages, 2: comma-separated page addresses.
+#: includes/class-sitelemetry-audit-labels.php:268
+msgid "Pages not assessed because robots.txt disallows them (%1$d): %2$s"
+msgstr "Páginas não avaliadas porque o robots.txt as bloqueia (%1$d): %2$s"
+
+#. translators: 1: number of pages, 2: comma-separated page addresses.
+#: includes/class-sitelemetry-audit-labels.php:271
+msgid "Pages found but not assessed (%1$d): %2$s"
+msgstr "Páginas encontradas, mas não avaliadas (%1$d): %2$s"
+
+#. translators: %s: comma-separated metric names such as LCP, INP, CLS.
+#: includes/class-sitelemetry-audit-labels.php:278
+msgid "Metrics not measured: %s"
+msgstr "Métricas não medidas: %s"
+
+#. translators: %s: comma-separated module names.
+#: includes/class-sitelemetry-audit-labels.php:282
+msgid "Security modules that require ownership verification of the target: %s"
+msgstr "Módulos de segurança que exigem a verificação de propriedade do alvo: %s"
+
+#. translators: %s: the reason as the audit reported it.
+#: includes/class-sitelemetry-audit-labels.php:296
+msgid "Reported by the audit: %s"
+msgstr "Segundo a auditoria: %s"
+
+#. translators: 1: module name, 2: module status such as "not measured", 3: the reasons reported by the audit.
+#: includes/class-sitelemetry-audit-labels.php:299
+msgid "%1$s: %2$s (%3$s)"
+msgstr "%1$s: %2$s (%3$s)"
+
+#. translators: 1: what was not measured, 2: explanation, 3: the reason as the audit reported it.
+#: includes/class-sitelemetry-audit-labels.php:336
+msgid "%1$s. %2$s %3$s"
+msgstr "%1$s. %2$s %3$s"
+
+#: includes/class-sitelemetry-audit-labels.php:348
+msgid "Checks that ended with an error"
+msgstr "Verificações que terminaram com erro"
+
+#: includes/class-sitelemetry-audit-labels.php:349
+msgid "These checks started but ended with an error (for example a timeout), so they have no result."
+msgstr "Estas verificações começaram, mas terminaram com um erro (por exemplo, tempo esgotado) e, por isso, não têm resultado."
+
+#: includes/class-sitelemetry-audit-labels.php:352
+msgid "Checks without a result"
+msgstr "Verificações sem resultado"
+
+#: includes/class-sitelemetry-audit-labels.php:353
+msgid "Sitelemetry could not determine a result for these checks, for example because the site did not answer the request or the data the check needs was not available."
+msgstr "A Sitelemetry não conseguiu determinar um resultado para estas verificações, por exemplo porque o site não respondeu à solicitação ou os dados de que a verificação precisa não estavam disponíveis."
+
+#: includes/class-sitelemetry-audit-labels.php:356
+msgid "Checks to review yourself"
+msgstr "Verificações para revisar manualmente"
+
+#: includes/class-sitelemetry-audit-labels.php:357
+msgid "An automated audit cannot decide these checks; review them yourself."
+msgstr "Uma auditoria automática não consegue decidir estas verificações; revise-as manualmente."
+
+#: includes/class-sitelemetry-audit-labels.php:360
+msgid "Checks that do not apply"
+msgstr "Verificações não aplicáveis"
+
+#: includes/class-sitelemetry-audit-labels.php:361
+msgid "These checks do not apply to this site, for example because it does not use the feature they test."
+msgstr "Estas verificações não se aplicam a este site, por exemplo porque ele não usa o recurso que elas testam."
+
+#: includes/class-sitelemetry-audit-labels.php:413
+msgid "Some requested measurements were unavailable; this result does not say which."
+msgstr "Algumas medições solicitadas não estavam disponíveis; este resultado não indica quais."
+
+#: includes/class-sitelemetry-audit-labels.php:424
+msgid "What was not measured"
+msgstr "O que não foi medido"
+
+#: includes/class-sitelemetry-audit-labels.php:426
+msgid "Explained items come from how the site responded (such as a redirect or a firewall) or from a deliberate scan limit, not from an error in the audit. Unmeasured checks are not counted as passes."
+msgstr "Os itens com explicação decorrem da forma como o site respondeu (por exemplo, um redirecionamento ou um firewall) ou de um limite deliberado da varredura, e não de um erro da auditoria. Verificações não medidas não contam como aprovadas."
+
+#: includes/class-sitelemetry-audit-labels.php:427
+msgid "Unmeasured checks are not counted as passes."
+msgstr "Verificações não medidas não contam como aprovadas."
+
+#. translators: %d: number of checks without a result that are not listed.
+#: includes/class-sitelemetry-audit-labels.php:431
+msgid "%d more check without a result was counted but not kept with this result, so it is not listed here."
+msgid_plural "%d more checks without a result were counted but not kept with this result, so they are not listed here."
+msgstr[0] "Mais %d verificação sem resultado foi contada, mas não foi armazenada com este resultado e, por isso, não aparece aqui."
+msgstr[1] "Mais %d verificações sem resultado foram contadas, mas não foram armazenadas com este resultado e, por isso, não aparecem aqui."
+
+#: includes/class-sitelemetry-audit-labels.php:58 includes/class-sitelemetry-audit-plans.php:28
+msgid "Security"
+msgstr "Segurança"
+
+#: includes/class-sitelemetry-audit-labels.php:59
+msgid "Technical SEO"
+msgstr "SEO técnico"
+
+#: includes/class-sitelemetry-audit-labels.php:60 includes/class-sitelemetry-audit-plans.php:30
+msgid "AI visibility"
+msgstr "Visibilidade em IA"
+
+#: includes/class-sitelemetry-audit-labels.php:61 includes/class-sitelemetry-audit-plans.php:33
+msgid "Integrations"
+msgstr "Integrações"
+
+#: includes/class-sitelemetry-audit-labels.php:62 includes/class-sitelemetry-audit-plans.php:31
+msgid "Accessibility"
+msgstr "Acessibilidade"
+
+#: includes/class-sitelemetry-audit-labels.php:63 includes/class-sitelemetry-audit-plans.php:32
+msgid "Performance"
+msgstr "Desempenho"
+
+#: includes/class-sitelemetry-audit-labels.php:64
+msgid "Full (all pillars)"
+msgstr "Completa (todos os pilares)"
+
+#: includes/class-sitelemetry-audit-links.php:107
+msgid "Review and accept the current audit authorization terms for the connected account in the app, then run the audit again."
+msgstr "Revise e aceite no app os termos de autorização de auditoria vigentes para a conta conectada e execute a auditoria novamente."
+
+#: includes/class-sitelemetry-audit-links.php:132
+msgid "The connected account has used its monthly audit allowance. It resets at the start of the next billing period. This run did not start an audit and did not consume allowance."
+msgstr "A conta conectada usou sua cota mensal de auditorias. Ela é renovada no início do próximo período de cobrança. Esta execução não iniciou nenhuma auditoria nem consumiu cota."
+
+#. translators: %s: audit kind label.
+#: includes/class-sitelemetry-audit-links.php:135
+msgid "The %s audit is not included in the connected account's plan. This run did not start an audit and did not consume allowance."
+msgstr "A auditoria “%s” não está incluída no plano da conta conectada. Esta execução não iniciou nenhuma auditoria nem consumiu cota."
+
+#. translators: 1: number of security modules, 2: number of security scans per month.
+#: includes/class-sitelemetry-audit-links.php:139
+msgid "The connected account is on the Free plan: %1$d public security modules and %2$d security scans per month."
+msgstr "A conta conectada está no plano Free: %1$d módulos de segurança públicos e %2$d varreduras de segurança por mês."
+
+#: includes/class-sitelemetry-audit-links.php:141
+msgid "The connected account is on the Free plan."
+msgstr "A conta conectada está no plano Free."
+
+#. translators: %s: plan name.
+#: includes/class-sitelemetry-audit-links.php:146
+msgid "The connected account is on the %s plan."
+msgstr "A conta conectada está no plano %s."
+
+#: includes/class-sitelemetry-audit-links.php:148
+msgid "Each completed audit uses one unit of the monthly allowance of the connected account; polling a running audit does not use more. The current plan and the remaining allowance are shown in the app."
+msgstr "Cada auditoria concluída usa uma unidade da cota mensal da conta conectada; consultar uma auditoria em execução não usa mais. O plano atual e a cota restante aparecem no app."
+
+#: includes/class-sitelemetry-audit-links.php:157 includes/class-sitelemetry-audit-links.php:158 includes/class-sitelemetry-audit-links.php:159 includes/class-sitelemetry-audit-plans.php:196
+msgid "see pricing"
+msgstr "ver preços"
+
+#: includes/class-sitelemetry-audit-links.php:166
+msgid "Paid plans include these audit kinds and security module counts:"
+msgstr "Os planos pagos incluem estes tipos de auditoria e quantidades de módulos de segurança:"
+
+#: includes/class-sitelemetry-audit-modules.php:128
+msgid "not measured"
+msgstr "não medido"
+
+#: includes/class-sitelemetry-audit-modules.php:131
+msgid "partly measured"
+msgstr "medido em parte"
+
+#: includes/class-sitelemetry-audit-modules.php:243
+msgid "Only a limited number of scripts is scanned per audit; the remaining scripts were not checked and are not counted as clean."
+msgstr "Apenas um número limitado de scripts é analisado por auditoria; os scripts restantes não foram verificados e não contam como limpos."
+
+#. translators: %s: HTTP status codes separated by slashes, for example 301/302.
+#: includes/class-sitelemetry-audit-modules.php:287
+msgid "The site answers these paths with a redirect (HTTP %s), for example to its sign-in page. Sitelemetry does not follow redirects for these checks, so they were not measured."
+msgstr "O site responde a estes caminhos com um redirecionamento (HTTP %s), por exemplo para a página de login. A Sitelemetry não segue redirecionamentos nestas verificações; por isso elas não foram medidas."
+
+#: includes/class-sitelemetry-audit-modules.php:290
+msgid "The site rate-limited these requests (its own protection)."
+msgstr "O site limitou a taxa destas solicitações (proteção própria)."
+
+#: includes/class-sitelemetry-audit-modules.php:293
+msgid "The site returned a server error for these requests."
+msgstr "O site retornou um erro de servidor para estas solicitações."
+
+#: includes/class-sitelemetry-audit-modules.php:296
+msgid "The site did not answer within the time limit."
+msgstr "O site não respondeu dentro do tempo limite."
+
+#. translators: %d: number of ports that gave no reply.
+#: includes/class-sitelemetry-audit-modules.php:315
+msgid "%d port gave no reply: a firewall, usually the site's own, silently drops these connection attempts. This is normal hardening; silent ports are counted neither as open nor as closed."
+msgid_plural "%d ports gave no reply: a firewall, usually the site's own, silently drops these connection attempts. This is normal hardening; silent ports are counted neither as open nor as closed."
+msgstr[0] "%d porta não respondeu: um firewall, geralmente o do próprio site, descarta silenciosamente estas tentativas de conexão. É uma medida de proteção comum; portas silenciosas não contam nem como abertas nem como fechadas."
+msgstr[1] "%d portas não responderam: um firewall, geralmente o do próprio site, descarta silenciosamente estas tentativas de conexão. É uma medida de proteção comum; portas silenciosas não contam nem como abertas nem como fechadas."
+
+#: includes/class-sitelemetry-audit-modules.php:386
+msgid "Other checks"
+msgstr "Outras verificações"
+
+#: includes/class-sitelemetry-audit-modules.php:406
+msgid "Passing checks"
+msgstr "Verificações aprovadas"
+
+#: includes/class-sitelemetry-audit-modules.php:415
+msgid "Sitelemetry counted these passing checks but did not send the list of them with this result."
+msgstr "A Sitelemetry contou estas verificações aprovadas, mas não enviou a lista delas com este resultado."
+
+#: includes/class-sitelemetry-audit-modules.php:416
+msgid "This result was stored by an earlier version of the plugin, without the list of passing checks. The list appears here after the next audit."
+msgstr "Este resultado foi salvo por uma versão anterior do plugin, sem a lista de verificações aprovadas. A lista aparecerá aqui após a próxima auditoria."
+
+#. translators: 1: section title, 2: number of items listed, 3: number of items counted.
+#: includes/class-sitelemetry-audit-modules.php:449
+msgid "%1$s (%2$d of %3$d)"
+msgstr "%1$s (%2$d de %3$d)"
+
+#. translators: %d: number of passing checks that are not listed.
+#: includes/class-sitelemetry-audit-modules.php:452
+msgid "%d more passing check was counted but not kept with this result, so it is not listed here."
+msgid_plural "%d more passing checks were counted but not kept with this result, so they are not listed here."
+msgstr[0] "Mais %d verificação aprovada foi contada, mas não foi armazenada com este resultado e, por isso, não aparece aqui."
+msgstr[1] "Mais %d verificações aprovadas foram contadas, mas não foram armazenadas com este resultado e, por isso, não aparecem aqui."
+
+#. translators: 1: section or group title, 2: number of items.
+#: includes/class-sitelemetry-audit-modules.php:465
+msgid "%1$s (%2$d)"
+msgstr "%1$s (%2$d)"
+
+#: includes/class-sitelemetry-audit-modules.php:52
+msgid "DNS posture"
+msgstr "Postura DNS"
+
+#: includes/class-sitelemetry-audit-modules.php:53
+msgid "Email DNS"
+msgstr "DNS de e-mail"
+
+#: includes/class-sitelemetry-audit-modules.php:54
+msgid "WHOIS / RDAP"
+msgstr "WHOIS / RDAP"
+
+#: includes/class-sitelemetry-audit-modules.php:55
+msgid "TLS / certificate"
+msgstr "TLS / certificado"
+
+#: includes/class-sitelemetry-audit-modules.php:56
+msgid "HTTP security headers"
+msgstr "Cabeçalhos de segurança HTTP"
+
+#: includes/class-sitelemetry-audit-modules.php:57
+msgid "MITM / HTTPS posture"
+msgstr "Postura MITM / HTTPS"
+
+#: includes/class-sitelemetry-audit-modules.php:58
+msgid "Technology fingerprint"
+msgstr "Impressão tecnológica"
+
+#: includes/class-sitelemetry-audit-modules.php:59
+msgid "HTTP methods / CORS"
+msgstr "Métodos HTTP / CORS"
+
+#: includes/class-sitelemetry-audit-modules.php:60
+msgid "Sensitive file exposure"
+msgstr "Exposição de arquivos sensíveis"
+
+#: includes/class-sitelemetry-audit-modules.php:61
+msgid "API / GraphQL exposure"
+msgstr "Exposição API / GraphQL"
+
+#: includes/class-sitelemetry-audit-modules.php:62
+msgid "Admin / login surface"
+msgstr "Superfície admin / login"
+
+#: includes/class-sitelemetry-audit-modules.php:63
+msgid "Supply-chain files"
+msgstr "Arquivos de cadeia de suprimentos"
+
+#: includes/class-sitelemetry-audit-modules.php:64
+msgid "WordPress posture"
+msgstr "Postura WordPress"
+
+#: includes/class-sitelemetry-audit-modules.php:65
+msgid "Port scan"
+msgstr "Varredura de portas"
+
+#: includes/class-sitelemetry-audit-modules.php:66
+msgid "Port risk intelligence"
+msgstr "Risco de portas"
+
+#: includes/class-sitelemetry-audit-modules.php:67
+msgid "SQL injection canary"
+msgstr "Canário de injeção SQL"
+
+#: includes/class-sitelemetry-audit-modules.php:68
+msgid "DDoS resilience signals"
+msgstr "Sinais de resiliência DDoS"
+
+#: includes/class-sitelemetry-audit-modules.php:69
+msgid "Leaked secrets"
+msgstr "Segredos vazados"
+
+#: includes/class-sitelemetry-audit-modules.php:70
+msgid "Subdomain takeover"
+msgstr "Tomada de subdomínio"
+
+#: includes/class-sitelemetry-audit-modules.php:71
+msgid "Advanced CORS"
+msgstr "CORS avançado"
+
+#: includes/class-sitelemetry-audit-modules.php:72
+msgid "Injection canaries"
+msgstr "Canários de injeção"
+
+#: includes/class-sitelemetry-audit-modules.php:73
+msgid "Compression / CDN"
+msgstr "Compressão / CDN"
+
+#: includes/class-sitelemetry-audit-modules.php:74
+msgid "Pentest scope matrix"
+msgstr "Matriz de escopo pentest"
+
+#: includes/class-sitelemetry-audit-modules.php:75
+msgid "Nmap"
+msgstr "Nmap"
+
+#: includes/class-sitelemetry-audit-modules.php:76
+msgid "Nuclei"
+msgstr "Nuclei"
+
+#: includes/class-sitelemetry-audit-modules.php:77
+msgid "OWASP ZAP"
+msgstr "OWASP ZAP"
+
+#: includes/class-sitelemetry-audit-modules.php:78
+msgid "WPScan"
+msgstr "WPScan"
+
+#: includes/class-sitelemetry-audit-outcome.php:176
+msgid "Untitled finding"
+msgstr "Achado sem título"
+
+#: includes/class-sitelemetry-audit-plans.php:199
+msgid "Free"
+msgstr "Grátis"
+
+#. translators: %s: price with currency, for example $49.
+#: includes/class-sitelemetry-audit-plans.php:203
+msgid "%s/month"
+msgstr "%s/mês"
+
+#: includes/class-sitelemetry-audit-plans.php:240
+msgctxt "plan name"
+msgid "Free"
+msgstr "Free"
+
+#: includes/class-sitelemetry-audit-plans.php:240
+msgctxt "plan name"
+msgid "Starter"
+msgstr "Starter"
+
+#: includes/class-sitelemetry-audit-plans.php:27
+msgid "Full"
+msgstr "Completa"
+
+#: includes/class-sitelemetry-audit-plans.php:29
+msgid "SEO"
+msgstr "SEO"
+
+#: includes/class-sitelemetry-audit-plans.php:34
+msgid "Search Console"
+msgstr "Search Console"
+
+#: includes/class-sitelemetry-audit-runner.php:198
+msgid "Another audit is already running for this account; retrying shortly."
+msgstr "Já há outra auditoria em execução para esta conta; nova tentativa em breve."
+
+#: includes/class-sitelemetry-audit-runner.php:224
+msgid "Add your Sitelemetry API key in the settings before running an audit."
+msgstr "Adicione sua chave de API da Sitelemetry nas configurações antes de executar uma auditoria."
+
+#: includes/class-sitelemetry-audit-runner.php:233
+msgid "An audit is already running. Wait for it to finish or stop waiting for it on the results page."
+msgstr "Já há uma auditoria em execução. Aguarde até que termine ou clique em “Parar de esperar” na página de resultados."
+
+#: includes/class-sitelemetry-audit-runner.php:355
+msgid "Sitelemetry is running the audit. The result appears here when it is ready."
+msgstr "A Sitelemetry está executando a auditoria. O resultado aparece aqui quando estiver pronto."
+
+#: includes/class-sitelemetry-audit-runner.php:356
+msgid "Starting the audit…"
+msgstr "Iniciando a auditoria…"
+
+#: includes/class-sitelemetry-audit-settings.php:202
+msgid "The target must be a valid http or https URL. The previous value was kept."
+msgstr "O alvo precisa ser uma URL http ou https válida. O valor anterior foi mantido."
+
+#: includes/class-sitelemetry-audit-verification.php:1200
+msgid "Verification complete ✓"
+msgstr "Verificação concluída ✓"
+
+#. translators: %s: date and time the verification expires.
+#: includes/class-sitelemetry-audit-verification.php:1203
+msgid "Verification complete ✓ valid until %s"
+msgstr "Verificação concluída ✓ válida até %s"
+
+#: includes/class-sitelemetry-audit-verification.php:1230
+msgid "Sitelemetry did not accept the API key. It may be mistyped or revoked (for example after a password change), or the account cannot use API access. Get your API key again from the app, save it in the plugin settings and try again."
+msgstr "A Sitelemetry não aceitou a chave de API. Ela pode ter sido digitada errado ou revogada (por exemplo, após uma troca de senha), ou a conta não pode usar o acesso por API. Obtenha sua chave de API novamente no app, salve-a nas configurações do plugin e tente outra vez."
+
+#: includes/class-sitelemetry-audit-verification.php:1232
+msgid "Sitelemetry verifies only public host names, and the address of this site is not one (for example an IP address, localhost or a name without a dot). Verify the public address of the site instead."
+msgstr "A Sitelemetry verifica apenas nomes de host públicos, e o endereço deste site não é um deles (por exemplo, um endereço IP, localhost ou um nome sem ponto). Em vez disso, verifique o endereço público do site."
+
+#. translators: %d: maximum number of unfinished verifications.
+#: includes/class-sitelemetry-audit-verification.php:1235
+msgid "Your Sitelemetry workspace already has the maximum number of unfinished verifications (%d). Finish or remove some under Verified Domains in the app, then try again."
+msgstr "Seu espaço de trabalho da Sitelemetry já tem o número máximo de verificações não concluídas (%d). Conclua ou remova algumas em “Domínios verificados” no app e tente novamente."
+
+#. translators: %s: time to wait, for example "5 mins".
+#: includes/class-sitelemetry-audit-verification.php:1239
+msgid "Too many verification attempts. Try again in %s."
+msgstr "Muitas tentativas de verificação. Tente novamente em %s."
+
+#: includes/class-sitelemetry-audit-verification.php:1241
+msgid "A verification for this account is already running. Wait a few seconds, then try again."
+msgstr "Já há uma verificação em andamento para esta conta. Aguarde alguns segundos e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1244
+msgid "One-click verification is not available on Sitelemetry right now. Verify with a token from the app as described under Verify this site in the plugin settings, or use a DNS record or Google Search Console."
+msgstr "A verificação com um clique não está disponível na Sitelemetry no momento. Verifique com um token do app, como descrito em “Verificar este site” nas configurações do plugin, ou use um registro DNS ou o Google Search Console."
+
+#. translators: %s: host name in the answer of Sitelemetry.
+#: includes/class-sitelemetry-audit-verification.php:1247
+msgid "Sitelemetry answered with a verification file for another host (%s), so the plugin did not publish it. Check the site address in Settings > General, then try again."
+msgstr "A Sitelemetry respondeu com um arquivo de verificação para outro host (%s), então o plugin não o publicou. Confira o endereço do site em Configurações > Geral e tente novamente."
+
+#. translators: %s: error message.
+#: includes/class-sitelemetry-audit-verification.php:1250
+msgid "WordPress could not reach Sitelemetry (%s). Check that this server can make outgoing HTTPS requests to sitelemetry.com, then try again."
+msgstr "O WordPress não conseguiu acessar a Sitelemetry (%s). Confira se este servidor consegue fazer solicitações HTTPS de saída para sitelemetry.com e tente novamente."
+
+#. translators: %s: error code.
+#: includes/class-sitelemetry-audit-verification.php:1256
+msgid "Sitelemetry could not complete the verification (%s). Try again in a few minutes."
+msgstr "A Sitelemetry não conseguiu concluir a verificação (%s). Tente novamente em alguns minutos."
+
+#: includes/class-sitelemetry-audit-verification.php:1271
+msgid "Sitelemetry could not load the verification file: the site answered HTTP 404. The web server most likely handles /.well-known/ itself (for example an nginx rule for hidden paths) and does not pass the request to WordPress. Ask your host to pass /.well-known/sitelemetry-verification.txt to WordPress, or use a DNS record."
+msgstr "A Sitelemetry não conseguiu carregar o arquivo de verificação: o site respondeu HTTP 404. Provavelmente o servidor web trata /.well-known/ por conta própria (por exemplo, uma regra do nginx para caminhos ocultos) e não repassa a solicitação ao WordPress. Peça à sua hospedagem que repasse /.well-known/sitelemetry-verification.txt ao WordPress ou use um registro DNS."
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1275
+msgid "Sitelemetry could not load the verification file: the site answered HTTP %d. A firewall, a security plugin or password protection blocks the request (Sitelemetry uses the user agent Sitelemetry-Ownership-Verifier/1.0). Allow /.well-known/sitelemetry-verification.txt, then try again."
+msgstr "A Sitelemetry não conseguiu carregar o arquivo de verificação: o site respondeu HTTP %d. Um firewall, um plugin de segurança ou uma proteção por senha bloqueia a solicitação (a Sitelemetry usa o user agent Sitelemetry-Ownership-Verifier/1.0). Libere /.well-known/sitelemetry-verification.txt e tente novamente."
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1278
+msgid "Sitelemetry could not load the verification file: the site answered HTTP %d instead of the file. Check that the site is up and not in maintenance mode, then try again."
+msgstr "A Sitelemetry não conseguiu carregar o arquivo de verificação: o site respondeu HTTP %d em vez do arquivo. Confira se o site está no ar e fora do modo de manutenção e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1280
+msgid "The verification file address redirects to another host, protocol or port, or redirects more than twice, and Sitelemetry does not follow such redirects. The usual cause is a redirect between www and non-www: Sitelemetry verifies one exact host name, so set the site address in Settings > General to the host your server redirects to, or stop the redirect for /.well-known/sitelemetry-verification.txt."
+msgstr "O endereço do arquivo de verificação redireciona para outro host, protocolo ou porta, ou redireciona mais de duas vezes, e a Sitelemetry não segue esses redirecionamentos. A causa mais comum é um redirecionamento entre o endereço com www e sem www: a Sitelemetry verifica um nome de host exato, então defina como endereço do site em Configurações > Geral o host para o qual seu servidor redireciona, ou remova o redirecionamento de /.well-known/sitelemetry-verification.txt."
+
+#: includes/class-sitelemetry-audit-verification.php:1282
+msgid "Sitelemetry loaded the verification file, but it did not contain exactly the token. A cached copy, another file at that path or a page from a cache, maintenance or security plugin answered instead. Purge the cache, remove the other file or exclude /.well-known/sitelemetry-verification.txt, then try again."
+msgstr "A Sitelemetry carregou o arquivo de verificação, mas ele não continha exatamente o token. Em vez dele, respondeu uma cópia em cache, outro arquivo nesse caminho ou uma página de um plugin de cache, manutenção ou segurança. Limpe o cache, remova o outro arquivo ou exclua /.well-known/sitelemetry-verification.txt e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1284
+msgid "The site did not answer Sitelemetry in time (10 seconds). Check that the site is up and reachable from the internet, then try again."
+msgstr "O site não respondeu à Sitelemetry a tempo (10 segundos). Confira se o site está no ar e acessível pela internet e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1286
+msgid "The host name of this site does not resolve to a public address, so Sitelemetry cannot load the file from the internet. Check the DNS records of the domain, or verify the public address of the site instead."
+msgstr "O nome de host deste site não aponta para um endereço público, então a Sitelemetry não consegue carregar o arquivo pela internet. Confira os registros DNS do domínio ou, em vez disso, verifique o endereço público do site."
+
+#: includes/class-sitelemetry-audit-verification.php:1288
+msgid "Sitelemetry could not resolve the host name of this site. Check the DNS records of the domain, then try again."
+msgstr "A Sitelemetry não conseguiu resolver o nome de host deste site. Confira os registros DNS do domínio e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1290
+msgid "Sitelemetry could not validate the TLS certificate of this site. Install a valid certificate for this exact host name, then try again."
+msgstr "A Sitelemetry não conseguiu validar o certificado TLS deste site. Instale um certificado válido para exatamente este nome de host e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1292
+msgid "The verification file address answered with more than 2 KB, so something other than the plugin answers there. Remove that file or exclude /.well-known/sitelemetry-verification.txt from it, then try again."
+msgstr "O endereço do arquivo de verificação respondeu com mais de 2 KB, então algo diferente do plugin responde ali. Remova esse arquivo ou exclua /.well-known/sitelemetry-verification.txt dele e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1294
+msgid "The verification code changed while Sitelemetry was checking it (for example because it was renewed in the app at the same time). Click Verify this site again."
+msgstr "O código de verificação mudou enquanto a Sitelemetry o conferia (por exemplo, porque foi renovado no app ao mesmo tempo). Clique em “Verificar este site” de novo."
+
+#: includes/class-sitelemetry-audit-verification.php:1296
+msgid "Sitelemetry could not connect to this site. Check that it is reachable from the internet and that no firewall blocks the user agent Sitelemetry-Ownership-Verifier/1.0, then try again."
+msgstr "A Sitelemetry não conseguiu se conectar a este site. Confira se ele está acessível pela internet e se nenhum firewall bloqueia o user agent Sitelemetry-Ownership-Verifier/1.0 e tente novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1314
+msgid "This site address is not reachable from the internet (a local, private or test host). Sitelemetry verifies only public hosts, so the file cannot verify it."
+msgstr "Este endereço não pode ser acessado pela internet (é um host local, privado ou de teste). A Sitelemetry verifica apenas hosts públicos, então o método do arquivo não serve para este site."
+
+#: includes/class-sitelemetry-audit-verification.php:1317
+msgid "WordPress runs in a subdirectory of this host. Sitelemetry fetches the file from the root of the host, which usually does not reach WordPress here; use the DNS method instead, or place the file at the root of the host."
+msgstr "O WordPress roda em um subdiretório deste host. A Sitelemetry busca o arquivo na raiz do host, que aqui normalmente não chega ao WordPress; use o método DNS ou coloque o arquivo na raiz do host."
+
+#: includes/class-sitelemetry-audit-verification.php:1320
+msgid "This site address uses http://. Sitelemetry fetches the file over https:// unless the domain was added in the app with an http:// address."
+msgstr "O endereço deste site usa http://. A Sitelemetry busca o arquivo por https://, a menos que o domínio tenha sido adicionado no app com um endereço http://."
+
+#. translators: %d: port number of the site address.
+#: includes/class-sitelemetry-audit-verification.php:1325
+msgid "This site address uses port %d. Sitelemetry fetches the file from the default port of the host (443 for https://, 80 for http://), so the file must also be reachable there; Test the file checks that address."
+msgstr "O endereço deste site usa a porta %d. A Sitelemetry busca o arquivo na porta padrão do host (443 para https://, 80 para http://), então o arquivo também precisa estar acessível nela; “Testar o arquivo” testa esse endereço."
+
+#: includes/class-sitelemetry-audit-verification.php:1456
+msgid "The file works: WordPress loaded it from its own address with the stored token. Now click Verify HTTP for this domain in the app. Sitelemetry loads the file from the internet with its own user agent (Sitelemetry-Ownership-Verifier/1.0), so a firewall rule that blocks unknown bots can still make verification fail."
+msgstr "O arquivo funciona: o WordPress o carregou pelo próprio endereço com o token salvo. Agora clique em “Verificar HTTP” para este domínio no app. A Sitelemetry carrega o arquivo pela internet com o próprio user agent (Sitelemetry-Ownership-Verifier/1.0), então uma regra de firewall que bloqueie bots desconhecidos ainda pode fazer a verificação falhar."
+
+#: includes/class-sitelemetry-audit-verification.php:1458
+msgid "No token is stored for this site yet. Paste the token from the app first."
+msgstr "Ainda não há token salvo para este site. Primeiro cole o token do app."
+
+#. translators: %s: error message.
+#: includes/class-sitelemetry-audit-verification.php:1461
+msgid "WordPress could not load the file from its own address (%s). Some hosts block requests from a site to itself, so this does not prove that Sitelemetry cannot load it; open the file address in a browser to check."
+msgstr "O WordPress não conseguiu carregar o arquivo pelo próprio endereço (%s). Algumas hospedagens bloqueiam solicitações de um site para ele mesmo, então isso não prova que a Sitelemetry não consiga carregá-lo; abra o endereço do arquivo em um navegador para conferir."
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1464
+msgid "The file address answers with a redirect (HTTP %d) without a usable destination."
+msgstr "O endereço do arquivo responde com um redirecionamento (HTTP %d) sem um destino utilizável."
+
+#. translators: 1: HTTP status code, 2: host the redirect points to.
+#: includes/class-sitelemetry-audit-verification.php:1467
+msgid "The file address redirects (HTTP %1$d) to another host, %2$s. Sitelemetry does not follow redirects to another host, so verification fails. Add and verify that host in the app instead, or stop the redirect for this path."
+msgstr "O endereço do arquivo redireciona (HTTP %1$d) para outro host, %2$s. A Sitelemetry não segue redirecionamentos para outro host, então a verificação falha. Em vez disso, adicione e verifique esse host no app ou remova o redirecionamento deste caminho."
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1470
+msgid "The file address redirects (HTTP %d) from https:// to http://. Sitelemetry does not follow that redirect, so verification fails."
+msgstr "O endereço do arquivo redireciona (HTTP %d) de https:// para http://. A Sitelemetry não segue esse redirecionamento, então a verificação falha."
+
+#: includes/class-sitelemetry-audit-verification.php:1472
+msgid "The file address redirects more than twice. Sitelemetry follows at most two redirects, so verification fails."
+msgstr "O endereço do arquivo redireciona mais de duas vezes. A Sitelemetry segue no máximo dois redirecionamentos, então a verificação falha."
+
+#: includes/class-sitelemetry-audit-verification.php:1474
+msgid "A web page answered instead of the file (for example a maintenance, login, cache or firewall page), so the request did not reach this plugin. Exclude /.well-known/sitelemetry-verification.txt from that page or plugin, or use the DNS method."
+msgstr "Uma página web respondeu no lugar do arquivo (por exemplo, uma página de manutenção, login, cache ou firewall), então a solicitação não chegou a este plugin. Exclua /.well-known/sitelemetry-verification.txt dessa página ou plugin, ou use o método DNS."
+
+#: includes/class-sitelemetry-audit-verification.php:1476
+msgid "The file address answers, but not with the stored token. Another file at that path (for example one uploaded earlier) or a cached copy takes precedence: remove it, purge the cache, or put the current token in it."
+msgstr "O endereço do arquivo responde, mas não com o token salvo. Outro arquivo nesse caminho (por exemplo, um enviado antes) ou uma cópia em cache tem prioridade: remova-o, limpe o cache ou coloque nele o token atual."
+
+#: includes/class-sitelemetry-audit-verification.php:1478
+msgid "The plugin answered, but no token is stored for this site address. Save the token again."
+msgstr "O plugin respondeu, mas não há token salvo para o endereço deste site. Salve o token novamente."
+
+#: includes/class-sitelemetry-audit-verification.php:1480
+msgid "The web server answered 404 without passing the request to WordPress. Many server setups handle /.well-known/ themselves (for example an nginx rule for hidden paths), and with plain permalinks the web server does not pass unknown paths to WordPress. Ask your host to pass /.well-known/sitelemetry-verification.txt to WordPress, upload a plain text file with the token at that path, or use the DNS method."
+msgstr "O servidor web respondeu 404 sem repassar a solicitação ao WordPress. Muitas configurações de servidor tratam /.well-known/ por conta própria (por exemplo, uma regra do nginx para caminhos ocultos) e, com os links permanentes simples, o servidor web não repassa caminhos desconhecidos ao WordPress. Peça à sua hospedagem que repasse /.well-known/sitelemetry-verification.txt ao WordPress, envie um arquivo de texto simples com o token para esse caminho ou use o método DNS."
+
+#: includes/class-sitelemetry-audit-verification.php:1482
+msgid "The site asks for a password (HTTP 401), so Sitelemetry cannot read the file. Remove the password protection for this path while you verify, or use the DNS method."
+msgstr "O site pede uma senha (HTTP 401), então a Sitelemetry não consegue ler o arquivo. Remova a proteção por senha deste caminho durante a verificação ou use o método DNS."
+
+#: includes/class-sitelemetry-audit-verification.php:1484
+msgid "The request was refused (HTTP 403), usually by the web server configuration or a firewall or security plugin (for example Cloudflare, Wordfence or ModSecurity rules). Allow this path, or use the DNS method."
+msgstr "A solicitação foi recusada (HTTP 403), normalmente pela configuração do servidor web ou por um firewall ou plugin de segurança (por exemplo, regras do Cloudflare, Wordfence ou ModSecurity). Libere este caminho ou use o método DNS."
+
+#: includes/class-sitelemetry-audit-verification.php:1486
+msgid "The site rate-limited the request (HTTP 429). Try again in a minute; if it persists, allow this path in the firewall or security plugin."
+msgstr "O site limitou a taxa da solicitação (HTTP 429). Tente novamente em um minuto; se continuar, libere este caminho no firewall ou no plugin de segurança."
+
+#: includes/class-sitelemetry-audit-verification.php:1488
+msgid "The site answered 503 (temporarily unavailable), often a maintenance mode. Verify when the site is back, or exclude this path from maintenance mode."
+msgstr "O site respondeu 503 (temporariamente indisponível), muitas vezes por causa de um modo de manutenção. Verifique quando o site voltar ou exclua este caminho do modo de manutenção."
+
+#. translators: %d: HTTP status code.
+#: includes/class-sitelemetry-audit-verification.php:1492
+msgid "The file address answered with HTTP %d instead of the file."
+msgstr "O endereço do arquivo respondeu com HTTP %d em vez do arquivo."
+
+#. translators: 1: host name, 2: date and time the verification expires.
+#: includes/class-sitelemetry-audit-verification.php:1609
+msgid "Ownership of %1$s is verified (valid until %2$s). Run the audit again to include the checks that need verification."
+msgstr "A propriedade de %1$s está verificada (válida até %2$s). Execute a auditoria de novo para incluir as verificações que dependem da verificação de propriedade."
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1611
+msgid "Ownership of %s is verified. Run the audit again to include the checks that need verification."
+msgstr "A propriedade de %s está verificada. Execute a auditoria de novo para incluir as verificações que dependem da verificação de propriedade."
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1628
+msgid "The ownership verification of %s has expired. The plugin renews it automatically in the background; to renew it now, open Verify this site."
+msgstr "A verificação de propriedade de %s expirou. O plugin a renova automaticamente em segundo plano; para renová-la agora, abra “Verificar este site”."
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1634
+msgid "The current verification of %s covers only part of the host. Verify the whole host (HTTP file or DNS record) to run the host-level checks."
+msgstr "A verificação atual de %s cobre apenas parte do host. Verifique o host inteiro (arquivo HTTP ou registro DNS) para executar as verificações em nível de host."
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1637
+msgid "This audit runs only after ownership of %s is verified."
+msgstr "Esta auditoria só é executada depois que a propriedade de %s for verificada."
+
+#. translators: %s: host name.
+#: includes/class-sitelemetry-audit-verification.php:1640
+msgid "Some checks run only after ownership of %s is verified."
+msgstr "Algumas verificações só são executadas depois que a propriedade de %s for verificada."
+
+#: includes/class-sitelemetry-audit-verification.php:298
+msgid "The site address has no host name."
+msgstr "O endereço do site não tem nome de host."

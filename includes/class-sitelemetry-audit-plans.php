@@ -237,6 +237,6 @@ class Sitelemetry_Audit_Plans {
 	 * @return string
 	 */
 	public static function fallback_required_plan_label( $kind ) {
-		return 'security' === $kind ? __( 'Free', 'sitelemetry-audit' ) : __( 'Starter', 'sitelemetry-audit' );
+		return 'security' === $kind ? _x( 'Free', 'plan name', 'sitelemetry-audit' ) : _x( 'Starter', 'plan name', 'sitelemetry-audit' );
 	}
 }

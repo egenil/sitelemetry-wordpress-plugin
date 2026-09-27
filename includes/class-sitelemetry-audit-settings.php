@@ -96,6 +96,44 @@ class Sitelemetry_Audit_Settings {
 	}
 
 	/**
+	 * Report languages the service supports (its `lang` argument).
+	 *
+	 * @return string[]
+	 */
+	public static function report_languages() {
+		return array( 'en', 'tr', 'es', 'de', 'fr', 'pt', 'it', 'ja', 'zh' );
+	}
+
+	/**
+	 * The report language for a WordPress locale (pt_BR -> pt, de_DE_formal -> de).
+	 * Traditional Chinese and every language the service does not support fall
+	 * back to English: the service writes Chinese reports in Simplified Chinese.
+	 *
+	 * @param mixed $locale WordPress locale, for example get_user_locale().
+	 * @return string
+	 */
+	public static function report_language( $locale ) {
+		$parts   = preg_split( '/[-_]/', strtolower( trim( is_string( $locale ) ? $locale : '' ) ) );
+		$primary = is_array( $parts ) ? $parts[0] : '';
+		if ( 'zh' === $primary && count( array_intersect( array_slice( $parts, 1 ), array( 'tw', 'hk', 'mo', 'hant' ) ) ) > 0 ) {
+			return 'en';
+		}
+		return in_array( $primary, self::report_languages(), true ) ? $primary : 'en';
+	}
+
+	/**
+	 * The language of the current admin (the site language for WP-Cron runs).
+	 *
+	 * @return string WordPress locale.
+	 */
+	public static function admin_locale() {
+		if ( function_exists( 'get_user_locale' ) ) {
+			return (string) get_user_locale();
+		}
+		return function_exists( 'get_locale' ) ? (string) get_locale() : 'en_US';
+	}
+
+	/**
 	 * Masked representation of the key for display (never the key itself).
 	 *
 	 * @param string $key API key.

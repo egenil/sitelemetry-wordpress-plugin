@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __DIR__ ) . '/' );
 }
 if ( ! defined( 'SITELEMETRY_AUDIT_VERSION' ) ) {
-	define( 'SITELEMETRY_AUDIT_VERSION', '0.1.2' );
+	define( 'SITELEMETRY_AUDIT_VERSION', '0.1.3' );
 }
 if ( ! defined( 'SITELEMETRY_AUDIT_DIR' ) ) {
 	define( 'SITELEMETRY_AUDIT_DIR', dirname( __DIR__ ) . '/' );
@@ -41,6 +41,19 @@ $GLOBALS['sitelemetry_test_actions']         = array();
 $GLOBALS['sitelemetry_test_cron']            = array();
 $GLOBALS['sitelemetry_test_settings_errors'] = array();
 $GLOBALS['sitelemetry_test_http']            = null;
+$GLOBALS['sitelemetry_test_locale']          = 'en_US';
+$GLOBALS['sitelemetry_test_home']            = 'https://example.test';
+$GLOBALS['sitelemetry_test_caps']            = array( 'manage_options' );
+$GLOBALS['sitelemetry_test_multisite']       = false;
+$GLOBALS['sitelemetry_test_context']         = 'admin';
+$GLOBALS['sitelemetry_test_textdomains']     = array();
+$GLOBALS['sitelemetry_test_user_options']    = array();
+$GLOBALS['sitelemetry_test_screen']          = null;
+$GLOBALS['sitelemetry_test_translations']    = array();
+$GLOBALS['sitelemetry_test_wp_version']      = '6.8';
+$GLOBALS['sitelemetry_test_nonces']          = array();
+$GLOBALS['sitelemetry_test_nonce_ok']        = true;
+$GLOBALS['sitelemetry_test_filters']         = array();
 
 if ( ! class_exists( 'WP_Error' ) ) {
 	/**
@@ -134,7 +147,7 @@ if ( ! function_exists( '__' ) ) {
 	 * @return string
 	 */
 	function __( $text, $domain = 'default' ) { // phpcs:ignore Universal.Files.SeparateFunctionsFromOO.Mixed
-		return $text;
+		return isset( $GLOBALS['sitelemetry_test_translations'][ $text ] ) ? $GLOBALS['sitelemetry_test_translations'][ $text ] : $text;
 	}
 }
 if ( ! function_exists( '_n' ) ) {
@@ -149,6 +162,19 @@ if ( ! function_exists( '_n' ) ) {
 	 */
 	function _n( $single, $plural, $number, $domain = 'default' ) {
 		return 1 === (int) $number ? $single : $plural;
+	}
+}
+if ( ! function_exists( '_x' ) ) {
+	/**
+	 * Translation-with-context stand-in.
+	 *
+	 * @param string $text    Text.
+	 * @param string $context Context.
+	 * @param string $domain  Domain.
+	 * @return string
+	 */
+	function _x( $text, $context, $domain = 'default' ) {
+		return $text;
 	}
 }
 if ( ! function_exists( 'esc_html' ) ) {
@@ -193,7 +219,7 @@ if ( ! function_exists( 'esc_html__' ) ) {
 	 * @return string
 	 */
 	function esc_html__( $text, $domain = 'default' ) {
-		return esc_html( $text );
+		return esc_html( __( $text, $domain ) );
 	}
 }
 if ( ! function_exists( 'wp_json_encode' ) ) {
@@ -279,25 +305,36 @@ if ( ! function_exists( 'esc_url_raw' ) ) {
 }
 if ( ! function_exists( 'home_url' ) ) {
 	/**
-	 * Site URL stand-in.
+	 * Site URL stand-in (the test sets $GLOBALS['sitelemetry_test_home']).
 	 *
 	 * @param string $path Path.
 	 * @return string
 	 */
 	function home_url( $path = '' ) {
-		return 'https://example.test' . $path;
+		return $GLOBALS['sitelemetry_test_home'] . $path;
+	}
+}
+if ( ! function_exists( 'get_user_locale' ) ) {
+	/**
+	 * Locale stand-in (the test sets $GLOBALS['sitelemetry_test_locale']).
+	 *
+	 * @return string
+	 */
+	function get_user_locale() {
+		return $GLOBALS['sitelemetry_test_locale'];
 	}
 }
 if ( ! function_exists( 'apply_filters' ) ) {
 	/**
-	 * Filter stand-in: returns the value.
+	 * Filter stand-in: returns the value, or the one a test set in
+	 * $GLOBALS['sitelemetry_test_filters'][ $hook_name ].
 	 *
 	 * @param string $hook_name Hook.
 	 * @param mixed  $value     Value.
 	 * @return mixed
 	 */
 	function apply_filters( $hook_name, $value ) {
-		return $value;
+		return array_key_exists( $hook_name, $GLOBALS['sitelemetry_test_filters'] ) ? $GLOBALS['sitelemetry_test_filters'][ $hook_name ] : $value;
 	}
 }
 if ( ! function_exists( 'do_action' ) ) {
@@ -441,6 +478,139 @@ if ( ! function_exists( 'add_settings_error' ) ) {
 		$GLOBALS['sitelemetry_test_settings_errors'][] = func_get_args();
 	}
 }
+if ( ! function_exists( 'current_user_can' ) ) {
+	/**
+	 * Capability stand-in (the test sets $GLOBALS['sitelemetry_test_caps']).
+	 *
+	 * @param string $capability Capability.
+	 * @return bool
+	 */
+	function current_user_can( $capability ) {
+		return in_array( $capability, $GLOBALS['sitelemetry_test_caps'], true );
+	}
+}
+if ( ! function_exists( 'is_multisite' ) ) {
+	/**
+	 * Multisite stand-in (the test sets $GLOBALS['sitelemetry_test_multisite']).
+	 *
+	 * @return bool
+	 */
+	function is_multisite() {
+		return (bool) $GLOBALS['sitelemetry_test_multisite'];
+	}
+}
+if ( ! function_exists( 'is_admin' ) ) {
+	/**
+	 * Request context stand-in: 'admin', 'cron', 'ajax' or 'front'.
+	 *
+	 * @return bool
+	 */
+	function is_admin() {
+		return in_array( $GLOBALS['sitelemetry_test_context'], array( 'admin', 'ajax' ), true );
+	}
+}
+if ( ! function_exists( 'wp_doing_cron' ) ) {
+	/**
+	 * WP-Cron stand-in.
+	 *
+	 * @return bool
+	 */
+	function wp_doing_cron() {
+		return 'cron' === $GLOBALS['sitelemetry_test_context'];
+	}
+}
+if ( ! function_exists( 'wp_doing_ajax' ) ) {
+	/**
+	 * AJAX stand-in.
+	 *
+	 * @return bool
+	 */
+	function wp_doing_ajax() {
+		return 'ajax' === $GLOBALS['sitelemetry_test_context'];
+	}
+}
+if ( ! function_exists( 'determine_locale' ) ) {
+	/**
+	 * Locale stand-in (the user locale of the test).
+	 *
+	 * @return string
+	 */
+	function determine_locale() {
+		return $GLOBALS['sitelemetry_test_locale'];
+	}
+}
+if ( ! function_exists( 'is_textdomain_loaded' ) ) {
+	/**
+	 * Text domain stand-in.
+	 *
+	 * @param string $domain Text domain.
+	 * @return bool
+	 */
+	function is_textdomain_loaded( $domain ) {
+		return isset( $GLOBALS['sitelemetry_test_textdomains'][ $domain ] );
+	}
+}
+if ( ! function_exists( 'load_textdomain' ) ) {
+	/**
+	 * Text domain stand-in: records the file.
+	 *
+	 * @param string $domain Text domain.
+	 * @param string $mofile File.
+	 * @return bool
+	 */
+	function load_textdomain( $domain, $mofile ) {
+		if ( ! is_readable( $mofile ) ) {
+			return false;
+		}
+		$GLOBALS['sitelemetry_test_textdomains'][ $domain ] = $mofile;
+		return true;
+	}
+}
+if ( ! function_exists( 'get_current_user_id' ) ) {
+	/**
+	 * User stand-in.
+	 *
+	 * @return int
+	 */
+	function get_current_user_id() {
+		return 1;
+	}
+}
+if ( ! function_exists( 'get_user_option' ) ) {
+	/**
+	 * User option stand-in (current user).
+	 *
+	 * @param string $option Option.
+	 * @return mixed
+	 */
+	function get_user_option( $option ) {
+		return isset( $GLOBALS['sitelemetry_test_user_options'][ $option ] ) ? $GLOBALS['sitelemetry_test_user_options'][ $option ] : false;
+	}
+}
+if ( ! function_exists( 'update_user_option' ) ) {
+	/**
+	 * User option stand-in.
+	 *
+	 * @param int    $user_id User.
+	 * @param string $option  Option.
+	 * @param mixed  $value   Value.
+	 * @return bool
+	 */
+	function update_user_option( $user_id, $option, $value ) {
+		$GLOBALS['sitelemetry_test_user_options'][ $option ] = $value;
+		return true;
+	}
+}
+if ( ! function_exists( 'get_current_screen' ) ) {
+	/**
+	 * Screen stand-in (the test sets $GLOBALS['sitelemetry_test_screen'] to an id).
+	 *
+	 * @return object|null
+	 */
+	function get_current_screen() {
+		return null === $GLOBALS['sitelemetry_test_screen'] ? null : (object) array( 'id' => $GLOBALS['sitelemetry_test_screen'] );
+	}
+}
 if ( ! function_exists( 'get_bloginfo' ) ) {
 	/**
 	 * Blog info stand-in.
@@ -449,7 +619,7 @@ if ( ! function_exists( 'get_bloginfo' ) ) {
 	 * @return string
 	 */
 	function get_bloginfo( $show = '' ) {
-		return 'version' === $show ? '6.8' : '';
+		return 'version' === $show ? $GLOBALS['sitelemetry_test_wp_version'] : '';
 	}
 }
 if ( ! function_exists( 'wp_remote_post' ) ) {
@@ -516,6 +686,114 @@ if ( ! function_exists( 'wp_remote_retrieve_header' ) ) {
 			}
 		}
 		return '';
+	}
+}
+if ( ! function_exists( 'wp_date' ) ) {
+	/**
+	 * Date stand-in (UTC, fixed format).
+	 *
+	 * @param string $format    Format.
+	 * @param int    $timestamp Timestamp.
+	 * @return string
+	 */
+	function wp_date( $format, $timestamp = null ) {
+		return gmdate( 'Y-m-d H:i', (int) $timestamp );
+	}
+}
+if ( ! function_exists( 'human_time_diff' ) ) {
+	/**
+	 * Human time difference stand-in (minutes, at least 1, as core rounds).
+	 *
+	 * @param int $from From.
+	 * @param int $to   To.
+	 * @return string
+	 */
+	function human_time_diff( $from, $to = 0 ) {
+		$minutes = max( 1, (int) round( abs( (int) $to - (int) $from ) / 60 ) );
+		return 1 === $minutes ? '1 min' : $minutes . ' mins';
+	}
+}
+if ( ! class_exists( 'Sitelemetry_Test_Exit' ) ) {
+	/**
+	 * Thrown by the stand-ins of functions that end the request (wp_die, a
+	 * redirect), so handlers can be tested without exit.
+	 */
+	class Sitelemetry_Test_Exit extends Exception {
+		/**
+		 * What ended the request: die or redirect.
+		 *
+		 * @var string
+		 */
+		public $kind;
+		/**
+		 * The redirect URL or the die message.
+		 *
+		 * @var string
+		 */
+		public $target;
+
+		/**
+		 * Constructor.
+		 *
+		 * @param string $kind   die | redirect.
+		 * @param string $target URL or message.
+		 */
+		public function __construct( $kind, $target ) {
+			parent::__construct( $kind . ': ' . $target );
+			$this->kind   = $kind;
+			$this->target = (string) $target;
+		}
+	}
+}
+if ( ! function_exists( 'wp_die' ) ) {
+	/**
+	 * wp_die stand-in: ends the "request" with an exception.
+	 *
+	 * @param string $message Message.
+	 * @return void
+	 * @throws Sitelemetry_Test_Exit Always.
+	 */
+	function wp_die( $message = '' ) {
+		throw new Sitelemetry_Test_Exit( 'die', (string) $message );
+	}
+}
+if ( ! function_exists( 'check_admin_referer' ) ) {
+	/**
+	 * Nonce check stand-in: records the action; a test sets
+	 * $GLOBALS['sitelemetry_test_nonce_ok'] to false to make it fail like core.
+	 *
+	 * @param string $action Action.
+	 * @return int
+	 * @throws Sitelemetry_Test_Exit When the nonce is invalid.
+	 */
+	function check_admin_referer( $action = -1 ) {
+		$GLOBALS['sitelemetry_test_nonces'][] = $action;
+		if ( empty( $GLOBALS['sitelemetry_test_nonce_ok'] ) ) {
+			throw new Sitelemetry_Test_Exit( 'die', 'The link you followed has expired.' );
+		}
+		return 1;
+	}
+}
+if ( ! function_exists( 'wp_safe_redirect' ) ) {
+	/**
+	 * Redirect stand-in: ends the "request" with an exception carrying the URL.
+	 *
+	 * @param string $location URL.
+	 * @return void
+	 * @throws Sitelemetry_Test_Exit Always.
+	 */
+	function wp_safe_redirect( $location ) {
+		throw new Sitelemetry_Test_Exit( 'redirect', (string) $location );
+	}
+}
+if ( ! function_exists( 'wp_get_referer' ) ) {
+	/**
+	 * Referer stand-in.
+	 *
+	 * @return false
+	 */
+	function wp_get_referer() {
+		return false;
 	}
 }
 if ( ! function_exists( 'wp_next_scheduled' ) ) {
@@ -598,6 +876,19 @@ function sitelemetry_test_reset() {
 	$GLOBALS['sitelemetry_test_cron']            = array();
 	$GLOBALS['sitelemetry_test_settings_errors'] = array();
 	$GLOBALS['sitelemetry_test_http']            = null;
+	$GLOBALS['sitelemetry_test_locale']          = 'en_US';
+	$GLOBALS['sitelemetry_test_home']            = 'https://example.test';
+	$GLOBALS['sitelemetry_test_caps']            = array( 'manage_options' );
+	$GLOBALS['sitelemetry_test_multisite']       = false;
+	$GLOBALS['sitelemetry_test_context']         = 'admin';
+	$GLOBALS['sitelemetry_test_textdomains']     = array();
+	$GLOBALS['sitelemetry_test_user_options']    = array();
+	$GLOBALS['sitelemetry_test_screen']          = null;
+	$GLOBALS['sitelemetry_test_translations']    = array();
+	$GLOBALS['sitelemetry_test_wp_version']      = '6.8';
+	$GLOBALS['sitelemetry_test_nonces']          = array();
+	$GLOBALS['sitelemetry_test_nonce_ok']        = true;
+	$GLOBALS['sitelemetry_test_filters']         = array();
 }
 
 /**
@@ -667,11 +958,18 @@ class Sitelemetry_Test_Mock_Service {
 	public $calls = array();
 
 	/**
-	 * Jobs by id.
+	 * Arguments of every call that started an audit (not the polls).
 	 *
 	 * @var array
 	 */
-	private $jobs = array();
+	public $starts = array();
+
+	/**
+	 * Jobs by id (the language the job was started with is kept, as the service does).
+	 *
+	 * @var array
+	 */
+	public $jobs = array();
 
 	/**
 	 * busy.example counter.
@@ -793,7 +1091,10 @@ class Sitelemetry_Test_Mock_Service {
 
 		if ( array_key_exists( 'jobId', $args ) ) {
 			$job_id = $args['jobId'];
-			if ( ! isset( $this->jobs[ $job_id ] ) || $this->jobs[ $job_id ]['tool'] !== $name ) {
+			// As the service: a poll carries the pollArguments (target and jobId),
+			// optionally a supported lang, and nothing else.
+			$extra = array_diff( array_keys( $args ), array( 'jobId', 'target', 'lang' ) );
+			if ( ! isset( $this->jobs[ $job_id ] ) || $this->jobs[ $job_id ]['tool'] !== $name || $extra || ( isset( $args['target'] ) && $args['target'] !== $this->jobs[ $job_id ]['pollArguments']['target'] ) ) {
 				return $this->reply( $id, self::action_required( 'audit_job_argument_mismatch', 'The audit job arguments do not match. Call the same tool with the returned pollArguments unchanged.' ) );
 			}
 			++$this->jobs[ $job_id ]['polls'];
@@ -801,8 +1102,9 @@ class Sitelemetry_Test_Mock_Service {
 			return $this->reply( $id, $job['polls'] < $this->running_polls ? self::running( $job ) : $job['final'] );
 		}
 
-		$target = isset( $args['target'] ) ? (string) $args['target'] : '';
-		$host   = parse_url( $target, PHP_URL_HOST ); // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url
+		$target         = isset( $args['target'] ) ? (string) $args['target'] : '';
+		$this->starts[] = $args;
+		$host           = parse_url( $target, PHP_URL_HOST ); // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url
 		$host   = $host ? $host : $target;
 		$completed = sitelemetry_test_fixture( 'security-completed.json' );
 		switch ( $host ) {
@@ -811,6 +1113,7 @@ class Sitelemetry_Test_Mock_Service {
 				$job    = array(
 					'id'            => $job_id,
 					'tool'          => $name,
+					'lang'          => isset( $args['lang'] ) ? $args['lang'] : 'en',
 					'polls'         => 0,
 					'final'         => $completed,
 					'pollArguments' => array(
@@ -829,6 +1132,8 @@ class Sitelemetry_Test_Mock_Service {
 				return $this->reply( $id, sitelemetry_test_fixture( 'security-partial-free.json' ) );
 			case 'full.example':
 				return $this->reply( $id, sitelemetry_test_fixture( 'full-partial.json' ) );
+			case 'redirects.example':
+				return $this->reply( $id, sitelemetry_test_fixture( 'security-partial-redirects.json' ) );
 			case 'plan.example':
 				return self::json(
 					402,
@@ -1007,10 +1312,15 @@ class Sitelemetry_Test_Mock_Service {
 	}
 }
 
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-i18n.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-labels.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-settings.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-client.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-outcome.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-modules.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-fix-prompt.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-verification-api.php';
+require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-verification.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-plans.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-links.php';
 require_once SITELEMETRY_AUDIT_DIR . 'includes/class-sitelemetry-audit-results.php';

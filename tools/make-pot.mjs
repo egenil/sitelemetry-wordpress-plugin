@@ -87,6 +87,16 @@ msgstr ""
 "X-Domain: sitelemetry-audit\\n"
 `;
 const blocks = [];
+// The plugin header fields WordPress translates (the same five WP-CLI and
+// translate.wordpress.org extract), so a .po made from this template covers the
+// whole "Stable (latest release)" project.
+const mainSource = readFileSync(join(pluginDir, 'sitelemetry-audit.php'), 'utf8');
+for (const field of ['Plugin Name', 'Plugin URI', 'Description', 'Author', 'Author URI']) {
+  const value = new RegExp(String.raw`^\s*\*\s*${field}:\s*(.+?)\s*$`, 'm').exec(mainSource)?.[1];
+  if (!value) continue;
+  if ([...entries.values()].some((e) => !e.context && e.msgid === value)) continue;
+  blocks.push([`#. ${field} of the plugin`, '#: sitelemetry-audit.php', `msgid "${pot(value)}"`, 'msgstr ""'].join('\n'));
+}
 for (const entry of [...entries.values()].sort((a, b) => a.refs[0].localeCompare(b.refs[0]))) {
   const lines = [];
   for (const c of entry.comments) lines.push(`#. translators: ${c}`);
@@ -102,7 +112,7 @@ for (const entry of [...entries.values()].sort((a, b) => a.refs[0].localeCompare
 }
 mkdirSync(join(pluginDir, 'languages'), { recursive: true });
 writeFileSync(join(pluginDir, 'languages/sitelemetry-audit.pot'), `${header}\n${blocks.join('\n\n')}\n`);
-console.log(`${entries.size} unique strings from ${calls} translation calls written to languages/sitelemetry-audit.pot`);
+console.log(`${blocks.length} strings (${entries.size} from ${calls} translation calls, ${blocks.length - entries.size} plugin header fields) written to languages/sitelemetry-audit.pot`);
 if (bare.length) {
   console.log(`\n${bare.length} translation call(s) without the text domain:`);
   for (const line of bare) console.log(`  ${line}`);

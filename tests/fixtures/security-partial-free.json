@@ -32,7 +32,24 @@
           { "module": "rdap", "status": "unavailable", "checkCount": 1, "findingCount": 0, "reasons": ["registry_timeout"] }
         ]
       },
-      "checks": { "counts": { "ok": 6, "warn": 2, "fail": 0, "unmeasured": 3 }, "total": 11, "items": [] }
+      "checks": {
+        "counts": { "ok": 6, "observed": 1, "not_applicable": 0, "manual_review": 0, "skipped": 1, "error": 0, "fail": 2 },
+        "total": 10,
+        "returned": 10,
+        "truncated": false,
+        "items": [
+          { "id": "ok.dns.resolve", "status": "ok", "title": "DNS resolution successful", "evidence": "203.0.113.10", "location": "https://free.example/" },
+          { "id": "ok.dns.email.spf", "status": "ok", "title": "SPF record present", "evidence": "v=spf1 include:_spf.mail.example.net ~all", "location": "https://free.example/" },
+          { "id": "fail.dns.email.dmarc", "status": "fail", "title": "DMARC record is missing", "evidence": "No _dmarc TXT record", "location": "https://free.example/" },
+          { "id": "skip.rdap.lookup", "status": "skipped", "title": "WHOIS/RDAP lookup was not completed", "evidence": "registry_timeout", "location": "" },
+          { "id": "ok.tls.certificate.trusted", "status": "ok", "title": "TLS certificate chain is trusted", "evidence": "issuer=C=US, O=Let's Encrypt, CN=R11", "location": "https://free.example/" },
+          { "id": "ok.tls.protocol.modern", "status": "ok", "title": "Modern TLS protocol in use", "evidence": "TLSv1.3", "location": "https://free.example/" },
+          { "id": "fail.tls.certificate.expiry", "status": "fail", "title": "TLS certificate expires soon", "evidence": "valid_to in 9 days", "location": "https://free.example/" },
+          { "id": "ok.http.header.nosniff", "status": "ok", "title": "MIME sniffing protection active", "evidence": "X-Content-Type-Options: nosniff", "location": "https://free.example/" },
+          { "id": "ok.mitm.https-redirect", "status": "ok", "title": "HTTP redirects to HTTPS", "evidence": "http:// -> https:// (301)", "location": "http://free.example/" },
+          { "id": "tech.server-banner", "status": "observed", "title": "Server software observed", "evidence": "Server: nginx", "location": "https://free.example/" }
+        ]
+      }
     },
     "findings": [
       {

@@ -103,4 +103,40 @@ class Sitelemetry_Audit_Settings_Test extends TestCase {
 		$this->assertSame( '', Sitelemetry_Audit_Settings::normalize_target( 'https://bad host.example/' ) );
 		$this->assertSame( '', Sitelemetry_Audit_Settings::normalize_target( 'javascript:alert(1)' ) );
 	}
+	/**
+	 * WordPress locales map to the report languages the service supports; every
+	 * other language, and Traditional Chinese, falls back to English.
+	 *
+	 * @return void
+	 */
+	public function test_report_language() {
+		$map = array(
+			'en_US'          => 'en',
+			'en_GB'          => 'en',
+			'tr_TR'          => 'tr',
+			'es_ES'          => 'es',
+			'es_MX'          => 'es',
+			'de_DE'          => 'de',
+			'de_DE_formal'   => 'de',
+			'de_CH_informal' => 'de',
+			'fr_FR'          => 'fr',
+			'fr_CA'          => 'fr',
+			'pt_BR'          => 'pt',
+			'pt_PT'          => 'pt',
+			'it_IT'          => 'it',
+			'ja'             => 'ja',
+			'zh_CN'          => 'zh',
+			'zh_TW'          => 'en',
+			'zh_HK'          => 'en',
+			'nl_NL'          => 'en',
+			'ko_KR'          => 'en',
+			''               => 'en',
+		);
+		foreach ( $map as $locale => $lang ) {
+			$this->assertSame( $lang, Sitelemetry_Audit_Settings::report_language( $locale ), (string) $locale );
+		}
+		$this->assertSame( 'en', Sitelemetry_Audit_Settings::report_language( null ) );
+		$GLOBALS['sitelemetry_test_locale'] = 'it_IT';
+		$this->assertSame( 'it_IT', Sitelemetry_Audit_Settings::admin_locale() );
+	}
 }

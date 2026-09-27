@@ -221,9 +221,149 @@
 	margin: 16px 0;
 }
 
-.sitelemetry-audit-not-measured ul {
+/* Collapsible sections: passing checks, what was not measured */
+
+.sitelemetry-audit-toggle > summary {
+	cursor: pointer;
+	list-style-position: outside;
+	margin-left: 16px;
+}
+
+.sitelemetry-audit-toggle > summary h3 {
+	display: inline;
+	font-size: 1.1em;
+	margin: 0;
+}
+
+.sitelemetry-audit-toggle[open] > summary {
+	margin-bottom: 12px;
+}
+
+.sitelemetry-audit-toggle ul {
 	list-style: disc;
+	margin: 6px 0 12px 20px;
+}
+
+.sitelemetry-audit-toggle li {
+	margin-bottom: 6px;
+}
+
+.sitelemetry-audit-passing-group h4 {
+	margin: 12px 0 4px;
+}
+
+.sitelemetry-audit-small,
+.sitelemetry-audit-nm-explanation {
+	display: block;
+}
+
+.sitelemetry-audit-small {
+	color: #50575e;
+	font-size: 12px;
+	overflow-wrap: anywhere;
+}
+
+.sitelemetry-audit-nm-explanation {
+	margin-top: 2px;
+}
+
+.sitelemetry-audit-check-group p.sitelemetry-audit-nm-explanation {
+	margin: 0 0 4px;
+}
+
+/* AI fix prompt */
+
+.sitelemetry-audit-prompt textarea {
+	font-size: 12px;
+	margin-top: 8px;
+}
+
+.sitelemetry-audit-prompt summary {
+	color: #2271b1;
+	cursor: pointer;
+}
+
+/* Empty, the live region takes no space but stays in the accessibility tree,
+   so screen readers announce the text the copy button writes into it. */
+.sitelemetry-audit-prompt-status:empty {
+	margin: 0;
+}
+
+.sitelemetry-audit-prompt-status {
+	color: #007017;
+}
+
+.sitelemetry-audit-prompt-status.is-error {
+	color: #d63638;
+}
+
+.sitelemetry-audit-prompt [hidden] {
+	display: none;
+}
+
+/* Verification */
+
+.sitelemetry-audit-verify-cta {
+	border-left: 4px solid #2271b1;
+}
+
+.sitelemetry-audit-verify .notice.inline {
+	margin: 8px 0;
+}
+
+.sitelemetry-audit-steps,
+.sitelemetry-audit-alternatives {
 	margin-left: 20px;
+}
+
+.sitelemetry-audit-alternatives {
+	list-style: disc;
+}
+
+.sitelemetry-audit-verify code {
+	word-break: break-all;
+}
+
+.sitelemetry-audit-one-click {
+	margin: 12px 0;
+}
+
+.sitelemetry-audit-manual {
+	margin: 12px 0;
+}
+
+.sitelemetry-audit-manual > summary {
+	cursor: pointer;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+/* Onboarding next to the API key field */
+
+.sitelemetry-audit-onboarding {
+	background: #f6f7f7;
+	border-left: 4px solid #2271b1;
+	margin: 0 0 12px;
+	max-width: 640px;
+	padding: 4px 12px;
+}
+
+.sitelemetry-audit-onboarding .button {
+	margin: 0 6px 6px 0;
+}
+
+/* The key link sits on the button's baseline (one button, one link). */
+.sitelemetry-audit-api-key-link {
+	display: inline-block;
+	line-height: 2.15384615;
+	margin: 0 0 6px 6px;
+	min-height: 30px;
+}
+
+.sitelemetry-audit-widget-verify {
+	border-top: 1px solid #dcdcde;
+	margin-top: 8px;
+	padding-top: 4px;
 }
 
 /* Progress */

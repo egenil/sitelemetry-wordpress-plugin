@@ -237,4 +237,90 @@ abstract class TestCase {
 			self::fail( '' !== $message ? $message : 'Expected ' . var_export( $needle, true ) . ' in the array.' );
 		}
 	}
+
+	/**
+	 * Does not contain (arrays).
+	 *
+	 * @param mixed  $needle   Needle.
+	 * @param array  $haystack Haystack.
+	 * @param string $message  Message.
+	 * @return void
+	 */
+	public static function assertNotContains( $needle, $haystack, $message = '' ) {
+		if ( in_array( $needle, $haystack, true ) ) {
+			self::fail( '' !== $message ? $message : 'Did not expect ' . var_export( $needle, true ) . ' in the array.' );
+		}
+	}
+
+	/**
+	 * Regular expression that must not match.
+	 *
+	 * @param string $pattern Pattern.
+	 * @param string $string  Subject.
+	 * @param string $message Message.
+	 * @return void
+	 */
+	public static function assertDoesNotMatchRegularExpression( $pattern, $string, $message = '' ) {
+		if ( preg_match( $pattern, (string) $string ) ) {
+			self::fail( ( '' !== $message ? $message . ' ' : '' ) . 'Expected the text not to match ' . $pattern );
+		}
+	}
+
+	/**
+	 * Less than or equal.
+	 *
+	 * @param mixed  $expected Upper bound.
+	 * @param mixed  $actual   Actual.
+	 * @param string $message  Message.
+	 * @return void
+	 */
+	public static function assertLessThanOrEqual( $expected, $actual, $message = '' ) {
+		if ( ! ( $actual <= $expected ) ) {
+			self::fail( '' !== $message ? $message : 'Expected ' . var_export( $actual, true ) . ' <= ' . var_export( $expected, true ) );
+		}
+	}
+
+	/**
+	 * Strict inequality.
+	 *
+	 * @param mixed  $expected Value that must not match.
+	 * @param mixed  $actual   Actual.
+	 * @param string $message  Message.
+	 * @return void
+	 */
+	public static function assertNotSame( $expected, $actual, $message = '' ) {
+		if ( $expected === $actual ) {
+			self::fail( '' !== $message ? $message : 'Expected a value other than ' . var_export( $expected, true ) );
+		}
+	}
+
+	/**
+	 * String prefix.
+	 *
+	 * @param string $prefix  Prefix.
+	 * @param string $string  Haystack.
+	 * @param string $message Message.
+	 * @return void
+	 */
+	public static function assertStringStartsWith( $prefix, $string, $message = '' ) {
+		if ( 0 !== strpos( (string) $string, (string) $prefix ) ) {
+			self::fail( ( '' !== $message ? $message . ' ' : '' ) . 'Expected ' . var_export( $string, true ) . ' to start with ' . var_export( $prefix, true ) );
+		}
+	}
+
+	/**
+	 * String suffix.
+	 *
+	 * @param string $suffix  Suffix.
+	 * @param string $string  Haystack.
+	 * @param string $message Message.
+	 * @return void
+	 */
+	public static function assertStringEndsWith( $suffix, $string, $message = '' ) {
+		$string = (string) $string;
+		$suffix = (string) $suffix;
+		if ( '' !== $suffix && substr( $string, -strlen( $suffix ) ) !== $suffix ) {
+			self::fail( ( '' !== $message ? $message . ' ' : '' ) . 'Expected ' . var_export( $string, true ) . ' to end with ' . var_export( $suffix, true ) );
+		}
+	}
 }

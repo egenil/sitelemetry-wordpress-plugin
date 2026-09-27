@@ -23,8 +23,35 @@
     ],
     "auditDetails": {
       "pillars": {
-        "Security": { "scope": { "status": "measured", "plan": "professional", "selectedModules": ["dns", "tls"] } },
-        "SEO": { "scope": { "status": "measured", "pageCount": 8, "pageLimit": 15 } }
+        "Security": {
+          "scope": { "status": "measured", "plan": "professional", "selectedModules": ["dns", "tls"] },
+          "checks": {
+            "counts": { "ok": 2, "observed": 0, "not_applicable": 0, "manual_review": 0, "skipped": 0, "error": 0, "fail": 1 },
+            "total": 3,
+            "returned": 3,
+            "truncated": false,
+            "items": [
+              { "id": "ok.dns.resolve", "status": "ok", "title": "DNS resolution successful", "evidence": "198.51.100.20", "location": "https://full.example/" },
+              { "id": "ok.tls.certificate.trusted", "status": "ok", "title": "TLS certificate chain is trusted", "evidence": "issuer=C=US, O=Google Trust Services, CN=WR3", "location": "https://full.example/" },
+              { "id": "fail.tls.weak-cipher", "status": "fail", "title": "Weak TLS cipher suites are enabled", "evidence": "TLS_RSA_WITH_3DES_EDE_CBC_SHA", "location": "https://full.example/" }
+            ]
+          }
+        },
+        "SEO": {
+          "scope": { "status": "measured", "pageCount": 8, "pageLimit": 15 },
+          "checks": {
+            "counts": { "ok": 2, "observed": 0, "not_applicable": 0, "manual_review": 1, "skipped": 0, "error": 0, "fail": 1 },
+            "total": 4,
+            "returned": 4,
+            "truncated": false,
+            "items": [
+              { "id": "ok.seo.unique-titles", "status": "ok", "title": "Page titles are unique", "evidence": "8 pages, 8 distinct titles", "location": "https://full.example/" },
+              { "id": "ok.seo.indexable-pages", "status": "ok", "title": "Pages are indexable", "evidence": "8/8 pages indexable", "location": "https://full.example/" },
+              { "id": "seo.content.readability", "status": "manual_review", "title": "Readability needs a human review", "evidence": "Flesch score 41", "location": "https://full.example/about" },
+              { "id": "seo.meta.description", "status": "fail", "title": "Meta description is missing", "evidence": "2 pages", "location": "https://full.example/pricing" }
+            ]
+          }
+        }
       }
     },
     "findings": [

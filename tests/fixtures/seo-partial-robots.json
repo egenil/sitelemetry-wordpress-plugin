@@ -1,0 +1,666 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[SEO audit — https://sitelemetry.com]\nScore: 100/100 (A)\nFindings: none (0 total)\nPassing: 59 checks\n\nContext:\n- Assessment scope: 5 pages; method=html_crawl; rendered=false; status=partial\n- Passed: 59; Observed: 7; Manual review: 0; Not applicable: 0; Skipped: 0\n- Not assessed: sampled_pages, no_browser_render\n\nNo issues detected within the assessed scope."
+    },
+    {
+      "type": "text",
+      "text": "Search Console was not measured; no keyword allowance was consumed. Reason: not_connected."
+    }
+  ],
+  "structuredContent": {
+    "target": "https://sitelemetry.com",
+    "kind": "SEO audit",
+    "score": 100,
+    "grade": "A",
+    "counts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "total": 0,
+    "returnedFindings": 0,
+    "findingsTruncated": false,
+    "passingChecks": 59,
+    "auditDetails": {
+      "scope": {
+        "method": "html_crawl",
+        "summary": "",
+        "status": "partial",
+        "requestedUrl": "https://sitelemetry.com/",
+        "assessedUrl": "https://sitelemetry.com/",
+        "pageCount": 5,
+        "pageLimit": 5,
+        "rendered": false,
+        "limitations": [
+          "sampled_pages",
+          "no_browser_render"
+        ],
+        "pages": [
+          {
+            "crawlId": "crawl:8170af4af690e059f195",
+            "url": "https://sitelemetry.com/",
+            "httpStatus": 200,
+            "contentType": "text/html; charset=utf-8",
+            "status": "applicable"
+          },
+          {
+            "crawlId": "crawl:2a17b9d1f153ff6a3094",
+            "url": "https://sitelemetry.com/launch-readiness",
+            "httpStatus": 200,
+            "contentType": "text/html; charset=utf-8",
+            "status": "applicable"
+          },
+          {
+            "crawlId": "crawl:85af9b64140a76059979",
+            "url": "https://sitelemetry.com/pricing",
+            "httpStatus": 200,
+            "contentType": "text/html; charset=utf-8",
+            "status": "applicable"
+          },
+          {
+            "crawlId": "crawl:16a91121a957b8e40e2b",
+            "url": "https://sitelemetry.com/terms",
+            "httpStatus": 200,
+            "contentType": "text/html; charset=utf-8",
+            "status": "applicable"
+          },
+          {
+            "crawlId": "crawl:3d924eeaf156e97ef5f7",
+            "url": "https://sitelemetry.com/privacy",
+            "httpStatus": 200,
+            "contentType": "text/html; charset=utf-8",
+            "status": "applicable"
+          },
+          {
+            "crawlId": "crawl:91df6ee5b09399389d4c",
+            "robotsScope": "secondary_utility",
+            "robotsScopeReason": "account_navigation_and_scoped_disallow",
+            "robotsRule": "/app",
+            "robotsVariantCount": 4,
+            "url": "https://sitelemetry.com/app",
+            "httpStatus": 0,
+            "contentType": "",
+            "status": "unavailable"
+          },
+          {
+            "crawlId": "crawl:eb8ffe2675bd3642d181",
+            "robotsEquivalentTo": "crawl:91df6ee5b09399389d4c",
+            "robotsScope": "secondary_utility",
+            "robotsScopeReason": "account_setup_query_and_scoped_disallow",
+            "robotsRule": "/app",
+            "robotsVariantCount": 1,
+            "url": "https://sitelemetry.com/app",
+            "httpStatus": 0,
+            "contentType": "",
+            "status": "unavailable"
+          },
+          {
+            "crawlId": "crawl:4944b639a1afb84b1157",
+            "robotsEquivalentTo": "crawl:91df6ee5b09399389d4c",
+            "robotsScope": "secondary_utility",
+            "robotsScopeReason": "account_setup_query_and_scoped_disallow",
+            "robotsRule": "/app",
+            "robotsVariantCount": 1,
+            "url": "https://sitelemetry.com/app",
+            "httpStatus": 0,
+            "contentType": "",
+            "status": "unavailable"
+          },
+          {
+            "crawlId": "crawl:ea37192b3c4bdeb7e05c",
+            "robotsEquivalentTo": "crawl:91df6ee5b09399389d4c",
+            "robotsScope": "secondary_utility",
+            "robotsScopeReason": "account_setup_query_and_scoped_disallow",
+            "robotsRule": "/app",
+            "robotsVariantCount": 1,
+            "url": "https://sitelemetry.com/app",
+            "httpStatus": 0,
+            "contentType": "",
+            "status": "unavailable"
+          }
+        ],
+        "pagesTruncated": false,
+        "attemptedPageCount": 5,
+        "uniquePageCount": 5,
+        "duplicatePageCount": 0,
+        "deferredPageCount": 124,
+        "skippedPageCount": 128,
+        "robotsBlockedPageCount": 4,
+        "robotsExcludedUtilityPageCount": 4,
+        "uniqueRobotsRestrictionCount": 1,
+        "discoveryBudgetDroppedPageCount": 114,
+        "deferredInventoryOmittedCount": 99,
+        "deferredPages": [
+          {
+            "crawlId": "crawl:f16091b640f24dcc4ef1",
+            "url": "https://sitelemetry.com/blog/accessibility-audit",
+            "httpStatus": null,
+            "contentType": "",
+            "status": "unknown",
+            "reason": "discovery_budget"
+          },
+          {
+            "crawlId": "crawl:02973eafe05d9bf4d760",
+            "url": "https://sitelemetry.com/blog/website-performance-audit",
+            "httpStatus": null,
+            "contentType": "",
+            "status": "unknown",
+            "reason": "discovery_budget"
+          }
+        ]
+      },
+      "checks": {
+        "counts": {
+          "ok": 59,
+          "observed": 7,
+          "not_applicable": 0,
+          "manual_review": 0,
+          "skipped": 0,
+          "error": 0,
+          "fail": 0
+        },
+        "total": 66,
+        "returned": 66,
+        "truncated": false,
+        "items": [
+          {
+            "id": "seo.internal-links.observed",
+            "status": "observed",
+            "title": "Internal links in the sampled crawl",
+            "evidence": "Sampled HTML pages: 5; unique internal target URLs: 15; targets outside this crawl: 6; page limit: 5",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.canonical.tgt56g",
+            "status": "ok",
+            "title": "Canonical signal present",
+            "evidence": "https://sitelemetry.com/",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.canonical.569lew",
+            "status": "ok",
+            "title": "Canonical signal present",
+            "evidence": "https://sitelemetry.com/launch-readiness",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.canonical.8mq8xu",
+            "status": "ok",
+            "title": "Canonical signal present",
+            "evidence": "https://sitelemetry.com/pricing",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.canonical.l6nx8f",
+            "status": "ok",
+            "title": "Canonical signal present",
+            "evidence": "https://sitelemetry.com/terms",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.canonical.8meadc",
+            "status": "ok",
+            "title": "Canonical signal present",
+            "evidence": "https://sitelemetry.com/privacy",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.h1.tgt56g",
+            "status": "ok",
+            "title": "A single H1 is used",
+            "evidence": "Sitelemetry",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.h1.569lew",
+            "status": "ok",
+            "title": "A single H1 is used",
+            "evidence": "Is your website ready to ship?",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.h1.8mq8xu",
+            "status": "ok",
+            "title": "A single H1 is used",
+            "evidence": "Find what to fix. Keep improving.",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.h1.l6nx8f",
+            "status": "ok",
+            "title": "A single H1 is used",
+            "evidence": "Terms of Service",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.h1.8meadc",
+            "status": "ok",
+            "title": "A single H1 is used",
+            "evidence": "Privacy Policy",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.readability",
+            "status": "ok",
+            "title": "Content has readable sentence length",
+            "evidence": "Average sentence length ~25 words",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "seo.content.extent.tgt56g",
+            "status": "observed",
+            "title": "Text extent recorded with page purpose",
+            "evidence": "1590 segmented words; 11064 characters; page",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "seo.content.extent.569lew",
+            "status": "observed",
+            "title": "Text extent recorded with page purpose",
+            "evidence": "390 segmented words; 2501 characters; page",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "seo.content.extent.8mq8xu",
+            "status": "observed",
+            "title": "Text extent recorded with page purpose",
+            "evidence": "341 segmented words; 2214 characters; page",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "seo.content.extent.l6nx8f",
+            "status": "observed",
+            "title": "Text extent recorded with page purpose",
+            "evidence": "14009 segmented words; 84642 characters; page",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "seo.content.extent.8meadc",
+            "status": "observed",
+            "title": "Text extent recorded with page purpose",
+            "evidence": "25261 segmented words; 151510 characters; page",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.unique-titles",
+            "status": "ok",
+            "title": "Title tags are unique across pages",
+            "evidence": "No duplicate titles across 5 pages",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.no-orphans",
+            "status": "ok",
+            "title": "Crawled pages receive internal links",
+            "evidence": "No orphan pages found",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.http.tgt56g",
+            "status": "ok",
+            "title": "Page returned a 200-class response",
+            "evidence": "HTTP 200, 505 ms",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.http.569lew",
+            "status": "ok",
+            "title": "Page returned a 200-class response",
+            "evidence": "HTTP 200, 80 ms",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.http.8mq8xu",
+            "status": "ok",
+            "title": "Page returned a 200-class response",
+            "evidence": "HTTP 200, 81 ms",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.http.l6nx8f",
+            "status": "ok",
+            "title": "Page returned a 200-class response",
+            "evidence": "HTTP 200, 380 ms",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.http.8meadc",
+            "status": "ok",
+            "title": "Page returned a 200-class response",
+            "evidence": "HTTP 200, 435 ms",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.robots.not-blocked",
+            "status": "ok",
+            "title": "robots.txt does not block the target",
+            "evidence": "1 rules",
+            "location": "https://sitelemetry.com/robots.txt"
+          },
+          {
+            "id": "ok.seo.links.internal-resolve",
+            "status": "ok",
+            "title": "Sampled internal links resolve",
+            "evidence": "4 internal links checked, none broken",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.images-alt.tgt56g",
+            "status": "ok",
+            "title": "Image alt text is complete",
+            "evidence": "27 images",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.images-alt.8mq8xu",
+            "status": "ok",
+            "title": "Image alt text is complete",
+            "evidence": "1 images",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.indexable-pages",
+            "status": "ok",
+            "title": "Indexable pages found",
+            "evidence": "5/9 pages appear indexable",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.indexable.tgt56g",
+            "status": "ok",
+            "title": "No noindex block",
+            "evidence": "no robots meta",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.indexable.569lew",
+            "status": "ok",
+            "title": "No noindex block",
+            "evidence": "no robots meta",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.indexable.8mq8xu",
+            "status": "ok",
+            "title": "No noindex block",
+            "evidence": "no robots meta",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.indexable.l6nx8f",
+            "status": "ok",
+            "title": "No noindex block",
+            "evidence": "index,follow",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.indexable.8meadc",
+            "status": "ok",
+            "title": "No noindex block",
+            "evidence": "index,follow",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "seo.robots.secondary-utility.6knokf",
+            "status": "observed",
+            "title": "Secondary account route excluded from organic scoring",
+            "evidence": "/app · 4 URL · Discovered URLs were not fetched; HTML and noindex were not measured.",
+            "location": "https://sitelemetry.com/app",
+            "evidenceSources": [
+              {
+                "url": "https://sitelemetry.com/robots.txt",
+                "field": "robots.txt",
+                "selector": "",
+                "observed": "/app",
+                "reason": "account_navigation_and_scoped_disallow",
+                "status": "observed"
+              },
+              {
+                "url": "https://sitelemetry.com/app",
+                "field": "crawl_policy",
+                "selector": "",
+                "observed": "not_fetched",
+                "reason": "robots_disallowed",
+                "status": "skipped"
+              }
+            ],
+            "evidenceSourcesTotal": 2,
+            "evidenceSourcesTruncated": false
+          },
+          {
+            "id": "ok.seo.lang.tgt56g",
+            "status": "ok",
+            "title": "HTML language is specified",
+            "evidence": "en",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.lang.569lew",
+            "status": "ok",
+            "title": "HTML language is specified",
+            "evidence": "en",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.lang.8mq8xu",
+            "status": "ok",
+            "title": "HTML language is specified",
+            "evidence": "en",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.lang.l6nx8f",
+            "status": "ok",
+            "title": "HTML language is specified",
+            "evidence": "en",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.lang.8meadc",
+            "status": "ok",
+            "title": "HTML language is specified",
+            "evidence": "en",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.description.tgt56g",
+            "status": "ok",
+            "title": "Meta description present",
+            "evidence": "157 characters",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.description.569lew",
+            "status": "ok",
+            "title": "Meta description present",
+            "evidence": "142 characters",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.description.8mq8xu",
+            "status": "ok",
+            "title": "Meta description present",
+            "evidence": "133 characters",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.description.l6nx8f",
+            "status": "ok",
+            "title": "Meta description present",
+            "evidence": "99 characters",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.description.8meadc",
+            "status": "ok",
+            "title": "Meta description present",
+            "evidence": "88 characters",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.title.tgt56g",
+            "status": "ok",
+            "title": "Title tag is within a readable range",
+            "evidence": "40 characters",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.title.569lew",
+            "status": "ok",
+            "title": "Title tag is within a readable range",
+            "evidence": "49 characters",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.title.8mq8xu",
+            "status": "ok",
+            "title": "Title tag is within a readable range",
+            "evidence": "39 characters",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.title.l6nx8f",
+            "status": "ok",
+            "title": "Title tag is within a readable range",
+            "evidence": "30 characters",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.title.8meadc",
+            "status": "ok",
+            "title": "Title tag is within a readable range",
+            "evidence": "28 characters",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.performance.ttfb.tgt56g",
+            "status": "ok",
+            "title": "HTML response time is good",
+            "evidence": "505 ms",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.performance.ttfb.569lew",
+            "status": "ok",
+            "title": "HTML response time is good",
+            "evidence": "80 ms",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.performance.ttfb.8mq8xu",
+            "status": "ok",
+            "title": "HTML response time is good",
+            "evidence": "81 ms",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.performance.ttfb.l6nx8f",
+            "status": "ok",
+            "title": "HTML response time is good",
+            "evidence": "380 ms",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.performance.ttfb.8meadc",
+            "status": "ok",
+            "title": "HTML response time is good",
+            "evidence": "435 ms",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.sitemap.present",
+            "status": "ok",
+            "title": "XML sitemap found",
+            "evidence": "127 URLs, 5 crawl matches",
+            "location": "https://sitelemetry.com/sitemap.xml"
+          },
+          {
+            "id": "ok.seo.social.tgt56g",
+            "status": "ok",
+            "title": "Social preview signals present",
+            "evidence": "og:title, og:image, twitter:card",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.social.569lew",
+            "status": "ok",
+            "title": "Social preview signals present",
+            "evidence": "og:title, og:image, twitter:card",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.social.8mq8xu",
+            "status": "ok",
+            "title": "Social preview signals present",
+            "evidence": "og:title, og:image, twitter:card",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.social.l6nx8f",
+            "status": "ok",
+            "title": "Social preview signals present",
+            "evidence": "og:title, og:image, twitter:card",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.social.8meadc",
+            "status": "ok",
+            "title": "Social preview signals present",
+            "evidence": "og:title, og:image, twitter:card",
+            "location": "https://sitelemetry.com/privacy"
+          },
+          {
+            "id": "ok.seo.structured-data.tgt56g",
+            "status": "ok",
+            "title": "Structured data present",
+            "evidence": "SoftwareApplication, FAQPage, Organization, WebSite",
+            "location": "https://sitelemetry.com/"
+          },
+          {
+            "id": "ok.seo.structured-data.569lew",
+            "status": "ok",
+            "title": "Structured data present",
+            "evidence": "WebApplication",
+            "location": "https://sitelemetry.com/launch-readiness"
+          },
+          {
+            "id": "ok.seo.structured-data.8mq8xu",
+            "status": "ok",
+            "title": "Structured data present",
+            "evidence": "WebPage",
+            "location": "https://sitelemetry.com/pricing"
+          },
+          {
+            "id": "ok.seo.structured-data.l6nx8f",
+            "status": "ok",
+            "title": "Structured data present",
+            "evidence": "WebPage",
+            "location": "https://sitelemetry.com/terms"
+          },
+          {
+            "id": "ok.seo.structured-data.8meadc",
+            "status": "ok",
+            "title": "Structured data present",
+            "evidence": "WebPage",
+            "location": "https://sitelemetry.com/privacy"
+          }
+        ]
+      },
+      "searchConsole": {
+        "status": "unavailable",
+        "reason": "not_connected",
+        "usageConsumed": false
+      }
+    },
+    "findings": [],
+    "executionComplete": true,
+    "coverageStatus": "partial",
+    "status": "partial",
+    "passingFindings": []
+  }
+}

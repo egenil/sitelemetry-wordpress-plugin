@@ -173,6 +173,24 @@
 		} );
 	}
 
+	/* One-click verification takes a few seconds (Sitelemetry loads the file):
+	   the button says so and cannot be pressed twice. */
+	function initVerifyForm() {
+		var forms = document.querySelectorAll( '.sitelemetry-audit-one-click-form' );
+		Array.prototype.forEach.call( forms, function ( form ) {
+			form.addEventListener( 'submit', function () {
+				var buttons = form.querySelectorAll( 'input[type="submit"], button' );
+				Array.prototype.forEach.call( buttons, function ( button ) {
+					button.disabled = true;
+					if ( i18n.verifying ) {
+						button.value = i18n.verifying;
+					}
+				} );
+				form.setAttribute( 'aria-busy', 'true' );
+			} );
+		} );
+	}
+
 	/* Disable the key input when "Remove the stored key" is checked. */
 	function initRemoveKey() {
 		var checkbox = document.getElementById( 'sitelemetry-audit-remove-key' );
@@ -188,11 +206,84 @@
 		} );
 	}
 
+	/* Last resort when the async clipboard API is unavailable (http admin) or
+	   refused: a selected, off-screen textarea and the copy command. */
+	function copyWithSelection( text ) {
+		var area = document.createElement( 'textarea' );
+		var previous = document.activeElement;
+		var copied = false;
+		area.value = text;
+		area.setAttribute( 'readonly', '' );
+		area.setAttribute( 'aria-hidden', 'true' );
+		area.style.position = 'fixed';
+		area.style.top = '-1000px';
+		area.style.opacity = '0';
+		document.body.appendChild( area );
+		area.select();
+		try {
+			copied = document.execCommand( 'copy' );
+		} catch ( e ) {
+			copied = false;
+		}
+		document.body.removeChild( area );
+		if ( previous && previous.focus ) {
+			previous.focus();
+		}
+		return copied;
+	}
+
+	/* "Copy AI fix prompt": the prompt was built by WordPress from the stored
+	   result and is already on the page (read-only textarea); the click only
+	   copies it to the clipboard. Nothing is sent anywhere. When copying fails,
+	   the text is shown and selected so it can be copied by hand. */
+	function initFixPrompt() {
+		var button = document.getElementById( 'sitelemetry-audit-copy-prompt' );
+		var area = document.getElementById( 'sitelemetry-audit-prompt-text' );
+		var status = document.getElementById( 'sitelemetry-audit-prompt-status' );
+		var details = document.getElementById( 'sitelemetry-audit-prompt-details' );
+		if ( ! button || ! area ) {
+			return;
+		}
+		button.hidden = false;
+
+		function done( copied ) {
+			if ( status ) {
+				status.textContent = copied ? ( i18n.copied || '' ) : ( i18n.copyFail || '' );
+				status.classList.toggle( 'is-error', ! copied );
+			}
+			if ( ! copied ) {
+				if ( details ) {
+					details.open = true;
+				}
+				area.focus();
+				area.select();
+			}
+		}
+
+		button.addEventListener( 'click', function () {
+			var text = area.value;
+			if ( navigator.clipboard && window.isSecureContext ) {
+				navigator.clipboard.writeText( text ).then(
+					function () {
+						done( true );
+					},
+					function () {
+						done( copyWithSelection( text ) );
+					}
+				);
+				return;
+			}
+			done( copyWithSelection( text ) );
+		} );
+	}
+
 	function init() {
 		initProgress();
 		initFilter();
 		initRunForms();
+		initVerifyForm();
 		initRemoveKey();
+		initFixPrompt();
 	}
 
 	if ( document.readyState === 'loading' ) {

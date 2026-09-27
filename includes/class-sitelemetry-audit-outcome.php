@@ -18,6 +18,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Sitelemetry_Audit_Outcome {
 
 	/**
+	 * Passing checks kept with a result, at most.
+	 */
+	const MAX_PASSING_ITEMS = 300;
+
+	/**
+	 * Characters of the passing checks kept with a result, at most.
+	 */
+	const MAX_PASSING_CHARS = 40000;
+
+	/**
+	 * Checks without a pass or fail result kept with a result, at most.
+	 */
+	const MAX_UNMEASURED_ITEMS = 200;
+
+	/**
+	 * Characters of the checks without a pass or fail result kept, at most.
+	 */
+	const MAX_UNMEASURED_CHARS = 30000;
+
+	/**
+	 * Check statuses that are neither a pass nor a fail, in the order the results
+	 * page lists them: the check failed to run, could not be determined, needs a
+	 * human review, or does not apply to the site. "observed" (an informational
+	 * observation) is not among them.
+	 *
+	 * @return string[]
+	 */
+	public static function unmeasured_statuses() {
+		return array( 'error', 'skipped', 'manual_review', 'not_applicable' );
+	}
+
+	/**
 	 * Pre-execution gates the server reports as status "action_required".
 	 *
 	 * @return array
@@ -88,16 +120,6 @@ class Sitelemetry_Audit_Outcome {
 			return $value;
 		}
 		return null;
-	}
-
-	/**
-	 * http(s) URL or null.
-	 *
-	 * @param mixed $value Value.
-	 * @return string|null
-	 */
-	public static function url_or_null( $value ) {
-		return is_string( $value ) && preg_match( '#^https?://#i', $value ) ? $value : null;
 	}
 
 	/**
@@ -194,14 +216,20 @@ class Sitelemetry_Audit_Outcome {
 	}
 
 	/**
+	 * Page addresses of a result listed in one "not measured" entry, at most.
+	 */
+	const MAX_UNASSESSED_URLS = 5;
+
+	/**
 	 * Everything the result says was skipped, unavailable or gated, as structured
 	 * entries (rendered later by Sitelemetry_Audit_Labels::not_measured_line()).
 	 * Unmeasured is not a pass.
 	 *
-	 * @param array $structured structuredContent of the result.
+	 * @param array  $structured structuredContent of the result.
+	 * @param string $kind       Audit kind of the result ('' when unknown).
 	 * @return array
 	 */
-	public static function not_measured( array $structured ) {
+	public static function not_measured( array $structured, $kind = '' ) {
 		$entries = array();
 		$details = isset( $structured['auditDetails'] ) && is_array( $structured['auditDetails'] ) ? $structured['auditDetails'] : array();
 
@@ -238,8 +266,20 @@ class Sitelemetry_Audit_Outcome {
 
 		$pillars = isset( $details['pillars'] ) && is_array( $details['pillars'] ) ? $details['pillars'] : array();
 		$scopes  = array();
+		// The measured parts of the result: the audit itself, or each pillar of a
+		// full audit, with the pillar name.
+		$parts = array();
 		if ( isset( $details['scope'] ) && is_array( $details['scope'] ) ) {
 			$scopes[] = $details['scope'];
+			$parts[]  = array( '', $details );
+			// A single-kind audit that measured nothing for this target (for
+			// example PageSpeed Insights answered without data).
+			if ( isset( $details['scope']['status'] ) && 'unavailable' === $details['scope']['status'] && Sitelemetry_Audit_Labels::is_kind( $kind ) ) {
+				$entries[] = array(
+					'type' => 'kind_unavailable',
+					'kind' => (string) $kind,
+				);
+			}
 		}
 		foreach ( $pillars as $name => $pillar ) {
 			$scope = is_array( $pillar ) && isset( $pillar['scope'] ) && is_array( $pillar['scope'] ) ? $pillar['scope'] : null;
@@ -253,6 +293,7 @@ class Sitelemetry_Audit_Outcome {
 				);
 			}
 			$scopes[] = $scope;
+			$parts[]  = array( self::clip( $name, 80 ), $pillar );
 		}
 
 		foreach ( $scopes as $scope ) {
@@ -273,13 +314,37 @@ class Sitelemetry_Audit_Outcome {
 					} elseif ( isset( $row['reason'] ) ) {
 						$reasons = array( $row['reason'] );
 					}
+					// The reasons are kept longer than they are shown: an explanation can
+					// depend on the end of a long reason (Sitelemetry_Audit_Modules::explain()).
+					$joined    = self::clip( implode( '; ', self::string_list( $reasons ) ), Sitelemetry_Audit_Modules::MAX_REASON_CHARS );
 					$entries[] = array(
 						'type'    => 'module',
 						'module'  => self::clip( isset( $row['module'] ) ? $row['module'] : '', 80 ),
 						'status'  => (string) $row['status'],
-						'reasons' => array_map( array( __CLASS__, 'clip' ), self::string_list( $reasons ) ),
+						'reasons' => '' === $joined ? array() : array( $joined ),
 					);
 				}
+			}
+		}
+
+		foreach ( $parts as $part ) {
+			$pages = self::unassessed_pages( $part[1] );
+			if ( $pages ) {
+				$entries[] = array(
+					'type'   => 'pages',
+					'pillar' => $part[0],
+					'count'  => count( $pages['urls'] ),
+					'urls'   => array_slice( $pages['urls'], 0, self::MAX_UNASSESSED_URLS ),
+					'robots' => $pages['robots'],
+				);
+			}
+			$metrics = self::unavailable_metrics( $part[1] );
+			if ( $metrics ) {
+				$entries[] = array(
+					'type'    => 'metrics',
+					'pillar'  => $part[0],
+					'metrics' => $metrics,
+				);
 			}
 		}
 
@@ -288,6 +353,196 @@ class Sitelemetry_Audit_Outcome {
 			$unique[ wp_json_encode( $entry ) ] = $entry;
 		}
 		return array_values( $unique );
+	}
+
+	/**
+	 * The pages a crawl found but could not assess (auditDetails.scope.pages with
+	 * status "unavailable", such as pages robots.txt disallows), when the scope
+	 * says its coverage is partial because of them. A scope without any
+	 * measurement is reported as unavailable as a whole instead.
+	 *
+	 * @param array $part auditDetails, or one pillar of a full audit.
+	 * @return array|null { urls: string[] (distinct), robots: bool (all disallowed by robots.txt) }
+	 */
+	private static function unassessed_pages( array $part ) {
+		$scope = isset( $part['scope'] ) && is_array( $part['scope'] ) ? $part['scope'] : array();
+		if ( ! isset( $scope['status'], $scope['pages'] ) || 'partial' !== $scope['status'] || ! is_array( $scope['pages'] ) ) {
+			return null;
+		}
+		$urls   = array();
+		$robots = true;
+		foreach ( $scope['pages'] as $page ) {
+			if ( ! is_array( $page ) || ! isset( $page['status'] ) || 'unavailable' !== $page['status'] ) {
+				continue;
+			}
+			$url = self::clip( isset( $page['url'] ) ? $page['url'] : '', 300 );
+			if ( '' === $url ) {
+				continue;
+			}
+			$urls[ $url ] = true;
+			$robots       = $robots && isset( $page['robotsRule'] ) && '' !== self::clip( $page['robotsRule'], 300 );
+		}
+		return $urls ? array(
+			'urls'   => array_keys( $urls ),
+			'robots' => $robots,
+		) : null;
+	}
+
+	/**
+	 * The names of the metrics a result reports as unavailable
+	 * (auditDetails.metrics[*] with status "unavailable", such as LCP or INP).
+	 *
+	 * @param array $part auditDetails, or one pillar of a full audit.
+	 * @return string[]
+	 */
+	private static function unavailable_metrics( array $part ) {
+		$names = array();
+		foreach ( isset( $part['metrics'] ) && is_array( $part['metrics'] ) ? $part['metrics'] : array() as $metric ) {
+			if ( ! is_array( $metric ) || ! isset( $metric['status'] ) || 'unavailable' !== $metric['status'] ) {
+				continue;
+			}
+			$name = self::clip( self::first_text( $metric, array( 'label', 'id' ) ), 40 );
+			if ( '' !== $name ) {
+				$names[ $name ] = true;
+			}
+		}
+		return array_keys( $names );
+	}
+
+	/**
+	 * The checks that passed, as the service lists them: auditDetails.checks.items
+	 * with status "ok", for a full audit also auditDetails.pillars[*].checks.items
+	 * (with the pillar), and passingFindings (positive observations the service
+	 * moved out of the findings). Only what the results page shows is kept: the id
+	 * (which places the check in its module), the title, the evidence and the
+	 * pillar. The list is bounded by a number of items and of characters so a large
+	 * audit keeps the stored result small; the count covers every passing check.
+	 *
+	 * @param array $structured structuredContent of the result.
+	 * @return array { items: array, count: int }
+	 */
+	public static function passing_entries( array $structured ) {
+		$rows = array();
+		foreach ( self::check_sources( $structured ) as $source ) {
+			foreach ( $source[1] as $row ) {
+				if ( ! is_array( $row ) || ! isset( $row['status'] ) || 'ok' !== $row['status'] ) {
+					continue;
+				}
+				$rows[] = self::passing_row( isset( $row['id'] ) ? $row['id'] : '', $row, $source[0] );
+			}
+		}
+		if ( isset( $structured['passingFindings'] ) && is_array( $structured['passingFindings'] ) ) {
+			foreach ( $structured['passingFindings'] as $row ) {
+				if ( ! is_array( $row ) ) {
+					continue;
+				}
+				$key = isset( $row['findingKey'] ) && is_string( $row['findingKey'] ) ? $row['findingKey'] : '';
+				$id  = preg_match( '/:id:([^:]+):loc:/u', $key, $match ) ? $match[1] : ( isset( $row['category'] ) ? $row['category'] : '' );
+				$rows[] = self::passing_row( $id, $row, isset( $row['pillar'] ) ? $row['pillar'] : '' );
+			}
+		}
+		$rows = array_values(
+			array_filter(
+				$rows,
+				function ( $row ) {
+					return '' !== $row['title'] || '' !== $row['id'];
+				}
+			)
+		);
+
+		return array(
+			'items' => self::bounded( $rows, self::MAX_PASSING_ITEMS, self::MAX_PASSING_CHARS ),
+			'count' => count( $rows ),
+		);
+	}
+
+	/**
+	 * The check lists of a result: auditDetails.checks.items and, for a full
+	 * audit, auditDetails.pillars[*].checks.items, each with its pillar name.
+	 *
+	 * @param array $structured structuredContent of the result.
+	 * @return array[] Pairs of pillar name ('' outside a full audit) and check list.
+	 */
+	private static function check_sources( array $structured ) {
+		$details = isset( $structured['auditDetails'] ) && is_array( $structured['auditDetails'] ) ? $structured['auditDetails'] : array();
+		$sources = array();
+		if ( isset( $details['checks']['items'] ) && is_array( $details['checks']['items'] ) ) {
+			$sources[] = array( '', $details['checks']['items'] );
+		}
+		if ( isset( $details['pillars'] ) && is_array( $details['pillars'] ) ) {
+			foreach ( $details['pillars'] as $name => $pillar ) {
+				if ( is_array( $pillar ) && isset( $pillar['checks']['items'] ) && is_array( $pillar['checks']['items'] ) ) {
+					$sources[] = array( (string) $name, $pillar['checks']['items'] );
+				}
+			}
+		}
+		return $sources;
+	}
+
+	/**
+	 * The first rows that fit a number of items and of characters.
+	 *
+	 * @param array $rows      Rows (id, title, evidence, pillar and optionally status).
+	 * @param int   $max_items Items, at most.
+	 * @param int   $max_chars Characters, at most.
+	 * @return array
+	 */
+	private static function bounded( array $rows, $max_items, $max_chars ) {
+		$items = array();
+		$chars = 0;
+		foreach ( $rows as $row ) {
+			$chars += mb_strlen( $row['id'] ) + mb_strlen( $row['title'] ) + mb_strlen( $row['evidence'] ) + mb_strlen( $row['pillar'] );
+			if ( count( $items ) >= $max_items || $chars > $max_chars ) {
+				break;
+			}
+			$items[] = $row;
+		}
+		return $items;
+	}
+
+	/**
+	 * The checks that have neither a pass nor a fail result (see
+	 * unmeasured_statuses()), from the same lists as the passing checks, with
+	 * their status. Bounded like the passing checks; the count covers all of them.
+	 *
+	 * @param array $structured structuredContent of the result.
+	 * @return array { items: array, count: int }
+	 */
+	public static function unmeasured_entries( array $structured ) {
+		$rows = array();
+		foreach ( self::check_sources( $structured ) as $source ) {
+			foreach ( $source[1] as $row ) {
+				if ( ! is_array( $row ) || ! isset( $row['status'] ) || ! in_array( $row['status'], self::unmeasured_statuses(), true ) ) {
+					continue;
+				}
+				$entry = self::passing_row( isset( $row['id'] ) ? $row['id'] : '', $row, $source[0] );
+				if ( '' === $entry['title'] && '' === $entry['id'] ) {
+					continue;
+				}
+				$rows[] = array( 'status' => (string) $row['status'] ) + $entry;
+			}
+		}
+		return array(
+			'items' => self::bounded( $rows, self::MAX_UNMEASURED_ITEMS, self::MAX_UNMEASURED_CHARS ),
+			'count' => count( $rows ),
+		);
+	}
+
+	/**
+	 * One stored passing check.
+	 *
+	 * @param mixed $id     Check id.
+	 * @param array $row    Check or finding as sent by the service.
+	 * @param mixed $pillar Pillar name or ''.
+	 * @return array
+	 */
+	private static function passing_row( $id, array $row, $pillar ) {
+		return array(
+			'id'       => self::clip( $id, 120 ),
+			'title'    => self::clip( isset( $row['title'] ) ? $row['title'] : '', 180 ),
+			'evidence' => self::clip( isset( $row['evidence'] ) ? $row['evidence'] : '', 300 ),
+			'pillar'   => self::clip( $pillar, 40 ),
+		);
 	}
 
 	/**
@@ -352,9 +607,10 @@ class Sitelemetry_Audit_Outcome {
 			'pillars'           => null,
 			'not_measured'      => array(),
 			'plan'              => null,
-			'remaining_scans'   => null,
-			'report_url'        => null,
 			'passing_checks'    => null,
+			'passing_items'     => array(),
+			'unmeasured_checks' => array(),
+			'unmeasured_total'  => 0,
 		);
 	}
 
@@ -409,7 +665,7 @@ class Sitelemetry_Audit_Outcome {
 				$findings[] = self::normalize_finding( $raw, $index );
 			}
 		}
-		$not_measured = self::not_measured( $structured );
+		$not_measured = self::not_measured( $structured, $kind );
 		$coverage     = isset( $structured['coverageStatus'] ) ? $structured['coverageStatus'] : '';
 		$partial      = 'partial' === $status
 			|| ( isset( $structured['complete'] ) && false === $structured['complete'] )
@@ -456,9 +712,18 @@ class Sitelemetry_Audit_Outcome {
 		$model['pillars']           = isset( $structured['pillars'] ) && is_array( $structured['pillars'] ) ? self::normalize_pillars( $structured['pillars'] ) : null;
 		$model['not_measured']      = $not_measured;
 		$model['plan']              = is_string( $plan ) && '' !== $plan ? $plan : null;
-		$model['remaining_scans']   = self::number_or_null( self::pick( $structured, array( 'usage.remaining.securityScans', 'remainingSecurityScans', 'allowance.remaining.securityScans' ) ) );
-		$model['report_url']        = self::url_or_null( self::pick( $structured, array( 'reportUrl', 'report.url', 'links.report' ) ) );
-		$model['passing_checks']    = isset( $structured['passingChecks'] ) ? self::number_or_null( $structured['passingChecks'] ) : null;
+		// The general /mcp endpoint sends no report link and no remaining allowance
+		// (the service removes both for this surface), so the model has neither.
+		// A full audit sends no passingChecks: its count comes from the list.
+		$passing                 = self::passing_entries( $structured );
+		$server_passing          = isset( $structured['passingChecks'] ) ? self::number_or_null( $structured['passingChecks'] ) : null;
+		$model['passing_items']  = $passing['items'];
+		$model['passing_checks'] = null !== $server_passing ? (int) $server_passing : ( $passing['count'] > 0 ? $passing['count'] : null );
+		// Checks that ran without a pass or fail result are listed under "What was
+		// not measured"; they neither pass nor fail the audit.
+		$unmeasured                 = self::unmeasured_entries( $structured );
+		$model['unmeasured_checks'] = $unmeasured['items'];
+		$model['unmeasured_total']  = $unmeasured['count'];
 		return $model;
 	}
 
