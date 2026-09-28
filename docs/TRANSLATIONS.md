@@ -69,7 +69,7 @@ names follow the WordPress locale (for example `Ajustes` in `es_ES`, `Réglages`
 | allowance | hak | cuota | Kontingent | quota | cota | quota | 利用枠 | 额度 |
 | plan | plan | plan | Plan | offre | plano | piano | プラン | 套餐 |
 | target | hedef | objetivo | Ziel | cible | alvo | target | ターゲット | 目标 |
-| token | token | token | Token | jeton | token | token | トークン | 令牌 |
+| token | belirteç | token | Token | jeton | token | token | トークン | 令牌 |
 | verification code (the app's name for the token) | doğrulama kodu | código de verificación | Verifizierungscode | code de vérification | código de verificação | codice di verifica | 検証コード | 验证代码 |
 | Check now (refresh the running audit) | Şimdi kontrol et | Comprobar ahora | Jetzt abfragen | Actualiser maintenant | Atualizar agora | Controlla ora | 今すぐ確認 | 立即检查 |
 | network administrator | ağ yöneticisi | administrador de la red | Netzwerk-Administrator | administrateur du réseau | administrador da rede | amministratore del network | ネットワーク管理者 | 网络管理员 |
@@ -91,6 +91,15 @@ Japanese puts a half-width space between Japanese text and numbers or placeholde
 Unmeasured states are stated as neutral facts. In Turkish that means `ölçülmedi` / `kısmen ölçüldü`,
 never a failure form such as `ölçülemedi`; `tests/test-i18n.php` checks this. Brand and plan names
 (`Sitelemetry`, `Free`, `Starter`) are not translated; the price label `Free` has its own string.
+
+Turkish follows the WordPress Türkiye team glossary. On 2026-09-28 the tr_TR team reviewed the
+338 Stable strings on translate.wordpress.org and corrected 33 of them; the bundled `tr_TR` file
+matches that approved set. Their choices: token = `belirteç` (first use `Doğrulama belirteci (token)`),
+performance = `başarım`, host-level = `sunucu düzeyi`, secrets = `gizli bilgiler`. In the official
+Turkish pack the team also translated four names that the other locales keep in English: the plan
+names `Free` = `Ücretsiz` and `Starter` = `Başlangıç`, the plugin name `Sitelemetry Audit` =
+`Sitelemetry denetimi` and `Search Console` = `Arama konsolu`. Raise any change to these with the
+tr_TR team (Slack #ceviri) rather than overriding their approved strings.
 
 ## Updating the files
 
