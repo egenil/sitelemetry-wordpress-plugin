@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4 - unreleased
+
+- Turkish: the bundled `tr_TR` translation now matches the set approved by the WordPress Türkiye translation team on translate.wordpress.org (33 corrections: `belirteç` for token, `başarım` for performance, glossary and title-case fixes; product and plan names stay in English as agreed with the team). `docs/TRANSLATIONS.md` records the team's term choices.
+
 ## 0.1.3 - unreleased
 
 - Passing checks: the checks with status `ok` from `auditDetails.checks.items` (and, for a full audit, `auditDetails.pillars[*].checks.items`) and the service's `passingFindings` are stored with the result (at most 300 items and 40,000 characters; titles 180 and evidence 300 characters) and listed in a collapsible "Passing checks (N)" section grouped by security module. A full audit, which sends no `passingChecks`, gets its count from the list. Results stored by 0.1.2 show the count and a note that the list appears after the next audit.

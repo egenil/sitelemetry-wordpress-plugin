@@ -182,7 +182,7 @@ msgstr "WordPress’ten tek tıkla doğrulayabilirsiniz: “Bu siteyi doğrula�
 
 #: admin/views/results.php:168
 msgid "The stored token was used up by the last verification. In the app, click Reverify for this domain and copy the new token, save it under Verify this site (it replaces the old one), then click Verify HTTP in the app and run the audit again."
-msgstr "Kayıtlı token son doğrulamada kullanıldı. Uygulamada bu alan adı için “Yeniden doğrula” düğmesine tıklayıp yeni token’ı kopyalayın, “Bu siteyi doğrula” bölümüne kaydedin (eskisinin yerini alır), ardından uygulamada “HTTP’yi doğrula” düğmesine tıklayın ve denetimi yeniden çalıştırın."
+msgstr "Kayıtlı belirteç son doğrulamada kullanıldı. Uygulamada bu alan adı için “Yeniden doğrula” düğmesine tıklayıp yeni belirteci kopyalayın, “Bu siteyi doğrula” bölümüne kaydedin (eskisinin yerini alır), ardından uygulamada “HTTP’yi doğrula” düğmesine tıklayın ve denetimi yeniden çalıştırın."
 
 #: admin/views/results.php:170
 msgid "This plugin already publishes a verification file for this site. Finish in the app: click Verify HTTP for this domain, then run the audit again."
@@ -190,7 +190,7 @@ msgstr "Bu eklenti bu site için zaten bir doğrulama dosyası yayınlıyor. İ�
 
 #: admin/views/results.php:172
 msgid "You can verify from WordPress: paste the token from the app into the plugin settings and the plugin publishes the verification file for this site."
-msgstr "Doğrulamayı WordPress’ten yapabilirsiniz: uygulamadaki token’ı eklenti ayarlarına yapıştırın; eklenti bu sitenin doğrulama dosyasını yayınlar."
+msgstr "Doğrulamayı WordPress’ten yapabilirsiniz: uygulamadaki belirteci eklenti ayarlarına yapıştırın; eklenti bu sitenin doğrulama dosyasını yayınlar."
 
 #: admin/views/results.php:179
 msgid "On a multisite network only a network administrator can publish the verification file for this site. Ask a network administrator, or verify the host in the app with a DNS record."
@@ -202,7 +202,7 @@ msgstr "Denetlenen hedef bu WordPress sitesi değil; eklenti doğrulama dosyası
 
 #: admin/views/results.php:188
 msgid "A verification lasts 30 days and is not renewed automatically. Before it expires, click Reverify in the app, publish the new token and verify again."
-msgstr "Doğrulama 30 gün geçerlidir ve kendiliğinden yenilenmez. Süresi dolmadan önce uygulamada “Yeniden doğrula” düğmesine tıklayın, yeni token’ı yayınlayın ve tekrar doğrulayın."
+msgstr "Doğrulama 30 gün geçerlidir ve kendiliğinden yenilenmez. Süresi dolmadan önce uygulamada “Yeniden doğrula” düğmesine tıklayın, yeni belirteci yayınlayın ve tekrar doğrulayın."
 
 #: admin/views/results.php:205 admin/views/results.php:260
 msgid "Score"
@@ -415,7 +415,7 @@ msgstr "İlerlemeyi görüntüle"
 #. translators: %s: host name.
 #: admin/views/settings.php:189 includes/class-sitelemetry-audit-verification.php:1631
 msgid "The ownership verification of %s has expired. Verification lasts 30 days and is not renewed automatically: click Reverify in the app, then publish the new token and verify again."
-msgstr "%s alan adının sahiplik doğrulamasının süresi doldu. Doğrulama 30 gün geçerlidir ve kendiliğinden yenilenmez: uygulamada “Yeniden doğrula” düğmesine tıklayın, ardından yeni token’ı yayınlayıp tekrar doğrulayın."
+msgstr "%s alan adının sahiplik doğrulamasının süresi doldu. Doğrulama 30 gün geçerlidir ve kendiliğinden yenilenmez: uygulamada “Yeniden doğrula” düğmesine tıklayın, ardından yeni belirteci yayınlayıp tekrar doğrulayın."
 
 #: admin/views/settings.php:196
 msgid "The verification of this site has expired. The plugin renews it automatically; click Verify this site to renew it now."
@@ -435,7 +435,7 @@ msgstr "“Diğer doğrulama yolları” bölümünde anlatıldığı gibi bir D
 
 #: admin/views/settings.php:211
 msgid "One-click verification is not available yet. Verify with a token from the app as described below."
-msgstr "Tek tıkla doğrulama henüz kullanılamıyor. Aşağıda anlatıldığı gibi uygulamadaki bir token’la doğrulayın."
+msgstr "Tek tıkla doğrulama henüz kullanılamıyor. Aşağıda anlatıldığı gibi uygulamadaki bir belirteçle doğrulayın."
 
 #: admin/views/settings.php:227
 msgid "Save your API key above to verify this site with one click."
@@ -448,7 +448,7 @@ msgstr "Eklenti Sitelemetry’den bir doğrulama kodu ister, bunu %1$s adresinde
 
 #: admin/views/settings.php:245
 msgid "Verify manually with a token from the app"
-msgstr "Uygulamadaki bir token’la elle doğrula"
+msgstr "Uygulamadaki bir belirteçle elle doğrula"
 
 #. translators: %s: host name of this site.
 #: admin/views/settings.php:252
@@ -462,7 +462,7 @@ msgstr "Uygulamada Doğrulanmış Alan Adları bölümünü aç"
 #. translators: %s: URL of the verification file.
 #: admin/views/settings.php:262
 msgid "Copy the verification code shown under HTTP verification file (it starts with sitelemetry-) and save it below as the token. The plugin then answers %s with the token."
-msgstr "“HTTP doğrulama dosyası” altında gösterilen doğrulama kodunu (sitelemetry- ile başlar) kopyalayıp aşağıya token olarak kaydedin. Eklenti bundan sonra %s adresini bu token’la yanıtlar."
+msgstr "“HTTP doğrulama dosyası” altında gösterilen doğrulama kodunu (sitelemetry- ile başlar) kopyalayıp aşağıya belirteç olarak kaydedin. Eklenti bundan sonra %s adresini bu belirteçle yanıtlar."
 
 #: admin/views/settings.php:267
 msgid "Click Test the file to check that the file is reachable."
@@ -478,19 +478,19 @@ msgstr "API anahtarı"
 
 #: admin/views/settings.php:275
 msgid "Verification token"
-msgstr "Doğrulama token’ı"
+msgstr "Doğrulama belirteci (token)"
 
 #: admin/views/settings.php:281
 msgid "Save token"
-msgstr "Token’ı kaydet"
+msgstr "Belirteci kaydet"
 
 #: admin/views/settings.php:283
 msgid "Remove token"
-msgstr "Token’ı kaldır"
+msgstr "Belirteci kaldır"
 
 #: admin/views/settings.php:288 includes/class-sitelemetry-audit-verification.php:295
 msgid "That is not a Sitelemetry verification token. Copy the whole token shown under HTTP verification file in the Verified Domains section of the app; it starts with sitelemetry- and has 32 more characters."
-msgstr "Bu bir Sitelemetry doğrulama token’ı değil. Uygulamanın Doğrulanmış Alan Adları bölümünde “HTTP doğrulama dosyası” altında gösterilen token’ın tamamını kopyalayın; token sitelemetry- ile başlar ve ardından 32 karakter daha gelir."
+msgstr "Bu bir Sitelemetry doğrulama belirteci değil. Uygulamanın Doğrulanmış Alan Adları bölümünde “HTTP doğrulama dosyası” altında gösterilen belirtecin tamamını kopyalayın; belirteç sitelemetry- ile başlar ve ardından 32 karakter daha gelir."
 
 #: admin/views/settings.php:30
 msgid "A key is stored."
@@ -499,7 +499,7 @@ msgstr "Bir anahtar kayıtlı."
 #. translators: 1: verification token, 2: date and time.
 #: admin/views/settings.php:301
 msgid "Stored token: %1$s (saved %2$s)."
-msgstr "Kayıtlı token: %1$s (kaydedilme: %2$s)."
+msgstr "Kayıtlı belirteç: %1$s (kaydedilme: %2$s)."
 
 #: admin/views/settings.php:307
 msgid "Open the file"
@@ -508,7 +508,7 @@ msgstr "Dosyayı aç"
 #. translators: %s: host name the token was saved for.
 #: admin/views/settings.php:316
 msgid "The file is not published: the token was saved for %s, which is not this site's current host. Add the current host in the app and save its token."
-msgstr "Dosya yayınlanmıyor: token, bu sitenin geçerli alan adı olmayan %s için kaydedildi. Geçerli alan adını uygulamaya ekleyin ve onun token’ını kaydedin."
+msgstr "Dosya yayınlanmıyor: belirteç, bu sitenin geçerli alan adı olmayan %s için kaydedildi. Geçerli alan adını uygulamaya ekleyin ve onun belirtecini kaydedin."
 
 #: admin/views/settings.php:326
 msgid "Test the file"
@@ -539,7 +539,7 @@ msgstr "Doğrulama %d gün geçerlidir. Eklenti, süresi dolduğunda veya bir de
 #. translators: %d: number of days a verification lasts.
 #: admin/views/settings.php:359
 msgid "A verification lasts %d days and Sitelemetry does not re-check it by itself. Before it expires, click Reverify for this domain in the app, save the new token here and click Verify HTTP again. When an audit reports that the verification must be renewed, the results page and the dashboard widget remind you."
-msgstr "Doğrulama %d gün geçerlidir ve Sitelemetry bunu kendiliğinden yeniden kontrol etmez. Süresi dolmadan önce uygulamada bu alan adı için “Yeniden doğrula” düğmesine tıklayın, yeni token’ı buraya kaydedin ve yeniden “HTTP’yi doğrula” düğmesine tıklayın. Bir denetim doğrulamanın yenilenmesi gerektiğini bildirdiğinde sonuçlar sayfası ve Başlangıç ekranındaki bileşen size hatırlatır."
+msgstr "Doğrulama %d gün geçerlidir ve Sitelemetry bunu kendiliğinden yeniden kontrol etmez. Süresi dolmadan önce uygulamada bu alan adı için “Yeniden doğrula” düğmesine tıklayın, yeni belirteci buraya kaydedin ve yeniden “HTTP’yi doğrula” düğmesine tıklayın. Bir denetim doğrulamanın yenilenmesi gerektiğini bildirdiğinde sonuçlar sayfası ve Başlangıç ekranındaki bileşen size hatırlatır."
 
 #: admin/views/settings.php:36 admin/views/settings.php:52 admin/views/settings.php:204
 msgid "Get your API key"
@@ -552,7 +552,7 @@ msgstr "Diğer doğrulama yolları"
 #. translators: %s: DNS record name.
 #: admin/views/settings.php:374
 msgid "DNS record: add a TXT record named %s whose value is the token, then click Verify DNS in the app. This works when the file cannot be served, for example for a subdirectory install or a server that handles /.well-known/ itself."
-msgstr "DNS kaydı: %s adında, değeri token olan bir TXT kaydı ekleyin, ardından uygulamada “DNS’i doğrula” düğmesine tıklayın. Bu yöntem, dosya sunulamadığında da işe yarar; örneğin alt dizine kurulmuş bir sitede veya /.well-known/ yolunu kendisi işleyen bir sunucuda."
+msgstr "DNS kaydı: %s adında, değeri belirteç olan bir TXT kaydı ekleyin, ardından uygulamada “DNS’i doğrula” düğmesine tıklayın. Bu yöntem, dosya sunulamadığında da işe yarar; örneğin alt dizine kurulmuş bir sitede veya /.well-known/ yolunu kendisi işleyen bir sunucuda."
 
 #: admin/views/settings.php:380
 msgid "Google Search Console: in the app, connect the Google account that owns the site's Search Console property and synchronize the properties. A Domain property covers the host and its subdomains; a URL-prefix property must be the root of the host for the host-level checks."
@@ -691,11 +691,11 @@ msgstr "Bekleme bırakıldı. Bu denetimin sonucu burada görünmeyecek; sonuç 
 
 #: includes/class-sitelemetry-audit-admin.php:252
 msgid "The verification token is saved and the verification file is published. Test the file, then click Verify HTTP in the app."
-msgstr "Doğrulama token’ı kaydedildi ve doğrulama dosyası yayınlandı. Dosyayı test edin, ardından uygulamada “HTTP’yi doğrula” düğmesine tıklayın."
+msgstr "Doğrulama belirteci kaydedildi ve doğrulama dosyası yayınlandı. Dosyayı test edin, ardından uygulamada “HTTP’yi doğrula” düğmesine tıklayın."
 
 #: includes/class-sitelemetry-audit-admin.php:253
 msgid "The verification token was removed; the verification file is no longer published."
-msgstr "Doğrulama token’ı kaldırıldı; doğrulama dosyası artık yayınlanmıyor."
+msgstr "Doğrulama belirteci kaldırıldı; doğrulama dosyası artık yayınlanmıyor."
 
 #: includes/class-sitelemetry-audit-admin.php:254
 msgid "The verification file was tested; the result is shown under Verify this site."
@@ -707,7 +707,7 @@ msgstr "Doğrulama tamamlanamadı. Nedeni ve nasıl düzeltileceği “Bu siteyi
 
 #: includes/class-sitelemetry-audit-admin.php:257
 msgid "One-click verification is not available yet. Verify with a token from the app as described under Verify this site."
-msgstr "Tek tıkla doğrulama henüz kullanılamıyor. “Bu siteyi doğrula” bölümünde anlatıldığı gibi uygulamadaki bir token’la doğrulayın."
+msgstr "Tek tıkla doğrulama henüz kullanılamıyor. “Bu siteyi doğrula” bölümünde anlatıldığı gibi uygulamadaki bir belirteçle doğrulayın."
 
 #. translators: 1: audit kind label, 2: plan name.
 #: includes/class-sitelemetry-audit-admin.php:287
@@ -721,7 +721,7 @@ msgstr "%1$s (%2$s veya üstü gerekir)"
 
 #: includes/class-sitelemetry-audit-admin.php:413
 msgid "The file works: WordPress loaded it from its own address with the stored token."
-msgstr "Dosya çalışıyor: WordPress dosyayı kendi adresinden kayıtlı token’la yükledi."
+msgstr "Dosya çalışıyor: WordPress dosyayı kendi adresinden kayıtlı belirteçle yükledi."
 
 #: includes/class-sitelemetry-audit-admin.php:498 includes/class-sitelemetry-audit-admin.php:517 includes/class-sitelemetry-audit-admin.php:533 includes/class-sitelemetry-audit-admin.php:606 includes/class-sitelemetry-audit-admin.php:659
 msgid "You do not have permission to change these settings."
@@ -773,7 +773,7 @@ msgstr "Çalıştırılmadı: hedefin sahiplik doğrulaması yenilenmeli"
 
 #: includes/class-sitelemetry-audit-labels.php:161
 msgid "Not run: the current verification of the target does not cover the requested host-level checks"
-msgstr "Çalıştırılmadı: hedefin mevcut doğrulaması istenen alan adı düzeyindeki kontrolleri kapsamıyor"
+msgstr "Çalıştırılmadı: hedefin mevcut doğrulaması istenen sunucu düzeyindeki kontrolleri kapsamıyor"
 
 #: includes/class-sitelemetry-audit-labels.php:163
 msgid "Not run: ownership verification of the target is required"
@@ -964,7 +964,7 @@ msgstr "Erişilebilirlik"
 
 #: includes/class-sitelemetry-audit-labels.php:63 includes/class-sitelemetry-audit-plans.php:32
 msgid "Performance"
-msgstr "Performans"
+msgstr "Başarım"
 
 #: includes/class-sitelemetry-audit-labels.php:64
 msgid "Full (all pillars)"
@@ -1148,7 +1148,7 @@ msgstr "DDoS dayanıklılık sinyalleri"
 
 #: includes/class-sitelemetry-audit-modules.php:69
 msgid "Leaked secrets"
-msgstr "Sızdırılmış secret’lar"
+msgstr "Sızdırılmış gizli bilgiler"
 
 #: includes/class-sitelemetry-audit-modules.php:70
 msgid "Subdomain takeover"
@@ -1278,7 +1278,7 @@ msgstr "Bu hesap için zaten bir doğrulama çalışıyor. Birkaç saniye bekley
 
 #: includes/class-sitelemetry-audit-verification.php:1244
 msgid "One-click verification is not available on Sitelemetry right now. Verify with a token from the app as described under Verify this site in the plugin settings, or use a DNS record or Google Search Console."
-msgstr "Tek tıkla doğrulama şu anda Sitelemetry’de kullanılamıyor. Eklenti ayarlarındaki “Bu siteyi doğrula” bölümünde anlatıldığı gibi uygulamadaki bir token’la doğrulayın ya da bir DNS kaydı veya Google Search Console kullanın."
+msgstr "Tek tıkla doğrulama şu anda Sitelemetry’de kullanılamıyor. Eklenti ayarlarındaki “Bu siteyi doğrula” bölümünde anlatıldığı gibi uygulamadaki bir belirteçle doğrulayın ya da bir DNS kaydı veya Google Search Console kullanın."
 
 #. translators: %s: host name in the answer of Sitelemetry.
 #: includes/class-sitelemetry-audit-verification.php:1247
@@ -1315,7 +1315,7 @@ msgstr "Doğrulama dosyasının adresi başka bir alan adına, protokole veya po
 
 #: includes/class-sitelemetry-audit-verification.php:1282
 msgid "Sitelemetry loaded the verification file, but it did not contain exactly the token. A cached copy, another file at that path or a page from a cache, maintenance or security plugin answered instead. Purge the cache, remove the other file or exclude /.well-known/sitelemetry-verification.txt, then try again."
-msgstr "Sitelemetry doğrulama dosyasını yükledi, ancak dosya tam olarak token’ı içermiyordu. Bunun yerine önbellekteki bir kopya, o yoldaki başka bir dosya ya da bir önbellek, bakım veya güvenlik eklentisinin sayfası yanıt verdi. Önbelleği temizleyin, diğer dosyayı kaldırın veya /.well-known/sitelemetry-verification.txt yolunu hariç tutun, ardından tekrar deneyin."
+msgstr "Sitelemetry doğrulama dosyasını yükledi, ancak dosya tam olarak belirteci içermiyordu. Bunun yerine önbellekteki bir kopya, o yoldaki başka bir dosya ya da bir önbellek, bakım veya güvenlik eklentisinin sayfası yanıt verdi. Önbelleği temizleyin, diğer dosyayı kaldırın veya /.well-known/sitelemetry-verification.txt yolunu hariç tutun, ardından tekrar deneyin."
 
 #: includes/class-sitelemetry-audit-verification.php:1284
 msgid "The site did not answer Sitelemetry in time (10 seconds). Check that the site is up and reachable from the internet, then try again."
@@ -1364,11 +1364,11 @@ msgstr "Bu site adresi %d numaralı portu kullanıyor. Sitelemetry dosyayı alan
 
 #: includes/class-sitelemetry-audit-verification.php:1456
 msgid "The file works: WordPress loaded it from its own address with the stored token. Now click Verify HTTP for this domain in the app. Sitelemetry loads the file from the internet with its own user agent (Sitelemetry-Ownership-Verifier/1.0), so a firewall rule that blocks unknown bots can still make verification fail."
-msgstr "Dosya çalışıyor: WordPress dosyayı kendi adresinden kayıtlı token’la yükledi. Şimdi uygulamada bu alan adı için “HTTP’yi doğrula” düğmesine tıklayın. Sitelemetry dosyayı internetten kendi kullanıcı aracısıyla (Sitelemetry-Ownership-Verifier/1.0) yükler; bu yüzden bilinmeyen botları engelleyen bir güvenlik duvarı kuralı doğrulamanın yine de başarısız olmasına yol açabilir."
+msgstr "Dosya çalışıyor: WordPress dosyayı kendi adresinden kayıtlı belirteçle yükledi. Şimdi uygulamada bu alan adı için “HTTP’yi doğrula” düğmesine tıklayın. Sitelemetry dosyayı internetten kendi kullanıcı aracısıyla (Sitelemetry-Ownership-Verifier/1.0) yükler; bu yüzden bilinmeyen botları engelleyen bir güvenlik duvarı kuralı doğrulamanın yine de başarısız olmasına yol açabilir."
 
 #: includes/class-sitelemetry-audit-verification.php:1458
 msgid "No token is stored for this site yet. Paste the token from the app first."
-msgstr "Bu site için henüz kayıtlı bir token yok. Önce uygulamadaki token’ı yapıştırın."
+msgstr "Bu site için henüz kayıtlı bir belirteç yok. Önce uygulamadaki belirteci yapıştırın."
 
 #. translators: %s: error message.
 #: includes/class-sitelemetry-audit-verification.php:1461
@@ -1400,15 +1400,15 @@ msgstr "Dosya yerine bir web sayfası yanıt verdi (örneğin bakım, giriş, ö
 
 #: includes/class-sitelemetry-audit-verification.php:1476
 msgid "The file address answers, but not with the stored token. Another file at that path (for example one uploaded earlier) or a cached copy takes precedence: remove it, purge the cache, or put the current token in it."
-msgstr "Dosya adresi yanıt veriyor ama kayıtlı token’la değil. O yoldaki başka bir dosya (örneğin daha önce yüklenmiş bir dosya) veya önbellekteki bir kopya öncelik alıyor: onu kaldırın, önbelleği temizleyin ya da içine geçerli token’ı koyun."
+msgstr "Dosya adresi yanıt veriyor ama kayıtlı belirteçle değil. O yoldaki başka bir dosya (örneğin daha önce yüklenmiş bir dosya) veya önbellekteki bir kopya öncelik alıyor: onu kaldırın, önbelleği temizleyin ya da içine geçerli belirteci koyun."
 
 #: includes/class-sitelemetry-audit-verification.php:1478
 msgid "The plugin answered, but no token is stored for this site address. Save the token again."
-msgstr "Eklenti yanıt verdi ancak bu site adresi için kayıtlı bir token yok. Token’ı yeniden kaydedin."
+msgstr "Eklenti yanıt verdi ancak bu site adresi için kayıtlı bir belirteç yok. Belirteci yeniden kaydedin."
 
 #: includes/class-sitelemetry-audit-verification.php:1480
 msgid "The web server answered 404 without passing the request to WordPress. Many server setups handle /.well-known/ themselves (for example an nginx rule for hidden paths), and with plain permalinks the web server does not pass unknown paths to WordPress. Ask your host to pass /.well-known/sitelemetry-verification.txt to WordPress, upload a plain text file with the token at that path, or use the DNS method."
-msgstr "Web sunucusu, isteği WordPress’e iletmeden 404 yanıtı verdi. Birçok sunucu yapılandırması /.well-known/ yolunu kendisi işler (örneğin gizli yollar için bir nginx kuralı) ve düz kalıcı bağlantılar kullanıldığında web sunucusu bilinmeyen yolları WordPress’e iletmez. Barındırma sağlayıcınızdan /.well-known/sitelemetry-verification.txt yolunu WordPress’e iletmesini isteyin, bu yola token’ı içeren düz metin bir dosya yükleyin veya DNS yöntemini kullanın."
+msgstr "Web sunucusu, isteği WordPress’e iletmeden 404 yanıtı verdi. Birçok sunucu yapılandırması /.well-known/ yolunu kendisi işler (örneğin gizli yollar için bir nginx kuralı) ve düz kalıcı bağlantılar kullanıldığında web sunucusu bilinmeyen yolları WordPress’e iletmez. Barındırma sağlayıcınızdan /.well-known/sitelemetry-verification.txt yolunu WordPress’e iletmesini isteyin, bu yola belirteci içeren düz metin bir dosya yükleyin veya DNS yöntemini kullanın."
 
 #: includes/class-sitelemetry-audit-verification.php:1482
 msgid "The site asks for a password (HTTP 401), so Sitelemetry cannot read the file. Remove the password protection for this path while you verify, or use the DNS method."
