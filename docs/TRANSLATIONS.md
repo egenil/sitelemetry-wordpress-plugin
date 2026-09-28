@@ -95,11 +95,11 @@ never a failure form such as `ölçülemedi`; `tests/test-i18n.php` checks this.
 Turkish follows the WordPress Türkiye team glossary. On 2026-09-28 the tr_TR team reviewed the
 338 Stable strings on translate.wordpress.org and corrected 33 of them; the bundled `tr_TR` file
 matches that approved set. Their choices: token = `belirteç` (first use `Doğrulama belirteci (token)`),
-performance = `başarım`, host-level = `sunucu düzeyi`, secrets = `gizli bilgiler`. In the official
-Turkish pack the team also translated four names that the other locales keep in English: the plan
-names `Free` = `Ücretsiz` and `Starter` = `Başlangıç`, the plugin name `Sitelemetry Audit` =
-`Sitelemetry denetimi` and `Search Console` = `Arama konsolu`. Raise any change to these with the
-tr_TR team (Slack #ceviri) rather than overriding their approved strings.
+performance = `başarım`, host-level = `sunucu düzeyi`, secrets = `gizli bilgiler`. Product names stay
+in English, as in the other locales and as agreed with the team in #ceviri: the plugin name
+`Sitelemetry Audit`, the plan names `Free` and `Starter` (context "plan name"; the price label `Free`
+is `Ücretsiz`) and Google's `Search Console`. Discuss term changes with the tr_TR team (Slack
+#ceviri) before overriding their approved strings.
 
 ## Updating the files
 

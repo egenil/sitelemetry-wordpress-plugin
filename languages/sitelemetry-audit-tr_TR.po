@@ -733,7 +733,7 @@ msgstr "Denetim çalıştırma izniniz yok."
 
 #: includes/class-sitelemetry-audit-admin.php:79 includes/class-sitelemetry-audit-admin.php:219
 msgid "Sitelemetry Audit"
-msgstr "Sitelemetry denetimi"
+msgstr "Sitelemetry Audit"
 
 #: includes/class-sitelemetry-audit-admin.php:80
 msgid "Sitelemetry"
@@ -1202,12 +1202,12 @@ msgstr "%s/ay"
 #: includes/class-sitelemetry-audit-plans.php:240
 msgctxt "plan name"
 msgid "Free"
-msgstr "Ücretsiz"
+msgstr "Free"
 
 #: includes/class-sitelemetry-audit-plans.php:240
 msgctxt "plan name"
 msgid "Starter"
-msgstr "Başlangıç"
+msgstr "Starter"
 
 #: includes/class-sitelemetry-audit-plans.php:27
 msgid "Full"
@@ -1219,7 +1219,7 @@ msgstr "SEO"
 
 #: includes/class-sitelemetry-audit-plans.php:34
 msgid "Search Console"
-msgstr "Arama konsolu"
+msgstr "Search Console"
 
 #: includes/class-sitelemetry-audit-runner.php:198
 msgid "Another audit is already running for this account; retrying shortly."
